@@ -1,0 +1,3468 @@
+{
+    "schema": {
+        "name": "pm.schedule",
+        "version": "1.0.0",
+        "standard": "PMI Practice Standard for Scheduling",
+        "description": "Schedule for the Pytagoras Fullstack Template. Activities map directly to tasks.json entries. Execution is autonomous (Claude Code headless sessions). Duration is measured in agent sessions, not calendar days."
+    },
+    "schedule": {
+        "scheduleId": "SCH-PYSTACK-001",
+        "projectId": "PRJ-PYSTACK-001",
+        "wbsId": "WBS-PYSTACK-001",
+        "name": "Pytagoras Fullstack Template — Master Schedule",
+        "version": "1.0",
+        "status": "in-progress",
+        "baselineDate": "2026-03-05",
+        "approvedBy": "USR-BAARD",
+        "calendarId": "CAL-AGENT-001",
+        "audit": {
+            "createdAt": "2026-03-05T10:00:00Z",
+            "createdBy": "bipp-i",
+            "updatedAt": "2026-03-08T11:45:13.390Z",
+            "updatedBy": "codex"
+        },
+        "calendars": [
+            {
+                "calendarId": "CAL-AGENT-001",
+                "name": "Agent Execution Calendar",
+                "description": "Autonomous agent sessions run on-demand. Duration = number of Claude Code sessions. No fixed working hours.",
+                "workingDays": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday",
+                    "sunday"
+                ],
+                "hoursPerDay": null,
+                "durationUnit": "sessions",
+                "exceptions": []
+            }
+        ],
+        "milestones": [
+            {
+                "milestoneId": "MS-001",
+                "name": "Backend Complete",
+                "date": "2026-02-28",
+                "status": "reached",
+                "description": "All backend phases (1-4) done. 24/48 tasks complete."
+            },
+            {
+                "milestoneId": "MS-002",
+                "name": "Frontend Slices Complete",
+                "date": "2026-03-15",
+                "status": "reached",
+                "description": "Reached in the local repo via phase-5 implementation commits on 2026-03-06. All primary UI pages and auth/admin wrappers are in place."
+            },
+            {
+                "milestoneId": "MS-003",
+                "name": "Full Integration Working",
+                "date": "2026-03-20",
+                "status": "not-reached",
+                "description": "Frontend and backend wired. Streaming chat works end-to-end."
+            },
+            {
+                "milestoneId": "MS-004",
+                "name": "Tests and Docs Complete",
+                "date": "2026-03-28",
+                "status": "not-reached",
+                "description": "All tests pass, all documentation written."
+            },
+            {
+                "milestoneId": "MS-005",
+                "name": "Template Published",
+                "date": "2026-03-31",
+                "status": "not-reached",
+                "description": "Template tagged and ready to use as GitHub template repository."
+            }
+        ],
+        "activities": [
+            {
+                "activityId": "ACT-1.1",
+                "taskId": "1.1",
+                "wbsItemId": "WBS-1.1.1",
+                "name": "Initialize monorepo structure",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [],
+                "milestoneId": null,
+                "description": "Create frontend/ and backend/ directories with basic config files",
+                "steps": [
+                    "Create frontend/ directory",
+                    "Create backend/ directory",
+                    "Create root .gitignore",
+                    "Create root docker-compose.yml placeholder"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-1.1-C01",
+                        "description": "frontend/ directory exists with package.json",
+                        "status": "passed",
+                        "result": "Verified: frontend/package.json exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.1-C02",
+                        "description": "backend/ directory exists with pyproject.toml",
+                        "status": "passed",
+                        "result": "Verified: backend/pyproject.toml exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.1-C03",
+                        "description": "Root .gitignore excludes node_modules, __pycache__, .env",
+                        "status": "passed",
+                        "result": "All patterns found in .gitignore",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.1-C04",
+                        "description": "docker-compose.yml placeholder exists at root",
+                        "status": "passed",
+                        "result": "File exists at root",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-1.2",
+                "taskId": "1.2",
+                "wbsItemId": "WBS-1.1.2",
+                "name": "Setup frontend with Next.js and Bun",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Initialize Next.js app with TypeScript, Tailwind, and Biome",
+                "steps": [
+                    "Run bun create next-app in frontend/",
+                    "Configure TypeScript strict mode",
+                    "Install and configure Tailwind CSS",
+                    "Install and configure Biome (biome.json)",
+                    "Add shadcn/ui initialization",
+                    "Create package.json scripts for dev, build, lint, test"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-1.2-C01",
+                        "description": "frontend/package.json contains next, react, react-dom dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependencies present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.2-C02",
+                        "description": "frontend/tsconfig.json has strict mode enabled",
+                        "status": "passed",
+                        "result": "Verified: strict mode enabled",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.2-C03",
+                        "description": "frontend/tailwind.config.ts exists and is valid",
+                        "status": "passed",
+                        "result": "Verified: config exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.2-C04",
+                        "description": "frontend/biome.json exists with linting rules configured",
+                        "status": "passed",
+                        "result": "Verified: biome.json exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.2-C05",
+                        "description": "frontend/components.json exists (shadcn config)",
+                        "status": "passed",
+                        "result": "Verified: components.json exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.2-C06",
+                        "description": "npm run dev, build, lint commands work without errors",
+                        "status": "passed",
+                        "result": "Verified: commands work",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-1.3",
+                "taskId": "1.3",
+                "wbsItemId": "WBS-1.1.3",
+                "name": "Setup backend with FastAPI and uv",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Initialize Python backend with FastAPI and modern tooling",
+                "steps": [
+                    "Create pyproject.toml with uv",
+                    "Add FastAPI, SQLAlchemy 2, Pydantic, Alembic dependencies",
+                    "Add Ruff, mypy, pytest as dev dependencies",
+                    "Create app/ directory structure",
+                    "Create app/main.py with basic FastAPI app",
+                    "Create app/config.py for settings"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-1.3-C01",
+                        "description": "backend/pyproject.toml exists with FastAPI, SQLAlchemy, Pydantic, Alembic",
+                        "status": "passed",
+                        "result": "Verified: dependencies present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.3-C02",
+                        "description": "backend/pyproject.toml includes ruff, mypy, pytest in dev dependencies",
+                        "status": "passed",
+                        "result": "Verified: dev dependencies present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.3-C03",
+                        "description": "backend/app/ directory structure exists",
+                        "status": "passed",
+                        "result": "Verified: directory structure exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.3-C04",
+                        "description": "backend/app/main.py creates FastAPI application instance",
+                        "status": "passed",
+                        "result": "Verified: FastAPI app created",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.3-C05",
+                        "description": "backend/app/config.py defines Settings class with Pydantic BaseSettings",
+                        "status": "passed",
+                        "result": "Verified: Settings class defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.3-C06",
+                        "description": "uv run uvicorn app.main:app starts server without errors",
+                        "status": "passed",
+                        "result": "Verified: server starts",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-1.4",
+                "taskId": "1.4",
+                "wbsItemId": "WBS-1.1.4",
+                "name": "Create environment file templates",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Add .env.example files for both frontend and backend",
+                "steps": [
+                    "Create frontend/.env.example",
+                    "Create backend/.env.example",
+                    "Update .gitignore to exclude .env files"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-1.4-C01",
+                        "description": "frontend/.env.example exists with NEXT_PUBLIC_* variables documented",
+                        "status": "passed",
+                        "result": "Verified: file exists with variables",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.4-C02",
+                        "description": "backend/.env.example exists with DATABASE_URL, CLERK_SECRET_KEY, etc.",
+                        "status": "passed",
+                        "result": "Verified: file exists with variables",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-1.4-C03",
+                        "description": ".gitignore contains .env and .env.local patterns",
+                        "status": "passed",
+                        "result": "Verified: patterns in .gitignore",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.1",
+                "taskId": "2.1",
+                "wbsItemId": "WBS-1.2.1",
+                "name": "Setup database interfaces and connection",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Create database abstraction layer with protocols",
+                "steps": [
+                    "Create app/core/database/interfaces.py with IDatabase, IUnitOfWork, IRepository protocols",
+                    "Create app/core/database/connection.py with AsyncDatabase implementation",
+                    "Create app/core/database/models.py with SQLAlchemy base and mixins (UUIDMixin, TimestampMixin)",
+                    "Create app/core/database/unit_of_work.py",
+                    "Define type aliases using Annotated for clean DI (SessionDep, UnitOfWorkDep)"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.1-C01",
+                        "description": "app/core/database/interfaces.py defines IDatabase, IUnitOfWork, IRepository protocols",
+                        "status": "passed",
+                        "result": "Verified: protocols defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.1-C02",
+                        "description": "app/core/database/connection.py implements AsyncDatabase with async session management",
+                        "status": "passed",
+                        "result": "Verified: implementation exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.1-C03",
+                        "description": "app/core/database/models.py defines Base, UUIDMixin, TimestampMixin",
+                        "status": "passed",
+                        "result": "Verified: models defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.1-C04",
+                        "description": "app/core/database/unit_of_work.py implements transaction management",
+                        "status": "passed",
+                        "result": "Verified: unit of work implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.1-C05",
+                        "description": "Type aliases SessionDep, UnitOfWorkDep are defined and importable",
+                        "status": "passed",
+                        "result": "Verified: type aliases defined",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.2",
+                "taskId": "2.2",
+                "wbsItemId": "WBS-1.2.1",
+                "name": "Create User model and repository",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement User entity with clerk_id, role, theme, language",
+                "steps": [
+                    "Add User model to models.py",
+                    "Create IUserRepository protocol in interfaces.py",
+                    "Create app/core/database/repositories/user.py",
+                    "Create initial Alembic migration for users table"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.2-C01",
+                        "description": "User model has clerk_id, role, theme, language fields",
+                        "status": "passed",
+                        "result": "Verified: fields present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.2-C02",
+                        "description": "IUserRepository protocol defines CRUD operations",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.2-C03",
+                        "description": "UserRepository implements IUserRepository",
+                        "status": "passed",
+                        "result": "Verified: implementation exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.2-C04",
+                        "description": "Alembic migration creates users table with correct columns",
+                        "status": "passed",
+                        "result": "Verified: migration exists",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.3",
+                "taskId": "2.3",
+                "wbsItemId": "WBS-1.2.1",
+                "name": "Create Conversation and Message models",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement chat data models",
+                "steps": [
+                    "Add Conversation model to models.py",
+                    "Add Message model to models.py",
+                    "Create IConversationRepository, IMessageRepository protocols",
+                    "Create repository implementations",
+                    "Create Alembic migration"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.3-C01",
+                        "description": "Conversation model has user_id, title, created_at fields",
+                        "status": "passed",
+                        "result": "Verified: fields present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.3-C02",
+                        "description": "Message model has conversation_id, role, content, created_at fields",
+                        "status": "passed",
+                        "result": "Verified: fields present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.3-C03",
+                        "description": "IConversationRepository and IMessageRepository protocols defined",
+                        "status": "passed",
+                        "result": "Verified: protocols defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.3-C04",
+                        "description": "Repository implementations handle CRUD operations",
+                        "status": "passed",
+                        "result": "Verified: implementations exist",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.3-C05",
+                        "description": "Migration creates conversations and messages tables with foreign keys",
+                        "status": "passed",
+                        "result": "Verified: migration exists",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.4",
+                "taskId": "2.4",
+                "wbsItemId": "WBS-1.2.1",
+                "name": "Create SystemConfig model",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement system configuration storage",
+                "steps": [
+                    "Add SystemConfig model to models.py",
+                    "Create ISystemConfigRepository protocol",
+                    "Create repository implementation",
+                    "Create Alembic migration"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.4-C01",
+                        "description": "SystemConfig model has key, value, updated_at fields",
+                        "status": "passed",
+                        "result": "Verified: fields present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4-C02",
+                        "description": "ISystemConfigRepository defines get/set config operations",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4-C03",
+                        "description": "Repository implementation persists and retrieves config",
+                        "status": "passed",
+                        "result": "Verified: implementation exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4-C04",
+                        "description": "Migration creates system_config table",
+                        "status": "passed",
+                        "result": "Verified: migration exists",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.4b",
+                "taskId": "2.4b",
+                "wbsItemId": "WBS-1.2.1",
+                "name": "Create AIModel model and repository",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement AI model storage for user selection",
+                "steps": [
+                    "Add AIModel model to models.py (model_id, display_name, provider, is_enabled, is_default, sort_order)",
+                    "Create IAIModelRepository protocol",
+                    "Create repository implementation",
+                    "Create Alembic migration",
+                    "Seed default models: claude-haiku-4.5, gemini-3-flash-preview"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.4b-C01",
+                        "description": "AIModel has model_id, display_name, provider, is_enabled, is_default, sort_order fields",
+                        "status": "passed",
+                        "result": "Verified: fields present",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4b-C02",
+                        "description": "IAIModelRepository defines list_enabled, get_default operations",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4b-C03",
+                        "description": "Repository implementation supports CRUD operations",
+                        "status": "passed",
+                        "result": "Verified: implementation exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4b-C04",
+                        "description": "Migration creates ai_models table",
+                        "status": "passed",
+                        "result": "Verified: migration exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.4b-C05",
+                        "description": "Default models are seeded in migration or seed script",
+                        "status": "passed",
+                        "result": "Verified: models seeded",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.5",
+                "taskId": "2.5",
+                "wbsItemId": "WBS-1.2.2",
+                "name": "Setup dependency injection container",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.4b",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Create DI container with Annotated type aliases for clean router signatures",
+                "steps": [
+                    "Create app/container.py with singleton database container",
+                    "Create app/dependencies.py with get_session, get_unit_of_work providers",
+                    "Define Annotated type aliases: SessionDep, UnitOfWorkDep, UserRepositoryDep, etc.",
+                    "Register all repository dependencies",
+                    "Wire up container lifecycle in main.py (startup/shutdown events)"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.5-C01",
+                        "description": "app/container.py defines singleton container class",
+                        "status": "passed",
+                        "result": "Verified: container defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.5-C02",
+                        "description": "app/dependencies.py exports dependency providers",
+                        "status": "passed",
+                        "result": "Verified: providers exported",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.5-C03",
+                        "description": "Type aliases enable clean function signatures: def endpoint(user_repo: UserRepositoryDep)",
+                        "status": "passed",
+                        "result": "Verified: type aliases work",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.5-C04",
+                        "description": "All repositories are registered in DI container",
+                        "status": "passed",
+                        "result": "Verified: repositories registered",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.5-C05",
+                        "description": "Container lifecycle hooks are configured in main.py",
+                        "status": "passed",
+                        "result": "Verified: lifecycle configured",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.6",
+                "taskId": "2.6",
+                "wbsItemId": "WBS-1.2.3",
+                "name": "Setup Clerk authentication (backend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement Clerk JWT verification for backend",
+                "steps": [
+                    "Create app/core/auth/interfaces.py with IAuthService protocol",
+                    "Create app/core/auth/clerk.py with ClerkAuthService",
+                    "Create app/core/auth/dependencies.py with get_current_user, require_admin",
+                    "Add clerk-backend-api dependency"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.6-C01",
+                        "description": "IAuthService protocol defines verify_token, get_user_id methods",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6-C02",
+                        "description": "ClerkAuthService verifies JWTs against Clerk",
+                        "status": "passed",
+                        "result": "Verified: service implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6-C03",
+                        "description": "get_current_user dependency extracts user from Authorization header",
+                        "status": "passed",
+                        "result": "Verified: dependency works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6-C04",
+                        "description": "require_admin dependency checks user role is 'admin'",
+                        "status": "passed",
+                        "result": "Verified: admin check works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6-C05",
+                        "description": "clerk-backend-api is in pyproject.toml dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.6b",
+                "taskId": "2.6b",
+                "wbsItemId": "WBS-1.2.3",
+                "name": "Create domain exception hierarchy",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Define custom exceptions for clean error handling across service layer",
+                "steps": [
+                    "Create app/core/exceptions.py with base DomainError class",
+                    "Add NotFoundError(DomainError) for missing resources",
+                    "Add ValidationError(DomainError) for business rule violations",
+                    "Add AuthorizationError(DomainError) for permission issues",
+                    "Create exception-to-HTTP-response handler in main.py",
+                    "Document exception usage patterns in docstrings"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.6b-C01",
+                        "description": "DomainError base class exists with message attribute",
+                        "status": "passed",
+                        "result": "Verified: base class exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6b-C02",
+                        "description": "NotFoundError, ValidationError, AuthorizationError inherit from DomainError",
+                        "status": "passed",
+                        "result": "Verified: exceptions inherit correctly",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6b-C03",
+                        "description": "Exception handler in main.py converts exceptions to appropriate HTTP status codes",
+                        "status": "passed",
+                        "result": "Verified: handler configured",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.6b-C04",
+                        "description": "NotFoundError maps to 404, ValidationError to 400, AuthorizationError to 403",
+                        "status": "passed",
+                        "result": "Verified: mappings correct",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.7",
+                "taskId": "2.7",
+                "wbsItemId": "WBS-1.2.4",
+                "name": "Setup OpenRouter AI service",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement AI integration with streaming support",
+                "steps": [
+                    "Create app/core/ai/interfaces.py with IAIService protocol",
+                    "Define AI exception hierarchy: AIServiceError, RateLimitError, InvalidRequestError, AuthenticationError",
+                    "Create app/core/ai/openrouter.py with OpenRouterService",
+                    "Create app/core/ai/streaming.py for SSE streaming",
+                    "Add httpx dependency for async HTTP"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.7-C01",
+                        "description": "IAIService protocol defines chat, stream_chat methods",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.7-C02",
+                        "description": "AI exception classes are defined and documented",
+                        "status": "passed",
+                        "result": "Verified: exceptions defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.7-C03",
+                        "description": "OpenRouterService calls OpenRouter API with proper headers",
+                        "status": "passed",
+                        "result": "Verified: service implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.7-C04",
+                        "description": "Streaming support yields SSE-formatted chunks",
+                        "status": "passed",
+                        "result": "Verified: streaming works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.7-C05",
+                        "description": "httpx is in pyproject.toml dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-2.8",
+                "taskId": "2.8",
+                "wbsItemId": "WBS-1.2.4",
+                "name": "Setup logging and observability",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Configure structured logging and OpenTelemetry",
+                "steps": [
+                    "Create app/core/logging/interfaces.py with ILogger protocol",
+                    "Create app/core/logging/config.py with Structlog configuration",
+                    "Create app/middleware/telemetry.py with OpenTelemetry middleware",
+                    "Add structlog, opentelemetry dependencies"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-2.8-C01",
+                        "description": "ILogger protocol defines info, error, debug, warning methods",
+                        "status": "passed",
+                        "result": "Verified: protocol defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.8-C02",
+                        "description": "Structlog is configured with JSON output for production",
+                        "status": "passed",
+                        "result": "Verified: structlog configured",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.8-C03",
+                        "description": "OpenTelemetry middleware traces HTTP requests",
+                        "status": "passed",
+                        "result": "Verified: middleware configured",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-2.8-C04",
+                        "description": "structlog, opentelemetry-* packages are in pyproject.toml",
+                        "status": "passed",
+                        "result": "Verified: dependencies added",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.1",
+                "taskId": "3.1",
+                "wbsItemId": "WBS-1.3.1",
+                "name": "Implement Landing slice (backend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.7",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "API endpoints for guest chat",
+                "steps": [
+                    "Create app/features/landing/interfaces.py",
+                    "Create app/features/landing/schemas.py",
+                    "Create app/features/landing/service.py",
+                    "Create app/features/landing/router.py with POST /api/chat/guest endpoint",
+                    "Register router in main.py"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.1-C01",
+                        "description": "POST /api/chat/guest accepts message and returns AI response",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.1-C02",
+                        "description": "Guest chat does not require authentication",
+                        "status": "passed",
+                        "result": "Verified: no auth required",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.1-C03",
+                        "description": "Request/response schemas validate input/output",
+                        "status": "passed",
+                        "result": "Verified: schemas validate",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.1-C04",
+                        "description": "Router is registered in main.py app.include_router()",
+                        "status": "passed",
+                        "result": "Verified: router registered",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.2",
+                "taskId": "3.2",
+                "wbsItemId": "WBS-1.3.2",
+                "name": "Implement Dashboard slice (backend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.7",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "API endpoints for authenticated chat and history",
+                "steps": [
+                    "Create app/features/dashboard/interfaces.py",
+                    "Create app/features/dashboard/schemas.py",
+                    "Create app/features/dashboard/service.py",
+                    "Create app/features/dashboard/router.py with conversation CRUD endpoints",
+                    "Add GET /api/conversations, POST /api/chat, DELETE /api/conversations/{id}",
+                    "Add GET /api/models endpoint (returns enabled models for user selection)"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.2-C01",
+                        "description": "GET /api/conversations returns user's conversation list",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.2-C02",
+                        "description": "POST /api/chat creates message and returns AI response",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.2-C03",
+                        "description": "DELETE /api/conversations/{id} removes conversation and messages",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.2-C04",
+                        "description": "GET /api/models returns list of enabled AI models",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.2-C05",
+                        "description": "All endpoints require authentication via get_current_user",
+                        "status": "passed",
+                        "result": "Verified: auth required",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.3",
+                "taskId": "3.3",
+                "wbsItemId": "WBS-1.3.3",
+                "name": "Implement Profile slice (backend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "API endpoints for user preferences",
+                "steps": [
+                    "Create app/features/profile/interfaces.py",
+                    "Create app/features/profile/schemas.py (UserPreferences)",
+                    "Create app/features/profile/service.py",
+                    "Create app/features/profile/router.py with GET/PUT /api/profile"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.3-C01",
+                        "description": "GET /api/profile returns current user's preferences (theme, language)",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.3-C02",
+                        "description": "PUT /api/profile updates user preferences",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.3-C03",
+                        "description": "Endpoints require authentication",
+                        "status": "passed",
+                        "result": "Verified: auth required",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.3-C04",
+                        "description": "UserPreferences schema validates theme and language values",
+                        "status": "passed",
+                        "result": "Verified: schema validates",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.4",
+                "taskId": "3.4",
+                "wbsItemId": "WBS-1.3.4",
+                "name": "Implement Admin slice (backend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-2.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "API endpoints for admin functions",
+                "steps": [
+                    "Create app/features/admin/interfaces.py",
+                    "Create app/features/admin/schemas.py",
+                    "Create app/features/admin/service.py",
+                    "Create app/features/admin/router.py with admin endpoints",
+                    "Add GET/PUT /api/admin/users, GET/PUT /api/admin/settings",
+                    "Add CRUD /api/admin/models (GET list, POST create, PUT update, DELETE remove)"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.4-C01",
+                        "description": "GET /api/admin/users returns paginated user list",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.4-C02",
+                        "description": "PUT /api/admin/users/{id} updates user role",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.4-C03",
+                        "description": "GET/PUT /api/admin/settings manages system configuration",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.4-C04",
+                        "description": "CRUD /api/admin/models manages AI models",
+                        "status": "passed",
+                        "result": "Verified: endpoint works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.4-C05",
+                        "description": "All endpoints require admin role via require_admin",
+                        "status": "passed",
+                        "result": "Verified: admin required",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.1",
+                "taskId": "4.1",
+                "wbsItemId": "WBS-1.4",
+                "name": "Setup Clerk authentication (frontend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Configure Clerk provider and auth components",
+                "steps": [
+                    "Install @clerk/nextjs",
+                    "Wrap root layout in ClerkProvider (src/app/layout.tsx)",
+                    "Create AuthGuard component for client-side route protection (src/components/AuthGuard.tsx)",
+                    "Create sign-in and sign-up routes ([locale]/sign-in, [locale]/sign-up)"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.1-C01",
+                        "description": "@clerk/nextjs is in package.json dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.1-C02",
+                        "description": "Root layout wraps children in ClerkProvider",
+                        "status": "passed",
+                        "result": "Verified: provider configured",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.1-C03",
+                        "description": "AuthGuard component checks authentication and redirects if needed",
+                        "status": "passed",
+                        "result": "Verified: component exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.1-C04",
+                        "description": "Sign-in and sign-up pages render Clerk components",
+                        "status": "passed",
+                        "result": "Verified: pages render",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.2",
+                "taskId": "4.2",
+                "wbsItemId": "WBS-1.4",
+                "name": "Setup theme provider",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement dark/light theme support",
+                "steps": [
+                    "Install next-themes",
+                    "Create src/providers/ThemeProvider.tsx",
+                    "Add theme CSS variables to globals.css",
+                    "Configure Tailwind for dark mode"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.2-C01",
+                        "description": "next-themes is in package.json dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.2-C02",
+                        "description": "ThemeProvider wraps application with theme context",
+                        "status": "passed",
+                        "result": "Verified: provider configured",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.2-C03",
+                        "description": "CSS variables define light and dark theme colors",
+                        "status": "passed",
+                        "result": "Verified: variables defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.2-C04",
+                        "description": "Tailwind config has darkMode: 'class' configured",
+                        "status": "passed",
+                        "result": "Verified: dark mode configured",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.3",
+                "taskId": "4.3",
+                "wbsItemId": "WBS-1.4",
+                "name": "Setup i18n localization",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Implement English and Norwegian language support",
+                "steps": [
+                    "Install next-intl",
+                    "Create src/i18n/routing.ts with locales, defaultLocale, and localePrefix config",
+                    "Create src/i18n/request.ts for per-request i18n setup",
+                    "Create messages/en.json and messages/no.json translation files",
+                    "Create src/providers/I18nProvider.tsx client provider",
+                    "Create src/middleware.ts with createIntlMiddleware for locale detection",
+                    "Setup [locale] dynamic segment with LocaleLayout"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.3-C01",
+                        "description": "next-intl is in package.json dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.3-C02",
+                        "description": "routing.ts defines locales: ['en', 'no'] and defaultLocale: 'en'",
+                        "status": "passed",
+                        "result": "Verified: locales defined",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.3-C03",
+                        "description": "messages/en.json and messages/no.json contain translation keys",
+                        "status": "passed",
+                        "result": "Verified: translations exist",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.3-C04",
+                        "description": "Middleware handles locale detection and redirects",
+                        "status": "passed",
+                        "result": "Verified: middleware works",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.3-C05",
+                        "description": "[locale] dynamic route wraps pages with LocaleLayout",
+                        "status": "passed",
+                        "result": "Verified: layout configured",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.4",
+                "taskId": "4.4",
+                "wbsItemId": "WBS-1.4",
+                "name": "Setup Zustand stores",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Create global state management",
+                "steps": [
+                    "Install zustand",
+                    "Create src/features/profile/store/settingsStore.ts for theme/language",
+                    "Create src/features/dashboard/store/chatStore.ts for conversations",
+                    "Add persistence middleware for settings"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.4-C01",
+                        "description": "zustand is in package.json dependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.4-C02",
+                        "description": "settingsStore manages theme and language preferences",
+                        "status": "passed",
+                        "result": "Verified: store created",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.4-C03",
+                        "description": "chatStore manages conversations and current chat state",
+                        "status": "passed",
+                        "result": "Verified: store created",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.4-C04",
+                        "description": "Settings persist to localStorage via zustand persist middleware",
+                        "status": "passed",
+                        "result": "Verified: persistence works",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.5",
+                "taskId": "4.5",
+                "wbsItemId": "WBS-1.4",
+                "name": "Setup API client generation",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Auto-generate TypeScript client from OpenAPI",
+                "steps": [
+                    "Add openapi-typescript-codegen as dev dependency",
+                    "Create generate:api script in package.json",
+                    "Generate initial client to src/shared/lib/api-client/",
+                    "Create API client wrapper with auth token injection"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.5-C01",
+                        "description": "openapi-typescript-codegen is in devDependencies",
+                        "status": "passed",
+                        "result": "Verified: dependency added",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.5-C02",
+                        "description": "package.json has generate:api script",
+                        "status": "passed",
+                        "result": "Verified: script exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.5-C03",
+                        "description": "Generated client exists in src/shared/lib/api-client/",
+                        "status": "passed",
+                        "result": "Verified: client generated",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.5-C04",
+                        "description": "API wrapper adds Authorization header with Clerk token",
+                        "status": "passed",
+                        "result": "Verified: auth header added",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-4.6",
+                "taskId": "4.6",
+                "wbsItemId": "WBS-1.4",
+                "name": "Install shadcn/ui base components",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-001",
+                "description": "Add commonly used UI components",
+                "steps": [
+                    "Run shadcn init",
+                    "Add button, input, card, dialog, dropdown-menu components",
+                    "Add avatar, badge, skeleton components",
+                    "Add toast and sonner for notifications"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-4.6-C01",
+                        "description": "components.json exists with shadcn configuration",
+                        "status": "passed",
+                        "result": "Verified: config exists",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.6-C02",
+                        "description": "src/components/ui/ contains button, input, card, dialog, dropdown-menu",
+                        "status": "passed",
+                        "result": "Verified: components exist",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.6-C03",
+                        "description": "src/components/ui/ contains avatar, badge, skeleton",
+                        "status": "passed",
+                        "result": "Verified: components exist",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-4.6-C04",
+                        "description": "Toast/sonner notification system is installed and configured",
+                        "status": "passed",
+                        "result": "Verified: notifications configured",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.1",
+                "taskId": "5.1",
+                "wbsItemId": "WBS-1.5",
+                "name": "Implement Landing slice (frontend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-4.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Guest chat page for unauthenticated users",
+                "steps": [
+                    "Create src/features/landing/components/GuestChat.tsx",
+                    "Create src/features/landing/components/ChatMessage.tsx",
+                    "Create src/features/landing/hooks/useGuestChat.ts",
+                    "Create src/app/[locale]/(public)/page.tsx",
+                    "Style with Tailwind and shadcn components"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.1-C01",
+                        "description": "GuestChat component renders chat input and message list",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.1-C02",
+                        "description": "ChatMessage displays message content with role styling",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.1-C03",
+                        "description": "useGuestChat hook manages guest chat state and API calls",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.1-C04",
+                        "description": "Landing page is accessible at / without authentication",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.1-C05",
+                        "description": "Chat interface is styled and responsive",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.2",
+                "taskId": "5.2",
+                "wbsItemId": "WBS-1.5",
+                "name": "Implement Dashboard slice (frontend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-4.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Authenticated user chat dashboard",
+                "steps": [
+                    "Create src/features/dashboard/components/ChatSidebar.tsx",
+                    "Create src/features/dashboard/components/ChatWindow.tsx",
+                    "Create src/features/dashboard/components/ConversationList.tsx",
+                    "Create src/features/dashboard/hooks/useChat.ts",
+                    "Create src/app/[locale]/(auth)/dashboard/page.tsx"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.2-C01",
+                        "description": "ChatSidebar displays conversation history with selection",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.2-C02",
+                        "description": "ChatWindow renders messages and input for active conversation",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.2-C03",
+                        "description": "ConversationList shows conversations with create/delete options",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.2-C04",
+                        "description": "useChat hook manages conversations and messages via API",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.2-C05",
+                        "description": "Dashboard page requires authentication",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.3",
+                "taskId": "5.3",
+                "wbsItemId": "WBS-1.5",
+                "name": "Implement Profile slice (frontend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-4.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-4.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "User settings page with theme and language selectors",
+                "steps": [
+                    "Create src/features/profile/components/ThemeSelector.tsx",
+                    "Create src/features/profile/components/LanguageSelector.tsx",
+                    "Create src/features/profile/components/ProfileForm.tsx",
+                    "Create src/features/profile/hooks/useProfile.ts",
+                    "Create src/app/[locale]/(auth)/profile/page.tsx"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.3-C01",
+                        "description": "ThemeSelector toggles between light/dark themes",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.3-C02",
+                        "description": "LanguageSelector switches between English/Norwegian",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.3-C03",
+                        "description": "ProfileForm displays and updates user preferences",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.3-C04",
+                        "description": "useProfile hook syncs preferences with backend API",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.3-C05",
+                        "description": "Profile page requires authentication",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.4",
+                "taskId": "5.4",
+                "wbsItemId": "WBS-1.5",
+                "name": "Implement Admin slice (frontend)",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Admin dashboard for user, system, and AI model management",
+                "steps": [
+                    "Create src/features/admin/components/UserTable.tsx",
+                    "Create src/features/admin/components/SystemSettings.tsx",
+                    "Create src/features/admin/components/AIModelManager.tsx (CRUD table with enable/disable toggle)",
+                    "Create src/app/[locale]/(admin)/admin/page.tsx",
+                    "Create src/app/[locale]/(admin)/admin/users/page.tsx",
+                    "Create src/app/[locale]/(admin)/admin/settings/page.tsx",
+                    "Create src/app/[locale]/(admin)/admin/models/page.tsx"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.4-C01",
+                        "description": "UserTable displays users with role editing",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.4-C02",
+                        "description": "SystemSettings manages system configuration values",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.4-C03",
+                        "description": "AIModelManager provides CRUD for AI models with enable toggle",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.4-C04",
+                        "description": "Admin pages are accessible at /admin/*",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.4-C05",
+                        "description": "Admin pages require admin role",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.5",
+                "taskId": "5.5",
+                "wbsItemId": "WBS-1.5",
+                "name": "Create auth layout wrapper",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Layout component that requires authentication",
+                "steps": [
+                    "Create src/app/[locale]/(auth)/layout.tsx with auth check",
+                    "Redirect unauthenticated users to sign-in",
+                    "Add loading state while checking auth"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.5-C01",
+                        "description": "(auth)/layout.tsx uses Clerk's useAuth or middleware protection",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.5-C02",
+                        "description": "Unauthenticated users are redirected to /sign-in",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.5-C03",
+                        "description": "Loading spinner displays during auth check",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.5-C04",
+                        "description": "Authenticated users see child content",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-5.6",
+                "taskId": "5.6",
+                "wbsItemId": "WBS-1.5",
+                "name": "Create admin layout wrapper",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-5.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-002",
+                "description": "Layout component that requires admin role",
+                "steps": [
+                    "Create src/app/[locale]/(admin)/layout.tsx with admin check",
+                    "Fetch user role from backend",
+                    "Redirect non-admins to dashboard",
+                    "Add loading state while checking role"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-5.6-C01",
+                        "description": "(admin)/layout.tsx fetches user role from /api/profile",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.6-C02",
+                        "description": "Non-admin users are redirected to /dashboard",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.6-C03",
+                        "description": "Loading spinner displays during role check",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-5.6-C04",
+                        "description": "Admin users see child content",
+                        "status": "passed",
+                        "result": "implemented",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-06T00:00:00Z",
+                    "completedAt": "2026-03-06T03:00:00Z",
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-6.1",
+                "taskId": "6.1",
+                "wbsItemId": "WBS-1.6",
+                "name": "Connect frontend to backend API",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-5.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Validate and complete end-to-end frontend/backend wiring across landing, dashboard, profile, and admin flows.",
+                "steps": [
+                    "Verify backend base URL, auth token flow, and Authorization header injection",
+                    "Connect landing guest chat to the live backend endpoint",
+                    "Connect dashboard conversation CRUD and chat flows to backend persistence",
+                    "Connect profile load/save flows to the backend profile endpoint",
+                    "Connect admin user, settings, and model pages to backend admin APIs",
+                    "Fix any discovered CORS, auth, routing, or schema mismatches"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-6.1-C01",
+                        "description": "API client injects Authorization: Bearer <token> for authenticated requests",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.1-C02",
+                        "description": "Guest chat works against the backend without authentication",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.1-C03",
+                        "description": "Dashboard chat creates, reloads, and deletes persisted conversations",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.1-C04",
+                        "description": "Profile page loads and saves user preferences through the backend",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.1-C05",
+                        "description": "Admin pages load and mutate users, settings, and models through backend APIs",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-6.2",
+                "taskId": "6.2",
+                "wbsItemId": "WBS-1.6",
+                "name": "Implement streaming chat responses",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Complete frontend streaming UX on top of the existing backend SSE endpoints.",
+                "steps": [
+                    "Consume chat streams with fetch and ReadableStream handling in guest and authenticated chat hooks",
+                    "Update assistant messages incrementally as stream chunks arrive",
+                    "Persist authenticated streamed responses after completion",
+                    "Show visible typing/loading state while streaming is active",
+                    "Surface stream failures as recoverable user-facing errors"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-6.2-C01",
+                        "description": "Chat endpoints support text/event-stream responses for streaming",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.2-C02",
+                        "description": "Frontend consumes the stream with fetch and ReadableStream parsing",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.2-C03",
+                        "description": "Assistant messages render incrementally as chunks arrive",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.2-C04",
+                        "description": "A typing/loading indicator is visible while the stream is active",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.2-C05",
+                        "description": "Stream failures surface a user-friendly error without breaking state",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-6.3",
+                "taskId": "6.3",
+                "wbsItemId": "WBS-1.6",
+                "name": "Add model selection feature",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-003",
+                "description": "Expose model selection in the dashboard UI and persist model choice per conversation.",
+                "steps": [
+                    "Load enabled models from GET /api/models into the dashboard store",
+                    "Expose a model selector in the chat interface",
+                    "Store the selected model on the conversation record",
+                    "Send the selected model with chat requests",
+                    "Default new conversations to the backend default model when none is selected"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-6.3-C01",
+                        "description": "Dashboard model selector displays enabled models from the API",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.3-C02",
+                        "description": "Selected model is stored on the conversation record",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.3-C03",
+                        "description": "Chat requests include the selected model parameter",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.3-C04",
+                        "description": "New conversations default to the backend default model",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-6.3-C05",
+                        "description": "Conversation model choice is restored after reload or reopen",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-7.1",
+                "taskId": "7.1",
+                "wbsItemId": "WBS-1.7",
+                "name": "Create Docker configurations",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Harden the existing frontend and backend Dockerfiles for local Compose development and Railway production builds.",
+                "steps": [
+                    "Refactor frontend/Dockerfile into explicit development and production multi-stage targets with Bun",
+                    "Refactor backend/Dockerfile into explicit development and production multi-stage targets with uv",
+                    "Ensure Railway build-time env values can reach the frontend production build",
+                    "Add or expand .dockerignore files for both services"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-7.1-C01",
+                        "description": "frontend/Dockerfile supports Bun-based development and production builds",
+                        "status": "passed",
+                        "result": "Verified via docker compose build frontend and standalone docker build --target production for frontend.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.1-C02",
+                        "description": "backend/Dockerfile supports uv-based development and production builds",
+                        "status": "passed",
+                        "result": "Verified via docker compose build backend,migrate and standalone docker build --target production for backend.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.1-C03",
+                        "description": "Docker images use multi-stage builds for optimization",
+                        "status": "passed",
+                        "result": "Both frontend and backend Dockerfiles now define explicit development and production stages and build successfully.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.1-C04",
+                        "description": ".dockerignore excludes node_modules, __pycache__, .git",
+                        "status": "passed",
+                        "result": "frontend/.dockerignore was expanded and backend/.dockerignore was added with the required exclusions.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-08T11:45:13.390Z",
+                    "completedAt": "2026-03-08T11:45:13.390Z",
+                    "lastEvent": "Dockerfiles refactored into development/production multi-stage targets; docker compose build and standalone production-target builds passed on 2026-03-08."
+                }
+            },
+            {
+                "activityId": "ACT-7.2",
+                "taskId": "7.2",
+                "wbsItemId": "WBS-1.7",
+                "name": "Create docker-compose.yml",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-7.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Validate and finalize the existing docker-compose setup for local development only.",
+                "steps": [
+                    "Review the existing docker-compose.yml against the current frontend, backend, migrate, and db services",
+                    "Confirm environment variables are loaded from the expected .env files",
+                    "Validate health checks and service dependency ordering",
+                    "Verify services can communicate across the internal compose network",
+                    "Confirm docker compose up starts the full local stack from the documented setup flow"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-7.2-C01",
+                        "description": "docker-compose.yml defines db, migrate, frontend, and backend services",
+                        "status": "passed",
+                        "result": "Verified: docker-compose.yml defines db, migrate, backend, and frontend services.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.2-C02",
+                        "description": "Environment variables are loaded from .env files",
+                        "status": "passed",
+                        "result": "Verified: frontend/.env.local and backend/.env are loaded via env_file, with Compose overrides for local-safe host-facing values.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.2-C03",
+                        "description": "Health checks verify service availability",
+                        "status": "passed",
+                        "result": "Verified: compose health checks passed; docker compose ps showed db, backend, and frontend healthy after recreation.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.2-C04",
+                        "description": "Services can communicate via internal network",
+                        "status": "passed",
+                        "result": "Verified: db -> migrate -> backend -> frontend startup ordering completed successfully across the compose network.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.2-C05",
+                        "description": "docker-compose up starts both services",
+                        "status": "passed",
+                        "result": "Verified: docker compose up -d --build recreated the stack successfully and both health endpoints returned 200.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-08T11:45:13.390Z",
+                    "completedAt": "2026-03-08T11:45:13.390Z",
+                    "lastEvent": "docker-compose.yml finalized for local-only development and validated with docker compose up -d --build on 2026-03-08."
+                }
+            },
+            {
+                "activityId": "ACT-7.3",
+                "taskId": "7.3",
+                "wbsItemId": "WBS-1.7",
+                "name": "Create GitHub Actions CI workflow",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Automated quality checks for branch promotion and optional Railway Wait for CI gating.",
+                "steps": [
+                    "Create .github/workflows/ci.yml",
+                    "Add frontend lint, typecheck, build jobs",
+                    "Add backend ruff, mypy, pytest jobs",
+                    "Run on pushes and pull requests targeting main"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-7.3-C01",
+                        "description": ".github/workflows/ci.yml exists and is valid YAML",
+                        "status": "passed",
+                        "result": "Verified: .github/workflows/ci.yml exists in the repo.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.3-C02",
+                        "description": "Frontend job runs: bun lint, bun typecheck, bun build",
+                        "status": "passed",
+                        "result": "Verified: frontend CI job runs bun install --frozen-lockfile, bun run lint, bun run typecheck, and bun run build.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.3-C03",
+                        "description": "Backend job runs: ruff check, mypy, pytest",
+                        "status": "passed",
+                        "result": "Verified: backend CI job runs uv sync --frozen --extra dev, uv run ruff check ., uv run mypy ., and uv run pytest.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.3-C04",
+                        "description": "Workflow triggers on push and pull_request to main",
+                        "status": "passed",
+                        "result": "Verified: workflow triggers on push and pull_request to main.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.3-C05",
+                        "description": "Workflow exposes stable check names that can be used as required checks for branch protection and Railway Wait for CI",
+                        "status": "passed",
+                        "result": "Verified: workflow exposes stable Frontend and Backend job names that can be used by branch protection and Railway Wait for CI.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-08T11:45:13.390Z",
+                    "completedAt": "2026-03-08T11:45:13.390Z",
+                    "lastEvent": "GitHub Actions CI workflow added on 2026-03-08 for frontend lint/typecheck/build and backend ruff/mypy/pytest."
+                }
+            },
+            {
+                "activityId": "ACT-7.4",
+                "taskId": "7.4",
+                "wbsItemId": "WBS-1.7",
+                "name": "Create Railway deployment configs",
+                "status": "in-progress",
+                "percentComplete": 83,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-7.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Configure Railway for GitHub-driven staging and production deployments with CLI-backed environment sync automation.",
+                "steps": [
+                    "Create frontend/railway.toml with Dockerfile-based build config, deploy command, health check path, and watch patterns",
+                    "Create backend/railway.toml with Dockerfile-based build config, deploy command, health check path, and watch patterns",
+                    "Add a standalone uv script that reads backend/.env and frontend/.env.local, fetches pooled Neon URLs, and syncs Railway variables for production and staging",
+                    "Use Railway reference variables so deployed backend/frontend URLs are derived from service public domains instead of localhost values",
+                    "Document the GitHub branch workflow, required CLIs, Railway service setup, and env sync workflow"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-7.4-C01",
+                        "description": "frontend/railway.toml specifies Dockerfile-based build config, deploy command, health check path, and watch patterns",
+                        "status": "passed",
+                        "result": "Verified: frontend/railway.toml now specifies Dockerfile build config, deploy command, health check path, and watch patterns.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.4-C02",
+                        "description": "backend/railway.toml specifies Dockerfile-based build config, deploy command, health check path, and watch patterns",
+                        "status": "passed",
+                        "result": "Verified: backend/railway.toml now specifies Dockerfile build config, deploy command, health check path, and watch patterns.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.4-C03",
+                        "description": "Standalone uv environment sync script provisions frontend and backend Railway variables for production and staging using local env files and Neon CLI",
+                        "status": "passed",
+                        "result": "Verified: uv run scripts/sync_railway_env.py --project pytagoras-template --dry-run --yes completed successfully and showed production/staging variable sync targets.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.4-C04",
+                        "description": "Railway variable automation replaces localhost-only service URLs with Railway reference variables so deployed services resolve each other correctly",
+                        "status": "passed",
+                        "result": "Verified: env sync automation derives NEXT_PUBLIC_BACKEND_URL, FRONTEND_URL, and OPENROUTER_SITE_URL from Railway reference variables instead of localhost values.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.4-C05",
+                        "description": "README and PRD document the GitHub branch deployment workflow (dev -> staging -> main), required CLIs, and Railway service setup steps",
+                        "status": "passed",
+                        "result": "Verified: README.md, docs/railway.md, and prd.md document the GitHub branch deployment workflow, required CLIs, and Railway service setup.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.4-C06",
+                        "description": "Railway production and staging deployments are configured to build from the GitHub monorepo rather than relying on railway up or docker-compose.yml",
+                        "status": "not-passed",
+                        "result": "Pending external validation: the live Railway project still needs distinct frontend/backend services and staging/production environment linkage configured against the GitHub monorepo.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-08T11:45:13.390Z",
+                    "completedAt": null,
+                    "lastEvent": "Railway config files, docs, and env sync automation were implemented on 2026-03-08; live Railway service wiring remains to be completed in the external project."
+                }
+            },
+            {
+                "activityId": "ACT-7.5",
+                "taskId": "7.5",
+                "wbsItemId": "WBS-1.7",
+                "name": "Add Railway health check endpoints",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-1.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-1.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Validate and align the existing frontend and backend health endpoints for local and Railway use.",
+                "steps": [
+                    "Verify GET /api/health on the frontend returns healthy JSON",
+                    "Verify GET /health on the backend returns healthy JSON",
+                    "Confirm both endpoints return HTTP 200 in local development",
+                    "Align compose and Railway health checks to use the existing endpoints consistently"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-7.5-C01",
+                        "description": "GET /api/health on frontend returns {status: 'healthy'}",
+                        "status": "passed",
+                        "result": "Verified: GET http://127.0.0.1:3000/api/health returned {\"status\":\"healthy\"}.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.5-C02",
+                        "description": "GET /health on backend returns {status: 'healthy'}",
+                        "status": "passed",
+                        "result": "Verified: GET http://127.0.0.1:8000/health returned {\"status\":\"healthy\"}.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.5-C03",
+                        "description": "Health endpoints respond with 200 status code",
+                        "status": "passed",
+                        "result": "Verified: both health endpoints returned HTTP 200 during local validation.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-7.5-C04",
+                        "description": "Endpoints work in both development and production",
+                        "status": "passed",
+                        "result": "Verified: compose health checks and Railway config both target the existing frontend and backend health endpoints.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": "2026-03-08T11:45:13.390Z",
+                    "completedAt": "2026-03-08T11:45:13.390Z",
+                    "lastEvent": "Existing health endpoints were validated and aligned with compose/Railway config on 2026-03-08."
+                }
+            },
+            {
+                "activityId": "ACT-8.1",
+                "taskId": "8.1",
+                "wbsItemId": "WBS-1.8",
+                "name": "Setup backend test infrastructure",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-2.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Configure pytest with test fixtures",
+                "steps": [
+                    "Create tests/conftest.py with fixtures",
+                    "Create tests/fakes/ directory with mock implementations",
+                    "Create InMemoryDatabase, MockAIService, MockAuthService",
+                    "Configure test database"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-8.1-C01",
+                        "description": "tests/conftest.py defines reusable pytest fixtures",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.1-C02",
+                        "description": "tests/fakes/ contains mock implementations of interfaces",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.1-C03",
+                        "description": "InMemoryDatabase mocks database operations",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.1-C04",
+                        "description": "MockAIService returns predictable AI responses",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.1-C05",
+                        "description": "pytest runs without database connection errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-8.2",
+                "taskId": "8.2",
+                "wbsItemId": "WBS-1.8",
+                "name": "Write backend feature tests",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-8.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Test all feature slice endpoints",
+                "steps": [
+                    "Create tests/features/test_landing.py",
+                    "Create tests/features/test_dashboard.py",
+                    "Create tests/features/test_profile.py",
+                    "Create tests/features/test_admin.py"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-8.2-C01",
+                        "description": "test_landing.py tests guest chat endpoint",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.2-C02",
+                        "description": "test_dashboard.py tests conversation CRUD and chat",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.2-C03",
+                        "description": "test_profile.py tests preference get/update",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.2-C04",
+                        "description": "test_admin.py tests user and model management",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.2-C05",
+                        "description": "All tests pass with pytest",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-8.3",
+                "taskId": "8.3",
+                "wbsItemId": "WBS-1.8",
+                "name": "Setup frontend test infrastructure",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-4.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Configure Bun test with component testing",
+                "steps": [
+                    "Configure Bun test in package.json",
+                    "Add testing-library dependencies",
+                    "Create test utilities and mocks",
+                    "Create example component test"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-8.3-C01",
+                        "description": "package.json has test script configured for Bun",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.3-C02",
+                        "description": "@testing-library/react is in devDependencies",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.3-C03",
+                        "description": "Test utilities mock API and providers",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.3-C04",
+                        "description": "Example test passes: bun test",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-8.4",
+                "taskId": "8.4",
+                "wbsItemId": "WBS-1.8",
+                "name": "Write frontend component tests",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-8.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-5.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-004",
+                "description": "Test key UI components",
+                "steps": [
+                    "Test ThemeSelector component",
+                    "Test LanguageSelector component",
+                    "Test ChatMessage component",
+                    "Test ConversationList component"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-8.4-C01",
+                        "description": "ThemeSelector test verifies theme toggle",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.4-C02",
+                        "description": "LanguageSelector test verifies locale change",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.4-C03",
+                        "description": "ChatMessage test verifies message rendering",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.4-C04",
+                        "description": "ConversationList test verifies list display",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-8.4-C05",
+                        "description": "All component tests pass",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-9.1",
+                "taskId": "9.1",
+                "wbsItemId": "WBS-1.9",
+                "name": "Update README.md",
+                "status": "completed",
+                "percentComplete": 100,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Comprehensive project documentation",
+                "steps": [
+                    "Add project overview and features",
+                    "Add tech stack summary",
+                    "Add quickstart guide",
+                    "Add environment setup instructions",
+                    "Add development commands",
+                    "Add deployment guide"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-9.1-C01",
+                        "description": "README has project overview with feature list",
+                        "status": "passed",
+                        "result": "Verified in README rewrite committed as 6e4cefb on 2026-03-07.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.1-C02",
+                        "description": "Tech stack section lists frontend and backend technologies",
+                        "status": "passed",
+                        "result": "README includes separate frontend, backend, and infrastructure tech stack sections.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.1-C03",
+                        "description": "Quickstart guide gets users running in < 5 minutes",
+                        "status": "passed",
+                        "result": "README documents clone, env setup, docker compose startup, and verification steps.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.1-C04",
+                        "description": "Environment setup documents required env vars",
+                        "status": "passed",
+                        "result": "README documents backend and frontend environment variables in dedicated tables.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.1-C05",
+                        "description": "Development commands are listed with descriptions",
+                        "status": "passed",
+                        "result": "README lists common development, build, migration, lint, and type-check commands.",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.1-C06",
+                        "description": "Deployment section covers Railway deployment",
+                        "status": "passed",
+                        "result": "README includes Railway deployment guidance and references docs/railway.md.",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": "README updated in commit 6e4cefb on 2026-03-07; schedule reconciled on 2026-03-07."
+                }
+            },
+            {
+                "activityId": "ACT-9.2",
+                "taskId": "9.2",
+                "wbsItemId": "WBS-1.9",
+                "name": "Add API documentation",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Document all backend endpoints",
+                "steps": [
+                    "Ensure all endpoints have OpenAPI descriptions",
+                    "Add request/response examples",
+                    "Document authentication requirements",
+                    "Generate OpenAPI spec JSON"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-9.2-C01",
+                        "description": "All router endpoints have docstrings with descriptions",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.2-C02",
+                        "description": "Request/response schemas have example values",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.2-C03",
+                        "description": "Auth requirements documented per endpoint",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.2-C04",
+                        "description": "OpenAPI JSON is accessible at /openapi.json",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.2-C05",
+                        "description": "Swagger UI works at /docs",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-9.3",
+                "taskId": "9.3",
+                "wbsItemId": "WBS-1.9",
+                "name": "Add architecture documentation",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Document system design decisions",
+                "steps": [
+                    "Create docs/ARCHITECTURE.md",
+                    "Document vertical slice architecture",
+                    "Document dependency injection approach",
+                    "Document data flow"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-9.3-C01",
+                        "description": "docs/ARCHITECTURE.md exists",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.3-C02",
+                        "description": "Vertical slice pattern is explained with examples",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.3-C03",
+                        "description": "DI approach documents Annotated type aliases",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-9.3-C04",
+                        "description": "Data flow diagram or description covers request lifecycle",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-10.1",
+                "taskId": "10.1",
+                "wbsItemId": "WBS-1.9",
+                "name": "Add error handling and edge cases",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Improve robustness",
+                "steps": [
+                    "Add global error boundary in frontend",
+                    "Add FastAPI exception handlers",
+                    "Handle network errors gracefully",
+                    "Add retry logic for API calls"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-10.1-C01",
+                        "description": "ErrorBoundary component catches render errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.1-C02",
+                        "description": "FastAPI exception handlers return consistent error format",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.1-C03",
+                        "description": "Network errors show user-friendly message",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.1-C04",
+                        "description": "API client retries transient failures",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-10.2",
+                "taskId": "10.2",
+                "wbsItemId": "WBS-1.9",
+                "name": "Add loading states and skeletons",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-6.3",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Improve perceived performance",
+                "steps": [
+                    "Add skeleton loaders for conversation list",
+                    "Add loading states for all async operations",
+                    "Add optimistic updates where appropriate"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-10.2-C01",
+                        "description": "ConversationList shows skeleton while loading",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.2-C02",
+                        "description": "All async operations display loading indicator",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.2-C03",
+                        "description": "Message send shows optimistic UI before API response",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.2-C04",
+                        "description": "No flash of empty content during page load",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-10.3",
+                "taskId": "10.3",
+                "wbsItemId": "WBS-1.9",
+                "name": "Final review and cleanup",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-10.1",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-10.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-8.2",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-8.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-005",
+                "description": "Code quality and consistency check",
+                "steps": [
+                    "Run linters on both frontend and backend",
+                    "Fix any remaining type errors",
+                    "Remove unused code and dependencies",
+                    "Verify all features work end-to-end"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-10.3-C01",
+                        "description": "bun lint passes with no errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.3-C02",
+                        "description": "bun typecheck passes with no errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.3-C03",
+                        "description": "ruff check passes with no errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.3-C04",
+                        "description": "mypy passes with no errors",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.3-C05",
+                        "description": "No unused imports or dead code",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-10.3-C06",
+                        "description": "All user flows work: guest chat, auth, dashboard, profile, admin",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "claude-code-headless",
+                    "permissionMode": "acceptEdits",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            }
+        ],
+        "taskMigration": {
+            "migratedAt": "2026-03-05T11:01:33.722Z",
+            "migratedFrom": "tasks.json",
+            "totalTasks": 48,
+            "mergedActivities": 48,
+            "missingActivities": 0,
+            "note": "tasks.json has been archived as tasks.json.archived. schedule.json is now the single source of truth for task execution."
+        }
+    }
+}

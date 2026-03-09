@@ -1,0 +1,487 @@
+{
+    "schema": {
+        "name": "pm.wbs",
+        "version": "1.0.0",
+        "standard": "PMI Practice Standard for Work Breakdown Structures",
+        "description": "WBS for the Pytagoras Fullstack Python/Next.js Template. Structured to mirror the task phases in tasks.json. Each level-4 work package maps to one or more tasks."
+    },
+    "wbs": {
+        "wbsId": "WBS-PYSTACK-001",
+        "projectId": "PRJ-PYSTACK-001",
+        "name": "Pytagoras Fullstack Template — WBS",
+        "version": "1.0",
+        "status": "baselined",
+        "baselineDate": "2026-03-05",
+        "approvedBy": "USR-BAARD",
+        "audit": {
+            "createdAt": "2026-03-05T10:00:00Z",
+            "createdBy": "bipp-i",
+            "updatedAt": "2026-03-08T11:45:13.390Z",
+            "updatedBy": "codex"
+        },
+        "codingScheme": "numeric",
+        "levelDefinitions": [
+            {
+                "level": 1,
+                "description": "Project (total scope)"
+            },
+            {
+                "level": 2,
+                "description": "Phase deliverable"
+            },
+            {
+                "level": 3,
+                "description": "Sub-deliverable / feature area"
+            },
+            {
+                "level": 4,
+                "description": "Work package — maps directly to tasks.json entries"
+            }
+        ],
+        "items": [
+            {
+                "wbsItemId": "WBS-1",
+                "code": "1",
+                "level": 1,
+                "parentId": null,
+                "name": "Pytagoras Fullstack Template",
+                "type": "project",
+                "description": "Complete fullstack starter template: Next.js + FastAPI, all features, tested, documented, deployable.",
+                "owner": "AGT-MAYI",
+                "status": "in-progress",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-06T23:22:38Z"
+                },
+                "activityIds": []
+            },
+            {
+                "wbsItemId": "WBS-1.1",
+                "code": "1.1",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Infrastructure Setup",
+                "type": "deliverable",
+                "description": "Monorepo structure, Next.js and FastAPI scaffolding, environment templates. Phase 1.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-1.1",
+                    "ACT-1.2",
+                    "ACT-1.3",
+                    "ACT-1.4"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.1.1",
+                "code": "1.1.1",
+                "level": 3,
+                "parentId": "WBS-1.1",
+                "name": "Monorepo structure",
+                "type": "sub-deliverable",
+                "description": "Root directories, gitignore, docker-compose placeholder.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-1.1"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.1.2",
+                "code": "1.1.2",
+                "level": 3,
+                "parentId": "WBS-1.1",
+                "name": "Frontend scaffold",
+                "type": "sub-deliverable",
+                "description": "Next.js App Router with TypeScript, Tailwind, Biome, shadcn/ui.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-1.2"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.1.3",
+                "code": "1.1.3",
+                "level": 3,
+                "parentId": "WBS-1.1",
+                "name": "Backend scaffold",
+                "type": "sub-deliverable",
+                "description": "FastAPI with uv, Pydantic, SQLAlchemy, Alembic, Ruff, mypy.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-1.3"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.1.4",
+                "code": "1.1.4",
+                "level": 3,
+                "parentId": "WBS-1.1",
+                "name": "Environment templates",
+                "type": "work-package",
+                "description": ".env.example files for frontend and backend.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-1.4"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.2",
+                "code": "1.2",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Backend Core",
+                "type": "deliverable",
+                "description": "Database layer, DI container, auth, AI service, logging. Phase 2.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-2.1",
+                    "ACT-2.2",
+                    "ACT-2.3",
+                    "ACT-2.4",
+                    "ACT-2.4b",
+                    "ACT-2.5",
+                    "ACT-2.6",
+                    "ACT-2.6b",
+                    "ACT-2.7",
+                    "ACT-2.8"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.2.1",
+                "code": "1.2.1",
+                "level": 3,
+                "parentId": "WBS-1.2",
+                "name": "Database layer",
+                "type": "sub-deliverable",
+                "description": "Interfaces, connection, models (User, Conversation, Message, SystemConfig, AIModel), migrations, repositories.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-2.1",
+                    "ACT-2.2",
+                    "ACT-2.3",
+                    "ACT-2.4",
+                    "ACT-2.4b"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.2.2",
+                "code": "1.2.2",
+                "level": 3,
+                "parentId": "WBS-1.2",
+                "name": "Dependency injection container",
+                "type": "work-package",
+                "description": "Singleton DI container, Annotated type aliases, lifecycle hooks.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-2.5"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.2.3",
+                "code": "1.2.3",
+                "level": 3,
+                "parentId": "WBS-1.2",
+                "name": "Authentication layer",
+                "type": "sub-deliverable",
+                "description": "Clerk JWT verification, get_current_user, require_admin, domain exception hierarchy.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-2.6",
+                    "ACT-2.6b"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.2.4",
+                "code": "1.2.4",
+                "level": 3,
+                "parentId": "WBS-1.2",
+                "name": "AI and observability services",
+                "type": "sub-deliverable",
+                "description": "OpenRouter AI service with SSE streaming, structlog, OpenTelemetry.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-2.7",
+                    "ACT-2.8"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.3",
+                "code": "1.3",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Backend Feature Slices",
+                "type": "deliverable",
+                "description": "Four vertical slices: Landing, Dashboard, Profile, Admin. Phase 3.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-3.1",
+                    "ACT-3.2",
+                    "ACT-3.3",
+                    "ACT-3.4"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.3.1",
+                "code": "1.3.1",
+                "level": 3,
+                "parentId": "WBS-1.3",
+                "name": "Landing slice (backend)",
+                "type": "work-package",
+                "description": "POST /api/chat/guest — unauthenticated AI chat.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-3.1"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.3.2",
+                "code": "1.3.2",
+                "level": 3,
+                "parentId": "WBS-1.3",
+                "name": "Dashboard slice (backend)",
+                "type": "work-package",
+                "description": "Conversation CRUD, authenticated chat, model list.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-3.2"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.3.3",
+                "code": "1.3.3",
+                "level": 3,
+                "parentId": "WBS-1.3",
+                "name": "Profile slice (backend)",
+                "type": "work-package",
+                "description": "GET/PUT /api/profile — theme and language preferences.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-3.3"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.3.4",
+                "code": "1.3.4",
+                "level": 3,
+                "parentId": "WBS-1.3",
+                "name": "Admin slice (backend)",
+                "type": "work-package",
+                "description": "User management, system config, AI model CRUD.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-3.4"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.4",
+                "code": "1.4",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Frontend Infrastructure",
+                "type": "deliverable",
+                "description": "Clerk, theme, i18n, Zustand, API client, shadcn/ui base components. Phase 4.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-4.1",
+                    "ACT-4.2",
+                    "ACT-4.3",
+                    "ACT-4.4",
+                    "ACT-4.5",
+                    "ACT-4.6"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.5",
+                "code": "1.5",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Frontend Feature Slices",
+                "type": "deliverable",
+                "description": "Landing, Dashboard, Profile, Admin UI pages and auth layout wrappers. Phase 5.",
+                "owner": "AGT-CLAUDE",
+                "status": "done",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-06T23:22:38Z"
+                },
+                "activityIds": [
+                    "ACT-5.1",
+                    "ACT-5.2",
+                    "ACT-5.3",
+                    "ACT-5.4",
+                    "ACT-5.5",
+                    "ACT-5.6"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.6",
+                "code": "1.6",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Integration & Streaming",
+                "type": "deliverable",
+                "description": "Frontend↔backend wiring, SSE streaming, model selection. Phase 6.",
+                "owner": "AGT-CLAUDE",
+                "status": "in-progress",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-06T23:22:38Z"
+                },
+                "activityIds": [
+                    "ACT-6.1",
+                    "ACT-6.2",
+                    "ACT-6.3"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.7",
+                "code": "1.7",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Infrastructure & DevOps",
+                "type": "deliverable",
+                "description": "Dockerfiles, docker-compose, GitHub Actions CI, Railway deployment configs, env sync automation, and health endpoints. Phase 7.",
+                "owner": "AGT-CLAUDE",
+                "status": "in-progress",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-08T11:45:13.390Z"
+                },
+                "activityIds": [
+                    "ACT-7.1",
+                    "ACT-7.2",
+                    "ACT-7.3",
+                    "ACT-7.4",
+                    "ACT-7.5"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.8",
+                "code": "1.8",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Testing",
+                "type": "deliverable",
+                "description": "Backend pytest infrastructure and feature tests, frontend Bun test infrastructure and component tests. Phase 8.",
+                "owner": "AGT-CLAUDE",
+                "status": "not-started",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-05T10:00:00Z"
+                },
+                "activityIds": [
+                    "ACT-8.1",
+                    "ACT-8.2",
+                    "ACT-8.3",
+                    "ACT-8.4"
+                ]
+            },
+            {
+                "wbsItemId": "WBS-1.9",
+                "code": "1.9",
+                "level": 2,
+                "parentId": "WBS-1",
+                "name": "Documentation & Polish",
+                "type": "deliverable",
+                "description": "README, API docs, architecture docs, error handling, loading states, final cleanup. Phases 9–10.",
+                "owner": "AGT-CLAUDE",
+                "status": "in-progress",
+                "audit": {
+                    "createdAt": "2026-03-05T10:00:00Z",
+                    "updatedAt": "2026-03-06T23:22:38Z"
+                },
+                "activityIds": [
+                    "ACT-9.1",
+                    "ACT-9.2",
+                    "ACT-9.3",
+                    "ACT-10.1",
+                    "ACT-10.2",
+                    "ACT-10.3"
+                ]
+            }
+        ],
+        "taskMigration": {
+            "migratedAt": "2026-03-05T11:01:33.723Z",
+            "note": "taskIds replaced with activityIds referencing schedule.json activities."
+        }
+    }
+}
