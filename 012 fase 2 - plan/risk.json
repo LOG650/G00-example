@@ -3,46 +3,46 @@
         "name": "pm.risk",
         "version": "1.0.0",
         "standard": "ISO 31000 / PMI PMBOK Risk Management",
-        "description": "Risk register for the Pytagoras Fullstack Template. Risks are primarily technical and dependency-related given the autonomous agent execution model."
+        "description": "Risikoregister for LOG650-prosjektet om ettersporselsprognose for PowerHorse."
     },
     "riskRegister": {
-        "registerId": "RSK-PYSTACK-001",
-        "projectId": "PRJ-PYSTACK-001",
-        "name": "Pytagoras Fullstack Template — Risk Register",
+        "registerId": "RSK-LOG650-001",
+        "projectId": "PRJ-LOG650-001",
+        "name": "PowerHorse-prosjektet - risikoregister",
         "version": "1.0",
         "status": "active",
-        "statusDate": "2026-03-05",
+        "statusDate": "2026-03-09",
         "audit": {
-            "createdAt": "2026-03-05T10:00:00Z",
-            "createdBy": "bipp-i",
-            "updatedAt": "2026-03-05T10:00:00Z",
-            "updatedBy": "bipp-i"
+            "createdAt": "2026-02-13T12:15:00Z",
+            "createdBy": "codex",
+            "updatedAt": "2026-03-09T11:59:00Z",
+            "updatedBy": "codex"
         },
         "scoringModel": {
             "scale": [
                 {
                     "value": 1,
-                    "probabilityLabel": "Rare",
+                    "probabilityLabel": "Sjelden",
                     "probabilityRange": "< 10%"
                 },
                 {
                     "value": 2,
-                    "probabilityLabel": "Unlikely",
-                    "probabilityRange": "10–29%"
+                    "probabilityLabel": "Lite sannsynlig",
+                    "probabilityRange": "10-29%"
                 },
                 {
                     "value": 3,
-                    "probabilityLabel": "Possible",
-                    "probabilityRange": "30–59%"
+                    "probabilityLabel": "Mulig",
+                    "probabilityRange": "30-59%"
                 },
                 {
                     "value": 4,
-                    "probabilityLabel": "Likely",
-                    "probabilityRange": "60–79%"
+                    "probabilityLabel": "Sannsynlig",
+                    "probabilityRange": "60-79%"
                 },
                 {
                     "value": 5,
-                    "probabilityLabel": "Almost Certain",
+                    "probabilityLabel": "Svaert sannsynlig",
                     "probabilityRange": ">= 80%"
                 }
             ],
@@ -71,46 +71,48 @@
         },
         "categories": [
             {
-                "categoryId": "CAT-TEC",
-                "name": "Technical",
-                "description": "Tech stack, integration, compatibility issues"
+                "categoryId": "CAT-DAT",
+                "name": "Data",
+                "description": "Risiko knyttet til datagrunnlag og datakvalitet"
             },
             {
-                "categoryId": "CAT-EXT",
-                "name": "External",
-                "description": "Third-party service dependencies (Clerk, Neon, OpenRouter, Railway)"
-            },
-            {
-                "categoryId": "CAT-AGT",
-                "name": "Agent",
-                "description": "Claude Code headless session quality and reliability"
+                "categoryId": "CAT-MET",
+                "name": "Metode",
+                "description": "Risiko knyttet til modellvalg og analysemetode"
             },
             {
                 "categoryId": "CAT-SCH",
-                "name": "Schedule",
-                "description": "Timeline risks"
+                "name": "Fremdrift",
+                "description": "Risiko knyttet til tidsplan og kursfrister"
+            },
+            {
+                "categoryId": "CAT-TEAM",
+                "name": "Team",
+                "description": "Risiko knyttet til samarbeid, kapasitet og koordinering"
             }
         ],
         "risks": [
             {
-                "riskId": "RSK-PYSTACK-01",
-                "title": "Clerk or Neon credentials not available when frontend integration starts",
-                "description": "Tasks 6.1+ require real Clerk API keys and a live Neon DATABASE_URL. If these are not provided before agent sessions run, integration tasks will fail or use placeholder values.",
-                "categoryId": "CAT-EXT",
+                "riskId": "RSK-LOG650-01",
+                "title": "Datagrunnlaget er ikke tilstrekkelig representativt",
+                "description": "Caset bruker et konstruert eller forenklet datasett. Dersom dataene er for glatte eller mangler realistiske avvik, kan analysen gi et for optimistisk bilde av prognosekvaliteten.",
+                "categoryId": "CAT-DAT",
                 "status": "open",
-                "raisedBy": "bipp-i",
-                "raisedDate": "2026-03-05",
-                "owner": "USR-BAARD",
-                "reviewDate": "2026-03-14",
+                "raisedBy": "codex",
+                "raisedDate": "2026-02-13",
+                "owner": "Prosjektgruppen",
+                "reviewDate": "2026-03-11",
                 "traceability": {
                     "wbsItemIds": [
-                        "WBS-1.6"
+                        "WBS-1.3.1",
+                        "WBS-1.3.3"
                     ],
                     "activityIds": [
-                        "ACT-6.1"
+                        "ACT-3.1",
+                        "ACT-3.3"
                     ],
                     "milestoneIds": [
-                        "MS-003"
+                        "MS-004"
                     ]
                 },
                 "inherentRisk": {
@@ -118,113 +120,171 @@
                     "impact": 4,
                     "score": 12,
                     "band": "high",
-                    "rationale": "These are manual setup steps — easy to forget or delay."
-                },
-                "residualRisk": {
-                    "probability": 1,
-                    "impact": 4,
-                    "score": 4,
-                    "band": "low",
-                    "rationale": "Mitigated by explicit pre-flight check before running integration tasks."
-                },
-                "responsePlan": {
-                    "strategy": "mitigate",
-                    "plans": [
-                        {
-                            "planId": "RSP-PYSTACK-01-A",
-                            "type": "mitigation",
-                            "description": "Add a pre-flight validation step to the claude-task-runner skill that checks all required .env values are present before launching any task in phase 6+.",
-                            "owner": "AGT-MAYI",
-                            "dueDate": "2026-03-14",
-                            "status": "not-started"
-                        }
-                    ]
-                },
-                "audit": {
-                    "createdAt": "2026-03-05T10:00:00Z",
-                    "updatedAt": "2026-03-05T10:00:00Z"
-                }
-            },
-            {
-                "riskId": "RSK-PYSTACK-02",
-                "title": "Claude Code headless session produces code that does not pass linters",
-                "description": "Autonomous agent sessions may produce TypeScript or Python code with type errors or lint violations, causing downstream tasks to fail.",
-                "categoryId": "CAT-AGT",
-                "status": "open",
-                "raisedBy": "bipp-i",
-                "raisedDate": "2026-03-05",
-                "owner": "AGT-MAYI",
-                "reviewDate": "2026-03-20",
-                "traceability": {
-                    "wbsItemIds": [
-                        "WBS-1.5",
-                        "WBS-1.6"
-                    ],
-                    "activityIds": [
-                        "ACT-5.1",
-                        "ACT-5.2",
-                        "ACT-5.3",
-                        "ACT-5.4",
-                        "ACT-6.1",
-                        "ACT-6.2"
-                    ],
-                    "milestoneIds": [
-                        "MS-002",
-                        "MS-003"
-                    ]
-                },
-                "inherentRisk": {
-                    "probability": 3,
-                    "impact": 3,
-                    "score": 9,
-                    "band": "medium",
-                    "rationale": "Linter failures are common in autonomous runs but usually fixable in a follow-up session."
+                    "rationale": "Casebaserte data gir begrenset kontroll over hvor realistisk variasjonen er."
                 },
                 "residualRisk": {
                     "probability": 2,
-                    "impact": 2,
-                    "score": 4,
-                    "band": "low",
-                    "rationale": "Each task prompt explicitly instructs the agent to run linters and fix errors before completing."
+                    "impact": 3,
+                    "score": 6,
+                    "band": "medium",
+                    "rationale": "Risikoen reduseres dersom rapporten tydelig beskriver databegrensningene og tolker resultatene med forsiktighet."
                 },
                 "responsePlan": {
                     "strategy": "mitigate",
                     "plans": [
                         {
-                            "planId": "RSP-PYSTACK-02-A",
+                            "planId": "RSP-LOG650-01-A",
                             "type": "mitigation",
-                            "description": "Include lint check (bun lint / ruff check) as a required step in every task prompt. Task is not marked done unless linters pass.",
-                            "owner": "AGT-MAYI",
-                            "dueDate": null,
+                            "description": "Dokumenter eksplisitt at caset kan vaere simulert, og vurder sensitiviteter og begrensninger i diskusjonen.",
+                            "owner": "Prosjektgruppen",
+                            "dueDate": "2026-03-11",
                             "status": "not-started"
                         }
                     ]
                 },
                 "audit": {
-                    "createdAt": "2026-03-05T10:00:00Z",
-                    "updatedAt": "2026-03-05T10:00:00Z"
+                    "createdAt": "2026-02-13T12:15:00Z",
+                    "updatedAt": "2026-03-09T11:59:00Z"
                 }
             },
             {
-                "riskId": "RSK-PYSTACK-03",
-                "title": "Next.js 16 proxy.ts / middleware.ts naming conflict",
-                "description": "The template uses Next.js 16's proxy.ts convention. Claude Code may generate code using the older middleware.ts name, causing routing failures.",
-                "categoryId": "CAT-TEC",
+                "riskId": "RSK-LOG650-02",
+                "title": "SARIMA gir utilstrekkelig modelltilpasning",
+                "description": "Residualer kan vise gjenvserende autokorrelasjon eller systematiske feil, slik at valgt modell ikke er sterk nok for prosjektets formaal.",
+                "categoryId": "CAT-MET",
                 "status": "open",
-                "raisedBy": "bipp-i",
-                "raisedDate": "2026-03-05",
-                "owner": "AGT-CLAUDE",
-                "reviewDate": "2026-03-15",
+                "raisedBy": "codex",
+                "raisedDate": "2026-02-13",
+                "owner": "Analyseansvarlig",
+                "reviewDate": "2026-03-11",
                 "traceability": {
                     "wbsItemIds": [
-                        "WBS-1.5"
+                        "WBS-1.3.2",
+                        "WBS-1.3.3"
                     ],
                     "activityIds": [
-                        "ACT-5.1",
-                        "ACT-5.5"
+                        "ACT-3.2",
+                        "ACT-3.3"
                     ],
                     "milestoneIds": [
-                        "MS-002"
+                        "MS-004"
+                    ]
+                },
+                "inherentRisk": {
+                    "probability": 3,
+                    "impact": 4,
+                    "score": 12,
+                    "band": "high",
+                    "rationale": "Tidsserieprosjekter har ofte flere rimelige modellvalg, og diagnose kan tvinge frem omarbeid."
+                },
+                "residualRisk": {
+                    "probability": 2,
+                    "impact": 3,
+                    "score": 6,
+                    "band": "medium",
+                    "rationale": "Risikoen reduseres ved a sammenligne et lite antall alternative spesifikasjoner og dokumentere hvorfor en modell velges."
+                },
+                "responsePlan": {
+                    "strategy": "mitigate",
+                    "plans": [
+                        {
+                            "planId": "RSP-LOG650-02-A",
+                            "type": "mitigation",
+                            "description": "Sett av tid til residualanalyse og enkel sammenligning mot minst ett alternativt modelloppsett.",
+                            "owner": "Analyseansvarlig",
+                            "dueDate": "2026-03-11",
+                            "status": "not-started"
+                        }
+                    ]
+                },
+                "audit": {
+                    "createdAt": "2026-02-13T12:15:00Z",
+                    "updatedAt": "2026-03-09T11:59:00Z"
+                }
+            },
+            {
+                "riskId": "RSK-LOG650-03",
+                "title": "Fremdriften sprekker mellom samlingene",
+                "description": "Prosjektet har fa formelle samlingsdager, og dersom gruppen ikke arbeider jevnt mellom disse, kan utkast, peer review og sluttleveranse bli forsinket.",
+                "categoryId": "CAT-SCH",
+                "status": "open",
+                "raisedBy": "codex",
+                "raisedDate": "2026-02-13",
+                "owner": "Prosjektleder",
+                "reviewDate": "2026-03-09",
+                "traceability": {
+                    "wbsItemIds": [
+                        "WBS-1.3",
+                        "WBS-1.4"
+                    ],
+                    "activityIds": [
+                        "ACT-3.1",
+                        "ACT-3.5",
+                        "ACT-4.2"
+                    ],
+                    "milestoneIds": [
+                        "MS-004",
+                        "MS-005",
+                        "MS-007"
+                    ]
+                },
+                "inherentRisk": {
+                    "probability": 4,
+                    "impact": 4,
+                    "score": 16,
+                    "band": "high",
+                    "rationale": "Studentprosjekter er sårbare for kollisjon med andre fag og ujevn arbeidsfordeling."
+                },
+                "residualRisk": {
+                    "probability": 2,
+                    "impact": 3,
+                    "score": 6,
+                    "band": "medium",
+                    "rationale": "Risikoen reduseres med tydelige delmilepaeler, rollefordeling og ukentlig statusoppfolging."
+                },
+                "responsePlan": {
+                    "strategy": "mitigate",
+                    "plans": [
+                        {
+                            "planId": "RSP-LOG650-03-A",
+                            "type": "mitigation",
+                            "description": "Bryt arbeidet ned i korte ukentlige leveranser og gjennomfor korte statusmoter utenom kurssamlingene.",
+                            "owner": "Prosjektleder",
+                            "dueDate": "2026-03-09",
+                            "status": "not-started"
+                        }
+                    ]
+                },
+                "audit": {
+                    "createdAt": "2026-02-13T12:15:00Z",
+                    "updatedAt": "2026-03-09T11:59:00Z"
+                }
+            },
+            {
+                "riskId": "RSK-LOG650-04",
+                "title": "Uklart ansvar internt i gruppen",
+                "description": "Hvis roller for dataarbeid, analyse, skriving og kvalitetssikring ikke avklares, kan oppgaver falle mellom to stoler eller bli dobbeltarbeid.",
+                "categoryId": "CAT-TEAM",
+                "status": "open",
+                "raisedBy": "codex",
+                "raisedDate": "2026-02-13",
+                "owner": "Prosjektgruppen",
+                "reviewDate": "2026-03-09",
+                "traceability": {
+                    "wbsItemIds": [
+                        "WBS-1.2.1",
+                        "WBS-1.3.5",
+                        "WBS-1.4.2"
+                    ],
+                    "activityIds": [
+                        "ACT-2.1",
+                        "ACT-3.5",
+                        "ACT-4.2"
+                    ],
+                    "milestoneIds": [
+                        "MS-003",
+                        "MS-005",
+                        "MS-007"
                     ]
                 },
                 "inherentRisk": {
@@ -232,105 +292,55 @@
                     "impact": 3,
                     "score": 9,
                     "band": "medium",
-                    "rationale": "Claude Code training data may not include the proxy.ts convention; it will default to middleware.ts."
+                    "rationale": "Gruppeprosjekter blir raskt ineffektive uten tydelig ansvarsdeling."
                 },
                 "residualRisk": {
                     "probability": 1,
                     "impact": 2,
                     "score": 2,
                     "band": "low",
-                    "rationale": "Task prompts and CLAUDE.md explicitly document the proxy.ts convention."
+                    "rationale": "En enkel rolle- og leveranseplan gjor ansvaret tydelig."
                 },
                 "responsePlan": {
                     "strategy": "mitigate",
                     "plans": [
                         {
-                            "planId": "RSP-PYSTACK-03-A",
+                            "planId": "RSP-LOG650-04-A",
                             "type": "mitigation",
-                            "description": "Include explicit note in all frontend task prompts: 'Use proxy.ts, not middleware.ts. See README Next.js 16 proxy convention section.'",
-                            "owner": "AGT-MAYI",
-                            "dueDate": null,
+                            "description": "Definer roller for prosjektleder, dataansvarlig, analyseansvarlig og redaksjonsansvarlig i starten av fase 3.",
+                            "owner": "Prosjektgruppen",
+                            "dueDate": "2026-03-09",
                             "status": "not-started"
                         }
                     ]
                 },
                 "audit": {
-                    "createdAt": "2026-03-05T10:00:00Z",
-                    "updatedAt": "2026-03-05T10:00:00Z"
+                    "createdAt": "2026-02-13T12:15:00Z",
+                    "updatedAt": "2026-03-09T11:59:00Z"
                 }
             },
             {
-                "riskId": "RSK-PYSTACK-04",
-                "title": "Template completion delayed — HQ development blocked",
-                "description": "The template is the planned foundation for HQ. If it slips past end of March, HQ development start is delayed.",
+                "riskId": "RSK-LOG650-05",
+                "title": "Peer review avdekker store endringsbehov sent",
+                "description": "Dersom utkastet ikke er modent nok for faglig review innen slutten av april 2026, kan omfattende tilbakemeldinger komme for sent til a bli innarbeidet uten at sluttdatoen presses.",
                 "categoryId": "CAT-SCH",
                 "status": "open",
-                "raisedBy": "bipp-i",
-                "raisedDate": "2026-03-05",
-                "owner": "USR-BAARD",
-                "reviewDate": "2026-03-20",
-                "traceability": {
-                    "wbsItemIds": [
-                        "WBS-1"
-                    ],
-                    "activityIds": [
-                        "ACT-10.3"
-                    ],
-                    "milestoneIds": [
-                        "MS-005"
-                    ]
-                },
-                "inherentRisk": {
-                    "probability": 2,
-                    "impact": 3,
-                    "score": 6,
-                    "band": "medium",
-                    "rationale": "24 tasks remain; autonomous sessions are fast but integration work may reveal blockers."
-                },
-                "residualRisk": {
-                    "probability": 1,
-                    "impact": 3,
-                    "score": 3,
-                    "band": "low",
-                    "rationale": "Tasks are well-defined and ordered. Agent can run multiple tasks per session."
-                },
-                "responsePlan": {
-                    "strategy": "mitigate",
-                    "plans": [
-                        {
-                            "planId": "RSP-PYSTACK-04-A",
-                            "type": "mitigation",
-                            "description": "Prioritise frontend slices (5.x) and integration (6.x) first; DevOps, tests, and docs can run in parallel after integration milestone is hit.",
-                            "owner": "AGT-MAYI",
-                            "dueDate": null,
-                            "status": "not-started"
-                        }
-                    ]
-                },
-                "audit": {
-                    "createdAt": "2026-03-05T10:00:00Z",
-                    "updatedAt": "2026-03-05T10:00:00Z"
-                }
-            },
-            {
-                "riskId": "RSK-PYSTACK-05",
-                "title": "Railway GitHub service wiring or environment topology does not match the monorepo deployment plan",
-                "description": "Phase 7 assumes separate frontend and backend Railway services, a staging environment, and service public domains for cross-service reference variables. If those resources are missing or linked to the wrong repo/root directory, deployment automation will fail.",
-                "categoryId": "CAT-EXT",
-                "status": "open",
                 "raisedBy": "codex",
-                "raisedDate": "2026-03-08",
-                "owner": "USR-BAARD",
-                "reviewDate": "2026-03-20",
+                "raisedDate": "2026-02-13",
+                "owner": "Prosjektleder",
+                "reviewDate": "2026-04-27",
                 "traceability": {
                     "wbsItemIds": [
-                        "WBS-1.7"
+                        "WBS-1.4.1",
+                        "WBS-1.4.2"
                     ],
                     "activityIds": [
-                        "ACT-7.4"
+                        "ACT-4.1",
+                        "ACT-4.2"
                     ],
                     "milestoneIds": [
-                        "MS-003"
+                        "MS-006",
+                        "MS-007"
                     ]
                 },
                 "inherentRisk": {
@@ -338,105 +348,52 @@
                     "impact": 4,
                     "score": 12,
                     "band": "high",
-                    "rationale": "Railway service topology and repo linkage live outside the repository and can drift from the documented setup."
+                    "rationale": "Sen faglig feedback kan tvinge fram store omskrivinger."
                 },
                 "residualRisk": {
                     "probability": 2,
-                    "impact": 3,
-                    "score": 6,
-                    "band": "medium",
-                    "rationale": "Mitigated by codifying the workflow in README, railway.toml files, and the environment sync script."
-                },
-                "responsePlan": {
-                    "strategy": "mitigate",
-                    "plans": [
-                        {
-                            "planId": "RSP-PYSTACK-05-A",
-                            "type": "mitigation",
-                            "description": "Provide explicit Railway setup instructions, require root directories/watch paths per service, and validate service/environments before syncing variables.",
-                            "owner": "AGT-MAYI",
-                            "dueDate": "2026-03-24",
-                            "status": "not-started"
-                        }
-                    ]
-                },
-                "audit": {
-                    "createdAt": "2026-03-08T00:00:00Z",
-                    "updatedAt": "2026-03-08T00:00:00Z"
-                }
-            },
-            {
-                "riskId": "RSK-PYSTACK-06",
-                "title": "Environment sync automation pushes incorrect local-development values into Railway",
-                "description": "The Phase 7 environment sync script reads backend/.env and frontend/.env.local. If it blindly copies localhost-only or development-only values, production and staging deployments will bind the wrong URLs or ports.",
-                "categoryId": "CAT-TEC",
-                "status": "open",
-                "raisedBy": "codex",
-                "raisedDate": "2026-03-08",
-                "owner": "AGT-CLAUDE",
-                "reviewDate": "2026-03-20",
-                "traceability": {
-                    "wbsItemIds": [
-                        "WBS-1.7"
-                    ],
-                    "activityIds": [
-                        "ACT-7.4"
-                    ],
-                    "milestoneIds": [
-                        "MS-003"
-                    ]
-                },
-                "inherentRisk": {
-                    "probability": 3,
-                    "impact": 4,
-                    "score": 12,
-                    "band": "high",
-                    "rationale": "The local env files intentionally contain localhost values that are invalid for deployed Railway services."
-                },
-                "residualRisk": {
-                    "probability": 1,
-                    "impact": 3,
-                    "score": 3,
+                    "impact": 2,
+                    "score": 4,
                     "band": "low",
-                    "rationale": "Mitigated by using an allowlist plus Railway reference-variable overrides for service URLs and Neon CLI for DATABASE_URL."
+                    "rationale": "Tidlige interne reviews og delutkast reduserer risikoen betydelig."
                 },
                 "responsePlan": {
                     "strategy": "mitigate",
                     "plans": [
                         {
-                            "planId": "RSP-PYSTACK-06-A",
+                            "planId": "RSP-LOG650-05-A",
                             "type": "mitigation",
-                            "description": "Implement the sync script with explicit key allowlists, environment-specific transforms, Neon branch mapping, and non-secret logging.",
-                            "owner": "AGT-CLAUDE",
-                            "dueDate": "2026-03-24",
+                            "description": "Etabler internt rapportutkast og figursett senest 2026-04-27 for a sikre at peer review brukes til forbedring og ikke redning.",
+                            "owner": "Prosjektleder",
+                            "dueDate": "2026-04-27",
                             "status": "not-started"
                         }
                     ]
                 },
                 "audit": {
-                    "createdAt": "2026-03-08T00:00:00Z",
-                    "updatedAt": "2026-03-08T00:00:00Z"
+                    "createdAt": "2026-02-13T12:15:00Z",
+                    "updatedAt": "2026-03-09T11:59:00Z"
                 }
             }
         ],
         "summary": {
-            "totalRisks": 6,
+            "totalRisks": 5,
             "byBand": {
                 "critical": 0,
-                "high": 3,
-                "medium": 3,
+                "high": 4,
+                "medium": 1,
                 "low": 0
             },
             "byCategory": {
-                "CAT-TEC": 2,
-                "CAT-EXT": 2,
-                "CAT-AGT": 1,
-                "CAT-SCH": 1
+                "CAT-DAT": 1,
+                "CAT-MET": 1,
+                "CAT-SCH": 2,
+                "CAT-TEAM": 1
             },
             "topRisks": [
-                "RSK-PYSTACK-01",
-                "RSK-PYSTACK-05",
-                "RSK-PYSTACK-06"
+                "RSK-LOG650-01",
+                "RSK-LOG650-02",
+                "RSK-LOG650-03"
             ]
         }
     }

@@ -3,233 +3,185 @@
         "name": "pm.requirements",
         "version": "1.0.0",
         "standard": "ISO/IEC/IEEE 29148",
-        "description": "Requirements for the Pytagoras Fullstack Template. Requirements here are the developer-facing capabilities the template must provide out of the box."
+        "description": "Krav for LOG650-prosjektet om ettersporselsprognose for PowerHorse."
     },
     "requirementsSet": {
-        "requirementsSetId": "REQSET-PYSTACK-001",
-        "projectId": "PRJ-PYSTACK-001",
-        "name": "Pytagoras Fullstack Template — Requirements",
+        "requirementsSetId": "REQSET-LOG650-001",
+        "projectId": "PRJ-LOG650-001",
+        "name": "PowerHorse-prosjektet - kravsett",
         "version": "1.0",
         "status": "approved",
-        "baselineDate": "2026-03-05",
-        "approvedBy": "USR-BAARD",
+        "baselineDate": "2026-02-13",
+        "approvedBy": "COURSE-LOG650",
         "audit": {
-            "createdAt": "2026-03-05T10:00:00Z",
-            "createdBy": "bipp-i",
-            "updatedAt": "2026-03-05T10:00:00Z",
-            "updatedBy": "bipp-i"
+            "createdAt": "2026-02-13T12:15:00Z",
+            "createdBy": "codex",
+            "updatedAt": "2026-03-09T11:59:00Z",
+            "updatedBy": "codex"
         },
         "stakeholderNeeds": [
             {
                 "needId": "SN-001",
-                "stakeholderId": "STK-001",
-                "description": "A developer cloning the template should have a fully working fullstack app running locally within 5 minutes."
+                "stakeholderId": "STK-002",
+                "description": "Prosjektet ma levere en kvantitativ analyse som tilfredsstiller kravene i LOG650."
             },
             {
                 "needId": "SN-002",
                 "stakeholderId": "STK-001",
-                "description": "The template should serve as the foundation for HQ (mission control) and the LMS project — it must be clean enough to build on top of immediately."
+                "description": "Gruppen trenger en tydelig metode for a predikere manedlig ettersporsel med trend og sesong."
             },
             {
                 "needId": "SN-003",
-                "stakeholderId": "STK-002",
-                "description": "Developers evaluating the template should be able to see working AI chat, auth, and admin patterns without writing any code."
+                "stakeholderId": "STK-004",
+                "description": "Casebedriften trenger et bedre grunnlag for produksjonsplanlegging og lagerstyring."
             }
         ],
         "requirements": [
             {
                 "requirementId": "REQ-001",
                 "type": "functional",
-                "category": "authentication",
-                "name": "Guest chat (unauthenticated)",
-                "statement": "The template shall provide a working guest chat interface at the root route that calls an AI model via OpenRouter without requiring authentication.",
+                "category": "problemstilling",
+                "name": "12-maneders prognose",
+                "statement": "Prosjektet skal levere en prognose for manedlig traktorsalg for de neste 12 manedene.",
                 "priority": "must-have",
                 "status": "approved",
-                "source": "SN-001",
-                "wbsItemId": "WBS-1.3.1",
+                "source": "SN-002",
+                "wbsItemId": "WBS-1.3.4",
                 "taskIds": [
-                    "3.1",
-                    "5.1"
+                    "3.4"
                 ],
                 "verification": {
-                    "method": "demo",
-                    "criteria": "Navigate to / — chat input visible, send a message, receive an AI response."
+                    "method": "analyse",
+                    "criteria": "Rapporten inneholder punktprognoser per maned og en samlet tolkning av neste ars ettersporsel."
                 }
             },
             {
                 "requirementId": "REQ-002",
                 "type": "functional",
-                "category": "authentication",
-                "name": "Authenticated chat with history",
-                "statement": "The template shall provide authenticated chat with persistent conversation history managed via the database.",
+                "category": "data",
+                "name": "Historiske manedsdata",
+                "statement": "Prosjektet skal bruke historiske manedlige salgsdata som grunnlag for modellering av trend og sesong.",
                 "priority": "must-have",
                 "status": "approved",
-                "source": "SN-001",
-                "wbsItemId": "WBS-1.3.2",
+                "source": "SN-002",
+                "wbsItemId": "WBS-1.3.1",
                 "taskIds": [
-                    "3.2",
-                    "5.2",
-                    "6.1"
+                    "3.1"
                 ],
                 "verification": {
-                    "method": "test",
-                    "criteria": "Signed-in user can create, continue, and delete conversations. History persists on page reload."
+                    "method": "review",
+                    "criteria": "Datasett, tidsperiode og datakvalitet er dokumentert i rapport og analysegrunnlag."
                 }
             },
             {
                 "requirementId": "REQ-003",
                 "type": "functional",
-                "category": "streaming",
-                "name": "Real-time streaming AI responses",
-                "statement": "AI responses shall stream character-by-character using SSE, with a typing indicator while the response is generating.",
+                "category": "metode",
+                "name": "Trend og sesong skal modelleres",
+                "statement": "Valgt metode skal eksplisitt handtere bade trend og sesongvariasjon i tidsserien.",
                 "priority": "must-have",
                 "status": "approved",
-                "source": "SN-003",
-                "wbsItemId": "WBS-1.6",
+                "source": "SN-002",
+                "wbsItemId": "WBS-1.3.2",
                 "taskIds": [
-                    "6.2"
+                    "3.2"
                 ],
                 "verification": {
-                    "method": "demo",
-                    "criteria": "Send a message — response appears incrementally, typing indicator shows during generation."
+                    "method": "review",
+                    "criteria": "Modellbeskrivelsen forklarer hvordan trend, differensiering og sesong behandles."
                 }
             },
             {
                 "requirementId": "REQ-004",
                 "type": "functional",
-                "category": "user-preferences",
-                "name": "Theme and language settings",
-                "statement": "The template shall allow users to switch between light/dark themes and English/Norwegian languages, with preferences persisted to the database.",
+                "category": "validering",
+                "name": "Modellen skal valideres",
+                "statement": "Prosjektet skal dokumentere modellvalidering gjennom residualanalyse og minst ett mal pa prognosekvalitet.",
                 "priority": "must-have",
                 "status": "approved",
                 "source": "SN-001",
-                "wbsItemId": "WBS-1.4",
+                "wbsItemId": "WBS-1.3.3",
                 "taskIds": [
-                    "4.2",
-                    "4.3",
-                    "5.3"
+                    "3.3"
                 ],
                 "verification": {
-                    "method": "test",
-                    "criteria": "Toggle theme — applies immediately and persists on reload. Switch language — all UI strings change."
+                    "method": "analyse",
+                    "criteria": "Rapporten inneholder diagnostikk, vurdering av modellens svakheter og begrunnelse for om modellen er tilstrekkelig."
                 }
             },
             {
                 "requirementId": "REQ-005",
                 "type": "functional",
-                "category": "admin",
-                "name": "Admin panel with user and model management",
-                "statement": "The template shall provide an admin-only panel for managing users (roles), system config, and AI models (enable/disable, set default).",
-                "priority": "must-have",
+                "category": "beslutningsstotte",
+                "name": "Logistisk tolkning",
+                "statement": "Resultatene skal oversettes til anbefalinger for produksjonsplanlegging og lagerstyring.",
+                "priority": "should-have",
                 "status": "approved",
                 "source": "SN-003",
-                "wbsItemId": "WBS-1.3.4",
+                "wbsItemId": "WBS-1.4.1",
                 "taskIds": [
-                    "3.4",
-                    "5.4"
+                    "4.1"
                 ],
                 "verification": {
-                    "method": "test",
-                    "criteria": "Admin user can access /admin. Non-admin is redirected. Models can be toggled and reordered."
+                    "method": "review",
+                    "criteria": "Diskusjonsdelen viser hvordan prognosen kan brukes i praktiske beslutninger."
                 }
             },
             {
                 "requirementId": "REQ-006",
-                "type": "functional",
-                "category": "model-selection",
-                "name": "AI model selection per conversation",
-                "statement": "Users shall be able to select which AI model to use from a dropdown populated by enabled models in the database.",
-                "priority": "should-have",
+                "type": "non-functional",
+                "category": "kvalitet",
+                "name": "Norsk fagsprak og sporbarhet",
+                "statement": "Alle styringsdokumenter, presentasjoner og rapportutkast skal skrives pa norsk og vaere konsistente med proposalen.",
+                "priority": "must-have",
                 "status": "approved",
-                "source": "SN-003",
-                "wbsItemId": "WBS-1.6",
+                "source": "SN-001",
+                "wbsItemId": "WBS-1.2.1",
                 "taskIds": [
-                    "6.3"
+                    "2.1"
                 ],
                 "verification": {
-                    "method": "demo",
-                    "criteria": "Model dropdown shows enabled models. Selected model is used for the conversation."
+                    "method": "review",
+                    "criteria": "Dokumentene bruker norsk terminologi og viser tydelig kobling mellom problemstilling, krav og leveranser."
                 }
             },
             {
                 "requirementId": "REQ-007",
                 "type": "non-functional",
-                "category": "developer-experience",
-                "name": "One-command local setup",
-                "statement": "docker-compose up shall start the local db, migrate, backend, and frontend services successfully with no manual steps beyond copying .env files.",
+                "category": "fremdrift",
+                "name": "Leveranser i henhold til kursfaser",
+                "statement": "Prosjektet skal levere proposal, plan, utkast, peer review og sluttleveranser i tråd med kursfasene i 2026.",
                 "priority": "must-have",
                 "status": "approved",
                 "source": "SN-001",
-                "wbsItemId": "WBS-1.7",
+                "wbsItemId": "WBS-1",
                 "taskIds": [
-                    "7.1",
-                    "7.2"
+                    "1.1",
+                    "2.1",
+                    "3.5",
+                    "4.2"
                 ],
                 "verification": {
-                    "method": "test",
-                    "criteria": "Clone repo, copy .env examples, run docker-compose up — both services healthy within 60 seconds."
+                    "method": "milepael",
+                    "criteria": "Milepaeler i fremdriftsplanen oppnas og godkjennes av emnet."
                 }
             },
             {
                 "requirementId": "REQ-008",
                 "type": "non-functional",
-                "category": "code-quality",
-                "name": "All linters and type checkers pass",
-                "statement": "The template shall pass biome check (frontend), ruff check (backend), and mypy (backend) with zero errors.",
-                "priority": "must-have",
-                "status": "approved",
-                "source": "SN-002",
-                "wbsItemId": "WBS-1.9",
-                "taskIds": [
-                    "10.3"
-                ],
-                "verification": {
-                    "method": "ci",
-                    "criteria": "GitHub Actions CI passes on main branch."
-                }
-            },
-            {
-                "requirementId": "REQ-009",
-                "type": "non-functional",
-                "category": "deployment",
-                "name": "Railway deployment",
-                "statement": "The template shall deploy to Railway as two GitHub-linked services (frontend + backend) from the monorepo using railway.toml configs and a standalone uv environment sync script backed by Railway CLI and Neon CLI.",
+                "category": "reproduserbarhet",
+                "name": "Analyse skal kunne etterproves",
+                "statement": "Datagrunnlag, transformasjoner, modellvalg og sentrale resultater skal dokumenteres sa tydelig at analysen kan etterproves av faglaerer og medstudenter.",
                 "priority": "should-have",
                 "status": "approved",
                 "source": "SN-001",
-                "wbsItemId": "WBS-1.7",
+                "wbsItemId": "WBS-1.3.5",
                 "taskIds": [
-                    "7.4",
-                    "7.5"
-                ],
-                "verification": {
-                    "method": "demo",
-                    "criteria": "Frontend and backend Railway services are configured from the GitHub monorepo, the env sync script provisions production and staging variables, and both service health endpoints return 200."
-                }
-            },
-            {
-                "requirementId": "REQ-010",
-                "type": "non-functional",
-                "category": "architecture",
-                "name": "Vertical slice architecture",
-                "statement": "All features shall be organised as vertical slices (landing, dashboard, profile, admin) in both frontend and backend, not by technical layer.",
-                "priority": "must-have",
-                "status": "approved",
-                "source": "SN-002",
-                "wbsItemId": "WBS-1",
-                "taskIds": [
-                    "3.1",
-                    "3.2",
-                    "3.3",
-                    "3.4",
-                    "5.1",
-                    "5.2",
-                    "5.3",
-                    "5.4"
+                    "3.5"
                 ],
                 "verification": {
                     "method": "review",
-                    "criteria": "Code review confirms slice isolation. No cross-slice imports at feature level."
+                    "criteria": "Kode, figurer, tabeller og forklaringer stemmer overens og kan folges steg for steg."
                 }
             }
         ]

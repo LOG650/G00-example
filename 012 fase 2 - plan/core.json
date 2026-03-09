@@ -3,340 +3,278 @@
         "name": "pm.core.project",
         "version": "1.0.0",
         "standard": "ISO 21502",
-        "description": "Core project governance model for the Pytagoras Fullstack Python/Next.js Template."
+        "description": "Kjerneinformasjon for LOG650-prosjektet om ettersporselsprognose for PowerHorse."
     },
     "project": {
-        "projectId": "PRJ-PYSTACK-001",
-        "code": "PYSTACK",
-        "name": "Pytagoras Fullstack Python/Next.js Template",
-        "description": "A production-ready, feature-rich fullstack starter template combining Next.js (App Router, Bun, shadcn/ui, Clerk, next-intl, Zustand) frontend with FastAPI (SQLAlchemy 2, Alembic, Pydantic v2, uv) backend. Vertical slice architecture, dependency injection, OpenRouter AI, Railway deployment.",
-        "type": "template-development",
-        "deliveryApproach": "autonomous-agent",
-        "lifecycleModel": "task-driven-iterative",
+        "projectId": "PRJ-LOG650-001",
+        "code": "LOG650-SARIMA",
+        "name": "Ettersporselsprognose for PowerHorse",
+        "description": "Studentprosjekt i LOG650 der gruppen skal utvikle og evaluere en kvantitativ modell for manedlig ettersporselsprognose for traktorsalg med trend og sesong.",
+        "type": "forskningsprosjekt",
+        "deliveryApproach": "gruppebasert",
+        "lifecycleModel": "fasebasert",
         "status": "in-progress",
         "health": "green",
         "priority": "high",
         "governance": {
             "sponsor": {
-                "partyId": "USR-BAARD",
-                "name": "Bård Inge Pettersen"
+                "partyId": "COURSE-LOG650",
+                "name": "Emneansvarlig LOG650"
             },
             "projectManager": {
-                "partyId": "AGT-MAYI",
-                "name": "may-i"
+                "partyId": "TEAM-LOG650",
+                "name": "Prosjektgruppen"
             },
             "technicalLead": {
-                "partyId": "AGT-CLAUDE",
-                "name": "Claude Code (headless)"
+                "partyId": "TEAM-LOG650",
+                "name": "Analyseansvarlig i prosjektgruppen"
             },
-            "ownerOrganization": "Pytagoras Publishing",
-            "executingOrganization": "Pytagoras Publishing / AI Agents"
+            "ownerOrganization": "Hogskolen i Molde",
+            "executingOrganization": "Studentgruppe LOG650"
         },
         "objectives": [
             {
                 "objectiveId": "OBJ-001",
-                "name": "Production-ready fullstack template",
-                "description": "Deliver a complete, working starter template that developers can clone and build upon immediately.",
+                "name": "Utvikle en anvendbar prognosemodell",
+                "description": "Levere en modell som kan estimere manedlig traktorsalg for neste 12 maneder og som kan brukes som beslutningsstotte i produksjons- og lagerplanlegging.",
                 "successCriteria": [
-                    "docker-compose up starts both services successfully",
-                    "Guest chat works without authentication",
-                    "Authenticated chat with conversation history works",
-                    "Profile settings (theme, language) persist",
-                    "Admin panel accessible only to admin users",
-                    "All tests pass (bun test and pytest)",
-                    "All linters pass (biome check and ruff check)",
-                    "Deployed to Railway successfully"
+                    "Historiske manedsdata er analysert og dokumentert",
+                    "Valgt modell fanger opp trend og sesong pa en faglig forsvarlig mate",
+                    "Det produseres en 12-maneders prognose med tolkning for virksomheten"
                 ]
             },
             {
                 "objectiveId": "OBJ-002",
-                "name": "Reusable foundation for HQ and LMS",
-                "description": "The template becomes the starter scaffold for all future Pytagoras web projects, including the HQ mission control center and the LMS.",
+                "name": "Dokumentere metode og begrensninger",
+                "description": "Prosjektet skal vise en sporbar sammenheng mellom problemstilling, data, metodevalg, resultater og anbefalinger.",
                 "successCriteria": [
-                    "Template is usable as a GitHub template repository",
-                    "README enables a new developer to be running in under 5 minutes"
+                    "Krav, WBS, fremdriftsplan og risiko er dokumentert i fase 2",
+                    "Metodevalg er begrunnet i rapport og presentasjon",
+                    "Antakelser og begrensninger er eksplisitt beskrevet"
+                ]
+            },
+            {
+                "objectiveId": "OBJ-003",
+                "name": "Besta emnets leveransekrav",
+                "description": "Levere proposal, plan, utkast, peer review, muntlig presentasjon og sluttleveranse i trad med kursopplegget.",
+                "successCriteria": [
+                    "Godkjent proposal innen initieringsfasen",
+                    "Godkjent plan innen planleggingsfasen",
+                    "Godkjent utkast, peer review og sluttleveranse i fase 3 og 4"
                 ]
             }
         ],
         "scope": {
             "inScope": [
-                "Next.js frontend with App Router, Bun, shadcn/ui, Tailwind",
-                "FastAPI backend with SQLAlchemy 2, Alembic, Pydantic v2",
-                "Clerk authentication (frontend + backend JWT verification)",
-                "OpenRouter AI integration with streaming",
-                "Four vertical slices: Landing (guest chat), Dashboard (auth chat), Profile, Admin",
-                "Zustand state management with persistence",
-                "next-intl i18n (English + Norwegian)",
-                "Docker + docker-compose local development",
-                "Railway deployment configuration",
-                "GitHub Actions CI workflow",
-                "Backend tests (pytest) and frontend tests (bun test)",
-                "Architecture and API documentation"
+                "Analyse av historiske manedlige salgsdata for traktorer",
+                "Rensing og strukturering av tidsseriedata",
+                "Visualisering av trend, sesong og variasjon",
+                "Valg og estimering av SARIMA-modell",
+                "Validering av modell med residualanalyse og prognosefeil",
+                "Utarbeidelse av anbefalinger for produksjons- og lagerplanlegging",
+                "Prosjektdokumenter, presentasjon, rapport og kode"
             ],
             "outOfScope": [
-                "Mobile app",
-                "Real-time collaboration features",
-                "Payment integration",
-                "Custom AI model hosting"
+                "Optimalisering av hele forsyningskjeden",
+                "Modellering av pris, kampanjer og makrookonomiske forklaringsvariabler",
+                "Implementering av prognosemodellen i et operativt IT-system",
+                "Innsamling av nye primardata fra en faktisk bedrift"
             ],
             "keyDeliverables": [
-                "Working fullstack template repository",
-                "Docker-compose local development environment",
-                "Railway deployment configuration",
-                "CI workflow",
-                "README with quickstart guide",
-                "Architecture documentation"
+                "Proposal",
+                "Prosjektstyringsplan med krav, WBS, fremdrift og risiko",
+                "Analyseoppsett og kode for tidsseriemodellering",
+                "Forskningsrapport med prognose og diskusjon",
+                "Peer review",
+                "Muntlig presentasjon"
             ]
         },
         "dates": {
-            "plannedStart": "2026-02-01",
-            "plannedFinish": "2026-03-31",
-            "actualStart": "2026-02-01",
+            "plannedStart": "2026-01-12",
+            "plannedFinish": "2026-05-15",
+            "actualStart": "2026-01-12",
             "actualFinish": null,
-            "baselineDate": "2026-03-05",
-            "statusDate": "2026-03-08"
+            "baselineDate": "2026-02-13",
+            "statusDate": "2026-03-09"
         },
         "phaseModel": [
             {
                 "phaseId": "PH-001",
-                "name": "Infrastructure Setup",
+                "name": "Fase 1 - initiering",
                 "sequence": 1
             },
             {
                 "phaseId": "PH-002",
-                "name": "Backend Core",
+                "name": "Fase 2 - planlegging",
                 "sequence": 2
             },
             {
                 "phaseId": "PH-003",
-                "name": "Backend Feature Slices",
+                "name": "Fase 3 - gjennomforing",
                 "sequence": 3
             },
             {
                 "phaseId": "PH-004",
-                "name": "Frontend Infrastructure",
+                "name": "Fase 4 - avslutning",
                 "sequence": 4
-            },
-            {
-                "phaseId": "PH-005",
-                "name": "Frontend Feature Slices",
-                "sequence": 5
-            },
-            {
-                "phaseId": "PH-006",
-                "name": "Integration & Streaming",
-                "sequence": 6
-            },
-            {
-                "phaseId": "PH-007",
-                "name": "Infrastructure & DevOps",
-                "sequence": 7
-            },
-            {
-                "phaseId": "PH-008",
-                "name": "Testing",
-                "sequence": 8
-            },
-            {
-                "phaseId": "PH-009",
-                "name": "Documentation & Polish",
-                "sequence": 9
             }
         ],
-        "currentPhaseId": "PH-007",
+        "currentPhaseId": "PH-003",
         "constraints": {
-            "time": "Template must be usable as foundation for HQ before HQ development begins.",
+            "time": "Prosjektet ma folge kurslopet med samlinger 2026-01-12, 2026-01-21, 2026-02-11, 2026-02-13, 2026-03-09, 2026-03-11, 2026-04-27 og 2026-04-29. Planfasen skulle vaere godkjent senest 2026-02-13.",
             "cost": {
-                "currency": "USD",
-                "budgetLimit": null,
-                "note": "Cost is API usage (Claude Code headless sessions). No hard cap."
+                "currency": "NOK",
+                "budgetLimit": 0,
+                "note": "Ingen kontantbudsjett. Kostnaden bestar hovedsakelig av studentenes tidsbruk."
             },
             "quality": [
-                "All linters must pass before template is published",
-                "docker-compose up must work out of the box"
+                "Leveranser skal vaere faglig konsistente og skrevet pa norsk",
+                "Problemstillingen skal vaere kvantitativ",
+                "Metode, data og resultater skal vaere sporbare mellom plan, analyse og rapport"
             ],
             "resources": [
-                "Claude Code headless sessions (automated)",
-                "One human reviewer (Bård Inge)"
+                "Studentgruppen",
+                "Casebeskrivelse og kurskompendier",
+                "GitHub-repositorium og Teams-kanal opprettet i fase 2"
             ]
         },
         "assumptions": [
-            "Claude Code is installed and authenticated on the development machine.",
-            "Clerk account and API keys are available.",
-            "OpenRouter API key is available.",
-            "Neon PostgreSQL database is provisioned with production and staging branches.",
-            "Railway account exists for deployment.",
-            "Railway CLI and Neon CLI are installed and authenticated on the development machine.",
-            "GitHub branch workflow is dev -> staging -> main, with phase work performed on phase-X branches created from dev.",
-            "Railway runtime uses pooled Neon DATABASE_URL values, while direct Neon connection strings are fetched only for migration or admin tasks when needed."
+            "Casebedriften PowerHorse og datasettet kan brukes som grunnlag for analyse uten ekstra datainnsamling",
+            "Gruppen har tilgang til nodvendige analyseverktoy og kan samarbeide via GitHub og Teams",
+            "Historiske manedsdata er tilstrekkelige for a modellere trend og sesong",
+            "Sluttleveranse etter fase 4 kan planlegges mot midten av mai 2026 som intern maldato"
         ],
         "dependencies": [
             {
                 "dependencyId": "DEP-001",
                 "type": "external",
-                "description": "Clerk API keys required for auth setup.",
-                "owner": "Bård Inge Pettersen"
+                "description": "Godkjent proposal er en forutsetning for planfasen.",
+                "owner": "Emneansvarlig LOG650"
             },
             {
                 "dependencyId": "DEP-002",
                 "type": "external",
-                "description": "OpenRouter API key required for AI integration.",
-                "owner": "Bård Inge Pettersen"
+                "description": "Godkjent plan er en forutsetning for a ga videre til gjennomforingsfasen.",
+                "owner": "Emneansvarlig LOG650"
             },
             {
                 "dependencyId": "DEP-003",
                 "type": "external",
-                "description": "Neon PostgreSQL DATABASE_URL required for backend.",
-                "owner": "Bård Inge Pettersen"
-            },
-            {
-                "dependencyId": "DEP-004",
-                "type": "external",
-                "description": "Railway project must contain separate frontend and backend services linked to the GitHub repository before environment sync automation can populate production and staging variables.",
-                "owner": "B?rd Inge Pettersen"
-            },
-            {
-                "dependencyId": "DEP-005",
-                "type": "external",
-                "description": "Railway staging environment and public domains must exist so cross-service Railway reference variables resolve to production and staging URLs correctly.",
-                "owner": "B?rd Inge Pettersen"
+                "description": "Peer-to-peer review ma gjennomfores i fase 3.",
+                "owner": "Studentgruppe LOG650"
             }
         ],
         "stakeholders": [
             {
                 "stakeholderId": "STK-001",
-                "name": "Bård Inge Pettersen",
-                "role": "owner-developer",
+                "name": "Prosjektgruppen",
+                "role": "utforende team",
                 "influence": "high",
                 "interest": "high"
             },
             {
                 "stakeholderId": "STK-002",
-                "name": "Future developers using the template",
-                "role": "end-user",
-                "influence": "low",
+                "name": "Emneansvarlig LOG650",
+                "role": "sponsor og godkjenner",
+                "influence": "high",
                 "interest": "high"
+            },
+            {
+                "stakeholderId": "STK-003",
+                "name": "Faglaerer og medstudenter",
+                "role": "faglige interessenter og peer reviewers",
+                "influence": "medium",
+                "interest": "high"
+            },
+            {
+                "stakeholderId": "STK-004",
+                "name": "PowerHorse (casebedrift)",
+                "role": "simulert kunde",
+                "influence": "low",
+                "interest": "medium"
             }
         ],
         "baselines": {
-            "scopeBaselineId": "BL-SCP-PYSTACK-001",
-            "scheduleBaselineId": "BL-SCH-PYSTACK-001",
-            "costBaselineId": null
+            "scopeBaselineId": "BL-SCP-LOG650-001",
+            "scheduleBaselineId": "BL-SCH-LOG650-001",
+            "costBaselineId": "BL-CST-LOG650-001"
         },
         "statusSummary": {
-            "overallPercentComplete": 75,
-            "summary": "Phase 7 is underway. Docker, docker-compose, CI, README/PRD updates, Railway health alignment, and the Railway/Neon env sync script are implemented locally. Railway service splitting and live GitHub-linked staging/production validation remain open.",
+            "overallPercentComplete": 40,
+            "summary": "Fase 1 og 2 er ferdigstilt som planlagte styringsleveranser. Prosjektet gikk inn i fase 3 den 2026-03-09, og neste fokus er dataanalyse, modellvalg og utkast til rapport.",
             "trafficLights": {
                 "scope": "green",
                 "schedule": "green",
                 "cost": "green",
-                "risk": "green"
+                "risk": "amber"
             },
             "topIssues": [
-                "Railway project still needs separate frontend and backend services wired to the GitHub monorepo branch workflow",
-                "Production and staging Railway environments still need live service/domain validation after repo-side Phase 7 artifacts were added",
-                "Phase 6 frontend/backend integration still needs full end-to-end credential-backed validation alongside the deployment work"
+                "Gruppemedlemmer er ikke fylt inn i proposal og plan ennå",
+                "Sluttdato etter fase 4 er ikke eksplisitt angitt i kursnotatet og er derfor satt som intern antakelse",
+                "Det ma avklares tidlig om SARIMA alene er tilstrekkelig eller om alternative modeller ma vurderes"
             ],
             "nextMilestones": [
                 {
-                    "name": "Phase 6 integration complete",
-                    "date": "2026-03-20"
+                    "name": "Forste analyseutkast",
+                    "date": "2026-03-11"
                 },
                 {
-                    "name": "DevOps validation complete",
-                    "date": "2026-03-24"
+                    "name": "Ferdig analyse og utkast",
+                    "date": "2026-04-27"
                 },
                 {
-                    "name": "Tests and docs complete",
-                    "date": "2026-03-28"
+                    "name": "Peer review gjennomfort",
+                    "date": "2026-04-29"
                 },
                 {
-                    "name": "Template published",
-                    "date": "2026-03-31"
+                    "name": "Endelig rapport og presentasjon",
+                    "date": "2026-05-15"
                 }
             ]
         },
         "references": {
-            "requirementsSetId": "REQSET-PYSTACK-001",
-            "wbsId": "WBS-PYSTACK-001",
-            "scheduleId": "SCH-PYSTACK-001",
-            "riskRegisterId": "RSK-PYSTACK-001",
+            "requirementsSetId": "REQSET-LOG650-001",
+            "wbsId": "WBS-LOG650-001",
+            "scheduleId": "SCH-LOG650-001",
+            "riskRegisterId": "RSK-LOG650-001",
             "changeLogId": null,
-            "tasksFile": "tasks.json",
-            "prdFile": "prd.md"
-        },
-        "hq": {
-            "registeredAt": "2026-03-05T10:00:00Z",
-            "registeredBy": "bipp-i",
-            "projectPath": "C:/Users/Trill-i/projects/templates/pytagoras-fullstack-python-nextjs",
-            "repoUrl": "https://github.com/pytagoraspublishing/pytagoras-fullstack-python-nextjs-template",
-            "agentRunner": "claude-code-headless",
-            "tags": [
-                "template",
-                "fullstack",
-                "python",
-                "nextjs",
-                "fastapi"
-            ]
+            "tasksFile": null,
+            "prdFile": "project-plan.md"
         },
         "execution": {
-            "description": "Operational context sent to Claude Code as the system prompt before every activity. Covers how to start the stack, run checks, verify in browser, log progress, and commit. The activity steps and criteria are appended after this as the task prompt.",
-            "agentRunner": "claude-code-headless",
-            "permissionMode": "acceptEdits",
-            "completionSignal": "<promise>COMPLETE</promise>",
+            "description": "Arbeidet gjennomfores som et studentprosjekt med dokumentleveranser, analysekode og faglige gjennomganger per fase.",
+            "agentRunner": "studentgruppe",
+            "permissionMode": "samarbeid",
+            "completionSignal": "Godkjent leveranse per fase",
             "stack": {
-                "startFullStack": "docker-compose up",
-                "startFrontend": "cd frontend && bun run dev",
-                "startBackend": "cd backend && uvicorn app.main:app --reload",
-                "frontendUrl": "http://127.0.0.1:3000",
-                "backendUrl": "http://127.0.0.1:8000",
-                "note": "Always use 127.0.0.1 instead of localhost on Windows. Always check if services are already running before starting them. Always stop services after completing a task."
+                "startFullStack": null,
+                "startFrontend": null,
+                "startBackend": null,
+                "frontendUrl": null,
+                "backendUrl": null,
+                "note": "Prosjektet er et analyseprosjekt og ikke et driftssystem."
             },
             "checks": {
-                "frontend": [
-                    "docker compose exec frontend bun run lint",
-                    "docker compose exec frontend bun run build"
-                ],
-                "backend": [
-                    "docker compose exec backend uv run ruff check .",
-                    "docker compose exec backend uv run mypy ."
-                ]
-            },
-            "browserVerification": {
-                "enabled": true,
-                "tool": "agent-browser",
-                "executablePath": "/c/Program Files/nodejs/node_modules/agent-browser/bin/agent-browser-win32-x64.exe",
-                "screenshotsDir": "./screenshots",
-                "steps": [
-                    "Open the local server URL: agent-browser open <url>",
-                    "Wait for hydration: agent-browser wait --load networkidle",
-                    "Take snapshot: agent-browser snapshot -i -c",
-                    "Take screenshot: agent-browser screenshot screenshots/<task-name>.png",
-                    "Test interactive elements if applicable"
+                "analysis": [
+                    "Verifiser at data er komplette og strukturert per maned",
+                    "Verifiser at modellvalg og tolkning stemmer med problemstillingen",
+                    "Verifiser at tekst, figurer og tabeller er konsistente pa tvers av leveranser"
                 ]
             },
             "progressLog": {
-                "file": "activity.md",
-                "instruction": "Append a dated entry describing: what changed, commands run, screenshot filename, issues encountered and how resolved."
-            },
-            "commit": {
-                "instruction": "One git commit per activity. Message format: 'feat: <brief description>'. Stage all changed files. Do NOT run git init, change remotes, or push.",
-                "template": "feat: <brief description of what was implemented>"
+                "file": "project-plan.md",
+                "instruction": "Fremdrift oppsummeres i prosjektplan, rapportutkast og tilhorende statusmoter."
             },
             "rules": [
-                "Work from a phase-X branch created from dev when executing a planned phase.",
-                "Use docker compose for local development validation and GitHub-linked Railway services for staging/production deployment work.",
-                "Use uv run scripts/sync_railway_env.py to provision Railway variables from local env files and Neon branch connection strings when Phase 7 deployment automation is in scope.",
-                "Always run the relevant lint/type/build checks before marking an activity complete.",
-                "Always log progress in activity.md and update the activity criteria status in .project/schedule.json when done.",
-                "Always stop any services you started after the activity is complete."
-            ],
-            "systemPrompt": "You are an autonomous developer working on the Pytagoras Fullstack Python/Next.js Template. Your job is to complete the assigned implementation work while keeping project metadata, deployment automation, and documentation aligned with repo truth.\n\nEnvironment notes for this Windows machine:\n- uv is available on PATH for standalone automation scripts such as uv run scripts/sync_railway_env.py.\n- For app validation, prefer docker compose exec frontend bun run <script> and docker compose exec backend uv run <command>.\n- Always use 127.0.0.1 instead of localhost for local browser-facing URLs on Windows where practical.\n- Do not create files under frontend/src/app/.cache or any .cache directory.\n\nBefore starting an activity:\n1. Run git log --oneline -10 to understand recent repo state.\n2. Read activity.md for the recent execution log and known issues.\n3. Check docker compose ps and start the stack only if the planned validation needs it and it is not already running.\n\nDuring execution:\n1. Implement the required changes in the current working branch.\n2. Run the relevant checks for the touched subsystems and fix failures before continuing.\n3. Update activity.md with what changed, commands run, and notable issues.\n4. Update .project/schedule.json when an activity is complete or materially advanced.\n5. Keep README and deployment docs aligned with the actual workflow when infrastructure behavior changes.\n\nDo not push to git. When Railway deployment work is in scope, treat docker-compose.yml as local-only and use GitHub-linked Railway services plus the environment sync script for deployed environments."
+                "Alle sentrale leveranser skal skrives pa norsk",
+                "Planlegging skal vaere forankret i kursfaser og godkjenningspunkter",
+                "Metodevalg og analyser skal kunne spores tilbake til problemstillingen i proposal"
+            ]
         },
         "audit": {
-            "createdAt": "2026-03-05T10:00:00Z",
-            "createdBy": "bipp-i",
-            "updatedAt": "2026-03-08T11:45:13.390Z",
+            "createdAt": "2026-02-13T12:15:00Z",
+            "createdBy": "codex",
+            "updatedAt": "2026-03-09T11:59:00Z",
             "updatedBy": "codex"
         }
     }
