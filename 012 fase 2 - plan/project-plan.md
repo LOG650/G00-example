@@ -99,7 +99,7 @@ Detaljert kravliste finnes i [requirements.json](/D:/LOG650/G00-example/012%20fa
 
 ## Løsning
 
-Losningen som skal utvikles er en tidsseriebasert analysepipeline der historiske manedlige salgstall for traktorer struktureres, analyseres og modelleres med en SARIMA-tilnaerming. Løsningen skal bestå av et dokumentert datagrunnlag, visualisering av trend og sesong, en begrunnet modellspesifikasjon, modellvalidering, prognose for neste 12 maneder og tolkning av prognosene for produksjon og lager.
+Losningen som skal utvikles er en tidsseriebasert analysepipeline der historiske manedlige salgstall for traktorer struktureres, deles i trenings- og testdata, analyseres og modelleres med en SARIMA-tilnaerming. Løsningen skal bestå av et dokumentert datagrunnlag, visualisering av trend og sesong, en begrunnet modellspesifikasjon, modellvalidering, prognose for neste 12 maneder og tolkning av prognosene for produksjon og lager.
 
 ## Arbeidsnedbrytningsstruktur
 

@@ -175,7 +175,7 @@
                 "parentId": "WBS-1.3",
                 "name": "Datainnsamling og forbehandling",
                 "type": "work-package",
-                "description": "Strukturere historiske manedsdata og kontrollere datakvalitet.",
+                "description": "Strukturere historiske manedsdata, splitte dem i trenings- og testdata og kontrollere datakvalitet.",
                 "owner": "Dataansvarlig",
                 "status": "in-progress",
                 "audit": {

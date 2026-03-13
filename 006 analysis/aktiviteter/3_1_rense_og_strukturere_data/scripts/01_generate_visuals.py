@@ -8,9 +8,11 @@ import pandas as pd
 matplotlib.use("Agg")
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_PATH = BASE_DIR.parent / "004 data" / "sales.csv"
-FIGURES_DIR = BASE_DIR / "figurer"
-RESULTS_DIR = BASE_DIR / "resultat"
+ACTIVITY_DIR = BASE_DIR.parent
+ANALYSIS_DIR = BASE_DIR.parents[2]
+DATA_PATH = ANALYSIS_DIR.parent / "004 data" / "sales.csv"
+FIGURES_DIR = ACTIVITY_DIR / "figurer"
+RESULTS_DIR = ACTIVITY_DIR / "resultat"
 
 
 def load_sales_data() -> pd.DataFrame:
@@ -105,7 +107,7 @@ def save_figure_1(df: pd.DataFrame) -> None:
     top_ax.set_xlabel("")
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "figure_1_sales_by_observation.png", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_01_salgsserie_observasjoner.png", dpi=300)
     plt.close(fig)
 
 
@@ -121,7 +123,7 @@ def save_figure_2(full_years_df: pd.DataFrame) -> None:
     ax.tick_params(axis="x", rotation=45)
     ax.grid(axis="y", alpha=0.3)
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "figure_2_yearly_totals_full_years.png", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_02_aarstotaler_fullforte_ar.png", dpi=300)
     plt.close(fig)
 
 
@@ -139,7 +141,7 @@ def save_figure_3(month_profile_df: pd.DataFrame) -> None:
     ax.set_xticks(month_profile_df["måned_nummer"])
     ax.grid(axis="y", alpha=0.3)
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "figure_3_monthly_mean_by_month_number.png", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_03_gjennomsnitt_per_maned.png", dpi=300)
     plt.close(fig)
 
 
@@ -151,8 +153,8 @@ def main() -> None:
     data_overview = build_data_overview_table(df)
     month_profile = build_month_profile_table(full_years_df)
 
-    write_table_outputs(data_overview, "table_1_data_overview")
-    write_table_outputs(month_profile, "table_2_month_profile")
+    write_table_outputs(data_overview, "tab_01_dataoversikt")
+    write_table_outputs(month_profile, "tab_02_manedsprofil")
 
     save_figure_1(df)
     save_figure_2(full_years_df)

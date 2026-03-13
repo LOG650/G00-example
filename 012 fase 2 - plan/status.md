@@ -14,40 +14,40 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 
 ## Gjennomført
 
-| Aktivitet | Periode | Status |
-| --- | --- | --- |
+| Aktivitet                   | Periode                   | Status |
+| --------------------------- | ------------------------- | ------ |
 | Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig |
-| Utarbeide proposal | 2026-01-16 til 2026-01-21 | Ferdig |
-| Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig |
+| Utarbeide proposal          | 2026-01-16 til 2026-01-21 | Ferdig |
+| Etablere planbaseline       | 2026-02-11 til 2026-02-13 | Ferdig |
 
 ## Pågående
 
-| Aktivitet | Planlagt periode | Status | Kommentar |
-| --- | --- | --- | --- |
+| Aktivitet                 | Planlagt periode          | Status        | Kommentar                                                                 |
+| ------------------------- | ------------------------- | ------------- | ------------------------------------------------------------------------- |
 | Rense og strukturere data | 2026-03-09 til 2026-03-11 | Pågår, 25 % | Over planlagt sluttdato og bør fullføres før modellarbeidet kan starte |
 
 ## Neste aktiviteter
 
-| Prioritet | Aktivitet | Planlagt periode | Avhengighet |
-| --- | --- | --- | --- |
-| 1 | Velge og estimere modell | 2026-03-11 til 2026-03-20 | Etter datarensing |
-| 2 | Validere modell | 2026-03-20 til 2026-03-25 | Etter modellvalg |
-| 3 | Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Etter modellvalidering |
-| 4 | Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Etter prognosearbeid |
-| 5 | Gjennomføre peer review og revisjon | 2026-04-27 til 2026-04-29 | Etter rapportutkast |
-| 6 | Ferdigstille rapport og presentasjon | 2026-04-30 til 2026-05-15 | Etter peer review |
+| Prioritet | Aktivitet                            | Planlagt periode          | Avhengighet            |
+| --------- | ------------------------------------ | ------------------------- | ---------------------- |
+| 1         | Velge og estimere modell             | 2026-03-11 til 2026-03-20 | Etter datarensing      |
+| 2         | Validere modell                      | 2026-03-20 til 2026-03-25 | Etter modellvalg       |
+| 3         | Lage prognose og anbefalinger        | 2026-03-25 til 2026-04-10 | Etter modellvalidering |
+| 4         | Skrive rapportutkast                 | 2026-04-10 til 2026-04-27 | Etter prognosearbeid   |
+| 5         | Gjennomføre peer review og revisjon | 2026-04-27 til 2026-04-29 | Etter rapportutkast    |
+| 6         | Ferdigstille rapport og presentasjon | 2026-04-30 til 2026-05-15 | Etter peer review      |
 
 ## Milepæler
 
-| Milepæl | Dato | Status |
-| --- | --- | --- |
-| Case og problemstilling avklart | 2026-01-12 | Oppnådd |
-| Godkjent proposal | 2026-01-21 | Oppnådd |
-| Godkjent plan | 2026-02-13 | Oppnådd |
-| Første analyseutkast | 2026-03-11 | Ikke oppnådd ennå |
-| Hovedutkast klart for review | 2026-04-27 | Planlagt |
-| Peer review gjennomført | 2026-04-29 | Planlagt |
-| Endelig innlevering og presentasjon | 2026-05-15 | Planlagt |
+| Milepæl                            | Dato       | Status              |
+| ----------------------------------- | ---------- | ------------------- |
+| Case og problemstilling avklart     | 2026-01-12 | Oppnådd            |
+| Godkjent proposal                   | 2026-01-21 | Oppnådd            |
+| Godkjent plan                       | 2026-02-13 | Oppnådd            |
+| Første analyseutkast               | 2026-03-11 | Ikke oppnådd ennå |
+| Hovedutkast klart for review        | 2026-04-27 | Planlagt            |
+| Peer review gjennomført            | 2026-04-29 | Planlagt            |
+| Endelig innlevering og presentasjon | 2026-05-15 | Planlagt            |
 
 ## Gantt-status
 
@@ -80,32 +80,33 @@ gantt
 
 #### Analysere case og databehov
 
-- [x] GjennomgÃ¥ casebeskrivelsen
-- [x] Avklare problemstilling
-- [x] Identifisere beslutningsbehov
-- [x] Avklare forventet datagrunnlag
+- [X] GjennomgÃ¥ casebeskrivelsen
+- [X] Avklare problemstilling
+- [X] Identifisere beslutningsbehov
+- [X] Avklare forventet datagrunnlag
 
 #### Utarbeide proposal
 
-- [x] Beskrive problem og bakgrunn
-- [x] Definere mÃ¥l og avgrensning
-- [x] Begrunne metodevalg pÃ¥ overordnet nivÃ¥
-- [x] Levere proposal til fasegodkjenning
+- [X] Beskrive problem og bakgrunn
+- [X] Definere mÃ¥l og avgrensning
+- [X] Begrunne metodevalg pÃ¥ overordnet nivÃ¥
+- [X] Levere proposal til fasegodkjenning
 
 #### Etablere planbaseline
 
-- [x] Etablere prosjektplan
-- [x] Ferdigstille fremdriftsplan
-- [x] Ferdigstille WBS
-- [x] Etablere baseline for krav, risiko og milepÃ¦ler
+- [X] Etablere prosjektplan
+- [X] Ferdigstille fremdriftsplan
+- [X] Ferdigstille WBS
+- [X] Etablere baseline for krav, risiko og milepÃ¦ler
 
 ### PÃ¥gÃ¥ende
 
 #### Rense og strukturere data
 
-- [x] Kontrollere observasjoner per måned
-- [x] Strukturere tidsserien
-- [ ] Lage grunnleggende visualiseringer
+- [X] Kontrollere observasjoner per måned
+- [X] Strukturere tidsserien
+- [X] Splitte datasettet i trenings- og testdata
+- [X] Lage grunnleggende visualiseringer
 - [ ] Dokumentere datakvalitet
 - [ ] Bekrefte at dataserien er komplett og riktig indeksert
 - [ ] Lukke aktiviteten fÃ¸r modellarbeidet starter
