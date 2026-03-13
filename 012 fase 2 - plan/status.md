@@ -99,7 +99,7 @@ gantt
 - [X] Ferdigstille WBS
 - [X] Etablere baseline for krav, risiko og milepÃ¦ler
 
-### PÃ¥gÃ¥ende
+### Pågående
 
 #### Rense og strukturere data
 
@@ -107,9 +107,12 @@ gantt
 - [X] Strukturere tidsserien
 - [X] Splitte datasettet i trenings- og testdata
 - [X] Lage grunnleggende visualiseringer
-- [ ] Dokumentere datakvalitet
-- [ ] Bekrefte at dataserien er komplett og riktig indeksert
-- [ ] Lukke aktiviteten fÃ¸r modellarbeidet starter
+- [X] Dokumentere datakvalitet
+- [X] Bekrefte at dataserien er komplett og riktig indeksert
+- [ ] Sette inn tekst og figurer på rett plass i `005 report/rapport.md`
+- [ ] Lukke aktiviteten før modellarbeidet starter
+
+Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er kvalitetssjekket av de som leverte det, siden prosjektet ikke har egne kilder for uavhengig verifikasjon av datakvaliteten.
 
 ### Neste aktiviteter
 
@@ -129,7 +132,7 @@ gantt
 
 #### Lage prognose og anbefalinger
 
-- [ ] Lage 12-mÃ¥neders prognose
+- [ ] Lage 12-måneders prognose
 - [ ] Tolke prognoseresultater
 - [ ] Vurdere konsekvenser for produksjon og lager
 - [ ] Formulere anbefalinger til PowerHorse-caset

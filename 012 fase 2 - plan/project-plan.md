@@ -44,6 +44,7 @@ Prosjektet er begrunnet fordi mer presise ettersporselsprognoser normalt gir bed
 
 - Caset og datasettet kan brukes som analysegrunnlag uten ny datainnsamling.
 - Historiske data er tilstrekkelige til a analysere trend og sesong.
+- Datakvaliteten antas a vaere kvalitetssjekket av de som leverte datasettet, siden prosjektet ikke har egne eksterne kilder for uavhengig validering av datakvalitet.
 - Gruppen har tilgang til relevante verktoy og kan samarbeide via Teams og GitHub.
 - Sluttleveranse kan styres mot en intern maldato 2026-05-15 siden eksakt fase-4-frist ikke er oppgitt i kursnotatet.
 

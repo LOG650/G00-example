@@ -258,7 +258,8 @@
                     "Strukturere tidsserien",
                     "Splitte datasettet i trenings- og testdata",
                     "Lage grunnleggende visualiseringer",
-                    "Dokumentere datakvalitet"
+                    "Dokumentere datakvalitet",
+                    "Sette inn tekst og figurer i rapport.md underveis"
                 ],
                 "criteria": [
                     {
