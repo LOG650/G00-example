@@ -1,0 +1,12 @@
+| Måltall                  | Verdi                                   |
+|:-------------------------|:----------------------------------------|
+| Startdato                | 1964-01                                 |
+| Sluttdato                | 1981-06                                 |
+| Antall observasjoner     | 210                                     |
+| Antall manglende måneder | 0                                       |
+| Min salg                 | 1413                                    |
+| Maks salg                | 19164                                   |
+| Gjennomsnittlig salg     | 5958.3                                  |
+| Median salg              | 5162.5                                  |
+| Standardavvik            | 3450.4                                  |
+| Merknad                  | 1981 er delår og dekker kun januar-juni |

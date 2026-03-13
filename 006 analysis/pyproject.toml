@@ -1,0 +1,10 @@
+[project]
+name = "006-analysis"
+version = "0.1.0"
+description = "Analyseoppsett for visualisering og tabellgrunnlag fra PowerHorse salgsdata."
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "pandas>=3.0.1",
+    "tabulate>=0.10.0",
+]
