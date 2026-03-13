@@ -74,6 +74,86 @@ gantt
     Ferdigstille rapport og presentasjon :crit, a10, 2026-04-30, 2026-05-15
 ```
 
+## Sjekkliste for aktiviteter
+
+### FullfÃ¸rt
+
+#### Analysere case og databehov
+
+- [x] GjennomgÃ¥ casebeskrivelsen
+- [x] Avklare problemstilling
+- [x] Identifisere beslutningsbehov
+- [x] Avklare forventet datagrunnlag
+
+#### Utarbeide proposal
+
+- [x] Beskrive problem og bakgrunn
+- [x] Definere mÃ¥l og avgrensning
+- [x] Begrunne metodevalg pÃ¥ overordnet nivÃ¥
+- [x] Levere proposal til fasegodkjenning
+
+#### Etablere planbaseline
+
+- [x] Etablere prosjektplan
+- [x] Ferdigstille fremdriftsplan
+- [x] Ferdigstille WBS
+- [x] Etablere baseline for krav, risiko og milepÃ¦ler
+
+### PÃ¥gÃ¥ende
+
+#### Rense og strukturere data
+
+- [x] Kontrollere observasjoner per måned
+- [x] Strukturere tidsserien
+- [ ] Lage grunnleggende visualiseringer
+- [ ] Dokumentere datakvalitet
+- [ ] Bekrefte at dataserien er komplett og riktig indeksert
+- [ ] Lukke aktiviteten fÃ¸r modellarbeidet starter
+
+### Neste aktiviteter
+
+#### Velge og estimere modell
+
+- [ ] Vurdere aktuell modelltype for trend og sesong
+- [ ] Velge SARIMA-spesifikasjon
+- [ ] Estimere modellparametere
+- [ ] Dokumentere modellvalg og begrunnelse
+
+#### Validere modell
+
+- [ ] Kontrollere residualer og modellforutsetninger
+- [ ] Vurdere prognoseegenskaper mot historiske data
+- [ ] Dokumentere styrker, svakheter og usikkerhet
+- [ ] Bekrefte at modellen er egnet for prognoseformÃ¥let
+
+#### Lage prognose og anbefalinger
+
+- [ ] Lage 12-mÃ¥neders prognose
+- [ ] Tolke prognoseresultater
+- [ ] Vurdere konsekvenser for produksjon og lager
+- [ ] Formulere anbefalinger til PowerHorse-caset
+
+#### Skrive rapportutkast
+
+- [ ] Strukturere rapporten
+- [ ] Skrive metodekapittel
+- [ ] Skrive resultat- og diskusjonskapittel
+- [ ] Samle figurer, tabeller og referanser i et komplett utkast
+
+#### GjennomfÃ¸re peer review og revisjon
+
+- [ ] Innhente tilbakemeldinger fra peer review
+- [ ] Oppsummere funn og forbedringspunkter
+- [ ] Revidere analyse, tekst og presentasjon av resultater
+- [ ] Lukke avvik fÃ¸r sluttfÃ¸ring
+
+#### Ferdigstille rapport og presentasjon
+
+- [ ] Ferdigstille endelig rapport
+- [ ] Kvalitetssikre sprÃ¥k, sporbarhet og konsistens
+- [ ] Ferdigstille presentasjonsmateriell
+- [ ] KlargjÃ¸re endelig innlevering og presentasjon
+
 ## Vurdering
 
 Prosjektet har fullført initiering og planlegging, men ligger per 2026-03-13 etter opprinnelig baseline i starten av fase 3. Det viktigste nå er å lukke datarensing og strukturering raskt, fordi hele den kritiske linjen videre avhenger av dette arbeidet.
