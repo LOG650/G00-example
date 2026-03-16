@@ -1,6 +1,6 @@
 # Status for PowerHorse-prosjektet
 
-Statusdato: 2026-03-13
+Statusdato: 2026-03-16
 
 Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md`, `schedule.json` og `wbs.json`.
 
@@ -8,8 +8,8 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 
 - Prosjektet er i fase 3 - gjennomføring.
 - Fase 1 og fase 2 er ferdigstilt som planlagt.
-- Aktiviteten `Rense og strukturere data` er startet, men står fortsatt som `in-progress` med 25 % ferdigstillelse.
-- Etter opprinnelig plan skulle `Rense og strukturere data` vært ferdig 2026-03-11. Per 2026-03-13 framstår derfor prosjektet som noe bak baseline.
+- Aktiviteten `Rense og strukturere data` er fullført per 2026-03-16.
+- Aktiviteten ble ferdigstilt fem dager etter opprinnelig planlagt sluttdato (2026-03-11). Forsinkelsen er tatt igjen ved at artefakter, rapporttekst og review er ferdigstilt samlet.
 - Neste aktivitet i kritisk linje er `Velge og estimere modell`, etterfulgt av `Validere modell`.
 
 ## Gjennomført
@@ -19,12 +19,11 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 | Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig |
 | Utarbeide proposal          | 2026-01-16 til 2026-01-21 | Ferdig |
 | Etablere planbaseline       | 2026-02-11 til 2026-02-13 | Ferdig |
+| Rense og strukturere data   | 2026-03-09 til 2026-03-16 | Ferdig |
 
 ## Pågående
 
-| Aktivitet                 | Planlagt periode          | Status        | Kommentar                                                                 |
-| ------------------------- | ------------------------- | ------------- | ------------------------------------------------------------------------- |
-| Rense og strukturere data | 2026-03-09 til 2026-03-11 | Pågår, 25 % | Over planlagt sluttdato og bør fullføres før modellarbeidet kan starte |
+Ingen pågående aktiviteter.
 
 ## Neste aktiviteter
 
@@ -44,7 +43,7 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 | Case og problemstilling avklart     | 2026-01-12 | Oppnådd            |
 | Godkjent proposal                   | 2026-01-21 | Oppnådd            |
 | Godkjent plan                       | 2026-02-13 | Oppnådd            |
-| Første analyseutkast               | 2026-03-11 | Ikke oppnådd ennå |
+| Første analyseutkast               | 2026-03-16 | Oppnådd (5 dager forsinket) |
 | Hovedutkast klart for review        | 2026-04-27 | Planlagt            |
 | Peer review gjennomført            | 2026-04-29 | Planlagt            |
 | Endelig innlevering og presentasjon | 2026-05-15 | Planlagt            |
@@ -53,7 +52,7 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 
 ```mermaid
 gantt
-    title PowerHorse-prosjektet - status per 2026-03-13
+    title PowerHorse-prosjektet - status per 2026-03-16
     dateFormat  YYYY-MM-DD
     axisFormat  %d.%m
 
@@ -63,7 +62,7 @@ gantt
     Etablere planbaseline :done, a3, 2026-02-11, 2026-02-13
 
     section Pågår
-    Rense og strukturere data :crit, active, a4, 2026-03-09, 2026-03-11
+    Rense og strukturere data :done, a4, 2026-03-09, 2026-03-16
 
     section Neste
     Velge og estimere modell :crit, a5, 2026-03-11, 2026-03-20
@@ -99,8 +98,6 @@ gantt
 - [X] Ferdigstille WBS
 - [X] Etablere baseline for krav, risiko og milepÃ¦ler
 
-### Pågående
-
 #### Rense og strukturere data
 
 - [X] Kontrollere observasjoner per måned
@@ -109,8 +106,8 @@ gantt
 - [X] Lage grunnleggende visualiseringer
 - [X] Dokumentere datakvalitet
 - [X] Bekrefte at dataserien er komplett og riktig indeksert
-- [ ] Sette inn tekst og figurer på rett plass i `005 report/rapport.md`
-- [ ] Lukke aktiviteten før modellarbeidet starter
+- [X] Sette inn tekst og figurer på rett plass i `005 report/rapport.md`
+- [X] Lukke aktiviteten før modellarbeidet starter
 
 Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er kvalitetssjekket av de som leverte det, siden prosjektet ikke har egne kilder for uavhengig verifikasjon av datakvaliteten.
 
@@ -160,4 +157,4 @@ Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er
 
 ## Vurdering
 
-Prosjektet har fullført initiering og planlegging, men ligger per 2026-03-13 etter opprinnelig baseline i starten av fase 3. Det viktigste nå er å lukke datarensing og strukturering raskt, fordi hele den kritiske linjen videre avhenger av dette arbeidet.
+Prosjektet har fullført initiering, planlegging og datarensing. Aktivitet 3.1 ble lukket 2026-03-16, fem dager etter opprinnelig plan. Forsinkelsen er håndterbar da den ikke har påvirket andre aktiviteter ennå. Det viktigste nå er å starte modellvalg og estimering raskt for å hente inn tid på den kritiske linjen.

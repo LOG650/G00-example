@@ -10,9 +10,12 @@ matplotlib.use("Agg")
 BASE_DIR = Path(__file__).resolve().parent
 ACTIVITY_DIR = BASE_DIR.parent
 ANALYSIS_DIR = BASE_DIR.parents[2]
-DATA_PATH = ANALYSIS_DIR.parent / "004 data" / "sales.csv"
+DATA_DIR = ANALYSIS_DIR.parent / "004 data"
+DATA_PATH = DATA_DIR / "sales.csv"
 FIGURES_DIR = ACTIVITY_DIR / "figurer"
 RESULTS_DIR = ACTIVITY_DIR / "resultat"
+
+SPLIT_DATE = "1978-01-01"
 
 
 def load_sales_data() -> pd.DataFrame:
@@ -22,13 +25,37 @@ def load_sales_data() -> pd.DataFrame:
     df["obs_id"] = range(1, len(df) + 1)
     df["year"] = df["Month"].dt.year
     df["month_num"] = df["Month"].dt.month
-    df["rolling_12"] = df["Sales"].rolling(window=12, min_periods=1).mean()
+    df["rolling_12"] = df["Sales"].rolling(window=12, min_periods=12).mean()
     return df
 
 
 def get_full_years_only(df: pd.DataFrame) -> pd.DataFrame:
     last_year = int(df["year"].max())
     return df[df["year"] < last_year].copy()
+
+
+def split_and_save_data(df: pd.DataFrame) -> None:
+    """Splitter datasettet i trenings- og testdata ved SPLIT_DATE og lagrer til 004 data/.
+
+    Splitten settes ved 1978-01 slik at treningsdatasettet inneholder hele
+    kalenderår (1964-1977), noe som bevarer sesongstrukturen. Forholdet
+    blir omtrent 80/20 (168 treningsobs. / 42 testobs.).
+    """
+    split_ts = pd.Timestamp(SPLIT_DATE)
+    train_df = df[df["Month"] < split_ts][["Month", "Sales"]].copy()
+    test_df = df[df["Month"] >= split_ts][["Month", "Sales"]].copy()
+
+    train_df["Month"] = train_df["Month"].dt.strftime("%Y-%m")
+    test_df["Month"] = test_df["Month"].dt.strftime("%Y-%m")
+
+    train_path = DATA_DIR / "sales_train.csv"
+    test_path = DATA_DIR / "sales_test.csv"
+    train_df.to_csv(train_path, index=False, encoding="utf-8")
+    test_df.to_csv(test_path, index=False, encoding="utf-8")
+
+    print(f"Data split at {SPLIT_DATE}:")
+    print(f"  Training: {len(train_df)} observations -> {train_path}")
+    print(f"  Test:     {len(test_df)} observations -> {test_path}")
 
 
 def ensure_output_dirs() -> None:
@@ -51,6 +78,8 @@ def build_data_overview_table(df: pd.DataFrame) -> pd.DataFrame:
         ("Gjennomsnittlig salg", round(df["Sales"].mean(), 2)),
         ("Median salg", round(df["Sales"].median(), 2)),
         ("Standardavvik", round(df["Sales"].std(), 2)),
+        ("Variasjonskoeffisient (CV)", f"{round(df['Sales'].std() / df['Sales'].mean() * 100, 1)} %"),
+        ("Interkvartilbredde (IQR)", round(df["Sales"].quantile(0.75) - df["Sales"].quantile(0.25), 2)),
         ("Merknad", "1981 er delår og dekker kun januar-juni"),
     ]
     return pd.DataFrame(rows, columns=["Måltall", "Verdi"])
@@ -145,10 +174,32 @@ def save_figure_3(month_profile_df: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def save_figure_4(full_years_df: pd.DataFrame) -> None:
+    month_data = [
+        full_years_df[full_years_df["month_num"] == m]["Sales"].values
+        for m in range(1, 13)
+    ]
+    fig, ax = plt.subplots(figsize=(10, 5))
+    bp = ax.boxplot(month_data, patch_artist=True)
+    for box in bp["boxes"]:
+        box.set_facecolor("#9bbb59")
+        box.set_alpha(0.7)
+    ax.set_title("Sesongvariasjon i salg per kalendermåned")
+    ax.set_xlabel("Månedsnummer")
+    ax.set_ylabel("Salg")
+    ax.set_xticklabels(range(1, 13))
+    ax.grid(axis="y", alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(FIGURES_DIR / "fig_04_sesongvariasjon_boksplott.png", dpi=300)
+    plt.close(fig)
+
+
 def main() -> None:
     ensure_output_dirs()
     df = load_sales_data()
     full_years_df = get_full_years_only(df)
+
+    split_and_save_data(df)
 
     data_overview = build_data_overview_table(df)
     month_profile = build_month_profile_table(full_years_df)
@@ -159,6 +210,7 @@ def main() -> None:
     save_figure_1(df)
     save_figure_2(full_years_df)
     save_figure_3(month_profile)
+    save_figure_4(full_years_df)
 
     print(f"Generated figures in: {FIGURES_DIR}")
     print(f"Generated tables in: {RESULTS_DIR}")
