@@ -10,7 +10,8 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 - Fase 1 og fase 2 er ferdigstilt som planlagt.
 - Aktiviteten `Rense og strukturere data` er fullført per 2026-03-16.
 - Aktiviteten ble ferdigstilt fem dager etter opprinnelig planlagt sluttdato (2026-03-11). Forsinkelsen er tatt igjen ved at artefakter, rapporttekst og review er ferdigstilt samlet.
-- Neste aktivitet i kritisk linje er `Velge og estimere modell`, etterfulgt av `Validere modell`.
+- Aktiviteten `Velge og estimere modell` er påbegynt, og arbeidspakken `Vurdere aktuell modelltype for trend og sesong` er fullført per 2026-03-16.
+- Aktiviteten `Velge og estimere modell` pågår på kritisk linje. Neste aktivitet etter denne er `Validere modell`.
 
 ## Gjennomført
 
@@ -23,18 +24,19 @@ Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md
 
 ## Pågående
 
-Ingen pågående aktiviteter.
+| Aktivitet                | Status | Kommentar |
+| ------------------------ | ------ | --------- |
+| Velge og estimere modell | Pågår  | Generell SARIMA-beskrivelse og vurdering av modelltype er dokumentert. |
 
 ## Neste aktiviteter
 
 | Prioritet | Aktivitet                            | Planlagt periode          | Avhengighet            |
 | --------- | ------------------------------------ | ------------------------- | ---------------------- |
-| 1         | Velge og estimere modell             | 2026-03-11 til 2026-03-20 | Etter datarensing      |
-| 2         | Validere modell                      | 2026-03-20 til 2026-03-25 | Etter modellvalg       |
-| 3         | Lage prognose og anbefalinger        | 2026-03-25 til 2026-04-10 | Etter modellvalidering |
-| 4         | Skrive rapportutkast                 | 2026-04-10 til 2026-04-27 | Etter prognosearbeid   |
-| 5         | Gjennomføre peer review og revisjon | 2026-04-27 til 2026-04-29 | Etter rapportutkast    |
-| 6         | Ferdigstille rapport og presentasjon | 2026-04-30 til 2026-05-15 | Etter peer review      |
+| 1         | Validere modell                      | 2026-03-20 til 2026-03-25 | Etter modellvalg       |
+| 2         | Lage prognose og anbefalinger        | 2026-03-25 til 2026-04-10 | Etter modellvalidering |
+| 3         | Skrive rapportutkast                 | 2026-04-10 til 2026-04-27 | Etter prognosearbeid   |
+| 4         | Gjennomføre peer review og revisjon | 2026-04-27 til 2026-04-29 | Etter rapportutkast    |
+| 5         | Ferdigstille rapport og presentasjon | 2026-04-30 til 2026-05-15 | Etter peer review      |
 
 ## Milepæler
 
@@ -62,10 +64,9 @@ gantt
     Etablere planbaseline :done, a3, 2026-02-11, 2026-02-13
 
     section Pågår
-    Rense og strukturere data :done, a4, 2026-03-09, 2026-03-16
+    Velge og estimere modell :active, crit, a5, 2026-03-11, 2026-03-20
 
     section Neste
-    Velge og estimere modell :crit, a5, 2026-03-11, 2026-03-20
     Validere modell :crit, a6, 2026-03-20, 2026-03-25
     Lage prognose og anbefalinger :crit, a7, 2026-03-25, 2026-04-10
     Skrive rapportutkast :crit, a8, 2026-04-10, 2026-04-27
@@ -116,7 +117,8 @@ Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er
 #### Velge og estimere modell
 
 - [X] Beskrive generell SARIMA-modell matematisk i kapittel 6 i `005 report/rapport.md`, inkludert definisjon av variabler, parametere og ukjente størrelser
-- [ ] Vurdere aktuell modelltype for trend og sesong
+- [X] Vurdere aktuell modelltype for trend og sesong
+- [X] Rydde kapittel 6 slik at modelltypevurderingen henviser til kapittel 4 og 5 uten å repetere figurer og tabeller
 - [ ] Velge SARIMA-spesifikasjon
 - [ ] Estimere modellparametere
 - [ ] Dokumentere modellvalg og begrunnelse

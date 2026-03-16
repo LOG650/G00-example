@@ -1,0 +1,9 @@
+forhold,observasjon,implikasjon_for_modellvalg
+Tidsoppløsning,Månedlig serie fra 1964-01 til 1977-12 med 168 observasjoner.,En SARIMA-modell kan eksplisitt håndtere månedlig frekvens med sesonglengde 12.
+Datakompletthet,0 manglende måneder i treningsperioden.,Jevne tidsintervaller gjør en klassisk tidsseriemodell egnet uten ekstra imputering.
+Kalenderstruktur,Treningssettet dekker 14 hele kalenderår.,Hele år bevarer sesongmønsteret og gjør sesongmodellering mer robust.
+Trendindikasjon,12-måneders glidende gjennomsnitt øker fra 3478.2 til 7328.2.,Modellen må kunne håndtere nivåendring og trend gjennom differensiering.
+Sesongmønster,Høyest månedsgjennomsnitt i måned 12 (12872.4) og lavest i måned 8 (1894.9); forhold 6.79.,Serien har tydelig årlig sesong og bør modelleres med sesongledd.
+Variabelsett,Datasettet inneholder bare tid og salg.,En univariat modell er naturlig fordi prosjektet ikke bruker eksterne forklaringsvariabler.
+Krav til metode,Prosjektplanen krever en modell som håndterer både trend og sesong.,SARIMA oppfyller kravene uten å utvide scope til mer avanserte forklaringsmodeller.
+Konklusjon,"Treningsdataene viser en månedlig, komplett og tydelig sesongpreget serie med trend.",SARIMA vurderes som riktig modellklasse for videre arbeid i aktivitet 3.2.

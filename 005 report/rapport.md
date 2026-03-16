@@ -225,7 +225,36 @@ Tabell 5.1 oppsummerer de viktigste egenskapene ved datasettet.
 
 ## 6 Modell
 
-I denne oppgaven brukes en sesongbasert autoregressiv integrert glidende gjennomsnittsmodell, forkortet SARIMA. Modellen er egnet for tidsserier der observasjonene er ordnet i tid og der serien kan inneholde både langsiktig utvikling og gjentakende sesongmønster. For PowerHorse-caset er dette relevant fordi salget observeres måned for måned og fordi den historiske serien viser tydelige variasjoner gjennom året. I dette kapittelet beskrives derfor modellklassen matematisk, mens valg av konkret spesifikasjon og estimering av parametere gjøres senere.
+### 6.1 Vurdering av modelltype
+
+Før en konkret spesifikasjon kan velges, må det vurderes hvilken modelltype som passer best til dataserien. Denne vurderingen gjøres på treningsdatasettet for perioden 1964-01 til 1977-12, siden det er dette datagrunnlaget som senere skal brukes til modellestimering. Hensikten i dette delavsnittet er derfor ikke å velge ordener eller estimere parametere, men å begrunne hvorfor en SARIMA-modell er en hensiktsmessig modellklasse for videre arbeid.
+
+Som vist i kapittel 4 har serien både tydelig trend og et markert årlig sesongmønster. Figur 4.1 og figur 4.2 viser at salget ikke ligger stabilt rundt ett fast nivå over tid, mens figur 4.3, figur 4.4 og tabell 4.1 viser klare forskjeller mellom månedene i året. Disse mønstrene peker mot en modelltype som kan håndtere både utvikling over tid og gjentakende sesongvariasjon.
+
+Datagrunnlaget som faktisk brukes i modellarbeidet er beskrevet i kapittel 5. Treningssettet dekker 14 hele kalenderår og inneholder ingen manglende måneder, noe som gir et ryddig grunnlag for tidsseriemodellering. Samtidig består datasettet bare av tid og salg, uten eksterne forklaringsvariabler som pris, kampanjer eller markedsforhold. Dette taler for en univariat modelltilnærming framfor en modell som krever forklaringsvariabler som ikke finnes i datagrunnlaget.
+
+Samlet sett tilsier derfor både mønstrene i historisk salg og strukturen i treningsdatasettet at SARIMA er en passende modellklasse for videre analyse. Modellen kan i prinsippet håndtere trend gjennom differensiering og årlig sesong gjennom sesongledd, samtidig som den holder seg innenfor prosjektets avgrensing og tilgjengelige data. På dette stadiet begrunnes altså modellfamilien, mens valg av konkret spesifikasjon gjøres senere.
+
+### 6.2 Modellantagelser
+
+Bruken av en SARIMA-modell bygger på flere antagelser som må gjøres eksplisitte før videre modellarbeid. Disse antagelsene handler både om datagrunnlaget og om de statistiske egenskapene modellen forutsetter.
+
+- Serien behandles som en univariat månedlig tidsserie med fast sesonglengde på 12 måneder.
+- Observasjonene antas å være korrekt datert, kronologisk ordnet og uten manglende måneder i treningsperioden.
+- De historiske mønstrene i trend og sesong antas å være relevante nok til å brukes som grunnlag for videre modellering.
+- Framtidig utvikling modelleres uten eksterne forklaringsvariabler, fordi datasettet kun inneholder tid og salg.
+- Eventuelle trend- og sesongeffekter antas å kunne håndteres innenfor SARIMA-rammeverket gjennom ordinær og sesongmessig differensiering.
+- Modellparametrene antas å være tilstrekkelig stabile i analyseperioden til at én samlet modell kan estimeres på treningsdataene.
+- Feilleddet antas å ha forventning lik null.
+- Feilleddet antas å ha tilnærmet konstant varians over tid.
+- Feilleddet antas å være uten systematisk autokorrelasjon når modellen senere er riktig spesifisert.
+- Datakvaliteten bygger fortsatt på arbeidsantagelsen om at datasettet er kvalitetssjekket av kilden som leverte det, siden prosjektet ikke har egne eksterne kilder for uavhengig verifikasjon.
+
+Disse antagelsene er ikke det samme som verifiserte fakta. Noen av dem må testes eller vurderes nærmere i senere aktiviteter, særlig når konkret spesifikasjon, residualdiagnostikk og prognoseegenskaper skal undersøkes. Delavsnittet fungerer derfor som en tydelig avgrensing av hva modellen forutsetter før estimering.
+
+### 6.3 Generell SARIMA-modell
+
+Etter at modelltypen er begrunnet og antagelsene er gjort eksplisitte, kan den generelle modellen beskrives matematisk. I denne oppgaven brukes en sesongbasert autoregressiv integrert glidende gjennomsnittsmodell, forkortet SARIMA. Modellen er egnet for tidsserier der observasjonene er ordnet i tid og der serien kan inneholde både langsiktig utvikling og gjentakende sesongmønster.
 
 La $y_t$ betegne observert salg i måned $t$, der $t = 1, 2, \dots, T$. Her er $T$ antall observerte måneder i datasettet. Videre brukes forsinkelsesoperatoren $B$, definert ved
 

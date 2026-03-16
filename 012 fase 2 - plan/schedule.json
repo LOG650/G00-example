@@ -292,7 +292,7 @@
                 "wbsItemId": "WBS-1.3.2",
                 "name": "Velge og estimere modell",
                 "status": "in-progress",
-                "percentComplete": 20,
+                "percentComplete": 50,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -307,6 +307,8 @@
                 "plannedFinish": "2026-03-20",
                 "steps": [
                     "Beskrive generell SARIMA-modell matematisk i rapportens kapittel 6",
+                    "Vurdere aktuell modelltype for trend og sesong",
+                    "Rydde modellkapitlet slik at kapittel 6 ikke repeterer figurer og tabeller fra kapittel 4",
                     "Teste for stasjonaritet",
                     "Velge differensiering",
                     "Analysere ACF og PACF",
@@ -334,7 +336,7 @@
                     "sessionId": null,
                     "startedAt": null,
                     "completedAt": null,
-                    "lastEvent": "Generell SARIMA-modell er dokumentert matematisk i rapportens kapittel 6."
+                    "lastEvent": "Kapittel 6 er ryddet slik at modelltypevurderingen bygger på henvisning til kapittel 4 og 5 uten dupliserte figurer."
                 }
             },
             {
