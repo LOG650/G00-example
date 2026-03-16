@@ -1,0 +1,6 @@
+| serievariant                             | kandidat   |   adf_teststat |   adf_pverdi |   kpss_teststat |   kpss_pverdi | tolkning                                             |
+|:-----------------------------------------|:-----------|---------------:|-------------:|----------------:|--------------:|:-----------------------------------------------------|
+| Log-transformert serie z_t = log(y_t)    | d=0, D=0   |        -1.8701 |       0.3463 |          1.5675 |          0.01 | Begge testene peker mot fortsatt ikke-stasjonaritet. |
+| Ordinært differensiert (1-B)z_t          | d=1, D=0   |        -4.6489 |       0.0001 |          0.1412 |          0.1  | Begge testene peker mot stasjonaritet.               |
+| Sesongdifferensiert (1-B^12)z_t          | d=0, D=1   |        -3.641  |       0.005  |          0.1775 |          0.1  | Begge testene peker mot stasjonaritet.               |
+| Kombinert differensiert (1-B)(1-B^12)z_t | d=1, D=1   |        -4.6172 |       0.0001 |          0.0961 |          0.1  | Begge testene peker mot stasjonaritet.               |

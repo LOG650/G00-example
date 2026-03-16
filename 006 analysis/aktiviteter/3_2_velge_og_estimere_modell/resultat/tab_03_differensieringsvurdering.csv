@@ -1,0 +1,5 @@
+kandidat,faglig_vurdering,anbefaling
+"d=0, D=0",Referansepunkt på log-skala uten differensiering.,Forkast hvis testene ikke støtter stasjonaritet. Testene gir ikke støtte.
+"d=1, D=0","Fjerner generell trend på log-skala, men beholder eksplisitt sesongstruktur.",Aktuell bare hvis sesongkomponenten ikke er hovedårsaken til ikke-stasjonaritet. Testene gir støtte.
+"d=0, D=1",Fjerner årlig sesong på log-skala og bevarer ellers modellen så enkel som mulig.,Foretrukket kandidat hvis testene peker mot tilstrekkelig stasjonaritet. Testene gir støtte.
+"d=1, D=1","Fjerner både trend og sesong på log-skala, men øker risikoen for overdifferensiering.",Velges hvis enklere differensiering ikke fjerner gjenværende sesong og trend godt nok. Testene gir støtte.

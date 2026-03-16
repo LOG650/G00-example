@@ -240,6 +240,7 @@ Samlet sett tilsier derfor både mønstrene i historisk salg og strukturen i tre
 Bruken av en SARIMA-modell bygger på flere antagelser som må gjøres eksplisitte før videre modellarbeid. Disse antagelsene handler både om datagrunnlaget og om de statistiske egenskapene modellen forutsetter.
 
 - Serien behandles som en univariat månedlig tidsserie med fast sesonglengde på 12 måneder.
+- Serien analyseres videre på log-skala, det vil si som $z_t = log(y_t)$, for å stabilisere variansen før differensiering og modellspesifikasjon.
 - Observasjonene antas å være korrekt datert, kronologisk ordnet og uten manglende måneder i treningsperioden.
 - De historiske mønstrene i trend og sesong antas å være relevante nok til å brukes som grunnlag for videre modellering.
 - Framtidig utvikling modelleres uten eksterne forklaringsvariabler, fordi datasettet kun inneholder tid og salg.
@@ -323,6 +324,34 @@ Størrelsen $\varepsilon_t$ er modellens feilledd, også kalt innovasjonsledd el
 Med ord betyr dette at SARIMA-modellen forklarer månedlig salg ved å kombinere fire mekanismer. For det første kan modellen fjerne langsiktig utvikling gjennom ordinær differensiering. For det andre kan den fjerne gjentakende årlig sesong gjennom sesongdifferensiering. For det tredje kan den bruke tidligere observerte salgsnivåer til å forklare nåværende salg gjennom autoregressive ledd. For det fjerde kan den bruke tidligere tilfeldige avvik til å beskrive kortsiktige og sesongmessige justeringer gjennom glidende gjennomsnittsledd.
 
 De ukjente størrelsene i modellen er dermed modellordnene $p$, $d$, $q$, $P$, $D$ og $Q$, samt parameterne $\phi_i$, $\Phi_j$, $\theta_k$ og $\Theta_\ell$. I senere aktiviteter skal disse størrelsene bestemmes ved hjelp av analyse av tidsseriens egenskaper og estimering på treningsdata. I dette kapittelet er poenget kun å definere modellformen og å vise hvilke matematiske komponenter som inngår i prognosemodellen.
+
+### 6.4 Stasjonaritet og behov for differensiering
+
+Før en SARIMA-modell kan spesifiseres videre, må det vurderes om serien er tilstrekkelig stasjonær, eller om den må differensieres. Grunnen er at modellen forutsetter at serien etter eventuell differensiering har mer stabile egenskaper over tid, slik at mønstrene kan beskrives med faste parametere. I denne oppgaven gjøres vurderingen på den log-transformerte serien $z_t = log(y_t)$, siden salget er strengt positivt og fordi log-transformasjon reduserer problemet med nivåavhengig varians i datasettet.
+
+For å gjøre denne vurderingen brukes to komplementære tester. Augmented Dickey-Fuller-testen (ADF) brukes for å undersøke om serien fortsatt ser ut til å ha en enhetsrot, mens KPSS-testen brukes for å undersøke om serien kan avvises som stasjonær. Testene tolkes samlet og støttes av en visuell sammenligning av serievariantene på log-skala, siden ingen enkelt test alene er tilstrekkelig grunnlag for valg av differensiering.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_01_serievarianter.png" alt="Figur 6.1 Log-transformerte serievarianter for vurdering av stasjonaritet og differensiering" width="80%">
+  <p align="center"><small><i>Figur 6.1 Log-transformerte serievarianter.</i></small></p>
+</div>
+
+Tabell 6.1 oppsummerer testresultatene for den log-transformerte serien og de tre aktuelle differensieringsvariantene.
+
+| Serievariant | Kandidat | ADF teststat | ADF p-verdi | KPSS teststat | KPSS p-verdi | Kort vurdering |
+| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
+| Log-transformert serie $z_t = log(y_t)$ | $d=0, D=0$ | -1.8701 | 0.3463 | 1.5675 | 0.0100 | Testene peker samlet mot fortsatt ikke-stasjonaritet. |
+| Ordinært differensiert $(1-B)z_t$ | $d=1, D=0$ | -4.6489 | 0.0001 | 0.1412 | 0.1000 | Testene peker mot stasjonaritet, men figurdiagnostikken viser fortsatt tydelig sesongstruktur. |
+| Sesongdifferensiert $(1-B^{12})z_t$ | $d=0, D=1$ | -3.6410 | 0.0050 | 0.1775 | 0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
+| Kombinert differensiert $(1-B)(1-B^{12})z_t$ | $d=1, D=1$ | -4.6172 | 0.0001 | 0.0961 | 0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett. |
+
+<p align="center"><small><i>Tabell 6.1 Testresultater for stasjonaritet og differensiering.</i></small></p>
+
+Resultatene viser først og fremst at den log-transformerte serien ikke bør brukes videre uten differensiering. ADF- og KPSS-testene gir deretter støtte til tre alternative kandidater: ordinær differensiering, sesongdifferensiering og kombinert differensiering. Testene alene peker derfor ikke entydig på én vinner, men de utelukker at serien kan modelleres direkte uten videre transformasjon.
+
+Når testresultatene tolkes sammen med figur 6.1, blir det likevel tydelig at ordinær differensiering alene ikke er tilstrekkelig. Varianten med $d=1$ og $D=0$ får gode testresultater, men figuren viser fortsatt en tydelig gjenværende sesongstruktur. Dette tyder på at sesongmessig ikke-stasjonaritet ikke er fjernet godt nok selv om den ordinære trenden er redusert. Sesongdifferensiering alene med $d=0$ og $D=1$ er også en plausibel kandidat, men den kombinerte varianten gir den mest balanserte serien når både trend og sesong vurderes samlet på log-skala.
+
+På dette grunnlaget vurderes derfor kombinert differensiering med $d=1$ og $D=1$ som hovedkandidat videre i modellarbeidet. Denne konklusjonen bygger ikke bare på p-verdiene, men på en samlet faglig vurdering av teststatistikkene, p-verdiene og den visuelle diagnostikken på log-transformert serie. Sesongdifferensiering alene beholdes som et enklere alternativ dersom senere analyse skulle vise at kombinert differensiering er mer omfattende enn nødvendig.
 
 ---
 

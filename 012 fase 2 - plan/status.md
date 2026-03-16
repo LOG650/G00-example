@@ -119,6 +119,8 @@ Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er
 - [X] Beskrive generell SARIMA-modell matematisk i kapittel 6 i `005 report/rapport.md`, inkludert definisjon av variabler, parametere og ukjente størrelser
 - [X] Vurdere aktuell modelltype for trend og sesong
 - [X] Rydde kapittel 6 slik at modelltypevurderingen henviser til kapittel 4 og 5 uten å repetere figurer og tabeller
+- [X] Velge log-transformasjon som hovedspor for vurdering av stasjonaritet og differensiering
+- [X] Teste for stasjonaritet og vurdere behovet for differensiering før videre SARIMA-spesifikasjon
 - [ ] Velge SARIMA-spesifikasjon
 - [ ] Estimere modellparametere
 - [ ] Dokumentere modellvalg og begrunnelse
