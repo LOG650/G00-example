@@ -115,6 +115,7 @@ Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er
 
 #### Velge og estimere modell
 
+- [X] Beskrive generell SARIMA-modell matematisk i kapittel 6 i `005 report/rapport.md`, inkludert definisjon av variabler, parametere og ukjente størrelser
 - [ ] Vurdere aktuell modelltype for trend og sesong
 - [ ] Velge SARIMA-spesifikasjon
 - [ ] Estimere modellparametere

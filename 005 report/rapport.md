@@ -206,24 +206,94 @@ For å kunne validere modellen på en ryddig måte er datasettet delt i to deler
 
 Tabell 5.1 oppsummerer de viktigste egenskapene ved datasettet.
 
-| Måltall                  | Verdi                                    |
-| :------------------------ | :--------------------------------------- |
-| Startdato                 | 1964-01                                  |
-| Sluttdato                 | 1981-06                                  |
-| Antall observasjoner      | 210                                      |
-| Antall manglende måneder | 0                                        |
-| Min salg                  | 1413                                     |
-| Maks salg                 | 19164                                    |
-| Gjennomsnittlig salg      | 5958.3                                   |
-| Median salg               | 5162.5                                   |
-| Standardavvik             | 3450.4                                   |
-| Variasjonskoeffisient (CV) | 57.9 %                                  |
-| Interkvartilbredde (IQR)  | 2680.75                                  |
-| Merknad                   | 1981 er delår og dekker kun januar-juni |
+| Måltall                   | Verdi                                    |
+| :------------------------- | :--------------------------------------- |
+| Startdato                  | 1964-01                                  |
+| Sluttdato                  | 1981-06                                  |
+| Antall observasjoner       | 210                                      |
+| Antall manglende måneder  | 0                                        |
+| Min salg                   | 1413                                     |
+| Maks salg                  | 19164                                    |
+| Gjennomsnittlig salg       | 5958.3                                   |
+| Median salg                | 5162.5                                   |
+| Standardavvik              | 3450.4                                   |
+| Variasjonskoeffisient (CV) | 57.9 %                                   |
+| Interkvartilbredde (IQR)   | 2680.75                                  |
+| Merknad                    | 1981 er delår og dekker kun januar-juni |
 
 ---
 
-## 6 Modellering
+## 6 Modell
+
+I denne oppgaven brukes en sesongbasert autoregressiv integrert glidende gjennomsnittsmodell, forkortet SARIMA. Modellen er egnet for tidsserier der observasjonene er ordnet i tid og der serien kan inneholde både langsiktig utvikling og gjentakende sesongmønster. For PowerHorse-caset er dette relevant fordi salget observeres måned for måned og fordi den historiske serien viser tydelige variasjoner gjennom året. I dette kapittelet beskrives derfor modellklassen matematisk, mens valg av konkret spesifikasjon og estimering av parametere gjøres senere.
+
+La $y_t$ betegne observert salg i måned $t$, der $t = 1, 2, \dots, T$. Her er $T$ antall observerte måneder i datasettet. Videre brukes forsinkelsesoperatoren $B$, definert ved
+
+$$
+By_t = y_{t-1}.
+$$
+
+Forsinkelsesoperatoren gjør det mulig å skrive modellen kompakt ved å uttrykke dagens observasjon som en funksjon av tidligere observasjoner og tidligere tilfeldige sjokk.
+
+Den generelle modellen skrives som en SARIMA$(p,d,q)(P,D,Q)_{12}$-modell, der tallet $12$ angir at sesonglengden er tolv måneder. Modellen kan da skrives som
+
+$$
+\Phi(B^{12}) \, \phi(B) \, (1-B)^d (1-B^{12})^D y_t
+=
+\Theta(B^{12}) \, \theta(B) \, \varepsilon_t.
+$$
+
+I denne ligningen er $p$, $d$ og $q$ de ikke-sesongmessige modellordnene, mens $P$, $D$ og $Q$ er de sesongmessige modellordnene. Alle disse størrelsene er ukjente før modellvalget er gjennomført. De bestemmer hvor mange ledd modellen skal bruke for henholdsvis autoregressive effekter, differensiering og glidende gjennomsnitt, både på vanlig og sesongmessig nivå.
+
+De ikke-sesongmessige polynomene defineres som
+
+$$
+\phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \cdots - \phi_p B^p
+$$
+
+og
+
+$$
+\theta(B) = 1 + \theta_1 B + \theta_2 B^2 + \cdots + \theta_q B^q.
+$$
+
+De sesongmessige polynomene defineres tilsvarende som
+
+$$
+\Phi(B^{12}) = 1 - \Phi_1 B^{12} - \Phi_2 B^{24} - \cdots - \Phi_P B^{12P}
+$$
+
+og
+
+$$
+\Theta(B^{12}) = 1 + \Theta_1 B^{12} + \Theta_2 B^{24} + \cdots + \Theta_Q B^{12Q}.
+$$
+
+Koeffisientene $\phi_1, \dots, \phi_p$ er de ikke-sesongmessige autoregressive parameterne. De beskriver hvordan dagens salg henger sammen med salg i tidligere måneder. Koeffisientene $\Phi_1, \dots, \Phi_P$ er de sesongmessige autoregressive parameterne og beskriver hvordan dagens salg henger sammen med observasjoner én eller flere sesonger tilbake, det vil si 12, 24 eller flere måneder tilbake i tid.
+
+Koeffisientene $\theta_1, \dots, \theta_q$ er de ikke-sesongmessige glidende gjennomsnittsparameterne. De uttrykker hvordan nåværende observasjon påvirkes av tidligere tilfeldige sjokk i serien. Tilsvarende er $\Theta_1, \dots, \Theta_Q$ de sesongmessige glidende gjennomsnittsparameterne, og disse fanger opp hvordan sjokk fra tidligere sesonger påvirker dagens salg.
+
+Leddene $(1-B)^d$ og $(1-B^{12})^D$ brukes for å differensiere serien. Den ordinære differensieringen $(1-B)^d$ brukes for å fjerne trend eller annen ikke-stasjonær utvikling i nivået til serien. Den sesongmessige differensieringen $(1-B^{12})^D$ brukes for å fjerne systematiske mønstre som gjentar seg med tolv måneders mellomrom. Dersom $d=0$, brukes ingen ordinær differensiering, og dersom $D=0$, brukes ingen sesongmessig differensiering.
+
+For å skrive modellen mer intuitivt kan den differensierte serien defineres som
+
+$$
+w_t = (1-B)^d (1-B^{12})^D y_t.
+$$
+
+Da kan modellen skrives om til
+
+$$
+\Phi(B^{12}) \, \phi(B) \, w_t = \Theta(B^{12}) \, \theta(B) \, \varepsilon_t.
+$$
+
+Her er $w_t$ den transformerte serien etter at trend og sesong er håndtert gjennom differensiering. Serien $w_t$ er dermed den delen av dataserien som modelleres videre med autoregressive og glidende gjennomsnittsledd.
+
+Størrelsen $\varepsilon_t$ er modellens feilledd, også kalt innovasjonsledd eller tilfeldig sjokk i periode $t$. Dette leddet representerer den delen av salget modellen ikke kan forklare systematisk ut fra tidligere observasjoner og tidligere sjokk. I en velfungerende modell antas $\varepsilon_t$ å ha forventning lik null, konstant varians og ingen systematisk autokorrelasjon over tid.
+
+Med ord betyr dette at SARIMA-modellen forklarer månedlig salg ved å kombinere fire mekanismer. For det første kan modellen fjerne langsiktig utvikling gjennom ordinær differensiering. For det andre kan den fjerne gjentakende årlig sesong gjennom sesongdifferensiering. For det tredje kan den bruke tidligere observerte salgsnivåer til å forklare nåværende salg gjennom autoregressive ledd. For det fjerde kan den bruke tidligere tilfeldige avvik til å beskrive kortsiktige og sesongmessige justeringer gjennom glidende gjennomsnittsledd.
+
+De ukjente størrelsene i modellen er dermed modellordnene $p$, $d$, $q$, $P$, $D$ og $Q$, samt parameterne $\phi_i$, $\Phi_j$, $\theta_k$ og $\Theta_\ell$. I senere aktiviteter skal disse størrelsene bestemmes ved hjelp av analyse av tidsseriens egenskaper og estimering på treningsdata. I dette kapittelet er poenget kun å definere modellformen og å vise hvilke matematiske komponenter som inngår i prognosemodellen.
 
 ---
 

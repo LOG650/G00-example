@@ -11,6 +11,7 @@
 ## Rapportskriving
 
 - Skriv innhold fortløpende i rapporten underveis i prosjektet, ikke vent til alt analysearbeid er ferdig.
+- I `rapport.md` skal inline matematikk skrives med `$...$`, ikke `\(...\)`, siden prosjektets Markdown-visning støtter dollar-notasjon best.
 - Skill tydelig mellom:
   - `Casebeskrivelse`: beskriver bedriften, situasjonen og historiske fakta.
   - `Metode og data`: beskriver metodevalg, datagrunnlag, datakvalitet og datasplitt.

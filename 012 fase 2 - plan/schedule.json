@@ -291,8 +291,8 @@
                 "taskId": "3.2",
                 "wbsItemId": "WBS-1.3.2",
                 "name": "Velge og estimere modell",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "in-progress",
+                "percentComplete": 20,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -306,6 +306,7 @@
                 "plannedStart": "2026-03-11",
                 "plannedFinish": "2026-03-20",
                 "steps": [
+                    "Beskrive generell SARIMA-modell matematisk i rapportens kapittel 6",
                     "Teste for stasjonaritet",
                     "Velge differensiering",
                     "Analysere ACF og PACF",
@@ -333,7 +334,7 @@
                     "sessionId": null,
                     "startedAt": null,
                     "completedAt": null,
-                    "lastEvent": null
+                    "lastEvent": "Generell SARIMA-modell er dokumentert matematisk i rapportens kapittel 6."
                 }
             },
             {
