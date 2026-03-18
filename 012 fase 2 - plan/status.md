@@ -9,7 +9,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 - Prosjektet er operativt på plan i fase 3.
 - Aktivitet `3.1 Rense og strukturere data` er fullført per 2026-03-16.
 - Aktivitet `3.2 Velge og estimere modell` er faglig fullført per 2026-03-18, to dager før planlagt sluttdato 2026-03-20.
-- Neste aktivitet er `3.3 Validere modell`, planlagt 2026-03-20 til 2026-03-25.
+- Aktivitet `3.3 Validere modell` er delvis startet. Residualdiagnostikk er nå dokumentert i rapportens 7.4, mens testsettvalidering og samlet vurdering gjenstår.
 - `schedule.json` og `wbs.json` er oppdatert slik at aktivitet 3.1 og 3.2 nå står som fullført.
 
 ## Faktisk fremdrift per arbeidskopi
@@ -21,9 +21,102 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 | Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig | Fase 2 fullført |
 | Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
 | Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-18 | Fullført to dager før plan |
-| Validere modell | 2026-03-20 til 2026-03-25 | Ikke startet | Neste aktivitet |
+| Validere modell | 2026-03-20 til 2026-03-25 | Pågår/delvis startet | Residualdiagnostikk er nå dokumentert i 7.4. Testsettvalidering og egne 3.3-artefakter gjenstår |
 | Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ikke startet | Avhenger av 3.3 |
 | Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Ikke startet som egen aktivitet | Rapporten er delvis skrevet underveis |
+
+## Avhukingsliste for aktiviteter
+
+### Fullført
+
+#### Analysere case og databehov
+
+- [x] Gjennomgå casebeskrivelsen
+- [x] Avklare problemstilling i proposal
+- [x] Identifisere beslutningsbehov
+- [x] Avklare forventet datagrunnlag
+
+#### Utarbeide proposal
+
+- [x] Beskrive problem og bakgrunn
+- [x] Definere mål og avgrensninger
+- [x] Begrunne metodevalg på overordnet nivå
+- [x] Levere proposal til fasegodkjenning
+
+#### Etablere planbaseline
+
+- [x] Etablere prosjektplan
+- [x] Ferdigstille fremdriftsplan
+- [x] Ferdigstille WBS
+- [x] Etablere baseline for krav, risiko og milepæler
+
+#### Rense og strukturere data
+
+- [x] Kontrollere observasjoner per måned
+- [x] Strukturere tidsserien
+- [x] Splitte datasettet i trenings- og testdata
+- [x] Lage grunnleggende visualiseringer
+- [x] Dokumentere datakvalitet
+- [x] Bekrefte at dataserien er komplett og riktig indeksert
+- [x] Sette inn tekst og figurer på rett plass i `rapport.md`
+- [x] Lukke aktiviteten før modellarbeidet starter
+
+#### Velge og estimere modell
+
+- [x] Beskrive generell SARIMA-modell matematisk i rapportens kapittel 6
+- [x] Vurdere aktuell modelltype for trend og sesong
+- [x] Rydde modellkapitlet slik at kapittel 6 ikke repeterer figurer og tabeller fra kapittel 4
+- [x] Velge log-transformasjon som hovedspor for stasjonaritetsvurdering
+- [x] Teste for stasjonaritet og velge differensiering
+- [x] Analysere ACF og PACF
+- [x] Velge SARIMA-spesifikasjon
+- [x] Estimere modellparametere
+- [x] Dokumentere modellvalg og begrunnelse
+
+### Pågår
+
+#### Validere modell
+
+- [x] Bygge videre på residualdiagnostikk og rydde den inn i rapportens kapittel 7.4
+- [ ] Kjøre eventuelle supplerende diagnostiske tester for residualene
+- [ ] Generere prognoser mot testdatasettet for perioden 1978-01 til 1981-06
+- [ ] Beregne MAE, RMSE og MAPE
+- [x] Dokumentere kapittel 7.4 Validering
+- [ ] Dokumentere kapittel 8.1 Resultater fra testsettvalidering
+- [ ] Forberede grunnlag for diskusjon av modellens egnethet i kapittel 9
+
+### Neste aktiviteter
+
+#### Lage prognose og anbefalinger
+
+- [ ] Lage 12-måneders prognose
+- [ ] Tolke prognoseresultater
+- [ ] Vurdere konsekvenser for produksjon og lager
+- [ ] Formulere anbefalinger til PowerHorse-caset
+
+#### Skrive rapportutkast
+
+- [ ] Fylle inn problemstilling, avgrensinger og antagelser i kapittel 1
+- [ ] Skrive kapittel 2 Litteratur
+- [ ] Skrive kapittel 3 Teori
+- [ ] Fylle kapittel 8 Resultat med komprimerte sluttresultater
+- [ ] Skrive kapittel 9 Diskusjon
+- [ ] Skrive kapittel 10 Konklusjon
+- [ ] Samle figurer, tabeller og referanser i et komplett utkast
+
+#### Gjennomføre peer review og revisjon
+
+- [ ] Innhente tilbakemeldinger fra peer review
+- [ ] Oppsummere funn og forbedringspunkter
+- [ ] Revidere analyse, tekst og presentasjon av resultater
+- [ ] Lukke avvik før sluttføring
+
+#### Ferdigstille rapport og presentasjon
+
+- [ ] Ferdigstille endelig rapport
+- [ ] Kvalitetssikre språk, sporbarhet og konsistens
+- [ ] Ferdigstille presentasjonsmateriell
+- [ ] Klargjøre endelig innlevering og presentasjon
 
 ## Analyseartefakter
 
@@ -31,7 +124,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 | --- | ---: | ---: | ---: | --- |
 | 3.1 Rense og strukturere data | 1 | 4 | 4 | Fullført med dokumenterte artefakter og reviewspor |
 | 3.2 Velge og estimere modell | 4 | 3 | 10 | Faglig fullført i arbeidskopien |
-| 3.3 Validere modell | 0 | 0 | 0 | Kun mappestruktur og README |
+| 3.3 Validere modell | 0 | 0 | 0 | Ingen egne 3.3-filer ennå, men delgrunnlag finnes allerede i residualdiagnostikken som nå skal ryddes inn i 7.4 |
 | 3.4 Lage prognose og anbefalinger | 0 | 0 | 0 | Kun mappestruktur og README |
 
 ## Rapportstatus
@@ -44,9 +137,9 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 | 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
 | 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert |
 | 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |
-| 7 Analyse | Ferdig så langt | 7.1-7.3 dekker stasjonaritet, ordensvalg og estimering |
-| 8 Resultat | Tom | Venter på validering og prognose |
-| 9 Diskusjon | Tom | Ikke skrevet |
+| 7 Analyse | Pågår videre | 7.1-7.3 er skrevet, og 7.4 Validering dokumenterer residualdiagnostikk og modellforutsetninger |
+| 8 Resultat | Delvis strukturert | 8.1 skal dekke testsettvalidering, og 8.2 skal dekke endelig prognosearbeid |
+| 9 Diskusjon | Tom | Skal romme vurdering av modellens egnethet, begrensninger og praktiske implikasjoner |
 | 10 Konklusjon | Tom | Ikke skrevet |
 | 11 Bibliografi | Tom | Ikke skrevet |
 | 12 Vedlegg | Tom | Ikke skrevet |
@@ -67,13 +160,14 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 
 1. MS-004 står fortsatt med baseline-dato 2026-03-11 i planfilene, mens arbeidskopien viser faktisk oppnåelse 2026-03-16.
 2. Aktivitet 3.2 er faglig ferdig, men ikke fullt administrativt lukket med eget reviewspor tilsvarende aktivitet 3.1.
+3. Aktivitet 3.3 er startet faglig, men mangler fortsatt egne artefakter i aktivitetsmappen.
 
 ## Viktigste risikoer
 
-1. Residualavvik i modellestimeringen må håndteres i aktivitet 3.3. Diagnostikken viser avvik fra normalfordeling og tegn til heteroskedastisitet.
+1. Residualavvik i modellestimeringen må håndteres ferdig i aktivitet 3.3. Diagnostikken viser avvik fra normalfordeling og tegn til heteroskedastisitet.
 2. Rapporten har et dokumentasjonsgap: problemstilling, avgrensinger, antagelser, litteratur, teori og sluttkapitler er ikke ferdigstilt.
 3. Aktivitet 3.2 mangler fortsatt eget reviewspor, noe som svekker den administrative sporbarheten sammenlignet med aktivitet 3.1.
 
 ## Vurdering
 
-Prosjektet er operativt på plan per 2026-03-18. Forsinkelsen i aktivitet 3.1 er hentet inn, og aktivitet 3.2 er ferdigstilt før planlagt sluttdato. Planfilene er nå oppdatert til å reflektere dette. Den viktigste åpne utfordringen er sporbarhet rundt review og videre validering. Neste kritiske aktivitet er modellvalidering fra 2026-03-20.
+Prosjektet er operativt på plan per 2026-03-18. Forsinkelsen i aktivitet 3.1 er hentet inn, og aktivitet 3.2 er ferdigstilt før planlagt sluttdato. Aktivitet 3.3 er nå formelt satt i gang, og residualdiagnostikken er dokumentert i kapittel 7.4. Hovedarbeidet som gjenstår er testsettvalidering, egne 3.3-artefakter og den samlede vurderingen av modellens egnethet.

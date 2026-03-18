@@ -62,7 +62,7 @@ Sammenlignet med alternativene gir en avgrenset SARIMA-basert tilnaerming best b
 
 ## Omfang
 
-Prosjektet omfatter analyse av historiske manedlige salgsdata, datarensing, visualisering, valg og estimering av SARIMA-modell, modellvalidering, 12-maneders prognose og tolkning for logistiske beslutninger. Videre omfatter prosjektet alle styringsleveranser som kreves av emnet, inkludert proposal, prosjektplan, rapportutkast, peer review, presentasjon og endelig rapport.
+Prosjektet omfatter analyse av historiske manedlige salgsdata, datarensing, visualisering, valg og estimering av SARIMA-modell, modellvalidering og testsettvalidering, 12-maneders prognose og tolkning for logistiske beslutninger. Videre omfatter prosjektet alle styringsleveranser som kreves av emnet, inkludert proposal, prosjektplan, rapportutkast, peer review, presentasjon og endelig rapport.
 
 Prosjektet omfatter ikke optimalisering av hele forsyningskjeden, kausale forklaringsvariabler som pris og markedsforing, eller implementering av losningen i et operativt system.
 
@@ -90,7 +90,7 @@ Prosjektets viktigste begrensninger er:
 | REQ-001 | Funksjonelt | Levere en 12-maneders prognose for traktorsalg | Analyseansvarlig | Prognosekapittel | Analyse |
 | REQ-002 | Funksjonelt | Bruke historiske manedlige salgsdata som grunnlag | Dataansvarlig | Datagrunnlag | Review |
 | REQ-003 | Funksjonelt | Velge en metode som handterer trend og sesong | Analyseansvarlig | Modellkapittel | Review |
-| REQ-004 | Funksjonelt | Dokumentere modellvalidering | Analyseansvarlig | Resultatkapittel | Analyse |
+| REQ-004 | Funksjonelt | Dokumentere modellvalidering | Analyseansvarlig | Kapittel 7, 8 og 9 | Analyse |
 | REQ-005 | Funksjonelt | Oversette resultatene til logistiske anbefalinger | Prosjektgruppen | Diskusjon | Review |
 | REQ-006 | Ikke-funksjonelt | Skrive alle leveranser pa norsk og holde sporbarhet mot proposal | Prosjektleder | Alle dokumenter | Review |
 | REQ-007 | Ikke-funksjonelt | Levere i trad med kursfaser og milepaeler | Prosjektleder | Fremdriftsplan | Milepael |
@@ -100,7 +100,7 @@ Detaljert kravliste finnes i [requirements.json](/D:/LOG650/G00-example/012%20fa
 
 ## Løsning
 
-Losningen som skal utvikles er en tidsseriebasert analysepipeline der historiske manedlige salgstall for traktorer struktureres, deles i trenings- og testdata, analyseres og modelleres med en SARIMA-tilnaerming. Løsningen skal bestå av et dokumentert datagrunnlag, visualisering av trend og sesong, en begrunnet modellspesifikasjon, modellvalidering, prognose for neste 12 maneder og tolkning av prognosene for produksjon og lager.
+Losningen som skal utvikles er en tidsseriebasert analysepipeline der historiske manedlige salgstall for traktorer struktureres, deles i trenings- og testdata, analyseres og modelleres med en SARIMA-tilnaerming. Løsningen skal bestå av et dokumentert datagrunnlag, visualisering av trend og sesong, en begrunnet modellspesifikasjon, in-sample residualdiagnostikk, out-of-sample validering pa testsett, prognose for neste 12 maneder og tolkning av prognosene for produksjon og lager.
 
 ## Arbeidsnedbrytningsstruktur
 
@@ -115,7 +115,7 @@ Viktige arbeidspakker i fase 3 er datainnsamling og forbehandling, modellvalg og
 
 ## Omfangsverifikasjon
 
-Alle delleveranser skal verifiseres internt i gruppen før de brukes videre i prosjektet. Datagrunnlag skal kontrolleres før modellering. Modellvalg og tolkning skal gjennom en faglig gjennomlesning. Rapportutkast skal gjennom intern kvalitetssikring før peer review. Peer review brukes som ekstern faglig verifikasjon før sluttrevisjon.
+Alle delleveranser skal verifiseres internt i gruppen før de brukes videre i prosjektet. Datagrunnlag skal kontrolleres før modellering. Modellvalg og tolkning skal gjennom en faglig gjennomlesning. Residualdiagnostikk skal dokumenteres i analysekapitlet, mens testsettresultater og feilmål skal presenteres i resultatkapitlet uten å gjenta metodeforklaringen. Den samlede vurderingen av modellens egnethet skal løftes til diskusjonskapitlet. Rapportutkast skal gjennom intern kvalitetssikring før peer review. Peer review brukes som ekstern faglig verifikasjon før sluttrevisjon.
 
 ## Fremdrift
 
@@ -269,6 +269,12 @@ Kvalitetsstyringen bygger pa fire prinsipper:
 - analyse, tekst og figurer ma vaere konsistente
 - alle viktige leveranser skal gjennomleses av minst en annen i gruppen
 - resultatene ma vaere egnet for formalet, ikke bare teknisk korrekte
+
+For rapportstrukturen gjelder folgende arbeidsdeling:
+
+- Kapittel 7 brukes til analyse, valideringsfunn og tekniske vurderinger.
+- Kapittel 8 brukes til komprimerte sluttresultater og nokkeltall.
+- Kapittel 9 brukes til faglig vurdering av modellens egnethet, begrensninger og praktiske implikasjoner.
 
 ### Fagfellevurderinger
 

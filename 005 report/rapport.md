@@ -405,18 +405,32 @@ Tabell 7.3 viser de estimerte parameterne med tilhørende standardfeil, z-verdie
 
 Begge MA-parameterne er sterkt signifikante med p-verdier under 0.001. Den ikke-sesongmessige glidende gjennomsnittsparameteren $\theta_1 = -0.82$ indikerer at modellen bruker en stor andel av forrige måneds prognosefeil til å korrigere neste periodes prognose. Den sesongmessige glidende gjennomsnittsparameteren $\Theta_1 = -0.60$ viser at modellen også korrigerer basert på prognosefeil fra samme måned ett år tilbake. Den estimerte feilvariansen $\sigma^2 = 0.0146$ gjelder på log-skala.
 
-Figur 7.3 viser residualdiagnostikk for den estimerte modellen.
+### 7.4 Validering
+
+I dette delavsnittet vurderes om den estimerte modellen oppfyller sentrale modellforutsetninger godt nok til å kunne brukes videre i prognosearbeidet. Hensikten er å undersøke residualene for tegn til gjenværende autokorrelasjon, avvik fra normalitet og ustabil varians, slik at modellens styrker og svakheter blir tydelige før testsettresultatene presenteres i kapittel 8.
+
+Figur 7.4 viser residualdiagnostikk for den estimerte modellen.
 
 <div align="center">
-  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_03_diagnostikk.png" alt="Figur 7.3 Residualdiagnostikk for SARIMA(0,1,1)(0,1,1)₁₂" width="80%">
-  <p align="center"><small><i>Figur 7.3 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_03_diagnostikk.png" alt="Figur 7.4 Residualdiagnostikk for SARIMA(0,1,1)(0,1,1)₁₂" width="80%">
+  <p align="center"><small><i>Figur 7.4 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 </div>
 
-Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Disse avvikene er verdt å undersøke nærmere, og tas opp i en egen valideringsaktivitet senere i dette kapittelet. Samlet sett gir estimeringen en modell med signifikante parametere og akseptable korrelasjonsegenskaper i residualene, som kan brukes videre til prognosearbeid.
+Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Residualdiagnostikken gir dermed et teknisk bilde av hvilke modellforutsetninger som ser rimelige ut, og hvilke svakheter som må tas med videre i vurderingen av modellen.
+
+Samlet sett viser analysekapitlet at modellen er estimert med signifikante parametere, men også at residualene har svakheter som må vurderes opp mot modellens praktiske bruk. I neste kapittel presenteres derfor hvordan modellen presterer mot testdatasettet, før egnethet og begrensninger diskuteres samlet senere.
 
 ---
 
 ## 8 Resultat
+
+### 8.1 Resultater fra testsettvalidering
+
+Dette delkapitlet skal presentere hvordan modellen presterer mot testdatasettet, inkludert sammenligning mellom observerte og predikerte verdier og feilmål som MAE, RMSE og MAPE.
+
+### 8.2 Resultater fra prognosearbeidet
+
+Dette delkapitlet skal presentere den endelige prognosen fra aktivitet 3.4 med tilhørende nøkkeltall og figurer.
 
 ---
 

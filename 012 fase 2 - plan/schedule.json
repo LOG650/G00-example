@@ -18,7 +18,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-18T13:20:00Z",
+            "updatedAt": "2026-03-18T14:35:00Z",
             "updatedBy": "codex"
         },
         "calendars": [
@@ -301,7 +301,7 @@
                         "lagDays": 0
                     }
                 ],
-                "milestoneId": null,
+                "milestoneId": "MS-004",
                 "description": "Gjennomfore stasjonaritetsvurdering, differensiering og estimering av valgt SARIMA-spesifikasjon.",
                 "plannedStart": "2026-03-11",
                 "plannedFinish": "2026-03-20",
@@ -345,8 +345,8 @@
                 "taskId": "3.3",
                 "wbsItemId": "WBS-1.3.3",
                 "name": "Validere modell",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "in-progress",
+                "percentComplete": 25,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -355,27 +355,30 @@
                         "lagDays": 0
                     }
                 ],
-                "milestoneId": "MS-004",
-                "description": "Gjennomfore residualdiagnostikk og vurdere om modellen er tilstrekkelig for prognoseformalet.",
+                "milestoneId": null,
+                "description": "Fullfore modellvalidering ved a bygge videre pa residualdiagnostikk fra 3.2, validere modellen mot testsettet og dokumentere grunnlaget for diskusjon av modellens egnethet.",
                 "plannedStart": "2026-03-20",
                 "plannedFinish": "2026-03-25",
                 "steps": [
-                    "Analysere residualer",
-                    "Kjore diagnostiske tester",
-                    "Vurdere prognosefeil",
-                    "Dokumentere svakheter og forbedringsmuligheter"
+                    "Bygge videre pa residualdiagnostikk og rydde den inn i rapportens kapittel 7.4",
+                    "Kjore eventuelle supplerende diagnostiske tester for residualene",
+                    "Generere prognoser mot testdatasettet for perioden 1978-01 til 1981-06",
+                    "Beregne MAE, RMSE og MAPE",
+                    "Dokumentere kapittel 7.4 Validering",
+                    "Dokumentere kapittel 8.1 Resultater fra testsettvalidering",
+                    "Forberede grunnlag for diskusjon av modellens egnethet i kapittel 9"
                 ],
                 "criteria": [
                     {
                         "criteriaId": "ACT-3.3-C01",
-                        "description": "Residualdiagnostikk er gjennomfort",
+                        "description": "Residualdiagnostikk er dokumentert i kapittel 7.4 og testsettvalidering er dokumentert i kapittel 8.1",
                         "status": "not-passed",
                         "result": "",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.3-C02",
-                        "description": "Modellens egnethet er vurdert faglig",
+                        "description": "Valideringsfunnene kan oppsummeres i kapittel 8 og brukes som grunnlag for egnethetsdiskusjon i kapittel 9",
                         "status": "not-passed",
                         "result": "",
                         "error": ""
@@ -385,9 +388,9 @@
                     "runBy": "studentgruppe",
                     "permissionMode": "samarbeid",
                     "sessionId": null,
-                    "startedAt": null,
+                    "startedAt": "2026-03-18T00:00:00Z",
                     "completedAt": null,
-                    "lastEvent": null
+                    "lastEvent": "Residualdiagnostikk er dokumentert i rapportens kapittel 7.4. Testsettvalidering og samlet vurdering gjenstar."
                 }
             },
             {

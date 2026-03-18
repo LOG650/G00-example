@@ -16,7 +16,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-09T11:59:00Z",
+            "updatedAt": "2026-03-18T14:35:00Z",
             "updatedBy": "codex"
         },
         "stakeholderNeeds": [
@@ -96,7 +96,7 @@
                 "type": "functional",
                 "category": "validering",
                 "name": "Modellen skal valideres",
-                "statement": "Prosjektet skal dokumentere modellvalidering gjennom residualanalyse og minst ett mal pa prognosekvalitet.",
+                "statement": "Prosjektet skal dokumentere modellvalidering gjennom residualanalyse og testsettbasert prognosekvalitet med minst ett feilmål.",
                 "priority": "must-have",
                 "status": "approved",
                 "source": "SN-001",
@@ -106,7 +106,7 @@
                 ],
                 "verification": {
                     "method": "analyse",
-                    "criteria": "Rapporten inneholder diagnostikk, vurdering av modellens svakheter og begrunnelse for om modellen er tilstrekkelig."
+                    "criteria": "Rapporten inneholder residualdiagnostikk i analysekapitlet, testsettvalidering og feilmål i resultatkapitlet og en faglig vurdering av modellens egnethet i diskusjonskapitlet."
                 }
             },
             {

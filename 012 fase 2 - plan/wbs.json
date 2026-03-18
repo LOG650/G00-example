@@ -16,7 +16,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-18T13:20:00Z",
+            "updatedAt": "2026-03-18T14:35:00Z",
             "updatedBy": "codex"
         },
         "codingScheme": "numeric",
@@ -211,12 +211,12 @@
                 "parentId": "WBS-1.3",
                 "name": "Modellvalidering",
                 "type": "work-package",
-                "description": "Gjennomfore diagnostikk, residualanalyse og vurdering av prognosekvalitet.",
+                "description": "Bygge videre pa residualdiagnostikk fra aktivitet 3.2, gjennomfore testsettvalidering og oppsummere valideringsfunn som grunnlag for diskusjon av modellens egnethet.",
                 "owner": "Analyseansvarlig",
-                "status": "not-started",
+                "status": "in-progress",
                 "audit": {
                     "createdAt": "2026-02-13T12:15:00Z",
-                    "updatedAt": "2026-03-09T11:59:00Z"
+                    "updatedAt": "2026-03-18T14:35:00Z"
                 },
                 "activityIds": [
                     "ACT-3.3"
