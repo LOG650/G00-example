@@ -1,165 +1,79 @@
 # Status for PowerHorse-prosjektet
 
-Statusdato: 2026-03-16
+Statusdato: 2026-03-18
 
-Denne statusen er basert på planbaseline og aktivitetsstatus i `project-plan.md`, `schedule.json` og `wbs.json`.
+Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `project-plan.md`, `schedule.json` og `wbs.json` som referanse for avvik.
 
 ## Kort status
 
-- Prosjektet er i fase 3 - gjennomføring.
-- Fase 1 og fase 2 er ferdigstilt som planlagt.
-- Aktiviteten `Rense og strukturere data` er fullført per 2026-03-16.
-- Aktiviteten ble ferdigstilt fem dager etter opprinnelig planlagt sluttdato (2026-03-11). Forsinkelsen er tatt igjen ved at artefakter, rapporttekst og review er ferdigstilt samlet.
-- Aktiviteten `Velge og estimere modell` er påbegynt, og arbeidspakken `Vurdere aktuell modelltype for trend og sesong` er fullført per 2026-03-16.
-- Aktiviteten `Velge og estimere modell` pågår på kritisk linje. Neste aktivitet etter denne er `Validere modell`.
+- Prosjektet er operativt på plan i fase 3.
+- Aktivitet `3.1 Rense og strukturere data` er fullført per 2026-03-16.
+- Aktivitet `3.2 Velge og estimere modell` er faglig fullført per 2026-03-18, to dager før planlagt sluttdato 2026-03-20.
+- Neste aktivitet er `3.3 Validere modell`, planlagt 2026-03-20 til 2026-03-25.
+- `schedule.json` og `wbs.json` er oppdatert slik at aktivitet 3.1 og 3.2 nå står som fullført.
 
-## Gjennomført
+## Faktisk fremdrift per arbeidskopi
 
-| Aktivitet                   | Periode                   | Status |
-| --------------------------- | ------------------------- | ------ |
-| Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig |
-| Utarbeide proposal          | 2026-01-16 til 2026-01-21 | Ferdig |
-| Etablere planbaseline       | 2026-02-11 til 2026-02-13 | Ferdig |
-| Rense og strukturere data   | 2026-03-09 til 2026-03-16 | Ferdig |
+| Aktivitet | Planlagt periode | Faktisk status | Kommentar |
+| --- | --- | --- | --- |
+| Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig | Fase 1 fullført |
+| Utarbeide proposal | 2026-01-16 til 2026-01-21 | Ferdig | Fase 1 fullført |
+| Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig | Fase 2 fullført |
+| Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
+| Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-18 | Fullført to dager før plan |
+| Validere modell | 2026-03-20 til 2026-03-25 | Ikke startet | Neste aktivitet |
+| Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ikke startet | Avhenger av 3.3 |
+| Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Ikke startet som egen aktivitet | Rapporten er delvis skrevet underveis |
 
-## Pågående
+## Analyseartefakter
 
-| Aktivitet                | Status | Kommentar |
-| ------------------------ | ------ | --------- |
-| Velge og estimere modell | Pågår  | Generell SARIMA-beskrivelse og vurdering av modelltype er dokumentert. |
+| Aktivitet | Skript | Figurer | Resultatfiler | Vurdering |
+| --- | ---: | ---: | ---: | --- |
+| 3.1 Rense og strukturere data | 1 | 4 | 4 | Fullført med dokumenterte artefakter og reviewspor |
+| 3.2 Velge og estimere modell | 4 | 3 | 10 | Faglig fullført i arbeidskopien |
+| 3.3 Validere modell | 0 | 0 | 0 | Kun mappestruktur og README |
+| 3.4 Lage prognose og anbefalinger | 0 | 0 | 0 | Kun mappestruktur og README |
 
-## Neste aktiviteter
+## Rapportstatus
 
-| Prioritet | Aktivitet                            | Planlagt periode          | Avhengighet            |
-| --------- | ------------------------------------ | ------------------------- | ---------------------- |
-| 1         | Validere modell                      | 2026-03-20 til 2026-03-25 | Etter modellvalg       |
-| 2         | Lage prognose og anbefalinger        | 2026-03-25 til 2026-04-10 | Etter modellvalidering |
-| 3         | Skrive rapportutkast                 | 2026-04-10 til 2026-04-27 | Etter prognosearbeid   |
-| 4         | Gjennomføre peer review og revisjon | 2026-04-27 til 2026-04-29 | Etter rapportutkast    |
-| 5         | Ferdigstille rapport og presentasjon | 2026-04-30 til 2026-05-15 | Etter peer review      |
+| Kapittel | Status | Kommentar |
+| --- | --- | --- |
+| 1 Innledning | Delvis | Innledning er skrevet, men 1.1, 1.3 og 1.4 er fortsatt tomme |
+| 2 Litteratur | Tom | Ikke skrevet |
+| 3 Teori | Tom | Ikke skrevet |
+| 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
+| 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert |
+| 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |
+| 7 Analyse | Ferdig så langt | 7.1-7.3 dekker stasjonaritet, ordensvalg og estimering |
+| 8 Resultat | Tom | Venter på validering og prognose |
+| 9 Diskusjon | Tom | Ikke skrevet |
+| 10 Konklusjon | Tom | Ikke skrevet |
+| 11 Bibliografi | Tom | Ikke skrevet |
+| 12 Vedlegg | Tom | Ikke skrevet |
 
 ## Milepæler
 
-| Milepæl                            | Dato       | Status              |
-| ----------------------------------- | ---------- | ------------------- |
-| Case og problemstilling avklart     | 2026-01-12 | Oppnådd            |
-| Godkjent proposal                   | 2026-01-21 | Oppnådd            |
-| Godkjent plan                       | 2026-02-13 | Oppnådd            |
-| Første analyseutkast               | 2026-03-16 | Oppnådd (5 dager forsinket) |
-| Hovedutkast klart for review        | 2026-04-27 | Planlagt            |
-| Peer review gjennomført            | 2026-04-29 | Planlagt            |
-| Endelig innlevering og presentasjon | 2026-05-15 | Planlagt            |
+| Milepæl | Baseline | Arbeidskopi-status | Vurdering |
+| --- | --- | --- | --- |
+| MS-001 Case og problemstilling avklart | 2026-01-12 | Oppnådd | Problemstillingen finnes i proposalen, men ikke i rapportens seksjon 1.1 |
+| MS-002 Godkjent proposal | 2026-01-21 | Oppnådd | Ingen avvik |
+| MS-003 Godkjent plan | 2026-02-13 | Oppnådd | Ingen avvik |
+| MS-004 Første analyseutkast | 2026-03-11 | Oppnådd 2026-03-16 | Fem dager forsinket mot baseline |
+| MS-005 Hovedutkast klart for review | 2026-04-27 | Planlagt | Ingen endring |
+| MS-006 Peer review gjennomført | 2026-04-29 | Planlagt | Ingen endring |
+| MS-007 Endelig innlevering og presentasjon | 2026-05-15 | Planlagt | Ingen endring |
 
-## Gantt-status
+## Avvik mellom arbeidskopi og styringsgrunnlag
 
-```mermaid
-gantt
-    title PowerHorse-prosjektet - status per 2026-03-16
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d.%m
+1. MS-004 står fortsatt med baseline-dato 2026-03-11 i planfilene, mens arbeidskopien viser faktisk oppnåelse 2026-03-16.
+2. Aktivitet 3.2 er faglig ferdig, men ikke fullt administrativt lukket med eget reviewspor tilsvarende aktivitet 3.1.
 
-    section Ferdig
-    Analysere case og databehov :done, a1, 2026-01-12, 2026-01-16
-    Utarbeide proposal :done, a2, 2026-01-16, 2026-01-21
-    Etablere planbaseline :done, a3, 2026-02-11, 2026-02-13
+## Viktigste risikoer
 
-    section Pågår
-    Velge og estimere modell :active, crit, a5, 2026-03-11, 2026-03-20
-
-    section Neste
-    Validere modell :crit, a6, 2026-03-20, 2026-03-25
-    Lage prognose og anbefalinger :crit, a7, 2026-03-25, 2026-04-10
-    Skrive rapportutkast :crit, a8, 2026-04-10, 2026-04-27
-    Gjennomføre peer review og revisjon :crit, a9, 2026-04-27, 2026-04-29
-    Ferdigstille rapport og presentasjon :crit, a10, 2026-04-30, 2026-05-15
-```
-
-## Sjekkliste for aktiviteter
-
-### FullfÃ¸rt
-
-#### Analysere case og databehov
-
-- [X] GjennomgÃ¥ casebeskrivelsen
-- [X] Avklare problemstilling
-- [X] Identifisere beslutningsbehov
-- [X] Avklare forventet datagrunnlag
-
-#### Utarbeide proposal
-
-- [X] Beskrive problem og bakgrunn
-- [X] Definere mÃ¥l og avgrensning
-- [X] Begrunne metodevalg pÃ¥ overordnet nivÃ¥
-- [X] Levere proposal til fasegodkjenning
-
-#### Etablere planbaseline
-
-- [X] Etablere prosjektplan
-- [X] Ferdigstille fremdriftsplan
-- [X] Ferdigstille WBS
-- [X] Etablere baseline for krav, risiko og milepÃ¦ler
-
-#### Rense og strukturere data
-
-- [X] Kontrollere observasjoner per måned
-- [X] Strukturere tidsserien
-- [X] Splitte datasettet i trenings- og testdata
-- [X] Lage grunnleggende visualiseringer
-- [X] Dokumentere datakvalitet
-- [X] Bekrefte at dataserien er komplett og riktig indeksert
-- [X] Sette inn tekst og figurer på rett plass i `005 report/rapport.md`
-- [X] Lukke aktiviteten før modellarbeidet starter
-
-Datakvalitet er dokumentert med en arbeidsantagelse om at datasettet allerede er kvalitetssjekket av de som leverte det, siden prosjektet ikke har egne kilder for uavhengig verifikasjon av datakvaliteten.
-
-### Neste aktiviteter
-
-#### Velge og estimere modell
-
-- [X] Beskrive generell SARIMA-modell matematisk i kapittel 6 i `005 report/rapport.md`, inkludert definisjon av variabler, parametere og ukjente størrelser
-- [X] Vurdere aktuell modelltype for trend og sesong
-- [X] Rydde kapittel 6 slik at modelltypevurderingen henviser til kapittel 4 og 5 uten å repetere figurer og tabeller
-- [X] Velge log-transformasjon som hovedspor for vurdering av stasjonaritet og differensiering
-- [X] Teste for stasjonaritet og vurdere behovet for differensiering før videre SARIMA-spesifikasjon
-- [ ] Velge SARIMA-spesifikasjon
-- [ ] Estimere modellparametere
-- [ ] Dokumentere modellvalg og begrunnelse
-
-#### Validere modell
-
-- [ ] Kontrollere residualer og modellforutsetninger
-- [ ] Vurdere prognoseegenskaper mot historiske data
-- [ ] Dokumentere styrker, svakheter og usikkerhet
-- [ ] Bekrefte at modellen er egnet for prognoseformÃ¥let
-
-#### Lage prognose og anbefalinger
-
-- [ ] Lage 12-måneders prognose
-- [ ] Tolke prognoseresultater
-- [ ] Vurdere konsekvenser for produksjon og lager
-- [ ] Formulere anbefalinger til PowerHorse-caset
-
-#### Skrive rapportutkast
-
-- [ ] Strukturere rapporten
-- [ ] Skrive metodekapittel
-- [ ] Skrive resultat- og diskusjonskapittel
-- [ ] Samle figurer, tabeller og referanser i et komplett utkast
-
-#### GjennomfÃ¸re peer review og revisjon
-
-- [ ] Innhente tilbakemeldinger fra peer review
-- [ ] Oppsummere funn og forbedringspunkter
-- [ ] Revidere analyse, tekst og presentasjon av resultater
-- [ ] Lukke avvik fÃ¸r sluttfÃ¸ring
-
-#### Ferdigstille rapport og presentasjon
-
-- [ ] Ferdigstille endelig rapport
-- [ ] Kvalitetssikre sprÃ¥k, sporbarhet og konsistens
-- [ ] Ferdigstille presentasjonsmateriell
-- [ ] KlargjÃ¸re endelig innlevering og presentasjon
+1. Residualavvik i modellestimeringen må håndteres i aktivitet 3.3. Diagnostikken viser avvik fra normalfordeling og tegn til heteroskedastisitet.
+2. Rapporten har et dokumentasjonsgap: problemstilling, avgrensinger, antagelser, litteratur, teori og sluttkapitler er ikke ferdigstilt.
+3. Aktivitet 3.2 mangler fortsatt eget reviewspor, noe som svekker den administrative sporbarheten sammenlignet med aktivitet 3.1.
 
 ## Vurdering
 
-Prosjektet har fullført initiering, planlegging og datarensing. Aktivitet 3.1 ble lukket 2026-03-16, fem dager etter opprinnelig plan. Forsinkelsen er håndterbar da den ikke har påvirket andre aktiviteter ennå. Det viktigste nå er å starte modellvalg og estimering raskt for å hente inn tid på den kritiske linjen.
+Prosjektet er operativt på plan per 2026-03-18. Forsinkelsen i aktivitet 3.1 er hentet inn, og aktivitet 3.2 er ferdigstilt før planlagt sluttdato. Planfilene er nå oppdatert til å reflektere dette. Den viktigste åpne utfordringen er sporbarhet rundt review og videre validering. Neste kritiske aktivitet er modellvalidering fra 2026-03-20.

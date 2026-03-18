@@ -323,20 +323,26 @@ Størrelsen $\varepsilon_t$ er modellens feilledd, også kalt innovasjonsledd el
 
 Med ord betyr dette at SARIMA-modellen forklarer månedlig salg ved å kombinere fire mekanismer. For det første kan modellen fjerne langsiktig utvikling gjennom ordinær differensiering. For det andre kan den fjerne gjentakende årlig sesong gjennom sesongdifferensiering. For det tredje kan den bruke tidligere observerte salgsnivåer til å forklare nåværende salg gjennom autoregressive ledd. For det fjerde kan den bruke tidligere tilfeldige avvik til å beskrive kortsiktige og sesongmessige justeringer gjennom glidende gjennomsnittsledd.
 
-De ukjente størrelsene i modellen er dermed modellordnene $p$, $d$, $q$, $P$, $D$ og $Q$, samt parameterne $\phi_i$, $\Phi_j$, $\theta_k$ og $\Theta_\ell$. I senere aktiviteter skal disse størrelsene bestemmes ved hjelp av analyse av tidsseriens egenskaper og estimering på treningsdata. I dette kapittelet er poenget kun å definere modellformen og å vise hvilke matematiske komponenter som inngår i prognosemodellen.
+De ukjente størrelsene i modellen er dermed modellordnene $p$, $d$, $q$, $P$, $D$ og $Q$, samt parameterne $\phi_i$, $\Phi_j$, $\theta_k$ og $\Theta_\ell$. I kapittel 7 skal disse størrelsene bestemmes ved hjelp av analyse av tidsseriens egenskaper og estimering på treningsdata. I dette kapittelet er poenget kun å definere modellformen og å vise hvilke matematiske komponenter som inngår i prognosemodellen.
 
-### 6.4 Stasjonaritet og behov for differensiering
+---
+
+## 7 Analyse
+
+I dette kapittelet gjennomføres den konkrete analysen der SARIMA-modellen fra kapittel 6 spesifiseres og estimeres på treningsdata. Arbeidet følger tre steg: først vurderes stasjonaritet og differensieringsbehov, deretter brukes ACF/PACF-analyse til å bestemme modellordner, og til slutt estimeres parameterne og residualene vurderes.
+
+### 7.1 Stasjonaritet og behov for differensiering
 
 Før en SARIMA-modell kan spesifiseres videre, må det vurderes om serien er tilstrekkelig stasjonær, eller om den må differensieres. Grunnen er at modellen forutsetter at serien etter eventuell differensiering har mer stabile egenskaper over tid, slik at mønstrene kan beskrives med faste parametere. I denne oppgaven gjøres vurderingen på den log-transformerte serien $z_t = log(y_t)$, siden salget er strengt positivt og fordi log-transformasjon reduserer problemet med nivåavhengig varians i datasettet.
 
 For å gjøre denne vurderingen brukes to komplementære tester. Augmented Dickey-Fuller-testen (ADF) brukes for å undersøke om serien fortsatt ser ut til å ha en enhetsrot, mens KPSS-testen brukes for å undersøke om serien kan avvises som stasjonær. Testene tolkes samlet og støttes av en visuell sammenligning av serievariantene på log-skala, siden ingen enkelt test alene er tilstrekkelig grunnlag for valg av differensiering.
 
 <div align="center">
-  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_01_serievarianter.png" alt="Figur 6.1 Log-transformerte serievarianter for vurdering av stasjonaritet og differensiering" width="80%">
-  <p align="center"><small><i>Figur 6.1 Log-transformerte serievarianter.</i></small></p>
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_01_serievarianter.png" alt="Figur 7.1 Log-transformerte serievarianter for vurdering av stasjonaritet og differensiering" width="80%">
+  <p align="center"><small><i>Figur 7.1 Log-transformerte serievarianter.</i></small></p>
 </div>
 
-Tabell 6.1 oppsummerer testresultatene for den log-transformerte serien og de tre aktuelle differensieringsvariantene.
+Tabell 7.1 oppsummerer testresultatene for den log-transformerte serien og de tre aktuelle differensieringsvariantene.
 
 | Serievariant | Kandidat | ADF teststat | ADF p-verdi | KPSS teststat | KPSS p-verdi | Kort vurdering |
 | :--- | :--- | ---: | ---: | ---: | ---: | :--- |
@@ -345,17 +351,68 @@ Tabell 6.1 oppsummerer testresultatene for den log-transformerte serien og de tr
 | Sesongdifferensiert $(1-B^{12})z_t$ | $d=0, D=1$ | -3.6410 | 0.0050 | 0.1775 | 0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
 | Kombinert differensiert $(1-B)(1-B^{12})z_t$ | $d=1, D=1$ | -4.6172 | 0.0001 | 0.0961 | 0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett. |
 
-<p align="center"><small><i>Tabell 6.1 Testresultater for stasjonaritet og differensiering.</i></small></p>
+<p align="center"><small><i>Tabell 7.1 Testresultater for stasjonaritet og differensiering.</i></small></p>
 
 Resultatene viser først og fremst at den log-transformerte serien ikke bør brukes videre uten differensiering. ADF- og KPSS-testene gir deretter støtte til tre alternative kandidater: ordinær differensiering, sesongdifferensiering og kombinert differensiering. Testene alene peker derfor ikke entydig på én vinner, men de utelukker at serien kan modelleres direkte uten videre transformasjon.
 
-Når testresultatene tolkes sammen med figur 6.1, blir det likevel tydelig at ordinær differensiering alene ikke er tilstrekkelig. Varianten med $d=1$ og $D=0$ får gode testresultater, men figuren viser fortsatt en tydelig gjenværende sesongstruktur. Dette tyder på at sesongmessig ikke-stasjonaritet ikke er fjernet godt nok selv om den ordinære trenden er redusert. Sesongdifferensiering alene med $d=0$ og $D=1$ er også en plausibel kandidat, men den kombinerte varianten gir den mest balanserte serien når både trend og sesong vurderes samlet på log-skala.
+Når testresultatene tolkes sammen med figur 7.1, blir det likevel tydelig at ordinær differensiering alene ikke er tilstrekkelig. Varianten med $d=1$ og $D=0$ får gode testresultater, men figuren viser fortsatt en tydelig gjenværende sesongstruktur. Dette tyder på at sesongmessig ikke-stasjonaritet ikke er fjernet godt nok selv om den ordinære trenden er redusert. Sesongdifferensiering alene med $d=0$ og $D=1$ er også en plausibel kandidat, men den kombinerte varianten gir den mest balanserte serien når både trend og sesong vurderes samlet på log-skala.
 
 På dette grunnlaget vurderes derfor kombinert differensiering med $d=1$ og $D=1$ som hovedkandidat videre i modellarbeidet. Denne konklusjonen bygger ikke bare på p-verdiene, men på en samlet faglig vurdering av teststatistikkene, p-verdiene og den visuelle diagnostikken på log-transformert serie. Sesongdifferensiering alene beholdes som et enklere alternativ dersom senere analyse skulle vise at kombinert differensiering er mer omfattende enn nødvendig.
 
----
+### 7.2 ACF/PACF-analyse og ordensvalg
 
-## 7 Analyse
+Med differensieringsordnene $d=1$ og $D=1$ fastlagt gjenstår det å bestemme de autoregressive og glidende gjennomsnittsordnene $p$, $q$, $P$ og $Q$. Til dette brukes autokorrelasjonsfunksjonen (ACF) og den partielle autokorrelasjonsfunksjonen (PACF) beregnet på den differensierte log-serien $w_t = (1-B)(1-B^{12})\log(y_t)$.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_02_acf_pacf.png" alt="Figur 7.2 ACF og PACF for den differensierte log-serien" width="80%">
+  <p align="center"><small><i>Figur 7.2 ACF og PACF for $(1-B)(1-B^{12})\log(y_t)$.</i></small></p>
+</div>
+
+Figur 7.2 viser ACF og PACF med 36 lags. I ACF-plottet er det en tydelig negativ spike ved lag 1 og en negativ spike ved sesonglag 12. Etter disse lagene faller ACF raskt innenfor konfidensintervallet. PACF-plottet viser et avtagende mønster ved de første lagene og ved sesonglagene 12 og 24. Denne kombinasjonen — avkuttende ACF ved lag 1 og lag 12 med avtagende PACF — er et klassisk mønster for en modell med glidende gjennomsnittsledd av første orden både på ikke-sesongmessig og sesongmessig nivå. Mønsteret peker dermed mot en SARIMA$(0,1,1)(0,1,1)_{12}$-spesifikasjon.
+
+For å støtte den visuelle tolkningen ble det gjennomført et systematisk kandidatsøk der alle kombinasjoner av $p \in \{0,1,2\}$, $q \in \{0,1,2\}$, $P \in \{0,1\}$ og $Q \in \{0,1\}$ ble tilpasset med faste differensieringsordner $d=1$ og $D=1$. Dette gir 36 kandidater som alle ble estimert på den log-transformerte treningsserien. Tabell 7.2 viser de ti beste kandidatene rangert etter AIC.
+
+| Modell | Parametere | Log-likelihood | AIC | BIC |
+| :--- | ---: | ---: | ---: | ---: |
+| SARIMA(0,1,1)(0,1,1)₁₂ | 3 | 104.41 | -202.83 | -193.70 |
+| SARIMA(1,1,1)(0,1,1)₁₂ | 4 | 104.88 | -201.76 | -189.59 |
+| SARIMA(0,1,1)(1,1,1)₁₂ | 4 | 104.87 | -201.75 | -189.57 |
+| SARIMA(0,1,2)(0,1,1)₁₂ | 4 | 104.81 | -201.61 | -189.44 |
+| SARIMA(1,1,2)(0,1,1)₁₂ | 5 | 105.68 | -201.37 | -186.15 |
+| SARIMA(2,1,1)(0,1,1)₁₂ | 5 | 105.33 | -200.66 | -185.45 |
+| SARIMA(1,1,1)(1,1,1)₁₂ | 5 | 105.22 | -200.44 | -185.23 |
+| SARIMA(0,1,2)(1,1,1)₁₂ | 5 | 105.16 | -200.32 | -185.10 |
+| SARIMA(2,1,1)(1,1,1)₁₂ | 6 | 105.76 | -199.53 | -181.27 |
+| SARIMA(1,1,2)(1,1,1)₁₂ | 6 | 105.01 | -198.03 | -179.77 |
+
+<p align="center"><small><i>Tabell 7.2 Topp 10 SARIMA-kandidater rangert etter AIC. Alle 36 kandidater konvergerte.</i></small></p>
+
+Resultatene viser at SARIMA$(0,1,1)(0,1,1)_{12}$ har lavest AIC (-202.83) og lavest BIC (-193.70) blant alle kandidatene. De mer komplekse modellene forbedrer log-likelihood bare marginalt, men straffes av det ekstra antallet parametere i begge informasjonskriteriene. Modellen som velges er dermed SARIMA$(0,1,1)(0,1,1)_{12}$ — den såkalte airline-modellen, som er en velkjent og mye brukt spesifikasjon for månedlige tidsserier med trend og sesong. Valget bygger på at modellen har best AIC og BIC, er konsistent med ACF/PACF-tolkningen, og er den enkleste blant toppkandidatene.
+
+### 7.3 Modellestimering og parameterresultater
+
+Den valgte modellen SARIMA$(0,1,1)(0,1,1)_{12}$ estimeres på den log-transformerte treningsserien $z_t = \log(y_t)$ for perioden 1964-01 til 1977-12. Modellen spesifiseres med ordinær differensiering $d=1$, sesongmessig differensiering $D=1$ og sesonglengde $m=12$. Parameterne estimeres med maksimum likelihood.
+
+Tabell 7.3 viser de estimerte parameterne med tilhørende standardfeil, z-verdier og p-verdier.
+
+| Parameter | Koeffisient | Standardfeil | z-verdi | p-verdi | 95 % KI nedre | 95 % KI øvre |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| $\theta_1$ (ma.L1) | -0.8217 | 0.0303 | -27.15 | < 0.001 | -0.881 | -0.762 |
+| $\Theta_1$ (ma.S.L12) | -0.5998 | 0.0570 | -10.53 | < 0.001 | -0.711 | -0.488 |
+| $\sigma^2$ | 0.0146 | 0.0009 | 16.25 | < 0.001 | 0.013 | 0.016 |
+
+<p align="center"><small><i>Tabell 7.3 Estimerte parametere for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+
+Begge MA-parameterne er sterkt signifikante med p-verdier under 0.001. Den ikke-sesongmessige glidende gjennomsnittsparameteren $\theta_1 = -0.82$ indikerer at modellen bruker en stor andel av forrige måneds prognosefeil til å korrigere neste periodes prognose. Den sesongmessige glidende gjennomsnittsparameteren $\Theta_1 = -0.60$ viser at modellen også korrigerer basert på prognosefeil fra samme måned ett år tilbake. Den estimerte feilvariansen $\sigma^2 = 0.0146$ gjelder på log-skala.
+
+Figur 7.3 viser residualdiagnostikk for den estimerte modellen.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_03_diagnostikk.png" alt="Figur 7.3 Residualdiagnostikk for SARIMA(0,1,1)(0,1,1)₁₂" width="80%">
+  <p align="center"><small><i>Figur 7.3 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+</div>
+
+Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Disse avvikene er verdt å undersøke nærmere, og tas opp i en egen valideringsaktivitet senere i dette kapittelet. Samlet sett gir estimeringen en modell med signifikante parametere og akseptable korrelasjonsegenskaper i residualene, som kan brukes videre til prognosearbeid.
 
 ---
 

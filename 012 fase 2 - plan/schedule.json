@@ -18,7 +18,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-09T11:59:00Z",
+            "updatedAt": "2026-03-18T13:20:00Z",
             "updatedBy": "codex"
         },
         "calendars": [
@@ -64,7 +64,7 @@
                 "milestoneId": "MS-004",
                 "name": "Forste analyseutkast",
                 "date": "2026-03-11",
-                "status": "not-reached",
+                "status": "reached",
                 "description": "Forelopig dataanalyse og modellretning presentert i fase 3."
             },
             {
@@ -239,8 +239,8 @@
                 "taskId": "3.1",
                 "wbsItemId": "WBS-1.3.1",
                 "name": "Rense og strukturere data",
-                "status": "in-progress",
-                "percentComplete": 25,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -265,15 +265,15 @@
                     {
                         "criteriaId": "ACT-3.1-C01",
                         "description": "Dataserien er komplett og riktig indeksert",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Dataserien er komplett, uten manglende maneder og riktig indeksert for analyse.",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.1-C02",
                         "description": "Trend og sesong er visualisert",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Trend og sesong er visualisert med figurer og tabeller i analyseartefakter og rapport.",
                         "error": ""
                     }
                 ],
@@ -282,8 +282,8 @@
                     "permissionMode": "samarbeid",
                     "sessionId": null,
                     "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": "Fase 3 startet 2026-03-09."
+                    "completedAt": "2026-03-16T00:00:00Z",
+                    "lastEvent": "Aktiviteten ble fullfort 2026-03-16 med datasplitt, visualiseringer og oppdatert rapportgrunnlag."
                 }
             },
             {
@@ -291,8 +291,8 @@
                 "taskId": "3.2",
                 "wbsItemId": "WBS-1.3.2",
                 "name": "Velge og estimere modell",
-                "status": "in-progress",
-                "percentComplete": 75,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -319,15 +319,15 @@
                     {
                         "criteriaId": "ACT-3.2-C01",
                         "description": "Valgt modell er begrunnet",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "SARIMA(0,1,1)(0,1,1)12 er valgt med grunnlag i stasjonaritetstester, ACF/PACF og informasjonskriterier.",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.2-C02",
                         "description": "Modellparametere er estimert og dokumentert",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Modellparametere, kandidatoversikt og residualdiagnostikk er dokumentert i artefakter og rapport.",
                         "error": ""
                     }
                 ],
@@ -336,8 +336,8 @@
                     "permissionMode": "samarbeid",
                     "sessionId": null,
                     "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": "Log-transformasjon er valgt som hovedspor, og kombinert differensiering med d=1 og D=1 fremstår som hovedkandidat videre."
+                    "completedAt": "2026-03-18T00:00:00Z",
+                    "lastEvent": "Aktiviteten ble fullfort 2026-03-18 med valgt og estimert SARIMA-modell dokumentert i rapport og analyseartefakter."
                 }
             },
             {

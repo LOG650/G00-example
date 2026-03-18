@@ -16,7 +16,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-09T11:59:00Z",
+            "updatedAt": "2026-03-18T13:20:00Z",
             "updatedBy": "codex"
         },
         "codingScheme": "numeric",
@@ -177,10 +177,10 @@
                 "type": "work-package",
                 "description": "Strukturere historiske manedsdata, splitte dem i trenings- og testdata og kontrollere datakvalitet.",
                 "owner": "Dataansvarlig",
-                "status": "in-progress",
+                "status": "done",
                 "audit": {
                     "createdAt": "2026-02-13T12:15:00Z",
-                    "updatedAt": "2026-03-09T11:59:00Z"
+                    "updatedAt": "2026-03-18T13:20:00Z"
                 },
                 "activityIds": [
                     "ACT-3.1"
@@ -195,10 +195,10 @@
                 "type": "work-package",
                 "description": "Velge og estimere SARIMA-modell for trend og sesong.",
                 "owner": "Analyseansvarlig",
-                "status": "in-progress",
+                "status": "done",
                 "audit": {
                     "createdAt": "2026-02-13T12:15:00Z",
-                    "updatedAt": "2026-03-16T00:00:00Z"
+                    "updatedAt": "2026-03-18T13:20:00Z"
                 },
                 "activityIds": [
                     "ACT-3.2"
