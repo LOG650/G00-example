@@ -346,7 +346,7 @@
                 "wbsItemId": "WBS-1.3.3",
                 "name": "Validere modell",
                 "status": "in-progress",
-                "percentComplete": 25,
+                "percentComplete": 50,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -361,7 +361,8 @@
                 "plannedFinish": "2026-03-25",
                 "steps": [
                     "Bygge videre pa residualdiagnostikk og rydde den inn i rapportens kapittel 7.4",
-                    "Kjore eventuelle supplerende diagnostiske tester for residualene",
+                    "Kjore Ljung-Box pa sesongrelevante lags, minst 12 og 24",
+                    "Kjore ARCH-LM for heteroskedastisitet",
                     "Generere prognoser mot testdatasettet for perioden 1978-01 til 1981-06",
                     "Beregne MAE, RMSE og MAPE",
                     "Dokumentere kapittel 7.4 Validering",
@@ -390,7 +391,7 @@
                     "sessionId": null,
                     "startedAt": "2026-03-18T00:00:00Z",
                     "completedAt": null,
-                    "lastEvent": "Residualdiagnostikk er dokumentert i rapportens kapittel 7.4. Testsettvalidering og samlet vurdering gjenstar."
+                    "lastEvent": "Residualdiagnostikk, Ljung-Box ved lag 12 og 24 og ARCH-LM er dokumentert i rapportens kapittel 7.4. Testsettvalidering og samlet vurdering gjenstar."
                 }
             },
             {

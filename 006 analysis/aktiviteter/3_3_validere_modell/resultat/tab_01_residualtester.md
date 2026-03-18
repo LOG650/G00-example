@@ -1,0 +1,5 @@
+| test      |   lag |   statistikk |   p_verdi |   sekundaer_statistikk |   sekundaer_p_verdi | tolkning                                                                           |
+|:----------|------:|-------------:|----------:|-----------------------:|--------------------:|:-----------------------------------------------------------------------------------|
+| Ljung-Box |    12 |      35.6302 |  9.7e-05  |                        |                     | Forkast nullhypotesen (ingen residualautokorrelasjon ved valgt lag) ved 5 % nivaa. |
+| Ljung-Box |    24 |      35.969  |  0.030599 |                        |                     | Forkast nullhypotesen (ingen residualautokorrelasjon ved valgt lag) ved 5 % nivaa. |
+| ARCH-LM   |    12 |     134.228  |  0        |                73.4701 |                   0 | Forkast nullhypotesen (homoskedastisitet / ingen ARCH-effekt) ved 5 % nivaa.       |

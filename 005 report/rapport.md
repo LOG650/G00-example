@@ -407,7 +407,7 @@ Begge MA-parameterne er sterkt signifikante med p-verdier under 0.001. Den ikke-
 
 ### 7.4 Validering
 
-I dette delavsnittet vurderes om den estimerte modellen oppfyller sentrale modellforutsetninger godt nok til å kunne brukes videre i prognosearbeidet. Hensikten er å undersøke residualene for tegn til gjenværende autokorrelasjon, avvik fra normalitet og ustabil varians, slik at modellens styrker og svakheter blir tydelige før testsettresultatene presenteres i kapittel 8.
+I dette delavsnittet vurderes om den estimerte modellen oppfyller sentrale modellforutsetninger godt nok til å kunne brukes videre i prognosearbeidet. Hensikten er å undersøke residualene for tegn til gjenværende autokorrelasjon, avvik fra normalitet og ustabil varians, slik at modellens styrker og svakheter blir tydelige før testsettresultatene presenteres i kapittel 8. Heteroskedastisitet behandles her som et teknisk funn i valideringen, mens betydningen av funnet for modellens brukbarhet drøftes senere i kapittel 9.
 
 Figur 7.4 viser residualdiagnostikk for den estimerte modellen.
 
@@ -417,6 +417,18 @@ Figur 7.4 viser residualdiagnostikk for den estimerte modellen.
 </div>
 
 Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Residualdiagnostikken gir dermed et teknisk bilde av hvilke modellforutsetninger som ser rimelige ut, og hvilke svakheter som må tas med videre i vurderingen av modellen.
+
+For å supplere figurdiagnostikken ble det gjennomført Ljung-Box-tester ved lag 12 og 24, samt en ARCH-LM-test med 12 lag. Tabell 7.4 oppsummerer testresultatene.
+
+| Test | Lag | Teststatistikk | p-verdi | Kort vurdering |
+| :--- | ---: | ---: | ---: | :--- |
+| Ljung-Box | 12 | 35.6302 | 0.000097 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
+| Ljung-Box | 24 | 35.9690 | 0.030599 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
+| ARCH-LM | 12 | 134.2280 | < 0.001 | Nullhypotesen om homoskedastisitet forkastes klart. |
+
+<p align="center"><small><i>Tabell 7.4 Supplerende residualtester for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+
+De supplerende testene styrker dermed de visuelle funnene. Ljung-Box-testene ved sesongrelevante lag peker mot gjenværende residualautokorrelasjon, og ARCH-LM-testen gir sterk støtte til heteroskedastisitet i residualene. Dette innebærer at modellforutsetningene ikke er fullt oppfylt, og at disse svakhetene må tas med videre når modellens egnethet skal vurderes i diskusjonskapitlet.
 
 Samlet sett viser analysekapitlet at modellen er estimert med signifikante parametere, men også at residualene har svakheter som må vurderes opp mot modellens praktiske bruk. I neste kapittel presenteres derfor hvordan modellen presterer mot testdatasettet, før egnethet og begrensninger diskuteres samlet senere.
 

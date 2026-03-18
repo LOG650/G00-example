@@ -200,8 +200,8 @@
             "costBaselineId": "BL-CST-LOG650-001"
         },
         "statusSummary": {
-            "overallPercentComplete": 58,
-            "summary": "Fase 1 og 2 er ferdigstilt, aktivitet 3.1 og 3.2 er lukket, og aktivitet 3.3 er delvis startet med residualdiagnostikk dokumentert i rapportens kapittel 7.4. Neste fokus er testsettvalidering i kapittel 8 og egnethetsdiskusjon i kapittel 9.",
+            "overallPercentComplete": 62,
+            "summary": "Fase 1 og 2 er ferdigstilt, aktivitet 3.1 og 3.2 er lukket, og aktivitet 3.3 er godt i gang med residualdiagnostikk, Ljung-Box og ARCH-LM dokumentert i rapportens kapittel 7.4. Neste fokus er testsettvalidering i kapittel 8 og egnethetsdiskusjon i kapittel 9.",
             "trafficLights": {
                 "scope": "green",
                 "schedule": "green",
@@ -210,7 +210,7 @@
             },
             "topIssues": [
                 "Problemstilling, litteratur og teori mangler fortsatt i rapporten",
-                "Residualavvik og heteroskedastisitet ma vurderes ferdig i aktivitet 3.3",
+                "Residualautokorrelasjon ved lag 12 og 24 samt heteroskedastisitet er pavist og ma vurderes videre i aktivitet 3.3",
                 "Aktivitet 3.2 mangler fortsatt eget reviewspor sammenlignet med aktivitet 3.1"
             ],
             "nextMilestones": [
