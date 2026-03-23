@@ -323,8 +323,8 @@
                 "taskId": "3.2",
                 "wbsItemId": "WBS-1.3.2",
                 "name": "Velge og estimere modell",
-                "status": "in-progress",
-                "percentComplete": 90,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -366,9 +366,9 @@
                     {
                         "criteriaId": "ACT-3.2-C03",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
-                        "status": "not-passed",
-                        "result": "",
-                        "error": "Eget reviewspor for ACT-3.2 mangler fortsatt."
+                        "status": "passed",
+                        "result": "Review gjennomfort 2026-03-23. Alle tiltak fra reviewen (V1-V3, F1-F2) er implementert.",
+                        "error": ""
                     }
                 ],
                 "execution": {
@@ -376,8 +376,8 @@
                     "permissionMode": "samarbeid",
                     "sessionId": null,
                     "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": "Det faglige arbeidet ble fullfort 2026-03-18 med valgt og estimert SARIMA-modell dokumentert i rapport og analyseartefakter, men review gjenstar før aktiviteten kan lukkes."
+                    "completedAt": "2026-03-23T00:00:00Z",
+                    "lastEvent": "Aktiviteten er fullfort og lukket 2026-03-23. Review gjennomfort med fem tiltak (V1-V3, F1-F2) implementert."
                 }
             },
             {
@@ -386,7 +386,7 @@
                 "wbsItemId": "WBS-1.3.3",
                 "name": "Validere modell",
                 "status": "in-progress",
-                "percentComplete": 50,
+                "percentComplete": 90,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -414,15 +414,15 @@
                     {
                         "criteriaId": "ACT-3.3-C01",
                         "description": "Residualdiagnostikk er dokumentert i kapittel 7.4 og testsettvalidering er dokumentert i kapittel 8.1",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Residualdiagnostikk dokumentert i 7.4 med Ljung-Box og ARCH-LM. Testsettvalidering dokumentert i 8.1 med MAE, RMSE og MAPE.",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.3-C02",
                         "description": "Valideringsfunnene kan oppsummeres i kapittel 8 og brukes som grunnlag for egnethetsdiskusjon i kapittel 9",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Valideringsfunn oppsummert i 8.1 og grunnlag for diskusjon forberedt.",
                         "error": ""
                     },
                     {
@@ -430,7 +430,7 @@
                         "description": "Review er gjennomfort og aktiviteten er lukket",
                         "status": "not-passed",
                         "result": "",
-                        "error": ""
+                        "error": "Review gjenstar for aktiviteten kan lukkes."
                     }
                 ],
                 "execution": {
@@ -439,7 +439,7 @@
                     "sessionId": null,
                     "startedAt": "2026-03-18T00:00:00Z",
                     "completedAt": null,
-                    "lastEvent": "Residualdiagnostikk, Ljung-Box ved lag 12 og 24 og ARCH-LM er dokumentert i rapportens kapittel 7.4. Testsettvalidering og samlet vurdering gjenstar."
+                    "lastEvent": "Alt faglig arbeid er fullfort per 2026-03-23: residualdiagnostikk, testsettvalidering og feilmal er dokumentert i rapport og artefakter. Review gjenstar for aktiviteten kan lukkes."
                 }
             },
             {

@@ -346,10 +346,10 @@ Tabell 7.1 oppsummerer testresultatene for den log-transformerte serien og de tr
 
 | Serievariant                                  | Kandidat     | ADF teststat | ADF p-verdi | KPSS teststat | KPSS p-verdi | Kort vurdering                                                                                        |
 | :-------------------------------------------- | :----------- | -----------: | ----------: | ------------: | -----------: | :---------------------------------------------------------------------------------------------------- |
-| Log-transformert serie$z_t = log(y_t)$      | $d=0, D=0$ |      -1.8701 |      0.3463 |        1.5675 |       0.0100 | Testene peker samlet mot fortsatt ikke-stasjonaritet.                                                 |
-| Ordinært differensiert$(1-B)z_t$           | $d=1, D=0$ |      -4.6489 |      0.0001 |        0.1412 |       0.1000 | Testene peker mot stasjonaritet, men figurdiagnostikken viser fortsatt tydelig sesongstruktur.        |
-| Sesongdifferensiert$(1-B^{12})z_t$          | $d=0, D=1$ |      -3.6410 |      0.0050 |        0.1775 |       0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
-| Kombinert differensiert$(1-B)(1-B^{12})z_t$ | $d=1, D=1$ |      -4.6172 |      0.0001 |        0.0961 |       0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett.                |
+| Log-transformert serie $z_t = log(y_t)$      | $d=0, D=0$ |      -1.8701 |      0.3463 |        1.5675 |       0.0100 | Testene peker samlet mot fortsatt ikke-stasjonaritet.                                                 |
+| Ordinært differensiert $(1-B)z_t$           | $d=1, D=0$ |      -4.6489 |      0.0001 |        0.1412 |       0.1000 | Testene peker mot stasjonaritet, men figurdiagnostikken viser fortsatt tydelig sesongstruktur.        |
+| Sesongdifferensiert $(1-B^{12})z_t$          | $d=0, D=1$ |      -3.6410 |      0.0050 |        0.1775 |       0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
+| Kombinert differensiert $(1-B)(1-B^{12})z_t$ | $d=1, D=1$ |      -4.6172 |      0.0001 |        0.0961 |       0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett.                |
 
 <p align="center"><small><i>Tabell 7.1 Testresultater for stasjonaritet og differensiering.</i></small></p>
 
@@ -357,7 +357,7 @@ Resultatene viser først og fremst at den log-transformerte serien ikke bør bru
 
 Når testresultatene tolkes sammen med figur 7.1, blir det likevel tydelig at ordinær differensiering alene ikke er tilstrekkelig. Varianten med $d=1$ og $D=0$ får gode testresultater, men figuren viser fortsatt en tydelig gjenværende sesongstruktur. Dette tyder på at sesongmessig ikke-stasjonaritet ikke er fjernet godt nok selv om den ordinære trenden er redusert. Sesongdifferensiering alene med $d=0$ og $D=1$ er også en plausibel kandidat, men den kombinerte varianten gir den mest balanserte serien når både trend og sesong vurderes samlet på log-skala.
 
-På dette grunnlaget vurderes derfor kombinert differensiering med $d=1$ og $D=1$ som hovedkandidat videre i modellarbeidet. Denne konklusjonen bygger ikke bare på p-verdiene, men på en samlet faglig vurdering av teststatistikkene, p-verdiene og den visuelle diagnostikken på log-transformert serie. Sesongdifferensiering alene beholdes som et enklere alternativ dersom senere analyse skulle vise at kombinert differensiering er mer omfattende enn nødvendig.
+På dette grunnlaget vurderes derfor kombinert differensiering med $d=1$ og $D=1$ som hovedkandidat videre i modellarbeidet. Denne konklusjonen bygger ikke bare på p-verdiene, men på en samlet faglig vurdering av teststatistikkene, p-verdiene og den visuelle diagnostikken på log-transformert serie. Sesongdifferensiering alene beholdes som et enklere alternativ dersom senere analyse skulle vise at kombinert differensiering er mer omfattende enn nødvendig. Den automatiserte differensieringsvurderingen i analyseartefaktene anbefalte $d=0, D=1$ som enkleste kandidat, men den samlede vurderingen av testresultater og visuell diagnostikk ledet til at $d=1, D=1$ ble foretrukket som hovedkandidat.
 
 ### 7.2 ACF/PACF-analyse og ordensvalg
 
@@ -370,7 +370,7 @@ Med differensieringsordnene $d=1$ og $D=1$ fastlagt gjenstår det å bestemme de
 
 Figur 7.2 viser ACF og PACF med 36 lags. I ACF-plottet er det en tydelig negativ spike ved lag 1 og en negativ spike ved sesonglag 12. Etter disse lagene faller ACF raskt innenfor konfidensintervallet. PACF-plottet viser et avtagende mønster ved de første lagene og ved sesonglagene 12 og 24. Denne kombinasjonen — avkuttende ACF ved lag 1 og lag 12 med avtagende PACF — er et klassisk mønster for en modell med glidende gjennomsnittsledd av første orden både på ikke-sesongmessig og sesongmessig nivå. Mønsteret peker dermed mot en SARIMA$(0,1,1)(0,1,1)_{12}$-spesifikasjon.
 
-For å støtte den visuelle tolkningen ble det gjennomført et systematisk kandidatsøk der alle kombinasjoner av $p \in \{0,1,2\}$, $q \in \{0,1,2\}$, $P \in \{0,1\}$ og $Q \in \{0,1\}$ ble tilpasset med faste differensieringsordner $d=1$ og $D=1$. Dette gir 36 kandidater som alle ble estimert på den log-transformerte treningsserien. Tabell 7.2 viser de ti beste kandidatene rangert etter AIC.
+For å støtte den visuelle tolkningen ble det gjennomført et systematisk kandidatsøk der alle kombinasjoner av $p \in \{0,1,2\}$, $q \in \{0,1,2\}$, $P \in \{0,1\}$ og $Q \in \{0,1\}$ ble tilpasset med faste differensieringsordner $d=1$ og $D=1$. Differensieringsordnene ble holdt faste fordi stasjonaritetsvurderingen i avsnitt 7.1 allerede konkluderte med at kombinert differensiering var hovedkandidaten. Dette gir 36 kandidater som alle ble estimert på den log-transformerte treningsserien. Tabell 7.2 viser de ti beste kandidatene rangert etter AIC.
 
 | Modell                   | Parametere | Log-likelihood |     AIC |     BIC |
 | :----------------------- | ---------: | -------------: | ------: | ------: |
@@ -431,11 +431,11 @@ Dagens log-salg $z_t$ forklares ved hjelp av to hovedspor i historikken. Leddet 
 
 I dette delavsnittet vurderes om den estimerte modellen oppfyller sentrale modellforutsetninger godt nok til å kunne brukes videre i prognosearbeidet. Hensikten er å undersøke residualene for tegn til gjenværende autokorrelasjon, avvik fra normalitet og ustabil varians, slik at modellens styrker og svakheter blir tydelige før testsettresultatene presenteres i kapittel 8. Heteroskedastisitet behandles her som et teknisk funn i valideringen, mens betydningen av funnet for modellens brukbarhet drøftes senere i kapittel 9.
 
-Figur 7.4 viser residualdiagnostikk for den estimerte modellen.
+Figur 7.3 viser residualdiagnostikk for den estimerte modellen.
 
 <div align="center">
-  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_03_diagnostikk.png" alt="Figur 7.4 Residualdiagnostikk for SARIMA(0,1,1)(0,1,1)₁₂" width="80%">
-  <p align="center"><small><i>Figur 7.4 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+  <img src="../006%20analysis/aktiviteter/3_2_velge_og_estimere_modell/figurer/fig_03_diagnostikk.png" alt="Figur 7.3 Residualdiagnostikk for SARIMA(0,1,1)(0,1,1)₁₂" width="80%">
+  <p align="center"><small><i>Figur 7.3 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 </div>
 
 Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Residualdiagnostikken gir dermed et teknisk bilde av hvilke modellforutsetninger som ser rimelige ut, og hvilke svakheter som må tas med videre i vurderingen av modellen.

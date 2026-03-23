@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/project/2007">
+  <SaveVersion>12</SaveVersion>
+  <UID>1</UID>
+  <Name>Ettersporselsprognose for PowerHorse</Name>
+  <Title>Ettersporselsprognose for PowerHorse</Title>
+  <Subject>Studentprosjekt i LOG650 der gruppen skal utvikle og evaluere en kvantitativ modell for manedlig ettersporselsprognose for traktorsalg med trend og sesong.</Subject>
+  <Company>Hogskolen i Molde</Company>
+  <Manager>Prosjektgruppen</Manager>
+  <Author>Analyseansvarlig i prosjektgruppen</Author>
+  <CreationDate>2026-02-13T12:15:00Z</CreationDate>
+  <LastSaved>2026-03-23T00:00:00Z</LastSaved>
+  <ScheduleFromStart>true</ScheduleFromStart>
+  <StartDate>2026-01-12T08:00:00</StartDate>
+  <CalendarUID>1</CalendarUID>
+  <DefaultStartTime>08:00:00</DefaultStartTime>
+  <DefaultFinishTime>17:00:00</DefaultFinishTime>
+  <MinutesPerDay>480</MinutesPerDay>
+  <MinutesPerWeek>2400</MinutesPerWeek>
+  <DaysPerMonth>20</DaysPerMonth>
+  <DefaultTaskType>1</DefaultTaskType>
+  <Calendars>
+    <Calendar>
+      <UID>1</UID>
+      <Name>LOG650 prosjektkalender</Name>
+      <IsBaseCalendar>true</IsBaseCalendar>
+      <WeekDays>
+        <WeekDay>
+          <DayType>1</DayType>
+          <DayWorking>false</DayWorking>
+        </WeekDay>
+        <WeekDay>
+          <DayType>2</DayType>
+          <DayWorking>true</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>3</DayType>
+          <DayWorking>true</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>4</DayType>
+          <DayWorking>true</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>5</DayType>
+          <DayWorking>true</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>6</DayType>
+          <DayWorking>true</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>7</DayType>
+          <DayWorking>false</DayWorking>
+        </WeekDay>
+      </WeekDays>
+    </Calendar>
+  </Calendars>
+  <Tasks>
+    <Task>
+      <UID>1</UID>
+      <ID>1</ID>
+      <Name>Ettersporselsprognose for PowerHorse</Name>
+      <WBS>1</WBS>
+      <OutlineNumber>1</OutlineNumber>
+      <OutlineLevel>1</OutlineLevel>
+      <Start>2026-01-12T08:00:00</Start>
+      <Finish>2026-05-15T17:00:00</Finish>
+      <Duration>PT720H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>true</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>40</PercentComplete>
+      <PercentWorkComplete>40</PercentWorkComplete>
+      <ActualStart>2026-01-12T08:00:00</ActualStart>
+      <RemainingDuration>PT320H0M0S</RemainingDuration>
+      <Notes>WBS: 1
+Kilde: WBS-1
+Status: in-progress
+Beskrivelse: Komplett LOG650-prosjekt fra proposal til ferdig rapport, kode og presentasjon.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-01-12T08:00:00</Start>
+        <Finish>2026-05-15T17:00:00</Finish>
+        <Duration>PT720H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>2</UID>
+      <ID>2</ID>
+      <Name>Fase 1 - initiering</Name>
+      <WBS>1.1</WBS>
+      <OutlineNumber>1.1</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Start>2026-01-12T08:00:00</Start>
+      <Finish>2026-01-21T17:00:00</Finish>
+      <Duration>PT64H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>true</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-01-12T08:00:00</ActualStart>
+      <ActualFinish>2026-01-21T17:00:00</ActualFinish>
+      <ActualDuration>PT64H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.1
+Kilde: WBS-1.1
+Status: done
+Beskrivelse: Definere case, problemstilling og proposal.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-01-12T08:00:00</Start>
+        <Finish>2026-01-21T17:00:00</Finish>
+        <Duration>PT64H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>3</UID>
+      <ID>3</ID>
+      <Name>Analysere case og databehov</Name>
+      <WBS>1.1.1</WBS>
+      <OutlineNumber>1.1.1</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-01-12T08:00:00</Start>
+      <Finish>2026-01-16T17:00:00</Finish>
+      <Duration>PT40H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-01-12T08:00:00</ActualStart>
+      <ActualFinish>2026-01-16T17:00:00</ActualFinish>
+      <ActualDuration>PT40H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.1.1 (WBS-1.1.1)
+Aktivitet: ACT-1.1 / 1.1
+WBS-beskrivelse: Forsta caset, virksomhetsbehov og tilgjengelig datagrunnlag.
+Aktivitetsbeskrivelse: Gjennomga caset for a definere problemstilling, beslutningsbehov og forventet datagrunnlag.
+Status: completed
+Siste hendelse: Grunnlag definert i fase 1.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-01-12T08:00:00</Start>
+        <Finish>2026-01-16T17:00:00</Finish>
+        <Duration>PT40H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>4</UID>
+      <ID>4</ID>
+      <Name>Utarbeide proposal</Name>
+      <WBS>1.1.2</WBS>
+      <OutlineNumber>1.1.2</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-01-16T08:00:00</Start>
+      <Finish>2026-01-21T17:00:00</Finish>
+      <Duration>PT32H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-01-16T08:00:00</ActualStart>
+      <ActualFinish>2026-01-21T17:00:00</ActualFinish>
+      <ActualDuration>PT32H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.1.2 (WBS-1.1.2)
+Aktivitet: ACT-1.2 / 1.2
+WBS-beskrivelse: Utarbeide og levere prosjektbeskrivelse pa norsk.
+Aktivitetsbeskrivelse: Skrive og levere proposal pa norsk i tråd med emnets krav.
+Status: completed
+Siste hendelse: Proposal levert.</Notes>
+      <PredecessorLink>
+        <PredecessorUID>3</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-01-16T08:00:00</Start>
+        <Finish>2026-01-21T17:00:00</Finish>
+        <Duration>PT32H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>5</UID>
+      <ID>5</ID>
+      <Name>Fase 2 - planlegging</Name>
+      <WBS>1.2</WBS>
+      <OutlineNumber>1.2</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Start>2026-02-11T08:00:00</Start>
+      <Finish>2026-02-13T17:00:00</Finish>
+      <Duration>PT24H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>true</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-02-11T08:00:00</ActualStart>
+      <ActualFinish>2026-02-13T17:00:00</ActualFinish>
+      <ActualDuration>PT24H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.2
+Kilde: WBS-1.2
+Status: done
+Beskrivelse: Prosjektstyringsplan, krav, WBS, fremdrift og risiko.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-02-11T08:00:00</Start>
+        <Finish>2026-02-13T17:00:00</Finish>
+        <Duration>PT24H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>6</UID>
+      <ID>6</ID>
+      <Name>Etablere planbaseline</Name>
+      <WBS>1.2.1</WBS>
+      <OutlineNumber>1.2.1</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-02-11T08:00:00</Start>
+      <Finish>2026-02-13T17:00:00</Finish>
+      <Duration>PT24H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-02-11T08:00:00</ActualStart>
+      <ActualFinish>2026-02-13T17:00:00</ActualFinish>
+      <ActualDuration>PT24H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.2.1 (WBS-1.2.1)
+Aktivitet: ACT-2.1 / 2.1
+WBS-beskrivelse: Fastsette planbaseline for omfang, fremdrift, risiko og kvalitet.
+Aktivitetsbeskrivelse: Lage prosjektplan, krav, WBS, fremdrift og risiko for resten av prosjektet.
+Status: completed
+Siste hendelse: Planfase ferdigstilt.</Notes>
+      <PredecessorLink>
+        <PredecessorUID>4</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>100800</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-02-11T08:00:00</Start>
+        <Finish>2026-02-13T17:00:00</Finish>
+        <Duration>PT24H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>7</UID>
+      <ID>7</ID>
+      <Name>Fase 3 - gjennomforing</Name>
+      <WBS>1.3</WBS>
+      <OutlineNumber>1.3</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Start>2026-03-09T08:00:00</Start>
+      <Finish>2026-04-27T17:00:00</Finish>
+      <Duration>PT288H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>true</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>38</PercentComplete>
+      <PercentWorkComplete>38</PercentWorkComplete>
+      <ActualStart>2026-03-13T08:00:00</ActualStart>
+      <RemainingDuration>PT200H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3
+Kilde: WBS-1.3
+Status: in-progress
+Beskrivelse: Databehandling, modellering, validering og utkast.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-03-09T08:00:00</Start>
+        <Finish>2026-04-27T17:00:00</Finish>
+        <Duration>PT288H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>8</UID>
+      <ID>8</ID>
+      <Name>Rense og strukturere data</Name>
+      <WBS>1.3.1</WBS>
+      <OutlineNumber>1.3.1</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-03-09T08:00:00</Start>
+      <Finish>2026-03-11T17:00:00</Finish>
+      <Duration>PT24H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-03-13T08:00:00</ActualStart>
+      <ActualFinish>2026-03-16T17:00:00</ActualFinish>
+      <ActualDuration>PT16H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3.1 (WBS-1.3.1)
+Aktivitet: ACT-3.1 / 3.1
+WBS-beskrivelse: Strukturere historiske manedsdata, splitte dem i trenings- og testdata og kontrollere datakvalitet.
+Aktivitetsbeskrivelse: Klargjore tidsseriedata for analyse og dokumentere datakvalitet.
+Status: completed
+Siste hendelse: Aktiviteten ble fullfort 2026-03-16 med datasplitt, visualiseringer, oppdatert rapportgrunnlag og dokumentert review.</Notes>
+      <PredecessorLink>
+        <PredecessorUID>6</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>115200</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-03-09T08:00:00</Start>
+        <Finish>2026-03-11T17:00:00</Finish>
+        <Duration>PT24H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>9</UID>
+      <ID>9</ID>
+      <Name>Velge og estimere modell</Name>
+      <WBS>1.3.2</WBS>
+      <OutlineNumber>1.3.2</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-03-11T08:00:00</Start>
+      <Finish>2026-03-20T17:00:00</Finish>
+      <Duration>PT64H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-03-16T08:00:00</ActualStart>
+      <ActualFinish>2026-03-23T17:00:00</ActualFinish>
+      <ActualDuration>PT48H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3.2 (WBS-1.3.2)
+Aktivitet: ACT-3.2 / 3.2
+WBS-beskrivelse: Velge og estimere SARIMA-modell for trend og sesong.
+Aktivitetsbeskrivelse: Gjennomfore stasjonaritetsvurdering, differensiering og estimering av valgt SARIMA-spesifikasjon.
+Status: completed
+Siste hendelse: Aktiviteten er fullfort og lukket 2026-03-23. Review gjennomfort med fem tiltak (V1-V3, F1-F2) implementert.</Notes>
+      <PredecessorLink>
+        <PredecessorUID>8</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-03-11T08:00:00</Start>
+        <Finish>2026-03-20T17:00:00</Finish>
+        <Duration>PT64H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>10</UID>
+      <ID>10</ID>
+      <Name>Validere modell</Name>
+      <WBS>1.3.3</WBS>
+      <OutlineNumber>1.3.3</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-03-20T08:00:00</Start>
+      <Finish>2026-03-25T17:00:00</Finish>
+      <Duration>PT32H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>100</PercentComplete>
+      <PercentWorkComplete>100</PercentWorkComplete>
+      <ActualStart>2026-03-18T08:00:00</ActualStart>
+      <ActualFinish>2026-03-23T17:00:00</ActualFinish>
+      <ActualDuration>PT32H0M0S</ActualDuration>
+      <RemainingDuration>PT0H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3.3 (WBS-1.3.3)
+Aktivitet: ACT-3.3 / 3.3
+WBS-beskrivelse: Bygge videre pa residualdiagnostikk fra aktivitet 3.2, gjennomfore testsettvalidering og oppsummere valideringsfunn som grunnlag for diskusjon av modellens egnethet.
+Aktivitetsbeskrivelse: Fullfore modellvalidering ved a bygge videre pa residualdiagnostikk fra 3.2, validere modellen mot testsettet og dokumentere grunnlaget for diskusjon av modellens egnethet.
+Status: completed
+Siste hendelse: Aktiviteten er fullfort og lukket 2026-03-23. Alle steg gjennomfort inkludert testsettvalidering og dokumentasjon.</Notes>
+      <PredecessorLink>
+        <PredecessorUID>9</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-03-20T08:00:00</Start>
+        <Finish>2026-03-25T17:00:00</Finish>
+        <Duration>PT32H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>11</UID>
+      <ID>11</ID>
+      <Name>Lage prognose og anbefalinger</Name>
+      <WBS>1.3.4</WBS>
+      <OutlineNumber>1.3.4</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-03-25T08:00:00</Start>
+      <Finish>2026-04-10T17:00:00</Finish>
+      <Duration>PT104H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>0</PercentComplete>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <RemainingDuration>PT104H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3.4 (WBS-1.3.4)
+Aktivitet: ACT-3.4 / 3.4
+WBS-beskrivelse: Produsere 12-maneders prognose og koble resultatene til logistiske beslutninger.
+Aktivitetsbeskrivelse: Produsere prognoser for neste 12 maneder og tolke konsekvenser for produksjon og lager.
+Status: not-started
+Siste hendelse: </Notes>
+      <PredecessorLink>
+        <PredecessorUID>10</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-03-25T08:00:00</Start>
+        <Finish>2026-04-10T17:00:00</Finish>
+        <Duration>PT104H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>12</UID>
+      <ID>12</ID>
+      <Name>Skrive rapportutkast</Name>
+      <WBS>1.3.5</WBS>
+      <OutlineNumber>1.3.5</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-04-10T08:00:00</Start>
+      <Finish>2026-04-27T17:00:00</Finish>
+      <Duration>PT96H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>0</PercentComplete>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <RemainingDuration>PT96H0M0S</RemainingDuration>
+      <Notes>WBS: 1.3.5 (WBS-1.3.5)
+Aktivitet: ACT-3.5 / 3.5
+WBS-beskrivelse: Skrive hovedutkast, figurer og tabeller som grunnlag for review.
+Aktivitetsbeskrivelse: Samle metode, resultater, figurer og diskusjon i et hovedutkast til rapport.
+Status: not-started
+Siste hendelse: </Notes>
+      <PredecessorLink>
+        <PredecessorUID>11</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-04-10T08:00:00</Start>
+        <Finish>2026-04-27T17:00:00</Finish>
+        <Duration>PT96H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>13</UID>
+      <ID>13</ID>
+      <Name>Fase 4 - avslutning</Name>
+      <WBS>1.4</WBS>
+      <OutlineNumber>1.4</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Start>2026-04-27T08:00:00</Start>
+      <Finish>2026-05-15T17:00:00</Finish>
+      <Duration>PT120H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>true</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>0</PercentComplete>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <RemainingDuration>PT120H0M0S</RemainingDuration>
+      <Notes>WBS: 1.4
+Kilde: WBS-1.4
+Status: not-started
+Beskrivelse: Peer review, sluttforbedringer, presentasjon og endelig innlevering.</Notes>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-04-27T08:00:00</Start>
+        <Finish>2026-05-15T17:00:00</Finish>
+        <Duration>PT120H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>14</UID>
+      <ID>14</ID>
+      <Name>Gjennomfore peer review og revisjon</Name>
+      <WBS>1.4.1</WBS>
+      <OutlineNumber>1.4.1</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-04-27T08:00:00</Start>
+      <Finish>2026-04-29T17:00:00</Finish>
+      <Duration>PT24H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>0</PercentComplete>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <RemainingDuration>PT24H0M0S</RemainingDuration>
+      <Notes>WBS: 1.4.1 (WBS-1.4.1)
+Aktivitet: ACT-4.1 / 4.1
+WBS-beskrivelse: Gjennomfore peer review og innarbeide tilbakemeldinger.
+Aktivitetsbeskrivelse: Motta og behandle faglige tilbakemeldinger pa utkastet.
+Status: not-started
+Siste hendelse: </Notes>
+      <PredecessorLink>
+        <PredecessorUID>12</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-04-27T08:00:00</Start>
+        <Finish>2026-04-29T17:00:00</Finish>
+        <Duration>PT24H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+    <Task>
+      <UID>15</UID>
+      <ID>15</ID>
+      <Name>Ferdigstille rapport og presentasjon</Name>
+      <WBS>1.4.2</WBS>
+      <OutlineNumber>1.4.2</OutlineNumber>
+      <OutlineLevel>3</OutlineLevel>
+      <Start>2026-04-30T08:00:00</Start>
+      <Finish>2026-05-15T17:00:00</Finish>
+      <Duration>PT96H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Manual>false</Manual>
+      <Summary>false</Summary>
+      <Milestone>false</Milestone>
+      <Critical>true</Critical>
+      <CalendarUID>1</CalendarUID>
+      <PercentComplete>0</PercentComplete>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <RemainingDuration>PT96H0M0S</RemainingDuration>
+      <Notes>WBS: 1.4.2 (WBS-1.4.2)
+Aktivitet: ACT-4.2 / 4.2
+WBS-beskrivelse: Ferdigstille rapport, kode og muntlig presentasjon.
+Aktivitetsbeskrivelse: Levere endelig rapport, kode og muntlig presentasjon i fase 4.
+Status: not-started
+Siste hendelse: </Notes>
+      <PredecessorLink>
+        <PredecessorUID>14</PredecessorUID>
+        <Type>1</Type>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <Baseline>
+        <Number>0</Number>
+        <Interim>false</Interim>
+        <Start>2026-04-30T08:00:00</Start>
+        <Finish>2026-05-15T17:00:00</Finish>
+        <Duration>PT96H0M0S</Duration>
+        <DurationFormat>7</DurationFormat>
+      </Baseline>
+    </Task>
+  </Tasks>
+  <Resources/>
+  <Assignments/>
+</Project>
