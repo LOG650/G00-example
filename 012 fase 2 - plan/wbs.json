@@ -195,10 +195,10 @@
                 "type": "work-package",
                 "description": "Velge og estimere SARIMA-modell for trend og sesong.",
                 "owner": "Analyseansvarlig",
-                "status": "done",
+                "status": "in-progress",
                 "audit": {
                     "createdAt": "2026-02-13T12:15:00Z",
-                    "updatedAt": "2026-03-18T13:20:00Z"
+                    "updatedAt": "2026-03-23T00:00:00Z"
                 },
                 "activityIds": [
                     "ACT-3.2"

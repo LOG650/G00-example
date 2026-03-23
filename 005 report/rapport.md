@@ -344,12 +344,12 @@ For å gjøre denne vurderingen brukes to komplementære tester. Augmented Dicke
 
 Tabell 7.1 oppsummerer testresultatene for den log-transformerte serien og de tre aktuelle differensieringsvariantene.
 
-| Serievariant | Kandidat | ADF teststat | ADF p-verdi | KPSS teststat | KPSS p-verdi | Kort vurdering |
-| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
-| Log-transformert serie $z_t = log(y_t)$ | $d=0, D=0$ | -1.8701 | 0.3463 | 1.5675 | 0.0100 | Testene peker samlet mot fortsatt ikke-stasjonaritet. |
-| Ordinært differensiert $(1-B)z_t$ | $d=1, D=0$ | -4.6489 | 0.0001 | 0.1412 | 0.1000 | Testene peker mot stasjonaritet, men figurdiagnostikken viser fortsatt tydelig sesongstruktur. |
-| Sesongdifferensiert $(1-B^{12})z_t$ | $d=0, D=1$ | -3.6410 | 0.0050 | 0.1775 | 0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
-| Kombinert differensiert $(1-B)(1-B^{12})z_t$ | $d=1, D=1$ | -4.6172 | 0.0001 | 0.0961 | 0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett. |
+| Serievariant                                  | Kandidat     | ADF teststat | ADF p-verdi | KPSS teststat | KPSS p-verdi | Kort vurdering                                                                                        |
+| :-------------------------------------------- | :----------- | -----------: | ----------: | ------------: | -----------: | :---------------------------------------------------------------------------------------------------- |
+| Log-transformert serie$z_t = log(y_t)$      | $d=0, D=0$ |      -1.8701 |      0.3463 |        1.5675 |       0.0100 | Testene peker samlet mot fortsatt ikke-stasjonaritet.                                                 |
+| Ordinært differensiert$(1-B)z_t$           | $d=1, D=0$ |      -4.6489 |      0.0001 |        0.1412 |       0.1000 | Testene peker mot stasjonaritet, men figurdiagnostikken viser fortsatt tydelig sesongstruktur.        |
+| Sesongdifferensiert$(1-B^{12})z_t$          | $d=0, D=1$ |      -3.6410 |      0.0050 |        0.1775 |       0.1000 | Testene peker mot stasjonaritet og fjerner sesongmønsteret bedre enn ordinær differensiering alene. |
+| Kombinert differensiert$(1-B)(1-B^{12})z_t$ | $d=1, D=1$ |      -4.6172 |      0.0001 |        0.0961 |       0.1000 | Testene peker mot stasjonaritet og figuren gir den mest balanserte serien samlet sett.                |
 
 <p align="center"><small><i>Tabell 7.1 Testresultater for stasjonaritet og differensiering.</i></small></p>
 
@@ -372,18 +372,18 @@ Figur 7.2 viser ACF og PACF med 36 lags. I ACF-plottet er det en tydelig negativ
 
 For å støtte den visuelle tolkningen ble det gjennomført et systematisk kandidatsøk der alle kombinasjoner av $p \in \{0,1,2\}$, $q \in \{0,1,2\}$, $P \in \{0,1\}$ og $Q \in \{0,1\}$ ble tilpasset med faste differensieringsordner $d=1$ og $D=1$. Dette gir 36 kandidater som alle ble estimert på den log-transformerte treningsserien. Tabell 7.2 viser de ti beste kandidatene rangert etter AIC.
 
-| Modell | Parametere | Log-likelihood | AIC | BIC |
-| :--- | ---: | ---: | ---: | ---: |
-| SARIMA(0,1,1)(0,1,1)₁₂ | 3 | 104.41 | -202.83 | -193.70 |
-| SARIMA(1,1,1)(0,1,1)₁₂ | 4 | 104.88 | -201.76 | -189.59 |
-| SARIMA(0,1,1)(1,1,1)₁₂ | 4 | 104.87 | -201.75 | -189.57 |
-| SARIMA(0,1,2)(0,1,1)₁₂ | 4 | 104.81 | -201.61 | -189.44 |
-| SARIMA(1,1,2)(0,1,1)₁₂ | 5 | 105.68 | -201.37 | -186.15 |
-| SARIMA(2,1,1)(0,1,1)₁₂ | 5 | 105.33 | -200.66 | -185.45 |
-| SARIMA(1,1,1)(1,1,1)₁₂ | 5 | 105.22 | -200.44 | -185.23 |
-| SARIMA(0,1,2)(1,1,1)₁₂ | 5 | 105.16 | -200.32 | -185.10 |
-| SARIMA(2,1,1)(1,1,1)₁₂ | 6 | 105.76 | -199.53 | -181.27 |
-| SARIMA(1,1,2)(1,1,1)₁₂ | 6 | 105.01 | -198.03 | -179.77 |
+| Modell                   | Parametere | Log-likelihood |     AIC |     BIC |
+| :----------------------- | ---------: | -------------: | ------: | ------: |
+| SARIMA(0,1,1)(0,1,1)₁₂ |          3 |         104.41 | -202.83 | -193.70 |
+| SARIMA(1,1,1)(0,1,1)₁₂ |          4 |         104.88 | -201.76 | -189.59 |
+| SARIMA(0,1,1)(1,1,1)₁₂ |          4 |         104.87 | -201.75 | -189.57 |
+| SARIMA(0,1,2)(0,1,1)₁₂ |          4 |         104.81 | -201.61 | -189.44 |
+| SARIMA(1,1,2)(0,1,1)₁₂ |          5 |         105.68 | -201.37 | -186.15 |
+| SARIMA(2,1,1)(0,1,1)₁₂ |          5 |         105.33 | -200.66 | -185.45 |
+| SARIMA(1,1,1)(1,1,1)₁₂ |          5 |         105.22 | -200.44 | -185.23 |
+| SARIMA(0,1,2)(1,1,1)₁₂ |          5 |         105.16 | -200.32 | -185.10 |
+| SARIMA(2,1,1)(1,1,1)₁₂ |          6 |         105.76 | -199.53 | -181.27 |
+| SARIMA(1,1,2)(1,1,1)₁₂ |          6 |         105.01 | -198.03 | -179.77 |
 
 <p align="center"><small><i>Tabell 7.2 Topp 10 SARIMA-kandidater rangert etter AIC. Alle 36 kandidater konvergerte.</i></small></p>
 
@@ -395,15 +395,37 @@ Den valgte modellen SARIMA$(0,1,1)(0,1,1)_{12}$ estimeres på den log-transforme
 
 Tabell 7.3 viser de estimerte parameterne med tilhørende standardfeil, z-verdier og p-verdier.
 
-| Parameter | Koeffisient | Standardfeil | z-verdi | p-verdi | 95 % KI nedre | 95 % KI øvre |
-| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| $\theta_1$ (ma.L1) | -0.8217 | 0.0303 | -27.15 | < 0.001 | -0.881 | -0.762 |
-| $\Theta_1$ (ma.S.L12) | -0.5998 | 0.0570 | -10.53 | < 0.001 | -0.711 | -0.488 |
-| $\sigma^2$ | 0.0146 | 0.0009 | 16.25 | < 0.001 | 0.013 | 0.016 |
+| Parameter               | Koeffisient | Standardfeil | z-verdi | p-verdi | 95 % KI nedre | 95 % KI øvre |
+| :---------------------- | ----------: | -----------: | ------: | ------: | ------------: | ------------: |
+| $\theta_1$ (ma.L1)    |     -0.8217 |       0.0303 |  -27.15 | < 0.001 |        -0.881 |        -0.762 |
+| $\Theta_1$ (ma.S.L12) |     -0.5998 |       0.0570 |  -10.53 | < 0.001 |        -0.711 |        -0.488 |
+| $\sigma^2$            |      0.0146 |       0.0009 |   16.25 | < 0.001 |         0.013 |         0.016 |
 
 <p align="center"><small><i>Tabell 7.3 Estimerte parametere for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 
 Begge MA-parameterne er sterkt signifikante med p-verdier under 0.001. Den ikke-sesongmessige glidende gjennomsnittsparameteren $\theta_1 = -0.82$ indikerer at modellen bruker en stor andel av forrige måneds prognosefeil til å korrigere neste periodes prognose. Den sesongmessige glidende gjennomsnittsparameteren $\Theta_1 = -0.60$ viser at modellen også korrigerer basert på prognosefeil fra samme måned ett år tilbake. Den estimerte feilvariansen $\sigma^2 = 0.0146$ gjelder på log-skala.
+
+Med de estimerte parameterverdiene kan modellen skrives eksplisitt som
+
+$$
+(1-B)(1-B^{12}) z_t = (1 - 0.8217 B)(1 - 0.5998 B^{12}) \varepsilon_t.
+$$
+
+Når B-operatoren skrives helt ut og ligningen omformes slik at $z_t$ står alene på venstresiden, får modellen følgende spesifikke form:
+
+$$
+z_t
+=
+z_{t-1} + z_{t-12} - z_{t-13}
++ \varepsilon_t
+- 0.8217 \varepsilon_{t-1}
+- 0.5998 \varepsilon_{t-12}
++ 0.4929 \varepsilon_{t-13}.
+$$
+
+Den estimerte innovasjonsvariansen er samtidig $\sigma^2 = 0.0146$ på log-skala.
+
+Dagens log-salg $z_t$ forklares ved hjelp av to hovedspor i historikken. Leddet $z_{t-1}$ representerer den løpende ikke-sesongmessige utviklingen fra måned til måned, altså det sporet som henger sammen med ordinær differensiering og håndtering av trend. Leddet $z_{t-12}$ representerer sesongsporet, fordi det kobler dagens nivå til samme måned året før. Samtidig trekkes $z_{t-13}$ fra som et korreksjonsledd fordi ordinær og sesongmessig differensiering virker sammen og skaper et overlapp mellom de to sporene. På støysiden beskriver $\varepsilon_{t-1}$ en kortsiktig ikke-sesongmessig korreksjon, mens $\varepsilon_{t-12}$ beskriver en sesongmessig korreksjon fra samme måned året før. Det positive leddet $\varepsilon_{t-13}$ oppstår fordi disse to glidende gjennomsnittsleddene virker sammen i modellen. De negative MA-koeffisientene viser dermed at modellen gjør tydelige justeringer både for kortsiktige avvik og for sesongmessige avvik.
 
 ### 7.4 Validering
 
@@ -420,11 +442,11 @@ Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-B
 
 For å supplere figurdiagnostikken ble det gjennomført Ljung-Box-tester ved lag 12 og 24, samt en ARCH-LM-test med 12 lag. Tabell 7.4 oppsummerer testresultatene.
 
-| Test | Lag | Teststatistikk | p-verdi | Kort vurdering |
-| :--- | ---: | ---: | ---: | :--- |
-| Ljung-Box | 12 | 35.6302 | 0.000097 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
-| Ljung-Box | 24 | 35.9690 | 0.030599 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
-| ARCH-LM | 12 | 134.2280 | < 0.001 | Nullhypotesen om homoskedastisitet forkastes klart. |
+| Test      | Lag | Teststatistikk |  p-verdi | Kort vurdering                                                    |
+| :-------- | --: | -------------: | -------: | :---------------------------------------------------------------- |
+| Ljung-Box |  12 |        35.6302 | 0.000097 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
+| Ljung-Box |  24 |        35.9690 | 0.030599 | Nullhypotesen om ingen residualautokorrelasjon forkastes ved 5 %. |
+| ARCH-LM   |  12 |       134.2280 |  < 0.001 | Nullhypotesen om homoskedastisitet forkastes klart.               |
 
 <p align="center"><small><i>Tabell 7.4 Supplerende residualtester for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 
@@ -438,7 +460,26 @@ Samlet sett viser analysekapitlet at modellen er estimert med signifikante param
 
 ### 8.1 Resultater fra testsettvalidering
 
-Dette delkapitlet skal presentere hvordan modellen presterer mot testdatasettet, inkludert sammenligning mellom observerte og predikerte verdier og feilmål som MAE, RMSE og MAPE.
+Testsettvalideringen er gjennomført som en fast holdout-evaluering. Den estimerte SARIMA$(0,1,1)(0,1,1)_{12}$-modellen fra kapittel 7.3 er brukt til å generere prognoser for hele testperioden 1978-01 til 1981-06, uten ny modellseleksjon eller rullerende reestimering. Prognosene er deretter sammenlignet med observerte salgstall på original skala.
+
+Figur 8.1 viser hvordan prognosen følger den observerte utviklingen i testperioden.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_3_validere_modell/figurer/fig_01_testsettprognose.png" alt="Figur 8.1 Testsettvalidering for SARIMA-modellen" width="80%">
+  <p align="center"><small><i>Figur 8.1 Observerte og prognostiserte salgstall i testperioden 1978-01 til 1981-06.</i></small></p>
+</div>
+
+Tabell 8.1 oppsummerer de tre sentrale feilmålene for testsettet.
+
+| Feilmål |  Verdi |
+| :------- | -----: |
+| MAE      | 415.17 |
+| RMSE     | 494.13 |
+| MAPE     | 5.39 % |
+
+<p align="center"><small><i>Tabell 8.1 Feilmål for testsettvalidering av SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
+
+Resultatene viser at modellen følger sesongmønsteret i testperioden godt og ligger tett på de observerte verdiene gjennom store deler av perioden. Samtidig ligger prognosekurven gjennomgående noe over faktisk salg. I 41 av 42 måneder er prognosen høyere enn observert verdi, og største absolutte avvik oppstår i desember 1979 med en overprognose på 1227.42. Testsettet tyder dermed på at modellen fanger form og timing i sesongmønsteret godt, men at den har en positiv nivåbias i perioden. Disse funnene danner sammen med residualdiagnostikken i kapittel 7.4 grunnlag for den videre diskusjonen i kapittel 9.
 
 ### 8.2 Resultater fra prognosearbeidet
 

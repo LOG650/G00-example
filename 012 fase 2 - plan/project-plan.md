@@ -96,7 +96,7 @@ Prosjektets viktigste begrensninger er:
 | REQ-007 | Ikke-funksjonelt | Levere i trad med kursfaser og milepaeler | Prosjektleder | Fremdriftsplan | Milepael |
 | REQ-008 | Ikke-funksjonelt | Dokumentere analysen slik at den kan etterproves | Prosjektgruppen | Rapport og kode | Review |
 
-Detaljert kravliste finnes i [requirements.json](/D:/LOG650/G00-example/012%20fase%202%20-%20plan/requirements.json).
+Detaljert kravliste finnes i [requirements.json](requirements.json).
 
 ## Løsning
 
@@ -111,11 +111,11 @@ Arbeidsnedbrytningsstrukturen utgjor den formelle omfangsbaselinen. Hovedstruktu
 3. Fase 3 - gjennomforing
 4. Fase 4 - avslutning
 
-Viktige arbeidspakker i fase 3 er datainnsamling og forbehandling, modellvalg og estimering, modellvalidering, prognosearbeid og rapportutkast. Full WBS finnes i [wbs.json](/D:/LOG650/G00-example/012%20fase%202%20-%20plan/wbs.json).
+Viktige arbeidspakker i fase 3 er datainnsamling og forbehandling, modellvalg og estimering, modellvalidering, prognosearbeid og rapportutkast. Full WBS finnes i [wbs.json](wbs.json).
 
 ## Omfangsverifikasjon
 
-Alle delleveranser skal verifiseres internt i gruppen før de brukes videre i prosjektet. Datagrunnlag skal kontrolleres før modellering. Modellvalg og tolkning skal gjennom en faglig gjennomlesning. Residualdiagnostikk skal dokumenteres i analysekapitlet, mens testsettresultater og feilmål skal presenteres i resultatkapitlet uten å gjenta metodeforklaringen. Den samlede vurderingen av modellens egnethet skal løftes til diskusjonskapitlet. Rapportutkast skal gjennom intern kvalitetssikring før peer review. Peer review brukes som ekstern faglig verifikasjon før sluttrevisjon.
+Alle delleveranser skal verifiseres internt i gruppen før de brukes videre i prosjektet. Hver aktivitet skal derfor ha review som en egen avsluttende oppgave før aktiviteten kan lukkes formelt. Datagrunnlag skal kontrolleres før modellering. Modellvalg og tolkning skal gjennom en faglig gjennomlesning. Residualdiagnostikk skal dokumenteres i analysekapitlet, mens testsettresultater og feilmål skal presenteres i resultatkapitlet uten å gjenta metodeforklaringen. Den samlede vurderingen av modellens egnethet skal løftes til diskusjonskapitlet. Rapportutkast skal gjennom intern kvalitetssikring før peer review. Peer review brukes som ekstern faglig verifikasjon før sluttrevisjon.
 
 ## Fremdrift
 
@@ -126,7 +126,7 @@ Fremdriftsbaselinen følger kursfasene:
 - Fase 3: starter 2026-03-09 med samlinger 2026-03-09, 2026-03-11, 2026-04-27 og 2026-04-29
 - Fase 4: avslutning etter fase 3, styrt mot intern maldato 2026-05-15
 
-Detaljert fremdriftsplan finnes i [schedule.json](/D:/LOG650/G00-example/012%20fase%202%20-%20plan/schedule.json).
+Detaljert fremdriftsplan finnes i [schedule.json](schedule.json).
 
 ## Avhengighetsdiagram
 
@@ -194,7 +194,7 @@ Topprisikoene per 2026-03-09 er:
 2. SARIMA gir utilstrekkelig modelltilpasning.
 3. Fremdriften sprekker mellom samlingene.
 
-Fullt risikoregister finnes i [risk.json](/D:/LOG650/G00-example/012%20fase%202%20-%20plan/risk.json).
+Fullt risikoregister finnes i [risk.json](risk.json).
 
 ## Prosess for risikostyring
 
@@ -202,7 +202,7 @@ Risikoregisteret skal gjennomgas i gruppen minst ukentlig i fase 3 og ved hver k
 
 ## Risikoregister
 
-Risikoregisteret er etablert som en egen baselinefil med risiko-ID, kategori, eier, vurdert sannsynlighet, konsekvens og tiltaksplan. Gjeldende versjon finnes i [risk.json](/D:/LOG650/G00-example/012%20fase%202%20-%20plan/risk.json).
+Risikoregisteret er etablert som en egen baselinefil med risiko-ID, kategori, eier, vurdert sannsynlighet, konsekvens og tiltaksplan. Gjeldende versjon finnes i [risk.json](risk.json).
 
 ## Saker
 

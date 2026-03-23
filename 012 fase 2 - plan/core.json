@@ -95,7 +95,7 @@
             "actualStart": "2026-01-12",
             "actualFinish": null,
             "baselineDate": "2026-02-13",
-            "statusDate": "2026-03-18"
+            "statusDate": "2026-03-23"
         },
         "phaseModel": [
             {
@@ -200,8 +200,8 @@
             "costBaselineId": "BL-CST-LOG650-001"
         },
         "statusSummary": {
-            "overallPercentComplete": 62,
-            "summary": "Fase 1 og 2 er ferdigstilt, aktivitet 3.1 og 3.2 er lukket, og aktivitet 3.3 er godt i gang med residualdiagnostikk, Ljung-Box og ARCH-LM dokumentert i rapportens kapittel 7.4. Neste fokus er testsettvalidering i kapittel 8 og egnethetsdiskusjon i kapittel 9.",
+            "overallPercentComplete": 60,
+            "summary": "Fase 1 og 2 er ferdigstilt, aktivitet ACT-3.1 er lukket, aktivitet ACT-3.2 er faglig fullfort men star fortsatt som underveis fordi review gjenstar, og aktivitet ACT-3.3 er godt i gang med residualdiagnostikk, Ljung-Box og ARCH-LM dokumentert i rapportens kapittel 7.4. Neste fokus er review av ACT-3.2, testsettvalidering i kapittel 8 og egnethetsdiskusjon i kapittel 9.",
             "trafficLights": {
                 "scope": "green",
                 "schedule": "green",
@@ -209,9 +209,9 @@
                 "risk": "amber"
             },
             "topIssues": [
-                "Problemstilling, litteratur og teori mangler fortsatt i rapporten",
-                "Residualautokorrelasjon ved lag 12 og 24 samt heteroskedastisitet er pavist og ma vurderes videre i aktivitet 3.3",
-                "Aktivitet 3.2 mangler fortsatt eget reviewspor sammenlignet med aktivitet 3.1"
+                "Problemstilling, avgrensinger, antagelser, litteratur og teori mangler fortsatt i rapporten",
+                "Residualautokorrelasjon ved lag 12 og 24 samt heteroskedastisitet er pavist og ma vurderes videre i aktivitet ACT-3.3",
+                "Aktivitet ACT-3.2 mangler fortsatt review og kan derfor ikke lukkes formelt"
             ],
             "nextMilestones": [
                 {
@@ -270,7 +270,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-18T14:35:00Z",
+            "updatedAt": "2026-03-23T00:00:00Z",
             "updatedBy": "codex"
         }
     }
