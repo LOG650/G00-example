@@ -7,50 +7,50 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 ## Kort status
 
 - Prosjektet er operativt på plan i fase 3.
-- Aktivitet `3.1 Rense og strukturere data` er fullført per 2026-03-16.
-- Aktivitet `3.2 Velge og estimere modell` er faglig fullført per 2026-03-18, to dager før planlagt sluttdato 2026-03-20.
-- Aktivitet `3.3 Validere modell` er godt i gang. Residualdiagnostikk, Ljung-Box og ARCH-LM er nå dokumentert i rapportens 7.4, mens testsettvalidering og samlet vurdering gjenstår.
-- `schedule.json` og `wbs.json` er oppdatert slik at aktivitet 3.1 og 3.2 nå står som fullført.
+- Aktivitet `ACT-3.1 Rense og strukturere data` er fullført per 2026-03-16.
+- Aktivitet `ACT-3.2 Velge og estimere modell` er faglig fullført per 2026-03-18, to dager før planlagt sluttdato 2026-03-20.
+- Aktivitet `ACT-3.3 Validere modell` er godt i gang. Residualdiagnostikk, Ljung-Box og ARCH-LM er nå dokumentert i rapportens 7.4, mens testsettvalidering og samlet vurdering gjenstår.
+- `schedule.json` og `wbs.json` er oppdatert slik at aktivitetene `ACT-3.1` og `ACT-3.2` nå står som fullført.
 
 ## Faktisk fremdrift per arbeidskopi
 
 | Aktivitet | Planlagt periode | Faktisk status | Kommentar |
 | --- | --- | --- | --- |
-| Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig | Fase 1 fullført |
-| Utarbeide proposal | 2026-01-16 til 2026-01-21 | Ferdig | Fase 1 fullført |
-| Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig | Fase 2 fullført |
-| Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
-| Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-18 | Fullført to dager før plan |
-| Validere modell | 2026-03-20 til 2026-03-25 | Pågår/delvis startet | Residualdiagnostikk, Ljung-Box og ARCH-LM er dokumentert. Testsettvalidering og egne 3.3-artefakter gjenstår |
-| Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ikke startet | Avhenger av 3.3 |
-| Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Ikke startet som egen aktivitet | Rapporten er delvis skrevet underveis |
+| ACT-1.1 Analysere case og databehov | 2026-01-12 til 2026-01-16 | Ferdig | Fase 1 fullført |
+| ACT-1.2 Utarbeide proposal | 2026-01-16 til 2026-01-21 | Ferdig | Fase 1 fullført |
+| ACT-2.1 Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig | Fase 2 fullført |
+| ACT-3.1 Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
+| ACT-3.2 Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-18 | Fullført to dager før plan |
+| ACT-3.3 Validere modell | 2026-03-20 til 2026-03-25 | Pågår/delvis startet | Residualdiagnostikk, Ljung-Box og ARCH-LM er dokumentert. Testsettvalidering og egne 3.3-artefakter gjenstår |
+| ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ikke startet | Avhenger av 3.3 |
+| ACT-3.5 Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Ikke startet som egen aktivitet | Rapporten er delvis skrevet underveis |
 
 ## Avhukingsliste for aktiviteter
 
 ### Fullført
 
-#### Analysere case og databehov
+#### ACT-1.1 Analysere case og databehov
 
 - [x] Gjennomgå casebeskrivelsen
 - [x] Avklare problemstilling i proposal
 - [x] Identifisere beslutningsbehov
 - [x] Avklare forventet datagrunnlag
 
-#### Utarbeide proposal
+#### ACT-1.2 Utarbeide proposal
 
 - [x] Beskrive problem og bakgrunn
 - [x] Definere mål og avgrensninger
 - [x] Begrunne metodevalg på overordnet nivå
 - [x] Levere proposal til fasegodkjenning
 
-#### Etablere planbaseline
+#### ACT-2.1 Etablere planbaseline
 
 - [x] Etablere prosjektplan
 - [x] Ferdigstille fremdriftsplan
 - [x] Ferdigstille WBS
 - [x] Etablere baseline for krav, risiko og milepæler
 
-#### Rense og strukturere data
+#### ACT-3.1 Rense og strukturere data
 
 - [x] Kontrollere observasjoner per måned
 - [x] Strukturere tidsserien
@@ -61,7 +61,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 - [x] Sette inn tekst og figurer på rett plass i `rapport.md`
 - [x] Lukke aktiviteten før modellarbeidet starter
 
-#### Velge og estimere modell
+#### ACT-3.2 Velge og estimere modell
 
 - [x] Beskrive generell SARIMA-modell matematisk i rapportens kapittel 6
 - [x] Vurdere aktuell modelltype for trend og sesong
@@ -75,7 +75,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 
 ### Pågår
 
-#### Validere modell
+#### ACT-3.3 Validere modell
 
 - [x] Bygge videre på residualdiagnostikk og rydde den inn i rapportens kapittel 7.4
 - [x] Kjøre Ljung-Box på sesongrelevante lags, minst 12 og 24
@@ -88,14 +88,14 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 
 ### Neste aktiviteter
 
-#### Lage prognose og anbefalinger
+#### ACT-3.4 Lage prognose og anbefalinger
 
 - [ ] Lage 12-måneders prognose
 - [ ] Tolke prognoseresultater
 - [ ] Vurdere konsekvenser for produksjon og lager
 - [ ] Formulere anbefalinger til PowerHorse-caset
 
-#### Skrive rapportutkast
+#### ACT-3.5 Skrive rapportutkast
 
 - [ ] Fylle inn problemstilling, avgrensinger og antagelser i kapittel 1
 - [ ] Skrive kapittel 2 Litteratur
@@ -105,14 +105,14 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 - [ ] Skrive kapittel 10 Konklusjon
 - [ ] Samle figurer, tabeller og referanser i et komplett utkast
 
-#### Gjennomføre peer review og revisjon
+#### ACT-4.1 Gjennomføre peer review og revisjon
 
 - [ ] Innhente tilbakemeldinger fra peer review
 - [ ] Oppsummere funn og forbedringspunkter
 - [ ] Revidere analyse, tekst og presentasjon av resultater
 - [ ] Lukke avvik før sluttføring
 
-#### Ferdigstille rapport og presentasjon
+#### ACT-4.2 Ferdigstille rapport og presentasjon
 
 - [ ] Ferdigstille endelig rapport
 - [ ] Kvalitetssikre språk, sporbarhet og konsistens
@@ -123,10 +123,10 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 
 | Aktivitet | Skript | Figurer | Resultatfiler | Vurdering |
 | --- | ---: | ---: | ---: | --- |
-| 3.1 Rense og strukturere data | 1 | 4 | 4 | Fullført med dokumenterte artefakter og reviewspor |
-| 3.2 Velge og estimere modell | 4 | 3 | 10 | Faglig fullført i arbeidskopien |
-| 3.3 Validere modell | 1 | 0 | 2 | Residualtester er kjørt og dokumentert, men testsettvalidering gjenstår |
-| 3.4 Lage prognose og anbefalinger | 0 | 0 | 0 | Kun mappestruktur og README |
+| ACT-3.1 Rense og strukturere data | 1 | 4 | 4 | Fullført med dokumenterte artefakter og reviewspor |
+| ACT-3.2 Velge og estimere modell | 4 | 3 | 10 | Faglig fullført i arbeidskopien |
+| ACT-3.3 Validere modell | 1 | 0 | 2 | Residualtester er kjørt og dokumentert, men testsettvalidering gjenstår |
+| ACT-3.4 Lage prognose og anbefalinger | 0 | 0 | 0 | Kun mappestruktur og README |
 
 ## Rapportstatus
 
@@ -160,15 +160,15 @@ Denne statusen bygger på arbeidskopien per 2026-03-18, med planbaselinen i `pro
 ## Avvik mellom arbeidskopi og styringsgrunnlag
 
 1. MS-004 står fortsatt med baseline-dato 2026-03-11 i planfilene, mens arbeidskopien viser faktisk oppnåelse 2026-03-16.
-2. Aktivitet 3.2 er faglig ferdig, men ikke fullt administrativt lukket med eget reviewspor tilsvarende aktivitet 3.1.
-3. Aktivitet 3.3 er startet faglig, men mangler fortsatt egne artefakter i aktivitetsmappen.
+2. Aktivitet ACT-3.2 er faglig ferdig, men ikke fullt administrativt lukket med eget reviewspor tilsvarende aktivitet ACT-3.1.
+3. Aktivitet ACT-3.3 er startet faglig, men mangler fortsatt egne artefakter i aktivitetsmappen.
 
 ## Viktigste risikoer
 
-1. Residualavvik i modellestimeringen må håndteres ferdig i aktivitet 3.3. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og tydelig heteroskedastisitet.
+1. Residualavvik i modellestimeringen må håndteres ferdig i aktivitet ACT-3.3. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og tydelig heteroskedastisitet.
 2. Rapporten har et dokumentasjonsgap: problemstilling, avgrensinger, antagelser, litteratur, teori og sluttkapitler er ikke ferdigstilt.
-3. Aktivitet 3.2 mangler fortsatt eget reviewspor, noe som svekker den administrative sporbarheten sammenlignet med aktivitet 3.1.
+3. Aktivitet ACT-3.2 mangler fortsatt eget reviewspor, noe som svekker den administrative sporbarheten sammenlignet med aktivitet ACT-3.1.
 
 ## Vurdering
 
-Prosjektet er operativt på plan per 2026-03-18. Forsinkelsen i aktivitet 3.1 er hentet inn, og aktivitet 3.2 er ferdigstilt før planlagt sluttdato. Aktivitet 3.3 er nå formelt godt i gang, og residualdiagnostikken er utvidet med Ljung-Box og ARCH-LM i kapittel 7.4. Hovedarbeidet som gjenstår er testsettvalidering og den samlede vurderingen av modellens egnethet.
+Prosjektet er operativt på plan per 2026-03-18. Forsinkelsen i aktivitet ACT-3.1 er hentet inn, og aktivitet ACT-3.2 er ferdigstilt før planlagt sluttdato. Aktivitet ACT-3.3 er nå formelt godt i gang, og residualdiagnostikken er utvidet med Ljung-Box og ARCH-LM i kapittel 7.4. Hovedarbeidet som gjenstår er testsettvalidering og den samlede vurderingen av modellens egnethet.
