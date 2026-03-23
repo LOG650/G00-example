@@ -385,8 +385,8 @@
                 "taskId": "3.3",
                 "wbsItemId": "WBS-1.3.3",
                 "name": "Validere modell",
-                "status": "in-progress",
-                "percentComplete": 90,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -428,9 +428,9 @@
                     {
                         "criteriaId": "ACT-3.3-C03",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
-                        "status": "not-passed",
-                        "result": "",
-                        "error": "Review gjenstar for aktiviteten kan lukkes."
+                        "status": "passed",
+                        "result": "Review gjennomfort 2026-03-23. Alle tiltak fra reviewen (V1-V2, F1-F3) er implementert.",
+                        "error": ""
                     }
                 ],
                 "execution": {
@@ -438,8 +438,8 @@
                     "permissionMode": "samarbeid",
                     "sessionId": null,
                     "startedAt": "2026-03-18T00:00:00Z",
-                    "completedAt": null,
-                    "lastEvent": "Alt faglig arbeid er fullfort per 2026-03-23: residualdiagnostikk, testsettvalidering og feilmal er dokumentert i rapport og artefakter. Review gjenstar for aktiviteten kan lukkes."
+                    "completedAt": "2026-03-23T00:00:00Z",
+                    "lastEvent": "Aktiviteten er fullfort og lukket 2026-03-23. Review gjennomfort med fem tiltak (V1-V2, F1-F3) implementert."
                 }
             },
             {

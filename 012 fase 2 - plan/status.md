@@ -9,8 +9,8 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 - Prosjektet er operativt på plan i fase 3.
 - Aktivitet `ACT-3.1 Rense og strukturere data` er fullført per 2026-03-16.
 - Aktivitet `ACT-3.2 Velge og estimere modell` er fullført per 2026-03-23. Review gjennomført med fem tiltak (V1–V3, F1–F2) implementert.
-- Aktivitet `ACT-3.3 Validere modell` er faglig fullført per 2026-03-23, men review gjenstår før aktiviteten kan lukkes. Residualdiagnostikk, testsettvalidering og feilmål er dokumentert i rapportens kapittel 7.4 og 8.1.
-- Neste steg er review av ACT-3.3, deretter `ACT-3.4 Lage prognose og anbefalinger`.
+- Aktivitet `ACT-3.3 Validere modell` er fullført per 2026-03-23. Review gjennomført med to svakheter (V1–V2) og tre forbedringsforslag (F1–F3) implementert.
+- Neste steg er `ACT-3.4 Lage prognose og anbefalinger`.
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -21,7 +21,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 | ACT-2.1 Etablere planbaseline | 2026-02-11 til 2026-02-13 | Ferdig | Fase 2 fullført |
 | ACT-3.1 Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
 | ACT-3.2 Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-23 | Faglig ferdig 2026-03-18, review gjennomført og lukket 2026-03-23 |
-| ACT-3.3 Validere modell | 2026-03-20 til 2026-03-25 | Pågår/faglig ferdig | Faglig arbeid fullført 2026-03-23, review gjenstår |
+| ACT-3.3 Validere modell | 2026-03-20 til 2026-03-25 | Ferdig 2026-03-23 | Review gjennomført og lukket 2026-03-23 |
 | ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ikke startet | Avhenger av 3.3 |
 | ACT-3.5 Skrive rapportutkast | 2026-04-10 til 2026-04-27 | Ikke startet som egen aktivitet | Rapporten er delvis skrevet underveis |
 
@@ -77,8 +77,6 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 - [x] Dokumentere modellvalg og begrunnelse
 - [x] Gjennomføre review og lukke aktiviteten
 
-### Pågår
-
 #### ACT-3.3 Validere modell
 
 - [x] Bygge videre på residualdiagnostikk og rydde den inn i rapportens kapittel 7.4
@@ -89,7 +87,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 - [x] Dokumentere kapittel 7.4 Validering
 - [x] Dokumentere kapittel 8.1 Resultater fra testsettvalidering
 - [x] Forberede grunnlag for diskusjon av modellens egnethet i kapittel 9
-- [ ] Gjennomføre review og lukke aktiviteten
+- [x] Gjennomføre review og lukke aktiviteten
 
 ### Neste aktiviteter
 
@@ -107,7 +105,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 - [ ] Skrive kapittel 2 Litteratur
 - [ ] Skrive kapittel 3 Teori
 - [ ] Fylle kapittel 8 Resultat med komprimerte sluttresultater
-- [ ] Skrive kapittel 9 Diskusjon
+- [ ] Skrive kapittel 9 Diskusjon (inkl. drøft log-transformasjon og manglende bias-korreksjon $\exp(\mu + \sigma^2/2)$ som metodisk nyanse)
 - [ ] Skrive kapittel 10 Konklusjon
 - [ ] Samle figurer, tabeller og referanser i et komplett utkast
 - [ ] Gjennomføre review og lukke aktiviteten
@@ -134,7 +132,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 | --- | ---: | ---: | ---: | --- |
 | ACT-3.1 Rense og strukturere data | 1 | 4 | 4 | Fullført med dokumenterte artefakter og reviewspor |
 | ACT-3.2 Velge og estimere modell | 4 | 3 | 10 | Fullført med dokumenterte artefakter og reviewspor |
-| ACT-3.3 Validere modell | 2 | 1 | 6 | Faglig fullført, review gjenstår |
+| ACT-3.3 Validere modell | 2 | 1 | 6 | Fullført med dokumenterte artefakter og reviewspor |
 | ACT-3.4 Lage prognose og anbefalinger | 0 | 0 | 0 | Kun mappestruktur og README |
 
 ## Rapportstatus
@@ -172,9 +170,9 @@ Denne statusen bygger på arbeidskopien per 2026-03-23, med planbaselinen i `pro
 
 ## Viktigste risikoer
 
-1. Residualavvik er dokumentert og vurdert i kapittel 7.4. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og heteroskedastisitet. Disse funnene må drøftes i kapittel 9 (Diskusjon).
+1. Residualavvik er dokumentert og vurdert i kapittel 7.4, og review-tiltak (V1–V2, F1–F3) er implementert. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og heteroskedastisitet. Disse funnene skal drøftes i kapittel 9 (Diskusjon) i ACT-3.5.
 2. Rapporten har et dokumentasjonsgap: problemstilling, avgrensinger, antagelser, litteratur, teori og sluttkapitler er ikke ferdigstilt.
 
 ## Vurdering
 
-Prosjektet er operativt på plan per 2026-03-23. Aktivitetene ACT-3.1 og ACT-3.2 er fullført og lukket. ACT-3.3 er faglig ferdig med all validering dokumentert, men review gjenstår. Neste steg er review av ACT-3.3, deretter ACT-3.4 (prognose og anbefalinger). Hovedarbeidet som gjenstår er prognosearbeidet, sluttkapitlene i rapporten (innledning, litteratur, teori, diskusjon, konklusjon) og peer review.
+Prosjektet er operativt på plan per 2026-03-23. Aktivitetene ACT-3.1, ACT-3.2 og ACT-3.3 er fullført og lukket. Neste steg er ACT-3.4 (prognose og anbefalinger). Hovedarbeidet som gjenstår er prognosearbeidet, sluttkapitlene i rapporten (innledning, litteratur, teori, diskusjon, konklusjon) og peer review.

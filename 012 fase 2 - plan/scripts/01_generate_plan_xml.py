@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+from collections import defaultdict, deque
 from dataclasses import dataclass, field
 from datetime import date, datetime, time
 from pathlib import Path
@@ -510,6 +511,45 @@ def flatten_tasks(root: TaskNode) -> list[TaskNode]:
     return ordered
 
 
+def renumber_tasks(tasks: list[TaskNode]) -> list[TaskNode]:
+    for index, node in enumerate(tasks, start=1):
+        node.uid = index
+        node.task_id = index
+    return tasks
+
+
+def validate_activity_graph(activities: dict[str, dict[str, Any]]) -> None:
+    graph: dict[str, list[str]] = defaultdict(list)
+    indegree = {activity_id: 0 for activity_id in activities}
+
+    for activity in activities.values():
+        for predecessor in activity.get("predecessors", []):
+            predecessor_id = predecessor["activityId"]
+            if predecessor_id not in activities:
+                raise SystemExit(
+                    f"Ukjent predecessor {predecessor_id!r} for aktivitet {activity['activityId']!r}."
+                )
+            graph[predecessor_id].append(activity["activityId"])
+            indegree[activity["activityId"]] += 1
+
+    queue = deque(sorted(activity_id for activity_id, value in indegree.items() if value == 0))
+    order: list[str] = []
+    while queue:
+        current = queue.popleft()
+        order.append(current)
+        for successor in graph[current]:
+            indegree[successor] -= 1
+            if indegree[successor] == 0:
+                queue.append(successor)
+
+    remaining = [activity_id for activity_id, value in indegree.items() if value > 0]
+    if remaining:
+        raise SystemExit(
+            "Sirkelavhengighet oppdaget i schedule.json: "
+            + ", ".join(sorted(remaining))
+        )
+
+
 def add_task_xml(parent: ET.Element, node: TaskNode, activity_to_uid: dict[str, int]) -> None:
     task_el = ET.SubElement(parent, f"{{{NS}}}Task")
     add_text(task_el, "UID", node.uid)
@@ -518,15 +558,20 @@ def add_task_xml(parent: ET.Element, node: TaskNode, activity_to_uid: dict[str, 
     add_text(task_el, "WBS", node.wbs_code)
     add_text(task_el, "OutlineNumber", node.outline_number)
     add_text(task_el, "OutlineLevel", node.outline_level)
+    add_text(task_el, "Manual", False)
+    add_text(task_el, "Summary", node.summary)
+    add_text(task_el, "CalendarUID", node.calendar_uid)
+    add_text(task_el, "Notes", node.notes)
+
+    if node.summary:
+        return
+
     add_text(task_el, "Start", iso_datetime(node.timing.start_dt))
     add_text(task_el, "Finish", iso_datetime(node.timing.finish_dt))
     add_text(task_el, "Duration", minutes_to_duration(node.timing.duration_minutes))
     add_text(task_el, "DurationFormat", DEFAULT_DURATION_FORMAT_DAYS)
-    add_text(task_el, "Manual", False)
-    add_text(task_el, "Summary", node.summary)
     add_text(task_el, "Milestone", node.milestone)
     add_text(task_el, "Critical", node.critical)
-    add_text(task_el, "CalendarUID", node.calendar_uid)
     add_text(task_el, "PercentComplete", node.timing.percent_complete)
     add_text(task_el, "PercentWorkComplete", node.timing.percent_complete)
     add_text(task_el, "ActualStart", iso_datetime(node.timing.actual_start_dt))
@@ -534,13 +579,14 @@ def add_task_xml(parent: ET.Element, node: TaskNode, activity_to_uid: dict[str, 
     if node.timing.actual_duration_minutes is not None:
         add_text(task_el, "ActualDuration", minutes_to_duration(node.timing.actual_duration_minutes))
     add_text(task_el, "RemainingDuration", minutes_to_duration(node.timing.remaining_duration_minutes))
-    add_text(task_el, "Notes", node.notes)
 
-    if not node.summary and node.predecessors:
+    if node.predecessors:
         for predecessor in node.predecessors:
             predecessor_uid = activity_to_uid.get(predecessor["activityId"])
             if predecessor_uid is None:
-                continue
+                raise SystemExit(
+                    f"Predecessor {predecessor['activityId']!r} for {node.activity_id!r} peker ikke til en eksportert leaf task."
+                )
             link_el = ET.SubElement(task_el, f"{{{NS}}}PredecessorLink")
             add_text(link_el, "PredecessorUID", predecessor_uid)
             add_text(link_el, "Type", LINK_TYPE_MAP.get(predecessor.get("type", "finish-to-start"), 1))
@@ -620,6 +666,7 @@ def main() -> None:
     repo_root = None if args.no_git_fallback else git_repo_root(plan_dir)
 
     activities = {activity["activityId"]: activity for activity in schedule_data["activities"]}
+    validate_activity_graph(activities)
     wbs_items = {item["wbsItemId"]: item for item in wbs_data["items"]}
 
     children_by_parent: dict[str | None, list[dict[str, Any]]] = {}
@@ -638,7 +685,8 @@ def main() -> None:
         working_weekdays,
         not args.no_git_fallback,
     )
-    tasks = flatten_tasks(root_task)
+    tasks = flatten_tasks(root_task)[1:]
+    tasks = renumber_tasks(tasks)
     activity_to_uid = {task.activity_id: task.uid for task in tasks if task.activity_id}
 
     project_el = ET.Element(f"{{{NS}}}Project")

@@ -213,7 +213,7 @@
                 "type": "work-package",
                 "description": "Bygge videre pa residualdiagnostikk fra aktivitet 3.2, gjennomfore testsettvalidering og oppsummere valideringsfunn som grunnlag for diskusjon av modellens egnethet.",
                 "owner": "Analyseansvarlig",
-                "status": "in-progress",
+                "status": "done",
                 "audit": {
                     "createdAt": "2026-02-13T12:15:00Z",
                     "updatedAt": "2026-03-23T00:00:00Z"

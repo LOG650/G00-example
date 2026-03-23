@@ -1,2 +1,2 @@
 modell,testperiode,antall_observasjoner,mae,rmse,mape_prosent
-"SARIMA(0,1,1)(0,1,1)_12",1978-01 til 1981-06,42,415.17,494.13,5.39
+"SARIMA(0,1,1)(0,1,1)_12",1978-01 til 1981-06,42,415.18,494.14,5.39

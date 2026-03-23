@@ -438,9 +438,9 @@ Figur 7.3 viser residualdiagnostikk for den estimerte modellen.
   <p align="center"><small><i>Figur 7.3 Residualdiagnostikk for SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 </div>
 
-Korrelogrammet viser ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Residualdiagnostikken gir dermed et teknisk bilde av hvilke modellforutsetninger som ser rimelige ut, og hvilke svakheter som må tas med videre i vurderingen av modellen.
+Ved korte lag viser korrelogrammet ingen signifikant autokorrelasjon i residualene, og Ljung-Box-testen ved lag 1 gir p-verdi 0.46, noe som ikke gir grunnlag for å forkaste hypotesen om hvitt støy. Histogrammet og Q-Q-plottet viser at residualene har noe avvik fra normalfordeling i halene, med tyngre venstrehale og kurtose på 7.95. Jarque-Bera-testen gir p-verdi under 0.01. Det observeres også heteroskedastisitet, der tidlige residualer har høyere varians enn senere perioder. Residualdiagnostikken gir dermed et teknisk bilde av hvilke modellforutsetninger som ser rimelige ut, og hvilke svakheter som må tas med videre i vurderingen av modellen.
 
-For å supplere figurdiagnostikken ble det gjennomført Ljung-Box-tester ved lag 12 og 24, samt en ARCH-LM-test med 12 lag. Tabell 7.4 oppsummerer testresultatene.
+Selv om korrelogrammet ved korte lag ikke gir grunn til bekymring, kan kumulativ autokorrelasjon ved sesongrelevante lag likevel være til stede. For å undersøke dette ble det gjennomført Ljung-Box-tester ved lag 12 og 24, samt en ARCH-LM-test med 12 lag. Tabell 7.4 oppsummerer testresultatene.
 
 | Test      | Lag | Teststatistikk |  p-verdi | Kort vurdering                                                    |
 | :-------- | --: | -------------: | -------: | :---------------------------------------------------------------- |
@@ -466,7 +466,7 @@ Figur 8.1 viser hvordan prognosen følger den observerte utviklingen i testperio
 
 <div align="center">
   <img src="../006%20analysis/aktiviteter/3_3_validere_modell/figurer/fig_01_testsettprognose.png" alt="Figur 8.1 Testsettvalidering for SARIMA-modellen" width="80%">
-  <p align="center"><small><i>Figur 8.1 Observerte og prognostiserte salgstall i testperioden 1978-01 til 1981-06.</i></small></p>
+  <p align="center"><small><i>Figur 8.1 Observerte og prognostiserte salgstall med 95 % prediksjonsintervall i testperioden 1978-01 til 1981-06.</i></small></p>
 </div>
 
 Tabell 8.1 oppsummerer de tre sentrale feilmålene for testsettet.
@@ -479,7 +479,7 @@ Tabell 8.1 oppsummerer de tre sentrale feilmålene for testsettet.
 
 <p align="center"><small><i>Tabell 8.1 Feilmål for testsettvalidering av SARIMA$(0,1,1)(0,1,1)_{12}$.</i></small></p>
 
-Resultatene viser at modellen følger sesongmønsteret i testperioden godt og ligger tett på de observerte verdiene gjennom store deler av perioden. Samtidig ligger prognosekurven gjennomgående noe over faktisk salg. I 41 av 42 måneder er prognosen høyere enn observert verdi, og største absolutte avvik oppstår i desember 1979 med en overprognose på 1227.42. Testsettet tyder dermed på at modellen fanger form og timing i sesongmønsteret godt, men at den har en positiv nivåbias i perioden. Disse funnene danner sammen med residualdiagnostikken i kapittel 7.4 grunnlag for den videre diskusjonen i kapittel 9.
+Resultatene viser at modellen følger sesongmønsteret i testperioden godt og ligger tett på de observerte verdiene gjennom store deler av perioden. Samtidig ligger prognosekurven gjennomgående noe over faktisk salg. I 41 av 42 måneder er prognosen høyere enn observert verdi, og største absolutte avvik oppstår i desember 1979 med en overprognose på 1227.42. Gjennomsnittlig absolutt prosentfeil øker fra 4.6 % i 1978 til 4.7 % i 1979, 5.8 % i 1980 og 7.5 % i første halvår 1981, noe som tyder på at modellens implisitte trendekstrapolering overstiger den faktiske veksten i testperioden. Testsettet tyder dermed på at modellen fanger form og timing i sesongmønsteret godt, men at den har en positiv nivåbias som tiltar over prognoshorisonten. Disse funnene danner sammen med residualdiagnostikken i kapittel 7.4 grunnlag for den videre diskusjonen i kapittel 9.
 
 ### 8.2 Resultater fra prognosearbeidet
 
