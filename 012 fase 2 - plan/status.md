@@ -10,8 +10,9 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 - Aktivitet `ACT-3.1 Rense og strukturere data` er fullført per 2026-03-16.
 - Aktivitet `ACT-3.2 Velge og estimere modell` er fullført per 2026-03-23. Review gjennomført med fem tiltak (V1–V3, F1–F2) implementert.
 - Aktivitet `ACT-3.3 Validere modell` er fullført per 2026-03-23. Review gjennomført med to svakheter (V1–V2) og tre forbedringsforslag (F1–F3) implementert.
-- Aktivitet `ACT-3.4 Lage prognose og anbefalinger` er fullført per 2026-03-25. Review gjennomført med tre svakheter (V1–V3) fikset og fire forbedringsforslag (F1–F4) overført til ACT-3.5.
-- Neste steg er review av `ACT-3.4` og deretter kapittelbaserte skriveaktiviteter (ACT-3.5 til ACT-3.10). Kritisk sti: ACT-3.5 (kap 9) → ACT-3.6 (kap 10) → ACT-3.10. Parallelt: ACT-3.7 (kap 1), ACT-3.8 (kap 2), ACT-3.9 (kap 3) → ACT-3.10.
+- Aktivitet `ACT-3.4 Lage prognose og anbefalinger` er fullført per 2026-03-25. Review gjennomført med tre svakheter (V1–V3) fikset og fire forbedringsforslag (F1–F4) overført til ACT-3.8.
+- Aktivitet `ACT-3.5 Skrive kapittel 1 Innledning` er fullført per 2026-03-25. Review gjennomført med to svakheter (V1–V2) fikset og fire forbedringsforslag (F1–F4) notert. F4 overført til ACT-3.10.
+- Neste steg er kapittelbaserte skriveaktiviteter (ACT-3.6 til ACT-3.10). Kritisk sti: ACT-3.8 (kap 9) → ACT-3.9 (kap 10) → ACT-3.10. Parallelt: ACT-3.6 (kap 2), ACT-3.7 (kap 3) → ACT-3.10.
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -23,13 +24,13 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | ACT-3.1 Rense og strukturere data | 2026-03-09 til 2026-03-11 | Ferdig 2026-03-16 | Fem dager sent, men hentet inn før neste kritiske steg |
 | ACT-3.2 Velge og estimere modell | 2026-03-11 til 2026-03-20 | Ferdig 2026-03-23 | Faglig ferdig 2026-03-18, review gjennomført og lukket 2026-03-23 |
 | ACT-3.3 Validere modell | 2026-03-20 til 2026-03-25 | Ferdig 2026-03-23 | Review gjennomført og lukket 2026-03-23 |
-| ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ferdig 2026-03-25 | Review gjennomført og lukket 2026-03-25. V1–V3 fikset, F1–F4 overført til ACT-3.5 |
-| ACT-3.5 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Ikke startet | Kritisk sti, avhenger av ACT-3.4 |
-| ACT-3.6 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.5 |
-| ACT-3.7 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ikke startet | Parallell med 3.8 og 3.9 |
-| ACT-3.8 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.7 og 3.9 |
-| ACT-3.9 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.7 og 3.8 |
-| ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.6, 3.7, 3.8 og 3.9. Knyttet til MS-005 |
+| ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ferdig 2026-03-25 | Review gjennomført og lukket 2026-03-25. V1–V3 fikset, F1–F4 overført til ACT-3.8 |
+| ACT-3.5 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ferdig 2026-03-25 | Kapittel 1 med alle underseksjoner ferdigskrevet |
+| ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.7 |
+| ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.6 |
+| ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Ikke startet | Kritisk sti, avhenger av ACT-3.4 |
+| ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.8 |
+| ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.5, 3.6, 3.7 og 3.9. Knyttet til MS-005 |
 
 ## Avhukingsliste for aktiviteter
 
@@ -103,9 +104,30 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 - [x] Formulere anbefalinger til PowerHorse-caset
 - [x] Gjennomføre review og lukke aktiviteten
 
+#### ACT-3.5 Skrive kapittel 1 Innledning
+
+- [x] Fylle inn 1.1 Problemstilling
+- [x] Vurdere om 1.2 Delproblemer er aktuelt og skrive det
+- [x] Skrive 1.3 Avgrensinger
+- [x] Skrive 1.4 Antagelser
+- [x] Aktualisere tema og koble til caset i innledningen
+- [x] Gjennomføre review og lukke aktiviteten
+
 ### Neste aktiviteter
 
-#### ACT-3.5 Skrive kapittel 9 Diskusjon
+#### ACT-3.6 Skrive kapittel 2 Litteratur
+
+- [ ] Identifisere relevante kilder
+- [ ] Knytte litteratur til problemstilling og metodevalg
+- [ ] Gjennomføre review og lukke aktiviteten
+
+#### ACT-3.7 Skrive kapittel 3 Teori
+
+- [ ] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
+- [ ] Koble teori til metodevalg og diskusjon
+- [ ] Gjennomføre review og lukke aktiviteten
+
+#### ACT-3.8 Skrive kapittel 9 Diskusjon
 
 - [ ] Drøfte funn opp mot problemstilling og litteratur
 - [ ] Drøfte log-transformasjon og manglende bias-korreksjon ($\exp(\mu + \sigma^2/2)$ som metodisk nyanse)
@@ -116,31 +138,10 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 - [ ] Vurder helhetsfigur med hele tidsserien og prognose i kap. 9 eller vedlegg (ref. ACT-3.4 review F4)
 - [ ] Gjennomføre review og lukke aktiviteten
 
-#### ACT-3.6 Skrive kapittel 10 Konklusjon
+#### ACT-3.9 Skrive kapittel 10 Konklusjon
 
 - [ ] Svare direkte på problemstillingen
 - [ ] Løfte fram viktigste funn og implikasjoner
-- [ ] Gjennomføre review og lukke aktiviteten
-
-#### ACT-3.7 Skrive kapittel 1 Innledning
-
-- [ ] Fylle inn 1.1 Problemstilling
-- [ ] Vurdere om 1.2 Delproblemer er aktuelt og skrive det
-- [ ] Skrive 1.3 Avgrensinger
-- [ ] Skrive 1.4 Antagelser
-- [ ] Aktualisere tema og koble til caset i innledningen
-- [ ] Gjennomføre review og lukke aktiviteten
-
-#### ACT-3.8 Skrive kapittel 2 Litteratur
-
-- [ ] Identifisere relevante kilder
-- [ ] Knytte litteratur til problemstilling og metodevalg
-- [ ] Gjennomføre review og lukke aktiviteten
-
-#### ACT-3.9 Skrive kapittel 3 Teori
-
-- [ ] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
-- [ ] Koble teori til metodevalg og diskusjon
 - [ ] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.10 Sammenstille rapportutkast
@@ -182,7 +183,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 
 | Kapittel | Status | Kommentar |
 | --- | --- | --- |
-| 1 Innledning | Delvis | Innledning er skrevet, men 1.1, 1.3 og 1.4 er fortsatt tomme |
+| 1 Innledning | Ferdig | Alle underseksjoner (1.1–1.4) ferdigskrevet |
 | 2 Litteratur | Tom | Ikke skrevet |
 | 3 Teori | Tom | Ikke skrevet |
 | 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
@@ -213,9 +214,9 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 
 ## Viktigste risikoer
 
-1. Residualavvik er dokumentert og vurdert i kapittel 7.4, og review-tiltak (V1–V2, F1–F3) er implementert. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og heteroskedastisitet. Disse funnene skal drøftes i kapittel 9 (Diskusjon) i ACT-3.5.
+1. Residualavvik er dokumentert og vurdert i kapittel 7.4, og review-tiltak (V1–V2, F1–F3) er implementert. Diagnostikken viser avvik fra normalfordeling, residualautokorrelasjon ved lag 12 og 24 og heteroskedastisitet. Disse funnene skal drøftes i kapittel 9 (Diskusjon) i ACT-3.8.
 2. Rapporten har et dokumentasjonsgap: problemstilling, avgrensinger, antagelser, litteratur, teori og sluttkapitler er ikke ferdigstilt.
 
 ## Vurdering
 
-Prosjektet er operativt på plan per 2026-03-25. Aktivitetene ACT-3.1, ACT-3.2, ACT-3.3 og ACT-3.4 er fullført. ACT-3.4 venter review. Hovedarbeidet som gjenstår er sluttkapitlene i rapporten (innledning, litteratur, teori, diskusjon, konklusjon) og peer review.
+Prosjektet er operativt på plan per 2026-03-25. Aktivitetene ACT-3.1, ACT-3.2, ACT-3.3 og ACT-3.4 er fullført. Hovedarbeidet som gjenstår er sluttkapitlene i rapporten (innledning, litteratur, teori, diskusjon, konklusjon) og peer review.

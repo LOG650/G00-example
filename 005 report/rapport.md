@@ -68,7 +68,7 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
 
 1. [Innledning](#1-innledning)
    1. [Problemstilling](#11-problemstilling)
-   2. [Delproblemer (valgfri)](#12-delproblemer-valgfri)
+   2. [Delproblemer](#12-delproblemer)
    3. [Avgrensinger](#13-avgrensinger)
    4. [Antagelser](#14-antagelser)
 2. [Litteratur](#2-litteratur)
@@ -89,15 +89,46 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
 
 ## 1 Innledning
 
-PowerHorse brukes i denne oppgaven som casebedrift for å undersøke hvordan historiske salgsdata kan gi bedre beslutningsstøtte i produksjons- og lagerplanlegging. Bedriften opererer i et marked der etterspørselen varierer både over tid og mellom måneder, noe som gjør det krevende å planlegge kapasitet og lager på en presis måte. Når prognosene er svake, øker risikoen for både overproduksjon, unødvendig lagerbinding og for lav tilgjengelighet i perioder med høy etterspørsel. Analysen bygger derfor på historiske månedlige salgsdata for å belyse etterspørselsmønstre og danne grunnlag for videre modellering og prognosearbeid.
+For produksjonsbedrifter med sesongavhengig etterspørsel er pålitelige prognoser en forutsetning for effektiv kapasitets- og lagerplanlegging. Når etterspørselen svinger systematisk gjennom året, fører upresise prognoser til overproduksjon og kapitalbinding i perioder med lav etterspørsel, eller til underdekning og tapte salg når etterspørselen er høy. Konsekvensene forsterkes i bransjer med lang produksjonsledetid, der det er vanskelig å justere volumet på kort varsel.
+
+Denne rapporten bruker PowerHorse som casebedrift for å undersøke hvordan historiske salgsdata kan gi bedre beslutningsstøtte i produksjons- og lagerplanlegging. Bedriften opererer i et marked der etterspørselen varierer både over tid og mellom måneder, noe som gjør det krevende å planlegge kapasitet og lager presist. Med utgangspunkt i et månedlig salgsdatasett utvikles en SARIMA-basert tidsseriemodell som skal fange opp trend- og sesongmønstre og danne grunnlag for en 12-måneders prognose.
+
+Rapporten er bygd opp slik at casebeskrivelse og datagrunnlag presenteres først, deretter modellering og validering, og til slutt prognoseresultater med tilhørende diskusjon og konklusjon.
 
 ### 1.1 Problemstilling
 
+Hvordan kan en univariat tidsseriemodell brukes til å predikere månedlig traktorsalg for de neste tolv månedene, og i hvilken grad gir en slik modell et tilstrekkelig beslutningsgrunnlag for produksjonsplanlegging og lagerstyring hos PowerHorse?
+
+Spørsmålet er motivert av at bedriften mangler et systematisk grunnlag for å planlegge produksjonsvolum fremover. Kapittel 4 beskriver casesituasjonen nærmere og dokumenterer de historiske salgsmønstrene som danner utgangspunktet for modelleringsarbeidet.
+
 ### 1.2 Delproblemer
+
+For å strukturere analyseløpet brytes hovedproblemstillingen ned i tre delspørsmål:
+
+1. Hvilke mønstre i trend og sesong finnes i de historiske salgsdataene?
+2. Hvilken SARIMA-spesifikasjon gir best tilpasning, og hvordan presterer modellen på data den ikke er estimert på?
+3. Hvilke implikasjoner har prognosen for PowerHorse sin produksjons- og lagerplanlegging?
+
+Delspørsmålene korresponderer med henholdsvis casebeskrivelse og datautforsking (kapittel 4–5), modellering og validering (kapittel 6–8), og diskusjon og konklusjon (kapittel 9–10).
 
 ### 1.3 Avgrensinger
 
+Analysen er avgrenset på følgende måter:
+
+1. **Univariat modellering.** Datasettet inneholder kun tid og salgsvolum, uten eksterne forklaringsvariabler som pris, markedsføring eller makroøkonomiske indikatorer. Modelleringen er derfor begrenset til mønstre i selve tidsserien.
+2. **Én produktkategori og månedlig oppløsning.** Datagrunnlaget gjelder samlet traktorsalg på månedsnivå. Finere inndeling etter produkttype, region eller uke er ikke mulig med tilgjengelige data.
+3. **Prognosefokus, ikke forsyningskjedeoptimalisering.** Rapporten utvikler en etterspørselsprognose, men gjennomfører ikke en helhetlig optimalisering av produksjon og lager. Slik optimalisering ville kreve kostnads- og kapasitetsdata som ikke inngår i datagrunnlaget.
+4. **Historisk analyseperiode 1964–1981.** Modellen er estimert på data fra denne perioden. Analysens gyldighet forutsetter at de identifiserte mønstrene er relevante for prognoseperioden som følger umiddelbart etter.
+
 ### 1.4 Antagelser
+
+Analysen bygger på tre overordnede antagelser:
+
+1. **Datakvalitet.** Datasettet antas å være kvalitetssjekket av kilden som leverte det, ettersom prosjektet ikke har tilgang til eksterne kilder for uavhengig verifikasjon. Konsekvensen er at eventuelle feil i kildedata vil forplante seg uoppdaget gjennom analysen.
+2. **Relevans av historiske mønstre.** Trend- og sesongmønstrene som er observert i treningsperioden antas å være tilstrekkelig stabile til å danne grunnlag for prognoser i den nærmeste fremtiden. Dersom markedet har gjennomgått strukturelle endringer, kan prognosen bli misvisende.
+3. **Mønsterbasert tilnærming.** Analysen bygger på statistiske mønstre i tidsserien, ikke på kausale forklaringer av etterspørselsdrivere. Modellen kan dermed fange regelmessigheter uten å forklare hvorfor de oppstår, noe som begrenser evnen til å vurdere effekten av strukturelle endringer.
+
+Disse antagelsene gjelder på prosjektnivå. For detaljerte statistiske modellantagelser, se kapittel 6.2.
 
 ---
 
