@@ -102,6 +102,10 @@ Les også filen @000 templates\Mal prosjekt LOG650 v2.docx for mer detaljert tip
 - Skript, figurer og resultatfiler skal ligge i samme aktivitetsmappe.
 - Filnavn i analyseartefakter skal være korte, ryddige og prefikset med `fig_` og `tab_`.
 
+## Review av aktiviteter
+
+- Når en aktivitet skal reviewes med `review-act`-skillen, start alltid en egen subagent (Agent-verktøyet) for å gjennomføre reviewen. Dette sikrer uavhengighet og unngår bias fra konteksten i hovedsamtalen.
+
 ## Praktiske preferanser i dette repoet
 
 - Når noe er fullført i prosjektet, oppdater både planfiler og `status.md`.
