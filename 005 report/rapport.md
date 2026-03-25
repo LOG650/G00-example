@@ -483,7 +483,39 @@ Resultatene viser at modellen følger sesongmønsteret i testperioden godt og li
 
 ### 8.2 Resultater fra prognosearbeidet
 
-Dette delkapitlet skal presentere den endelige prognosen fra aktivitet 3.4 med tilhørende nøkkeltall og figurer.
+For å produsere den endelige prognosen er SARIMA$(0,1,1)(0,1,1)_{12}$-modellen refittet på hele datasettet (210 observasjoner, januar 1964 til juni 1981). Modellspesifikasjonen er uendret fra estimeringen i kapittel 7.3; formålet med refittingen er å utnytte all tilgjengelig informasjon slik at prognosen blir så oppdatert som mulig. De refittede parameterne er nær de opprinnelige treningsestimatene ($\theta_1 = -0.82$, $\Theta_1 = -0.62$, $\hat{\sigma}^2 = 0.012$), noe som bekrefter at modellstrukturen er stabil over det utvidede datagrunnlaget.
+
+Figur 8.2 viser historisk salg for de siste 3,5 årene sammen med den 12-måneders prognosen og tilhørende 95 % prediksjonsintervall. Den vertikale stiplede linjen markerer prognoseopprinnelsen (juni 1981).
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_4_lage_prognose_og_anbefalinger/figurer/fig_01_prognose_12_maaneder.png" alt="12-måneders prognose med prediksjonsintervall" width="80%">
+  <p align="center"><small><i>Figur 8.2 12-måneders prognose for SARIMA$(0,1,1)(0,1,1)_{12}$ med 95 % prediksjonsintervall (juli 1981 til juni 1982).</i></small></p>
+</div>
+
+Tabell 8.2 oppsummerer punktprognosen og 95 % prediksjonsintervall for hver måned i prognoseperioden.
+
+| Måned   | Punktprognose | Nedre 95 % | Øvre 95 % |
+| :------ | ------------: | ----------: | --------: |
+| 1981-07 |         6 159 |       4 990 |     7 602 |
+| 1981-08 |         2 694 |       2 176 |     3 337 |
+| 1981-09 |         7 991 |       6 431 |     9 928 |
+| 1981-10 |         9 918 |       7 956 |    12 362 |
+| 1981-11 |        15 188 |      12 146 |    18 992 |
+| 1981-12 |        19 483 |      15 531 |    24 439 |
+| 1982-01 |         6 308 |       5 013 |     7 937 |
+| 1982-02 |         5 293 |       4 194 |     6 680 |
+| 1982-03 |         6 584 |       5 201 |     8 334 |
+| 1982-04 |         6 578 |       5 181 |     8 353 |
+| 1982-05 |         7 201 |       5 655 |     9 170 |
+| 1982-06 |         7 016 |       5 494 |     8 961 |
+
+<p align="center"><small><i>Tabell 8.2 Månedlig punktprognose og 95 % prediksjonsintervall for perioden juli 1981 til juni 1982.</i></small></p>
+
+Prognosen viser et tydelig sesongmønster som samsvarer med den historiske salgsprofilen. Desember 1981 er forventet toppmåned med et punktestimat på 19 483, mens august 1981 er forventet bunnmåned med 2 694. Samlet prognosesalg for 12-månedersperioden er 100 413. Prediksjonsintervallene bredder gradvis utover horisonten, med en gjennomsnittlig bredde på om lag 3 800 enheter, noe som reflekterer at usikkerheten øker med antall steg fremover.
+
+Tilbaketransformeringen fra log-skala bruker standard $\exp(\hat{z})$, som gir medianprognosen på originalskala. En analytisk biaskorreksjon med $\exp(\hat{z} + \hat{\sigma}^2/2)$ ville gitt gjennomsnittsprognosen, men oppjusteringen er marginal (ca. 0,6 %) og ville forsterket den positive nivåbiasen som ble identifisert i testsettvalideringen. Denne metodiske nyansen drøftes nærmere i kapittel 9.
+
+Prognosestrukturen har tydelige implikasjoner for kapasitetsplanlegging hos PowerHorse, med høysesong (november–januar) som krever vesentlig høyere produksjonskapasitet enn lavsesong (juni–august). En detaljert drøfting av praktiske implikasjoner og modellbegrensninger følger i kapittel 9.
 
 ---
 
