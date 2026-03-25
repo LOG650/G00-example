@@ -25,7 +25,7 @@ Bekreft at aktiviteten finnes og at den er klar for review (dvs. at arbeidet er 
 ## Steg 2 – Les prosjektkontekst
 
 - Les `CLAUDE.md` for rapportstruktur, figurformat og andre arbeidsregler.
-- Les `012 fase 2 - plan/reviews/REVIEW-MAL.md` for å forstå review-malen du skal fylle ut.
+- Les `.claude/skills/review-act/REVIEW-MAL.md` for å forstå review-malen du skal fylle ut.
 - Sjekk om det finnes andre reviewer av samme aktivitet i `012 fase 2 - plan/reviews/`.
 
 ## Steg 3 – Utforsk artefakter
