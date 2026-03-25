@@ -18,7 +18,7 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-23T00:00:00Z",
+            "updatedAt": "2026-03-25T00:00:00Z",
             "updatedBy": "codex"
         },
         "calendars": [
@@ -504,7 +504,157 @@
                 "activityId": "ACT-3.5",
                 "taskId": "3.5",
                 "wbsItemId": "WBS-1.3.5",
-                "name": "Skrive rapportutkast",
+                "name": "Skrive kapittel 1 Innledning",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Fylle inn kapittel 1 med problemstilling, delproblemer, avgrensinger og antagelser. Aktualisere tema og koble til caset.",
+                "plannedStart": "2026-04-10",
+                "plannedFinish": "2026-04-13",
+                "steps": [
+                    "Fylle inn 1.1 Problemstilling",
+                    "Vurdere om 1.2 Delproblemer er aktuelt og skrive det",
+                    "Skrive 1.3 Avgrensinger",
+                    "Skrive 1.4 Antagelser",
+                    "Aktualisere tema og koble til caset i innledningen",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.5-C01",
+                        "description": "Kapittel 1 med alle underseksjoner er ferdigskrevet",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.5-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.6",
+                "taskId": "3.6",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Skrive kapittel 2 Litteratur",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Identifisere relevante kilder og knytte litteratur til problemstilling og metodevalg.",
+                "plannedStart": "2026-04-10",
+                "plannedFinish": "2026-04-15",
+                "steps": [
+                    "Identifisere relevante kilder",
+                    "Knytte litteratur til problemstilling og metodevalg",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.6-C01",
+                        "description": "Kapittel 2 Litteratur er ferdigskrevet med relevante kilder koblet til problemstillingen",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.6-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.7",
+                "taskId": "3.7",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Skrive kapittel 3 Teori",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": false,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.4",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Beskrive teoretisk rammeverk for tidsserieanalyse, SARIMA og stasjonaritet. Koble til metodevalg og diskusjon.",
+                "plannedStart": "2026-04-10",
+                "plannedFinish": "2026-04-15",
+                "steps": [
+                    "Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)",
+                    "Koble teori til metodevalg og diskusjon",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.7-C01",
+                        "description": "Kapittel 3 Teori er ferdigskrevet med rammeverk koblet til metode og diskusjon",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.7-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.8",
+                "taskId": "3.8",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Fullfore kapittel 8 Resultat",
                 "status": "not-started",
                 "percentComplete": 0,
                 "isCriticalPath": true,
@@ -515,34 +665,199 @@
                         "lagDays": 0
                     }
                 ],
-                "milestoneId": "MS-005",
-                "description": "Samle metode, resultater, figurer og diskusjon i et hovedutkast til rapport.",
+                "milestoneId": null,
+                "description": "Skrive 8.2 med prognoseresultater fra ACT-3.4. Komprimere og rydde sluttresultater.",
                 "plannedStart": "2026-04-10",
-                "plannedFinish": "2026-04-27",
+                "plannedFinish": "2026-04-14",
                 "steps": [
-                    "Skrive metodekapittel",
-                    "Skrive resultatkapittel",
-                    "Sette inn figurer og tabeller",
-                    "Intern kvalitetssikring av utkast",
+                    "Skrive 8.2 med prognoseresultater fra ACT-3.4",
+                    "Komprimere og rydde sluttresultater",
                     "Gjennomfore intern review og lukke aktiviteten"
                 ],
                 "criteria": [
                     {
-                        "criteriaId": "ACT-3.5-C01",
-                        "description": "Fullstendig hovedutkast foreligger",
+                        "criteriaId": "ACT-3.8-C01",
+                        "description": "Kapittel 8 Resultat er komplett med testsettvalidering og prognoseresultater",
                         "status": "not-passed",
                         "result": "",
                         "error": ""
                     },
                     {
-                        "criteriaId": "ACT-3.5-C02",
+                        "criteriaId": "ACT-3.8-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.9",
+                "taskId": "3.9",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Skrive kapittel 9 Diskusjon",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.8",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Drofte funn opp mot problemstilling og litteratur. Drofte log-transformasjon og manglende bias-korreksjon. Vurdere begrensninger og praktiske implikasjoner.",
+                "plannedStart": "2026-04-14",
+                "plannedFinish": "2026-04-19",
+                "steps": [
+                    "Drofte funn opp mot problemstilling og litteratur",
+                    "Drofte log-transformasjon og manglende bias-korreksjon",
+                    "Vurdere begrensninger og praktiske implikasjoner",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.9-C01",
+                        "description": "Kapittel 9 Diskusjon er ferdigskrevet med droftinger koblet til problemstilling, litteratur og begrensninger",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.9-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.10",
+                "taskId": "3.10",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Skrive kapittel 10 Konklusjon",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.9",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": null,
+                "description": "Svare direkte pa problemstillingen og lofte fram viktigste funn og implikasjoner.",
+                "plannedStart": "2026-04-19",
+                "plannedFinish": "2026-04-21",
+                "steps": [
+                    "Svare direkte pa problemstillingen",
+                    "Lofte fram viktigste funn og implikasjoner",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.10-C01",
+                        "description": "Kapittel 10 Konklusjon svarer direkte pa problemstillingen",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.10-C02",
+                        "description": "Review er gjennomfort og aktiviteten er lukket",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    }
+                ],
+                "execution": {
+                    "runBy": "studentgruppe",
+                    "permissionMode": "samarbeid",
+                    "sessionId": null,
+                    "startedAt": null,
+                    "completedAt": null,
+                    "lastEvent": null
+                }
+            },
+            {
+                "activityId": "ACT-3.11",
+                "taskId": "3.11",
+                "wbsItemId": "WBS-1.3.5",
+                "name": "Sammenstille rapportutkast",
+                "status": "not-started",
+                "percentComplete": 0,
+                "isCriticalPath": true,
+                "predecessors": [
+                    {
+                        "activityId": "ACT-3.5",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.6",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.7",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    },
+                    {
+                        "activityId": "ACT-3.10",
+                        "type": "finish-to-start",
+                        "lagDays": 0
+                    }
+                ],
+                "milestoneId": "MS-005",
+                "description": "Skrive sammendrag og abstract, oppdatere innholdsfortegnelse, ferdigstille bibliografi og vedlegg, og gjennomfore intern kvalitetssjekk av hele utkastet.",
+                "plannedStart": "2026-04-21",
+                "plannedFinish": "2026-04-27",
+                "steps": [
+                    "Skrive sammendrag (norsk)",
+                    "Skrive abstract (engelsk)",
+                    "Oppdatere innholdsfortegnelse",
+                    "Ferdigstille kapittel 11 Bibliografi",
+                    "Samle vedlegg i kapittel 12",
+                    "Intern kvalitetssjekk av hele utkastet",
+                    "Gjennomfore intern review og lukke aktiviteten"
+                ],
+                "criteria": [
+                    {
+                        "criteriaId": "ACT-3.11-C01",
+                        "description": "Fullstendig hovedutkast foreligger med alle kapitler, sammendrag, abstract, bibliografi og vedlegg",
+                        "status": "not-passed",
+                        "result": "",
+                        "error": ""
+                    },
+                    {
+                        "criteriaId": "ACT-3.11-C02",
                         "description": "Utkastet er klart for peer review",
                         "status": "not-passed",
                         "result": "",
                         "error": ""
                     },
                     {
-                        "criteriaId": "ACT-3.5-C03",
+                        "criteriaId": "ACT-3.11-C03",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
                         "status": "not-passed",
                         "result": "",
@@ -568,7 +883,7 @@
                 "isCriticalPath": true,
                 "predecessors": [
                     {
-                        "activityId": "ACT-3.5",
+                        "activityId": "ACT-3.11",
                         "type": "finish-to-start",
                         "lagDays": 0
                     }
@@ -678,8 +993,8 @@
         "taskMigration": {
             "migratedAt": "2026-03-09T11:59:00Z",
             "migratedFrom": "Tidligere eksempelplan",
-            "totalTasks": 9,
-            "mergedActivities": 9,
+            "totalTasks": 15,
+            "mergedActivities": 15,
             "missingActivities": 0,
             "note": "Planen er oversatt til PowerHorse-prosjektet og tilpasset kursdatoene for 2026."
         }
