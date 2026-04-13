@@ -73,6 +73,11 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
    4. [Antagelser](#14-antagelser)
 2. [Litteratur](#2-litteratur)
 3. [Teori](#3-teori)
+   1. [Tidsserier og dekomponering](#31-tidsserier-og-dekomponering)
+   2. [Stasjonaritet og transformasjoner](#32-stasjonaritet-og-transformasjoner)
+   3. [ARIMA- og SARIMA-modeller](#33-arima--og-sarima-modeller)
+   4. [Modellidentifikasjon og modellvalg](#34-modellidentifikasjon-og-modellvalg)
+   5. [Validering og prognoseevaluering](#35-validering-og-prognoseevaluering)
 4. [Casebeskrivelse](#4-casebeskrivelse)
 5. [Metode og data (kan splittes i to)](#5-metode-og-data-kan-splittes-i-to)
    1. [Metode](#51-metode)
@@ -137,6 +142,170 @@ Disse antagelsene gjelder på prosjektnivå. For detaljerte statistiske modellan
 ---
 
 ## 3 Teori
+
+Dette kapitlet presenterer det teoretiske rammeverket som ligger til grunn for analysemetodene som brukes i kapittel 6 til 8. Hensikten er å gi et faglig fundament for modellvalg, estimering, diagnostikk og prognoseevaluering, slik at valg og tolkninger senere i rapporten kan forankres i etablert teori. Kapitlet dekker først tidsserier som analyseobjekt, deretter stasjonaritet og transformasjoner, modellrammeverket ARIMA og SARIMA, identifikasjons- og modellvalgverktøy, og til slutt validering og prognoseevaluering.
+
+### 3.1 Tidsserier og dekomponering
+
+En tidsserie er en sekvens av observasjoner $y_1, y_2, \dots, y_T$ registrert i en fast tidsrekkefølge med lik avstand mellom observasjonene. Det som skiller tidsseriedata fra tverrsnittsdata er at rekkefølgen er meningsbærende: observasjoner som ligger nær hverandre i tid, er ofte mer like enn observasjoner som ligger langt fra hverandre. Denne temporale avhengigheten er nettopp det tidsseriemodeller utnytter for å lage prognoser (Hyndman & Athanasopoulos, 2021).
+
+Et nyttig utgangspunkt for å forstå en tidsserie er å tenke på den som sammensatt av tre komponenter: en trendkomponent $T_t$ som fanger opp langsiktig utvikling, en sesongkomponent $S_t$ som fanger opp gjentakende mønstre med fast periode, og en restkomponent $\varepsilon_t$ som representerer uforklart variasjon. Sammenhengen kan uttrykkes enten additivt,
+
+$$
+y_t = T_t + S_t + \varepsilon_t,
+$$
+
+eller multiplikativt,
+
+$$
+y_t = T_t \cdot S_t \cdot \varepsilon_t.
+$$
+
+En multiplikativ struktur innebærer at sesongutslaget vokser proporsjonalt med nivået i serien. I mange salgsserier er dette tilfellet: høysesongsvingningene er større i absolutte tall når salget er høyt enn når det er lavt. En log-transformasjon $z_t = \log(y_t)$ konverterer en multiplikativ struktur til en additiv, fordi $\log(T_t \cdot S_t \cdot \varepsilon_t) = \log(T_t) + \log(S_t) + \log(\varepsilon_t)$. Denne egenskapen gjør log-transformasjonen til et naturlig første steg når variansen i serien øker med nivået, noe som leder videre til spørsmålet om stasjonaritet.
+
+Figur 3.1 illustrerer prinsippet med en syntetisk tidsserie som er dekomponert i sine tre additive komponenter.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_01_dekomponering.png" alt="Figur 3.1 Additiv dekomponering av en tidsserie" width="80%">
+  <p align="center"><small><i>Figur 3.1 Additiv dekomponering av en syntetisk tidsserie i trend, sesong og restledd.</i></small></p>
+</div>
+
+### 3.2 Stasjonaritet og transformasjoner
+
+ARIMA-modeller forutsetter at serien, etter eventuelle transformasjoner og differensieringer, er stasjonær. En tidsserie $\{y_t\}$ kalles svakt stasjonær dersom tre betingelser er oppfylt: forventningen $E[y_t] = \mu$ er konstant over tid, variansen $\text{Var}(y_t) = \sigma^2$ er konstant over tid, og autokovariansen $\gamma(h) = \text{Cov}(y_t, y_{t+h})$ avhenger kun av tidsavstanden $h$ og ikke av tidspunktet $t$ (Shumway & Stoffer, 2017). Stasjonaritet er viktig fordi en modell med faste parametere bare gir mening dersom de statistiske egenskapene til serien ikke endrer seg systematisk over tid.
+
+Mange økonomiske og salgsrelaterte tidsserier er ikke stasjonære i sin opprinnelige form. Nivået kan stige over tid (trend), og variansen kan øke med nivået. For å håndtere dette brukes to typer transformasjoner.
+
+**Log-transformasjon.** Når variansen i serien øker proporsjonalt med nivået, stabiliserer log-transformasjonen $z_t = \log(y_t)$ variansen slik at serien bedre oppfyller kravet om konstant varians. Transformasjonen krever at alle observasjoner er strengt positive.
+
+**Differensiering.** Differensiering fjerner ikke-stasjonær struktur fra serien. Med forsinkelsesoperatoren $B$, definert ved $By_t = y_{t-1}$, kan ordinær differensiering skrives som
+
+$$
+(1-B) y_t = y_t - y_{t-1},
+$$
+
+som fjerner lineær trend ved å beregne endringen fra én periode til den neste. Sesongmessig differensiering med periode $s$ skrives som
+
+$$
+(1-B^s) y_t = y_t - y_{t-s},
+$$
+
+som fjerner sesongstruktur ved å sammenligne hver observasjon med observasjonen $s$ perioder tilbake. For månedlige data med årlig sesong er $s = 12$. Ordinær og sesongmessig differensiering kan kombineres: $(1-B)(1-B^{12}) y_t$ fjerner både trend og sesong. Forsinkelsesoperatoren $B$ og differensieringsoperatorene brukes videre i den formelle SARIMA-spesifikasjonen i kapittel 6.3.
+
+Figur 3.2 viser effekten av ulike differensieringsstrategier på en syntetisk ikke-stasjonær serie med trend og sesong.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_02_stasjonaritet.png" alt="Figur 3.2 Differensiering for å oppnå stasjonaritet" width="80%">
+  <p align="center"><small><i>Figur 3.2 Effekten av ordinær, sesongmessig og kombinert differensiering på en syntetisk serie.</i></small></p>
+</div>
+
+For å vurdere om en serie er tilstrekkelig stasjonær, brukes statistiske tester. To mye brukte tester har komplementære nullhypoteser og brukes derfor ofte sammen:
+
+- **Augmented Dickey-Fuller-testen (ADF)** tester nullhypotesen om at serien har en enhetsrot, det vil si at den er ikke-stasjonær (Dickey & Fuller, 1979). En lav p-verdi gir grunnlag for å forkaste nullhypotesen og konkludere med stasjonaritet.
+
+- **KPSS-testen** tester nullhypotesen om at serien er stasjonær (Kwiatkowski et al., 1992). Her dekomponeres serien i en deterministisk trend, en tilfeldig vandring og et stasjonært feilledd, og testen undersøker om variansen til den tilfeldige vandringen er null. En høy p-verdi gir støtte til stasjonaritet.
+
+Brukt sammen gir testene et mer robust bilde enn hver for seg: dersom begge peker i samme retning, er konklusjonen klarere. Når testene er uenige, kan det tyde på at serien er nær grensen til stasjonaritet, og visuell vurdering bør supplere de formelle testresultatene. I kapittel 7.1 brukes ADF- og KPSS-testene til å avgjøre differensieringsbehovet for den log-transformerte salgsserien.
+
+### 3.3 ARIMA- og SARIMA-modeller
+
+Med stasjonaritetsbegrepet og differensiering på plass kan selve modellrammeverket beskrives. Utgangspunktet er tre grunnleggende byggesteiner. En autoregressiv modell av orden $p$, skrevet AR($p$), forklarer nåværende verdi som en lineær funksjon av de $p$ foregående verdiene i serien. En glidende gjennomsnittsmodell av orden $q$, skrevet MA($q$), forklarer nåværende verdi som en lineær funksjon av nåværende og de $q$ foregående feilleddene. En ARMA($p,q$)-modell kombinerer begge mekanismene.
+
+Når serien ikke er stasjonær og må differensieres $d$ ganger for å oppnå stasjonaritet, utvides modellen til en ARIMA($p,d,q$)-modell — en autoregressiv integrert glidende gjennomsnittsmodell. Bokstaven I står for «integrert» og reflekterer at den observerte serien er den integrerte (summerte) versjonen av den stasjonære differensserien (Shumway & Stoffer, 2017).
+
+For tidsserier med sesongmønster — som månedlige salgsdata med årlige svingninger — utvides rammeverket ytterligere til en SARIMA-modell. En SARIMA$(p,d,q)(P,D,Q)_s$-modell legger til sesongmessige autoregressive og glidende gjennomsnittsledd, samt sesongmessig differensiering, der $s$ angir sesonglengden. Det karakteristiske ved SARIMA er den multiplikative strukturen: de ikke-sesongmessige og sesongmessige operatorene virker sammen, slik at modellen kan fange opp samspillet mellom kortsiktige og sesongmessige mønstre. Den kompakte formen skrives som
+
+$$
+\Phi(B^s) \, \phi(B) \, (1-B)^d (1-B^s)^D y_t = \Theta(B^s) \, \theta(B) \, \varepsilon_t,
+$$
+
+der $\phi(B)$ og $\theta(B)$ er de ikke-sesongmessige polynomene, $\Phi(B^s)$ og $\Theta(B^s)$ er de sesongmessige polynomene, og $\varepsilon_t$ er feilleddet. Den fullstendige utledningen med alle polynomdefinisjoner finnes i kapittel 6.3.
+
+**Box-Jenkins-metodikken** gir et systematisk rammeverk for å arbeide med ARIMA- og SARIMA-modeller (Box et al., 2015). Prosedyren er iterativ og består av tre steg som gjentas til en tilfredsstillende modell er funnet:
+
+1. **Identifikasjon:** Vurdere stasjonaritet, bestemme differensieringsordner, og bruke ACF og PACF til å foreslå modellordner.
+2. **Estimering:** Estimere modellparameterne, typisk med maksimum likelihood (MLE), som finner parameterverdiene som maksimerer sannsynligheten for de observerte dataene gitt modellen.
+3. **Diagnostikk:** Undersøke residualene for å vurdere om modellen er tilstrekkelig spesifisert. Dersom residualene viser systematiske mønstre, revideres modellen.
+
+Etter at en tilfredsstillende modell er funnet, kan den brukes til å generere prognoser med tilhørende usikkerhetsmål.
+
+En klassisk og mye brukt SARIMA-spesifikasjon for månedlige tidsserier med trend og sesong er SARIMA$(0,1,1)(0,1,1)_{12}$. Denne modellen, ofte kalt flypassasjermodellen etter Box og Jenkins' opprinnelige analyse av månedlige passasjertall for internasjonale flyreiser (Box et al., 2015), kombinerer ordinær og sesongmessig differensiering med ett glidende gjennomsnittsledd på hvert nivå. Modellen fungerer som et naturlig referansepunkt når man modellerer månedlige sesongtidsserier, og er kjent for å gi gode resultater med få parametere.
+
+### 3.4 Modellidentifikasjon og modellvalg
+
+Det første steget i Box-Jenkins-metodikken etter differensiering er å bruke autokorrelasjonsfunksjonen (ACF) og den partielle autokorrelasjonsfunksjonen (PACF) til å foreslå modellordner.
+
+ACF ved lag $h$ måler korrelasjonen mellom $y_t$ og $y_{t+h}$, inkludert effekten av alle mellomliggende observasjoner. PACF ved lag $h$ måler korrelasjonen mellom $y_t$ og $y_{t+h}$ etter at effekten av observasjonene $y_{t+1}, \dots, y_{t+h-1}$ er fjernet. Disse to funksjonene har karakteristiske signaturmønstre for ulike modelltyper (Box et al., 2015):
+
+- En ren AR($p$)-prosess viser gradvis avtagende ACF og en PACF som kuttes av etter lag $p$.
+- En ren MA($q$)-prosess viser en ACF som kuttes av etter lag $q$ og gradvis avtagende PACF.
+- En blandet ARMA-prosess viser gradvis avfall i både ACF og PACF.
+
+For sesongmodeller gjentar de samme mønstrene seg ved sesonglagene $s$, $2s$, $3s$, og så videre. Når ACF kuttes av ved lag 1 og lag $s$ samtidig som PACF avtar gradvis, peker mønsteret mot glidende gjennomsnittsledd av første orden på begge nivåer.
+
+Figur 3.3 illustrerer de karakteristiske mønstrene med syntetiske AR(1)- og MA(1)-prosesser. For AR(1) avtar ACF gradvis mens PACF kuttes av etter lag 1; for MA(1) er mønsteret omvendt.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_03_acf_pacf_moenstre.png" alt="Figur 3.3 Signaturmønstre i ACF og PACF" width="80%">
+  <p align="center"><small><i>Figur 3.3 Signaturmønstre i ACF og PACF for simulerte AR(1)- og MA(1)-prosesser.</i></small></p>
+</div>
+
+Visuell ACF/PACF-tolkning er et nyttig utgangspunkt, men gir sjelden en entydig konklusjon. I praksis suppleres tolkningen derfor med en systematisk sammenligning av kandidatmodeller ved hjelp av informasjonskriterier. De to mest brukte er Akaikes informasjonskriterium (AIC) og det bayesianske informasjonskriteriet (BIC):
+
+$$
+\text{AIC} = -2\log(L) + 2k, \qquad \text{BIC} = -2\log(L) + k \cdot \ln(n),
+$$
+
+der $L$ er den maksimerte likelihood-verdien, $k$ er antall estimerte parametere og $n$ er antall observasjoner. Begge kriteriene balanserer modelltilpasning (uttrykt gjennom log-likelihood) mot modellkompleksitet (uttrykt gjennom antall parametere), men BIC straffer kompleksitet hardere i store utvalg. Lavere verdi er bedre for begge kriterier. Når AIC og BIC peker mot samme modell, gir det ekstra trygghet for valget. Parsimonprinsippet tilsier at man foretrekker den enkleste modellen blant kandidater med tilnærmet lik tilpasning, fordi enklere modeller generaliserer bedre til nye data. I kapittel 7.2 brukes ACF/PACF-analyse og systematisk AIC/BIC-rangering til å velge SARIMA-spesifikasjon.
+
+### 3.5 Validering og prognoseevaluering
+
+Etter estimering er det nødvendig å undersøke om modellen er tilstrekkelig spesifisert, og om den gir pålitelige prognoser. Dette gjøres gjennom residualdiagnostikk og evaluering på data modellen ikke er estimert på.
+
+**Residualdiagnostikk.** Dersom modellen er riktig spesifisert, skal residualene $\hat{\varepsilon}_t$ oppføre seg tilnærmet som hvitt støy: ingen gjenværende autokorrelasjon, tilnærmet konstant varians og tilnærmet normalfordeling. Avvik fra disse egenskapene kan indikere at modellen ikke fanger all systematisk struktur i dataene.
+
+*Ljung-Box-testen* (Ljung & Box, 1978) er en portmanteau-test som undersøker om det finnes gjenværende autokorrelasjon i residualene. Teststatistikken er
+
+$$
+Q = n(n+2) \sum_{k=1}^{m} \frac{\hat{\rho}_k^2}{n-k},
+$$
+
+der $\hat{\rho}_k$ er den estimerte autokorrelasjon i residualene ved lag $k$, $n$ er antall observasjoner og $m$ er antall lag som testes. Under nullhypotesen om ingen autokorrelasjon følger $Q$ tilnærmet en $\chi^2$-fordeling med $m - p - q$ frihetsgrader, der $p$ og $q$ er antall estimerte AR- og MA-parametere i modellen. For sesongmodeller er det viktig å teste ved sesonglagene (for eksempel lag 12 og 24 for månedlige data) for å avdekke gjenværende sesongstruktur.
+
+*ARCH-LM-testen* (Engle, 1982) undersøker om residualvariansen er konstant over tid. Testen regresjonerer kvadrerte residualer på sine egne laggede verdier og tester om koeffisientene samlet sett er signifikante. En signifikant test indikerer heteroskedastisitet, det vil si at modellforutsetningen om konstant feilvarians ikke er oppfylt.
+
+*Jarque-Bera-testen* (Jarque & Bera, 1987) tester om residualfordelingen avviker fra normalfordelingen ved å kombinere avvik i skjevhet og kurtose i én teststatistikk. Normalfordelte residualer har skjevhet lik 0 og kurtose lik 3. Det bør bemerkes at MLE-estimering av SARIMA-parametere er rimelig robust mot moderate avvik fra normalitet, men prediksjonsintervaller og p-verdier forutsetter tilnærmet normalitet for å være nøyaktige.
+
+**Prognosefeilmål.** For å vurdere modellens prognoseevne brukes kvantitative feilmål beregnet på data modellen ikke er estimert på. Tre vanlige mål er (Hyndman & Athanasopoulos, 2021):
+
+$$
+\text{MAE} = \frac{1}{n}\sum_{t=1}^{n}|y_t - \hat{y}_t|, \qquad \text{RMSE} = \sqrt{\frac{1}{n}\sum_{t=1}^{n}(y_t - \hat{y}_t)^2}, \qquad \text{MAPE} = \frac{100}{n}\sum_{t=1}^{n}\frac{|y_t - \hat{y}_t|}{y_t}.
+$$
+
+MAE gir det gjennomsnittlige absolutte avviket og er lett tolkbart i seriens opprinnelige enhet. RMSE vekter store feil tyngre og er nyttig når store prognosebom er spesielt kostbare. MAPE uttrykker feilen som en prosentandel av observert verdi og er dermed skalauavhengig, men er udefinert for nullverdier og asymmetrisk ved skjeve fordelinger.
+
+**Hold-out-validering.** Prinsippet bak hold-out-validering er å dele datasettet i et treningssett og et testsett. Modellen estimeres kun på treningsdataene, og prognoser evalueres mot testdataene som modellen ikke har sett. Dette gir et realistisk bilde av prognoseevnen utover den tilpasningen som oppnås in-sample. I kapittel 8.1 evalueres modellens prognoser mot et holdout-testsett.
+
+**Prediksjonsintervaller og biaskorreksjon.** Når en SARIMA-modell er estimert på log-transformert serie, genereres prognoser og konfidensgrenser først på log-skala:
+
+$$
+\hat{z}_{T+h} \pm z_{\alpha/2} \cdot \sigma_h,
+$$
+
+der $\hat{z}_{T+h}$ er punktprognosen, $z_{\alpha/2}$ er kvantilet fra standardnormalfordelingen og $\sigma_h$ er prognosens standardfeil ved horisont $h$. Tilbaketransformeringen til originalskala gjennom eksponensialfunksjonen gir asymmetriske prediksjonsintervaller, fordi eksponensialfunksjonen er konveks.
+
+Et viktig poeng ved tilbaketransformering er at $\exp(\hat{z}_{T+h})$ gir medianprognosen, ikke forventningsverdien. Årsaken er Jensens ulikhet: for en konveks funksjon $g$ og en tilfeldig variabel $Z$ gjelder $E[g(Z)] \geq g(E[Z])$. Forventet verdi på originalskala er dermed
+
+$$
+E[y_{T+h}] = \exp\!\left(\hat{z}_{T+h} + \frac{\sigma_h^2}{2}\right),
+$$
+
+der $\sigma_h^2$ er prognosevariansen på log-skala. Denne biaskorreksjon gir gjennomsnittsprognosen i stedet for medianprognosen, og kan være relevant når beslutningskonteksten krever forventede verdier. Figur 3.4 illustrerer forskjellen mellom median og gjennomsnitt for en log-normalfordelt prognose. Forskjellen mellom median- og gjennomsnittsprognosen drøftes i kapittel 9.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_04_biaskorreksjon.png" alt="Figur 3.4 Biaskorreksjon ved tilbaketransformering fra log-skala" width="80%">
+  <p align="center"><small><i>Figur 3.4 Forskjellen mellom median- og gjennomsnittsprognose ved tilbaketransformering fra log-skala.</i></small></p>
+</div>
 
 ---
 
@@ -559,6 +728,22 @@ Prognosestrukturen har tydelige implikasjoner for kapasitetsplanlegging hos Powe
 ---
 
 ## 11 Bibliografi
+
+Box, G. E. P., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). *Time series analysis: Forecasting and control* (5th ed.). Wiley.
+
+Dickey, D. A., & Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. *Journal of the American Statistical Association*, *74*(366), 427–431. https://doi.org/10.2307/2286348
+
+Engle, R. F. (1982). Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation. *Econometrica*, *50*(4), 987–1007. https://doi.org/10.2307/1912773
+
+Hyndman, R. J., & Athanasopoulos, G. (2021). *Forecasting: Principles and practice* (3rd ed.). OTexts. https://otexts.com/fpp3/
+
+Jarque, C. M., & Bera, A. K. (1987). A test for normality of observations and regression residuals. *International Statistical Review*, *55*(2), 163–172. https://doi.org/10.2307/1403192
+
+Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., & Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. *Journal of Econometrics*, *54*(1–3), 159–178. https://doi.org/10.1016/0304-4076(92)90104-Y
+
+Ljung, G. M., & Box, G. E. P. (1978). On a measure of lack of fit in time series models. *Biometrika*, *65*(2), 297–303. https://doi.org/10.1093/biomet/65.2.297
+
+Shumway, R. H., & Stoffer, D. S. (2017). *Time series analysis and its applications: With R examples* (4th ed.). Springer.
 
 ---
 

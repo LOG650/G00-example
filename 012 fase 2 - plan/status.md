@@ -123,8 +123,9 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 
 #### ACT-3.7 Skrive kapittel 3 Teori
 
-- [ ] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
-- [ ] Koble teori til metodevalg og diskusjon
+- [x] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
+- [x] Koble teori til metodevalg og diskusjon
+- [x] Kontrollere at alle referanser i kap. 3 finnes i kap. 11 og har oppsummeringsfil i `003 references/`
 - [ ] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.8 Skrive kapittel 9 Diskusjon
@@ -178,6 +179,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | ACT-3.2 Velge og estimere modell | 4 | 3 | 10 | Fullført med dokumenterte artefakter og reviewspor |
 | ACT-3.3 Validere modell | 2 | 1 | 6 | Fullført med dokumenterte artefakter og reviewspor |
 | ACT-3.4 Lage prognose og anbefalinger | 2 | 1 | 8 | Fullført med dokumenterte artefakter og reviewspor |
+| ACT-3.7 Skrive kapittel 3 Teori | 1 | 4 | 0 | Figurer generert med syntetiske data for teoriillustrasjon |
 
 ## Rapportstatus
 
@@ -185,7 +187,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | --- | --- | --- |
 | 1 Innledning | Ferdig | Alle underseksjoner (1.1–1.4) ferdigskrevet |
 | 2 Litteratur | Tom | Ikke skrevet |
-| 3 Teori | Tom | Ikke skrevet |
+| 3 Teori | Utkast ferdig | Fem seksjoner (3.1–3.5) med APA7-referanser. Venter på review |
 | 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
 | 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert |
 | 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |
@@ -193,7 +195,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | 8 Resultat | Ferdig | 8.1 testsettvalidering og 8.2 prognoseresultater er ferdig |
 | 9 Diskusjon | Tom | Skal romme vurdering av modellens egnethet, begrensninger og praktiske implikasjoner |
 | 10 Konklusjon | Tom | Ikke skrevet |
-| 11 Bibliografi | Tom | Ikke skrevet |
+| 11 Bibliografi | Påbegynt | 8 referanser fra teorikapitlet lagt inn i APA7 |
 | 12 Vedlegg | Tom | Ikke skrevet |
 
 ## Milepæler
