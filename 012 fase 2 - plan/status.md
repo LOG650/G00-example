@@ -12,9 +12,9 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - Aktivitet `ACT-3.3 Validere modell` er fullført per 2026-03-23. Review gjennomført med to svakheter (V1–V2) og tre forbedringsforslag (F1–F3) implementert.
 - Aktivitet `ACT-3.4 Lage prognose og anbefalinger` er fullført per 2026-03-25. Review gjennomført med tre svakheter (V1–V3) fikset og fire forbedringsforslag (F1–F4) overført til ACT-3.8.
 - Aktivitet `ACT-3.5 Skrive kapittel 1 Innledning` er fullført per 2026-03-25. Review gjennomført med to svakheter (V1–V2) fikset og fire forbedringsforslag (F1–F4) notert. F4 overført til ACT-3.10.
-- Aktivitet `ACT-3.8 Skrive kapittel 9 Diskusjon` er ferdigskrevet per 2026-04-13. Seks seksjoner (9.1–9.6) med to tabeller og én figur. Alle sjekkliste-punkter unntatt review er fullført. F1–F4 fra ACT-3.4-reviewen er innarbeidet. Venter på review.
+- Aktivitet `ACT-3.8 Skrive kapittel 9 Diskusjon` er fullført per 2026-04-13. Review gjennomført med to svakheter (V1–V2) rettet og fire forbedringsforslag (F1–F4) implementert.
 - Aktivitet `ACT-3.7 Skrive kapittel 3 Teori` er fullført per 2026-04-13. Review gjennomført med to svakheter (V1–V2) rettet og fem forbedringsforslag (F1–F5) implementert. F5 overført til ACT-3.10.
-- Neste steg: Review av ACT-3.8, deretter ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2) → ACT-3.10.
+- Neste steg: ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2) → ACT-3.10.
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -30,7 +30,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | ACT-3.5 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ferdig 2026-03-25 | Kapittel 1 med alle underseksjoner ferdigskrevet |
 | ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.7 |
 | ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-13 | Review gjennomført og lukket 2026-04-13. V1–V2 rettet, F1–F4 implementert, F5 overført til ACT-3.10 |
-| ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Skrevet 2026-04-13 | Kapittel ferdigskrevet, venter på review |
+| ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-13 | Review gjennomført og lukket 2026-04-13. V1–V2 rettet, F1–F4 implementert |
 | ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.8 |
 | ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.5, 3.6, 3.7 og 3.9. Knyttet til MS-005 |
 
@@ -139,7 +139,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - [x] Vurder refittet parametertabell i rapport eller vedlegg (ref. ACT-3.4 review F2)
 - [x] Vurder oppsummeringstabeller (tab_03, tab_04) i kap. 9 eller vedlegg (ref. ACT-3.4 review F3)
 - [x] Vurder helhetsfigur med hele tidsserien og prognose i kap. 9 eller vedlegg (ref. ACT-3.4 review F4)
-- [ ] Gjennomføre review og lukke aktiviteten
+- [x] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.9 Skrive kapittel 10 Konklusjon
 

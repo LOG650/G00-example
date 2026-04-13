@@ -79,7 +79,7 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
    4. [Modellidentifikasjon og modellvalg](#34-modellidentifikasjon-og-modellvalg)
    5. [Validering og prognoseevaluering](#35-validering-og-prognoseevaluering)
 4. [Casebeskrivelse](#4-casebeskrivelse)
-5. [Metode og data (kan splittes i to)](#5-metode-og-data-kan-splittes-i-to)
+5. [Metode og data](#5-metode-og-data)
    1. [Metode](#51-metode)
    2. [Data](#52-data)
 6. [Modellering](#6-modellering)
@@ -396,7 +396,7 @@ Disse utfordringene blir ekstra viktige når salget varierer gjennom året. Et t
 
 ---
 
-## 5 Metode og data (kan splittes i to)
+## 5 Metode og data
 
 ### 5.1 Metode
 
@@ -731,9 +731,16 @@ Prognosestrukturen har tydelige implikasjoner for kapasitetsplanlegging hos Powe
 
 I dette kapittelet drøftes funnene fra modellering, analyse og resultat opp mot problemstillingen fra kapittel 1.1. Hensikten er å vurdere i hvilken grad den valgte modellen gir et tilstrekkelig beslutningsgrunnlag for PowerHorse, og å løfte fram styrker, svakheter, begrensninger og praktiske implikasjoner som ikke kommer fram av resultatkapitlet alene.
 
+Figur 9.1 viser hele den historiske tidsserien sammen med den 12-måneders prognosen og setter kontekst for drøftingene som følger.
+
+<div align="center">
+  <img src="../006%20analysis/aktiviteter/3_4_lage_prognose_og_anbefalinger/figurer/fig_02_helhetsfigur.png" alt="Figur 9.1 Historisk salg og 12-måneders prognose" width="80%">
+  <p align="center"><small><i>Figur 9.1 Historisk månedlig traktorsalg (1964–1981) og 12-måneders prognose med 95 % prediksjonsintervall.</i></small></p>
+</div>
+
 ### 9.1 Modellvalg og parsimoni
 
-Den valgte modellen SARIMA$(0,1,1)(0,1,1)_{12}$ — den såkalte airline-modellen — er en av de mest brukte spesifikasjonene for månedlige tidsserier med trend og sesong. Med bare tre estimerte parametere er den den enkleste blant alle 36 kandidater som ble evaluert i kapittel 7.2, og den oppnådde likevel lavest AIC og BIC. De mer komplekse alternativene forbedret log-likelihood bare marginalt, noe som taler for at ekstra parametere ikke fanger opp vesentlig tilleggsinformasjon i denne serien.
+Den valgte modellen SARIMA$(0,1,1)(0,1,1)_{12}$ — den såkalte airline-modellen (Box et al., 2015, kap. 9) — er en av de mest brukte spesifikasjonene for månedlige tidsserier med trend og sesong. Med bare tre estimerte parametere er den den enkleste blant alle 36 kandidater som ble evaluert i kapittel 7.2, og den oppnådde likevel lavest AIC og BIC. De mer komplekse alternativene forbedret log-likelihood bare marginalt, noe som taler for at ekstra parametere ikke fanger opp vesentlig tilleggsinformasjon i denne serien.
 
 Valget av log-transformasjon er sentralt for modellens egenskaper. Transformasjonen stabiliserer variansen ved at sesongutslagene, som er proporsjonale med salgsnivået, blir tilnærmet additive på log-skala. Samtidig innebærer tilbaketransformeringen at prognosene på originalskala har en multiplikativ struktur, der usikkerheten vokser med forventningsverdien. Denne egenskapen er ønskelig for salgsdata der absolutte svingninger normalt øker i takt med volumet.
 
@@ -759,7 +766,7 @@ ARCH-LM-testen ($p < 0.001$) dokumenterer at residualvariansen ikke er konstant 
 
 Avviket fra normalfordeling (Jarque-Bera $p < 0.01$, kurtose $= 7.95$) innebærer at residualene har tyngre haler enn normalfordelingen tilsier. For prognoseformål betyr dette at sjeldne, store avvik er noe mer sannsynlige enn modellen formelt antar. Log-transformasjonen har allerede redusert dette problemet sammenlignet med å modellere på originalskala, men fjerner det ikke fullstendig.
 
-Samlet sett bryter modellen med flere formelle forutsetninger. Disse bruddene er ikke uvanlige for airline-modellen brukt på reelle økonomiske tidsserier, og de diskvalifiserer ikke modellen for praktisk bruk. Testsettvalideringen i kapittel 8.1 gir et empirisk supplement til de formelle testene og viser hvordan modellen faktisk presterer på data den ikke er estimert på.
+Samlet sett bryter modellen med flere formelle forutsetninger. Slike brudd er godt dokumentert for airline-modellen brukt på reelle økonomiske tidsserier (Box et al., 2015; Hyndman & Athanasopoulos, 2021, kap. 9), og de diskvalifiserer ikke modellen for praktisk bruk. Testsettvalideringen i kapittel 8.1 gir et empirisk supplement til de formelle testene og viser hvordan modellen faktisk presterer på data den ikke er estimert på.
 
 ### 9.3 Prognoseevne og bias i testsettvalideringen
 
@@ -769,32 +776,32 @@ Likevel har resultatene en systematisk svakhet. I 41 av 42 testmåneder ligger p
 
 Den økende feilen over prognoshorisonten er en viktig innsikt for bruken av modellen. Den innebærer at modellen er mest pålitelig på kort sikt og at prognosekvaliteten gradvis forringes når horisonten strekkes ut over flere år. For en 12-måneders prognose fra et enkelt opprinnelsespunkt, slik som i denne rapporten, betyr det at de første månedene er mer pålitelige enn de siste.
 
-Et metodisk poeng knyttet til tilbaketransformeringen fortjener omtale. Punktprognosen bruker $\exp(\hat{z})$, som gir medianverdien på originalskala. Strengt tatt er den forventningsrette tilbaketransformeringen $\exp(\hat{z}_{t+h} + \hat{\sigma}_h^2/2)$, der $\hat{\sigma}_h^2$ er den horisontspesifikke prognosevariansen. For denne modellen er korreksjonsfaktoren liten — fra om lag 0.6 % ved horisont 1 til om lag 0.8 % ved horisont 12 — fordi feilvariansen på log-skala er beskjeden. Korreksjonsfaktoren øker med horisonten fordi prognosevariansen akkumuleres, men selv ved 12 steg er oppjusteringen marginal. Siden modellen allerede viser en systematisk positiv bias i testsettvalideringen, ville en biaskorreksjon forsterke denne tendensen ytterligere. Bruken av medianprognosen kan dermed forsvares som en pragmatisk tilnærming der den statistisk sett konservative tilbaketransformeringen delvis motvirker modellens strukturelle overprognose.
+Et metodisk poeng knyttet til tilbaketransformeringen fortjener omtale. Punktprognosen bruker $\exp(\hat{z})$, som gir medianverdien på originalskala. Strengt tatt er den forventningsrette tilbaketransformeringen $\exp(\hat{z}_{t+h} + \hat{\sigma}_h^2/2)$, der $\hat{\sigma}_h^2$ er den horisontspesifikke prognosevariansen (Hyndman & Athanasopoulos, 2021, seksjon 3.1). For denne modellen er korreksjonsfaktoren liten — fra om lag 0.6 % ved horisont 1 til om lag 0.8 % ved horisont 12 — fordi feilvariansen på log-skala er beskjeden. Korreksjonsfaktoren øker med horisonten fordi prognosevariansen akkumuleres, men selv ved 12 steg er oppjusteringen marginal. Siden modellen allerede viser en systematisk positiv bias i testsettvalideringen, ville en biaskorreksjon forsterke denne tendensen ytterligere. Bruken av medianprognosen kan dermed forsvares som en pragmatisk tilnærming der den statistisk sett konservative tilbaketransformeringen delvis motvirker modellens strukturelle overprognose.
 
 ### 9.4 Prognosen og implikasjoner for kapasitetsplanlegging
 
 Det tredje delspørsmålet i problemstillingen handler om hvilke implikasjoner prognosen har for PowerHorses produksjons- og lagerplanlegging. Den 12-måneders prognosen i Tabell 8.2 gir et samlet prognosesalg på 100 413 enheter med en sesongamplitude på 16 789 enheter — fra 2 694 i bunnmåneden august til 19 483 i toppmåneden desember. Forholdet mellom topp og bunn er om lag 7:1, noe som innebærer at bedriften står overfor store variasjoner i kapasitetsbehov gjennom året. Gjennomsnittlig bredde på 95 % prediksjonsintervall er om lag 3 844 enheter, noe som gir en indikasjon på usikkerheten beslutningstakeren må håndtere.
 
-Tabell 9.2 viser prognosen med en sesongkategorisering basert på de historiske månedlige salgsnivåene.
+Tabell 9.2 utvider prognosetallene fra Tabell 8.2 med en sesongkategorisering basert på de historiske månedlige salgsnivåene.
 
-| Måned | Punktprognose | Nedre 95 % | Øvre 95 % | Sesongkategori |
-| :--- | ---: | ---: | ---: | :--- |
-| 1981-07 | 6 159 | 4 990 | 7 602 | Normalsesong |
-| 1981-08 | 2 694 | 2 176 | 3 337 | Lavsesong |
-| 1981-09 | 7 991 | 6 431 | 9 928 | Normalsesong |
-| 1981-10 | 9 918 | 7 956 | 12 362 | Høysesong |
-| 1981-11 | 15 188 | 12 146 | 18 992 | Høysesong |
-| 1981-12 | 19 483 | 15 531 | 24 439 | Høysesong |
-| 1982-01 | 6 308 | 5 013 | 7 937 | Lavsesong |
-| 1982-02 | 5 293 | 4 194 | 6 680 | Lavsesong |
-| 1982-03 | 6 584 | 5 201 | 8 334 | Normalsesong |
-| 1982-04 | 6 578 | 5 181 | 8 353 | Normalsesong |
-| 1982-05 | 7 201 | 5 655 | 9 170 | Normalsesong |
-| 1982-06 | 7 016 | 5 494 | 8 961 | Normalsesong |
+| Måned | Sesongkategori | Punktprognose |
+| :--- | :--- | ---: |
+| 1981-07 | Normalsesong | 6 159 |
+| 1981-08 | Lavsesong | 2 694 |
+| 1981-09 | Normalsesong | 7 991 |
+| 1981-10 | Høysesong | 9 918 |
+| 1981-11 | Høysesong | 15 188 |
+| 1981-12 | Høysesong | 19 483 |
+| 1982-01 | Lavsesong | 6 308 |
+| 1982-02 | Lavsesong | 5 293 |
+| 1982-03 | Normalsesong | 6 584 |
+| 1982-04 | Normalsesong | 6 578 |
+| 1982-05 | Normalsesong | 7 201 |
+| 1982-06 | Normalsesong | 7 016 |
 
-<p align="center"><small><i>Tabell 9.2 Månedlig punktprognose med 95 % prediksjonsintervall og sesongkategori.</i></small></p>
+<p align="center"><small><i>Tabell 9.2 Sesongkategorisering av prognosemånedene. Fullstendige prediksjonsintervaller finnes i Tabell 8.2.</i></small></p>
 
-For produksjonsplanlegging innebærer sesongprofilen at kapasitetsbehovet i høysesongen (oktober–desember) er vesentlig høyere enn i resten av året. Dersom produksjonskapasiteten ikke kan skaleres tilsvarende på kort varsel, må bedriften bygge opp lager i forkant av høysesongen. Lavsesongen (august, januar og februar) gir mulighet for en slik oppbygging, forutsatt at lagerkostnadene veies opp mot risikoen for underdekning.
+For produksjonsplanlegging innebærer sesongprofilen at kapasitetsbehovet i høysesongen (oktober–desember) er vesentlig høyere enn i resten av året. Dersom produksjonskapasiteten ikke kan skaleres tilsvarende på kort varsel, må bedriften bygge opp lager i forkant av høysesongen. Konkret tilsier prognosen at lageroppbyggingen bør starte senest i august–september, som er månedene med lavest etterspørsel (2 694–7 991 enheter). Målet bør være å dekke gapet mellom normal produksjonskapasitet og toppetterspørselen i november–desember, der punktprognosen indikerer et samlet behov på om lag 34 700 enheter over to måneder. Lavsesongen (august, januar og februar) gir mulighet for en slik oppbygging, forutsatt at lagerkostnadene veies opp mot risikoen for underdekning.
 
 Prediksjonsintervallene gir bedriften et kvantitativt grunnlag for å dimensjonere sikkerhetslager. Intervallene bredder utover horisonten, noe som reflekterer at usikkerheten øker med antall steg fremover. For de første prognosemånedene er intervallene relativt smale, mens de siste månedene har bredere intervaller. I en planleggingssammenheng kan dette bety at produksjonsbeslutninger for nær horisont kan baseres tettere på punktprognosen, mens beslutninger for fjernere horisont bør ta hensyn til et bredere utfallsrom.
 
@@ -814,26 +821,21 @@ For det tredje impliserer den ordinære differensieringen ($d = 1$) en multiplik
 
 For det fjerde begrenser de dokumenterte bruddene i residualdiagnostikken — heteroskedastisitet og gjenværende sesongrelatert autokorrelasjon — den formelle tilliten til prediksjonsintervallene. Intervallene kan være for smale i høysesongmånedene og for brede i lavsesongen, noe som betyr at usikkerhetsestimater bør tolkes med forsiktighet.
 
-For det femte ble det kun evaluert modeller innenfor SARIMA-familien. Ingen sammenligning med eksponentiell utjevning (ETS), dynamisk harmonisk regresjon eller GARCH-utvidelser for variansmodellering ble gjennomført. Det er mulig at andre modellfamilier kunne adressert noen av svakhetene, særlig heteroskedastisiteten.
+For det femte ble det kun evaluert modeller innenfor SARIMA-familien. Ingen sammenligning med eksponentiell utjevning (ETS; Hyndman & Athanasopoulos, 2021, kap. 8), dynamisk harmonisk regresjon eller GARCH-utvidelser for variansmodellering (Engle, 1982) ble gjennomført. Det er mulig at andre modellfamilier kunne adressert noen av svakhetene, særlig heteroskedastisiteten.
 
 Til slutt er prognosen en statisk 12-stegs prognose fra ett enkelt opprinnelsespunkt. I praksis ville PowerHorse ha nytte av å reestimere modellen etter hvert som nye salgsdata kommer inn, slik at prognosen løpende oppdateres. En rullerende reestimeringsstrategi ble ikke testet i dette prosjektet, men ville sannsynligvis redusert den økende biasen som ble observert i testsettvalideringen.
 
-Figur 9.1 viser hele den historiske tidsserien sammen med den 12-måneders prognosen og illustrerer modellens utgangspunkt i en lang serie med tydelig vekst og sesong.
-
-<div align="center">
-  <img src="../006%20analysis/aktiviteter/3_4_lage_prognose_og_anbefalinger/figurer/fig_02_helhetsfigur.png" alt="Figur 9.1 Historisk salg og 12-måneders prognose" width="80%">
-  <p align="center"><small><i>Figur 9.1 Historisk månedlig traktorsalg (1964–1981) og 12-måneders prognose med 95 % prediksjonsintervall.</i></small></p>
-</div>
-
-Figuren setter prognosen i perspektiv ved å vise at den bygger på en serie med klar oppadgående trend og tiltagende sesongutslag. Samtidig gjør den det visuelt tydelig at prognosen er en kort videreføring av en lang historikk, og at trendens videre utvikling er usikker.
+Figuren i innledningen av dette kapitlet (Figur 9.1) setter prognosen i perspektiv ved å vise at den bygger på en serie med klar oppadgående trend og tiltagende sesongutslag. Den gjør det visuelt tydelig at prognosen er en kort videreføring av en lang historikk, og at trendens videre utvikling er usikker.
 
 ### 9.6 Samlet vurdering opp mot problemstillingen
 
-Problemstillingen i kapittel 1.1 stilte to spørsmål: hvordan en univariat tidsseriemodell kan brukes til å predikere månedlig traktorsalg, og i hvilken grad en slik modell gir et tilstrekkelig beslutningsgrunnlag for PowerHorse.
+Problemstillingen i kapittel 1.1 stilte ett sammensatt spørsmål som i kapittel 1.2 ble brutt ned i tre delproblemer: (1) hvilke mønstre i trend og sesong som finnes i de historiske salgsdataene, (2) hvilken SARIMA-spesifikasjon som gir best tilpasning og hvordan modellen presterer på data den ikke er estimert på, og (3) hvilke implikasjoner prognosen har for PowerHorse sin produksjons- og lagerplanlegging.
 
-Til det første spørsmålet viser analysen at SARIMA$(0,1,1)(0,1,1)_{12}$ er en velegnet modell for å fange sesongprofilen i det historiske salget. Modellen oppnår en gjennomsnittlig absolutt prosentfeil på 5.4 % i testsettvalideringen, noe som tilsier at den treffer rimelig godt på månedsnivå. Den 12-måneders prognosen reproduserer det historiske sesongmønsteret med tydelig topp i november–desember og bunn i august, og gir kvantitative prediksjonsintervaller som uttrykker usikkerhet for hvert prognosesteg.
+Til det første delspørsmålet viser casebeskrivelsen og datautforskingen i kapittel 4–5 at serien har en tydelig oppadgående trend og et stabilt sesongmønster med topp i november–desember og bunn i august. Log-transformasjonen stabiliserer variansen og gjør sesongutslagene tilnærmet additive, noe som legger grunnlaget for SARIMA-modelleringen.
 
-Til det andre spørsmålet er svaret mer nyansert. Modellen gir et nyttig utgangspunkt for kapasitetsplanlegging, særlig ved at den identifiserer sesongmessige variasjoner med et forhold på 7:1 mellom topp og bunn. Denne informasjonen er verdifull for å planlegge produksjonskapasitet og lageroppbygging gjennom året. Samtidig begrenser den systematiske positive biasen, den økende feilen over horisonten, de diagnostiske svakhetene og den univariate tilnærmingen modellens egnethet som eneste beslutningsgrunnlag.
+Til det andre delspørsmålet viser analysen at SARIMA$(0,1,1)(0,1,1)_{12}$ er en velegnet modell for å fange sesongprofilen i det historiske salget. Modellen oppnår en gjennomsnittlig absolutt prosentfeil på 5.4 % i testsettvalideringen, noe som tilsier at den treffer rimelig godt på månedsnivå. Den 12-måneders prognosen reproduserer det historiske sesongmønsteret og gir kvantitative prediksjonsintervaller som uttrykker usikkerhet for hvert prognosesteg.
+
+Til det tredje delspørsmålet viser seksjon 9.4 at prognosen har direkte implikasjoner for kapasitetsplanlegging. Sesongprofilen identifiserer variasjoner med et forhold på 7:1 mellom topp og bunn, noe som er verdifull informasjon for å planlegge produksjonskapasitet og lageroppbygging gjennom året. Samtidig begrenser den systematiske positive biasen, den økende feilen over horisonten, de diagnostiske svakhetene og den univariate tilnærmingen modellens egnethet som eneste beslutningsgrunnlag.
 
 Modellen bør derfor brukes som ett element i et bredere beslutningsgrunnlag. Sesongprofilen og prediksjonsintervallene gir et kvantitativt rammeverk, men de absolutte nivåene bør suppleres med markedsinnsikt, ordredata og faglig skjønn. I tillegg bør modellen reestimeres periodisk etter hvert som nye salgsdata blir tilgjengelige, slik at prognosen holder seg oppdatert og den økende biasen over tid reduseres.
 

@@ -170,12 +170,12 @@ Innholdsfortegnelsen viser «5. Metode og data (kan splittes i to)», og selve k
 
 | # | Tiltak | Kategori | Status | Kommentar |
 |:--|:-------|:---------|:-------|:----------|
-| V1 | Tydeliggjøre koblingen mellom 9.6 og de tre delspørsmålene i 1.2 | Språk og innhold | [ ] | |
-| V2 | Legge inn litteraturreferanser i diskusjonskapitlet | Språk og innhold | [ ] | Avhenger av at kap. 2 (ACT-3.6) og kap. 11 er ferdigstilt |
-| F1 | Vurdere å redusere overlapp mellom Tabell 9.2 og 8.2 | Språk og innhold | [ ] | |
-| F2 | Vurdere mer konkrete handlingsanbefalinger i seksjon 9.4 | Språk og innhold | [ ] | |
-| F3 | Vurdere å flytte Figur 9.1 til innledning av kap. 9 eller seksjon 9.1 | Språk og innhold | [ ] | |
-| F4 | Fjerne parentesbemerkningen «(kan splittes i to)» fra kap. 5 | Språk og innhold | [ ] | Overføres til ACT-3.10 |
+| V1 | Tydeliggjøre koblingen mellom 9.6 og de tre delspørsmålene i 1.2 | Språk og innhold | [x] | Seksjon 9.6 omskrevet til tre delspørsmål |
+| V2 | Legge inn litteraturreferanser i diskusjonskapitlet | Språk og innhold | [x] | Referanser lagt inn i 9.1, 9.2, 9.3 og 9.5 |
+| F1 | Vurdere å redusere overlapp mellom Tabell 9.2 og 8.2 | Språk og innhold | [x] | Tabell 9.2 komprimert, refererer til Tabell 8.2 |
+| F2 | Vurdere mer konkrete handlingsanbefalinger i seksjon 9.4 | Språk og innhold | [x] | Konkrete tall for lageroppbygging lagt til |
+| F3 | Vurdere å flytte Figur 9.1 til innledning av kap. 9 eller seksjon 9.1 | Språk og innhold | [x] | Figur 9.1 flyttet til innledning av kap. 9 |
+| F4 | Fjerne parentesbemerkningen «(kan splittes i to)» fra kap. 5 | Språk og innhold | [x] | Fjernet fra overskrift og innholdsfortegnelse |
 
 ---
 
