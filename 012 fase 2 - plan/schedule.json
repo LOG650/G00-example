@@ -655,8 +655,8 @@
                 "taskId": "3.8",
                 "wbsItemId": "WBS-1.3.5",
                 "name": "Skrive kapittel 9 Diskusjon",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "in-progress",
+                "percentComplete": 90,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -680,8 +680,8 @@
                     {
                         "criteriaId": "ACT-3.8-C01",
                         "description": "Kapittel 9 Diskusjon er ferdigskrevet med droftinger koblet til problemstilling, litteratur og begrensninger",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Kapittel 9 ferdigskrevet 2026-04-13 med seks seksjoner (9.1-9.6). Drøfter modellvalg, residualdiagnostikk, bias, kapasitetsplanlegging, begrensninger og samlet vurdering. F1-F4 fra ACT-3.4-reviewen innarbeidet.",
                         "error": ""
                     },
                     {
@@ -696,9 +696,9 @@
                     "runBy": "studentgruppe",
                     "permissionMode": "samarbeid",
                     "sessionId": null,
-                    "startedAt": null,
+                    "startedAt": "2026-04-13T00:00:00Z",
                     "completedAt": null,
-                    "lastEvent": null
+                    "lastEvent": "Kapittel 9 Diskusjon ferdigskrevet 2026-04-13 med seks seksjoner. Venter pa review for lukking."
                 }
             },
             {

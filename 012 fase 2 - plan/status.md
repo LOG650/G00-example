@@ -1,8 +1,8 @@
 # Status for PowerHorse-prosjektet
 
-Statusdato: 2026-03-25
+Statusdato: 2026-04-13
 
-Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `project-plan.md`, `schedule.json` og `wbs.json` som referanse for avvik.
+Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `project-plan.md`, `schedule.json` og `wbs.json` som referanse for avvik.
 
 ## Kort status
 
@@ -12,7 +12,8 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 - Aktivitet `ACT-3.3 Validere modell` er fullført per 2026-03-23. Review gjennomført med to svakheter (V1–V2) og tre forbedringsforslag (F1–F3) implementert.
 - Aktivitet `ACT-3.4 Lage prognose og anbefalinger` er fullført per 2026-03-25. Review gjennomført med tre svakheter (V1–V3) fikset og fire forbedringsforslag (F1–F4) overført til ACT-3.8.
 - Aktivitet `ACT-3.5 Skrive kapittel 1 Innledning` er fullført per 2026-03-25. Review gjennomført med to svakheter (V1–V2) fikset og fire forbedringsforslag (F1–F4) notert. F4 overført til ACT-3.10.
-- Neste steg er kapittelbaserte skriveaktiviteter (ACT-3.6 til ACT-3.10). Kritisk sti: ACT-3.8 (kap 9) → ACT-3.9 (kap 10) → ACT-3.10. Parallelt: ACT-3.6 (kap 2), ACT-3.7 (kap 3) → ACT-3.10.
+- Aktivitet `ACT-3.8 Skrive kapittel 9 Diskusjon` er ferdigskrevet per 2026-04-13. Seks seksjoner (9.1–9.6) med to tabeller og én figur. Alle sjekkliste-punkter unntatt review er fullført. F1–F4 fra ACT-3.4-reviewen er innarbeidet. Venter på review.
+- Neste steg: Review av ACT-3.8, deretter ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2), ACT-3.7 (kap 3) → ACT-3.10.
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -28,7 +29,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | ACT-3.5 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ferdig 2026-03-25 | Kapittel 1 med alle underseksjoner ferdigskrevet |
 | ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.7 |
 | ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.6 |
-| ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Ikke startet | Kritisk sti, avhenger av ACT-3.4 |
+| ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Skrevet 2026-04-13 | Kapittel ferdigskrevet, venter på review |
 | ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.8 |
 | ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.5, 3.6, 3.7 og 3.9. Knyttet til MS-005 |
 
@@ -129,13 +130,13 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 
 #### ACT-3.8 Skrive kapittel 9 Diskusjon
 
-- [ ] Drøfte funn opp mot problemstilling og litteratur
-- [ ] Drøfte log-transformasjon og manglende bias-korreksjon ($\exp(\mu + \sigma^2/2)$ som metodisk nyanse)
-- [ ] Vurdere begrensninger og praktiske implikasjoner
-- [ ] Drøft biaskorreksjon med horisontavhengig varians i kap. 9 (ref. ACT-3.4 review F1)
-- [ ] Vurder refittet parametertabell i rapport eller vedlegg (ref. ACT-3.4 review F2)
-- [ ] Vurder oppsummeringstabeller (tab_03, tab_04) i kap. 9 eller vedlegg (ref. ACT-3.4 review F3)
-- [ ] Vurder helhetsfigur med hele tidsserien og prognose i kap. 9 eller vedlegg (ref. ACT-3.4 review F4)
+- [x] Drøfte funn opp mot problemstilling og litteratur
+- [x] Drøfte log-transformasjon og manglende bias-korreksjon ($\exp(\mu + \sigma^2/2)$ som metodisk nyanse)
+- [x] Vurdere begrensninger og praktiske implikasjoner
+- [x] Drøft biaskorreksjon med horisontavhengig varians i kap. 9 (ref. ACT-3.4 review F1)
+- [x] Vurder refittet parametertabell i rapport eller vedlegg (ref. ACT-3.4 review F2)
+- [x] Vurder oppsummeringstabeller (tab_03, tab_04) i kap. 9 eller vedlegg (ref. ACT-3.4 review F3)
+- [x] Vurder helhetsfigur med hele tidsserien og prognose i kap. 9 eller vedlegg (ref. ACT-3.4 review F4)
 - [ ] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.9 Skrive kapittel 10 Konklusjon
@@ -191,7 +192,7 @@ Denne statusen bygger på arbeidskopien per 2026-03-25, med planbaselinen i `pro
 | 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |
 | 7 Analyse | Ferdig | 7.1–7.4 er skrevet med stasjonaritet, ACF/PACF, estimering og validering |
 | 8 Resultat | Ferdig | 8.1 testsettvalidering og 8.2 prognoseresultater er ferdig |
-| 9 Diskusjon | Tom | Skal romme vurdering av modellens egnethet, begrensninger og praktiske implikasjoner |
+| 9 Diskusjon | Ferdig | Seks seksjoner (9.1–9.6): modellvalg, residualdiagnostikk, bias, kapasitetsplanlegging, begrensninger og samlet vurdering. To tabeller og én figur. Venter på review |
 | 10 Konklusjon | Tom | Ikke skrevet |
 | 11 Bibliografi | Tom | Ikke skrevet |
 | 12 Vedlegg | Tom | Ikke skrevet |
