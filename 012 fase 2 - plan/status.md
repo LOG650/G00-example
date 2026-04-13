@@ -13,7 +13,8 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - Aktivitet `ACT-3.4 Lage prognose og anbefalinger` er fullført per 2026-03-25. Review gjennomført med tre svakheter (V1–V3) fikset og fire forbedringsforslag (F1–F4) overført til ACT-3.8.
 - Aktivitet `ACT-3.5 Skrive kapittel 1 Innledning` er fullført per 2026-03-25. Review gjennomført med to svakheter (V1–V2) fikset og fire forbedringsforslag (F1–F4) notert. F4 overført til ACT-3.10.
 - Aktivitet `ACT-3.8 Skrive kapittel 9 Diskusjon` er ferdigskrevet per 2026-04-13. Seks seksjoner (9.1–9.6) med to tabeller og én figur. Alle sjekkliste-punkter unntatt review er fullført. F1–F4 fra ACT-3.4-reviewen er innarbeidet. Venter på review.
-- Neste steg: Review av ACT-3.8, deretter ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2), ACT-3.7 (kap 3) → ACT-3.10.
+- Aktivitet `ACT-3.7 Skrive kapittel 3 Teori` er fullført per 2026-04-13. Review gjennomført med to svakheter (V1–V2) rettet og fem forbedringsforslag (F1–F5) implementert. F5 overført til ACT-3.10.
+- Neste steg: Review av ACT-3.8, deretter ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2) → ACT-3.10.
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -28,7 +29,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ferdig 2026-03-25 | Review gjennomført og lukket 2026-03-25. V1–V3 fikset, F1–F4 overført til ACT-3.8 |
 | ACT-3.5 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ferdig 2026-03-25 | Kapittel 1 med alle underseksjoner ferdigskrevet |
 | ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.7 |
-| ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.6 |
+| ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-13 | Review gjennomført og lukket 2026-04-13. V1–V2 rettet, F1–F4 implementert, F5 overført til ACT-3.10 |
 | ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Skrevet 2026-04-13 | Kapittel ferdigskrevet, venter på review |
 | ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.8 |
 | ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.5, 3.6, 3.7 og 3.9. Knyttet til MS-005 |
@@ -114,19 +115,19 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - [x] Aktualisere tema og koble til caset i innledningen
 - [x] Gjennomføre review og lukke aktiviteten
 
+#### ACT-3.7 Skrive kapittel 3 Teori
+
+- [x] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
+- [x] Koble teori til metodevalg og diskusjon
+- [x] Kontrollere at alle referanser i kap. 3 finnes i kap. 11 og har oppsummeringsfil i `003 references/`
+- [x] Gjennomføre review og lukke aktiviteten
+
 ### Neste aktiviteter
 
 #### ACT-3.6 Skrive kapittel 2 Litteratur
 
 - [ ] Identifisere relevante kilder
 - [ ] Knytte litteratur til problemstilling og metodevalg
-- [ ] Gjennomføre review og lukke aktiviteten
-
-#### ACT-3.7 Skrive kapittel 3 Teori
-
-- [x] Beskrive teoretisk rammeverk (tidsserieanalyse, SARIMA, stasjonaritet)
-- [x] Koble teori til metodevalg og diskusjon
-- [x] Kontrollere at alle referanser i kap. 3 finnes i kap. 11 og har oppsummeringsfil i `003 references/`
 - [ ] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.8 Skrive kapittel 9 Diskusjon
@@ -150,7 +151,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 
 - [ ] Skrive sammendrag (norsk)
 - [ ] Skrive abstract (engelsk)
-- [ ] Oppdatere innholdsfortegnelse
+- [ ] Oppdatere innholdsfortegnelse (inkl. rette «Modellering» → «Modell» for kap. 6 og fjerne parentesbemerkning for kap. 5)
 - [ ] Ferdigstille kapittel 11 Bibliografi
 - [ ] Samle vedlegg i kapittel 12
 - [ ] Intern kvalitetssjekk av hele utkastet
@@ -188,7 +189,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | --- | --- | --- |
 | 1 Innledning | Ferdig | Alle underseksjoner (1.1–1.4) ferdigskrevet |
 | 2 Litteratur | Tom | Ikke skrevet |
-| 3 Teori | Utkast ferdig | Fem seksjoner (3.1–3.5) med APA7-referanser. Venter på review |
+| 3 Teori | Ferdig | Fem seksjoner (3.1–3.5) med APA7-referanser. Review gjennomført og lukket |
 | 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
 | 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert |
 | 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |

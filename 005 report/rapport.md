@@ -198,7 +198,7 @@ $$
 
 som fjerner sesongstruktur ved å sammenligne hver observasjon med observasjonen $s$ perioder tilbake. For månedlige data med årlig sesong er $s = 12$. Ordinær og sesongmessig differensiering kan kombineres: $(1-B)(1-B^{12}) y_t$ fjerner både trend og sesong. Forsinkelsesoperatoren $B$ og differensieringsoperatorene brukes videre i den formelle SARIMA-spesifikasjonen i kapittel 6.3.
 
-Figur 3.2 viser effekten av ulike differensieringsstrategier på en syntetisk ikke-stasjonær serie med trend og sesong.
+Figur 3.2 viser effekten av ulike differensieringsstrategier på en syntetisk ikke-stasjonær serie med trend og sesong. Som figuren illustrerer, fjerner sesongdifferensieringen alene sesongen, men den underliggende trenden er fortsatt tydelig. Først når ordinær og sesongmessig differensiering kombineres, oppnås en tilnærmet stasjonær serie.
 
 <div align="center">
   <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_02_stasjonaritet.png" alt="Figur 3.2 Differensiering for å oppnå stasjonaritet" width="80%">
@@ -276,9 +276,9 @@ $$
 Q = n(n+2) \sum_{k=1}^{m} \frac{\hat{\rho}_k^2}{n-k},
 $$
 
-der $\hat{\rho}_k$ er den estimerte autokorrelasjon i residualene ved lag $k$, $n$ er antall observasjoner og $m$ er antall lag som testes. Under nullhypotesen om ingen autokorrelasjon følger $Q$ tilnærmet en $\chi^2$-fordeling med $m - p - q$ frihetsgrader, der $p$ og $q$ er antall estimerte AR- og MA-parametere i modellen. For sesongmodeller er det viktig å teste ved sesonglagene (for eksempel lag 12 og 24 for månedlige data) for å avdekke gjenværende sesongstruktur.
+der $\hat{\rho}_k$ er den estimerte autokorrelasjon i residualene ved lag $k$, $n$ er antall observasjoner og $m$ er antall lag som testes. Under nullhypotesen om ingen autokorrelasjon følger $Q$ tilnærmet en $\chi^2$-fordeling med $m - p - q$ frihetsgrader, der $p$ og $q$ er antall estimerte AR- og MA-parametere i modellen. For SARIMA-modeller bruker noen implementasjoner $m - p - q - P - Q$, der $P$ og $Q$ er de sesongmessige parameterne, men praksis varierer og den opprinnelige formuleringen med $m - p - q$ er den mest siterte. For sesongmodeller er det viktig å teste ved sesonglagene (for eksempel lag 12 og 24 for månedlige data) for å avdekke gjenværende sesongstruktur.
 
-*ARCH-LM-testen* (Engle, 1982) undersøker om residualvariansen er konstant over tid. Testen regresjonerer kvadrerte residualer på sine egne laggede verdier og tester om koeffisientene samlet sett er signifikante. En signifikant test indikerer heteroskedastisitet, det vil si at modellforutsetningen om konstant feilvarians ikke er oppfylt.
+*ARCH-LM-testen* (Engle, 1982) undersøker om residualvariansen er konstant over tid — et av de tre stasjonaritetskravene beskrevet i seksjon 3.2. Testen regresjonerer kvadrerte residualer på sine egne laggede verdier og tester om koeffisientene samlet sett er signifikante. En signifikant test indikerer heteroskedastisitet, det vil si at modellforutsetningen om konstant feilvarians ikke er oppfylt.
 
 *Jarque-Bera-testen* (Jarque & Bera, 1987) tester om residualfordelingen avviker fra normalfordelingen ved å kombinere avvik i skjevhet og kurtose i én teststatistikk. Normalfordelte residualer har skjevhet lik 0 og kurtose lik 3. Det bør bemerkes at MLE-estimering av SARIMA-parametere er rimelig robust mot moderate avvik fra normalitet, men prediksjonsintervaller og p-verdier forutsetter tilnærmet normalitet for å være nøyaktige.
 
@@ -288,7 +288,7 @@ $$
 \text{MAE} = \frac{1}{n}\sum_{t=1}^{n}|y_t - \hat{y}_t|, \qquad \text{RMSE} = \sqrt{\frac{1}{n}\sum_{t=1}^{n}(y_t - \hat{y}_t)^2}, \qquad \text{MAPE} = \frac{100}{n}\sum_{t=1}^{n}\frac{|y_t - \hat{y}_t|}{y_t}.
 $$
 
-MAE gir det gjennomsnittlige absolutte avviket og er lett tolkbart i seriens opprinnelige enhet. RMSE vekter store feil tyngre og er nyttig når store prognosebom er spesielt kostbare. MAPE uttrykker feilen som en prosentandel av observert verdi og er dermed skalauavhengig, men er udefinert for nullverdier og asymmetrisk ved skjeve fordelinger.
+MAE gir det gjennomsnittlige absolutte avviket og er lett tolkbart i seriens opprinnelige enhet. RMSE vekter store feil tyngre og er nyttig når store prognosebom er spesielt kostbare. MAPE uttrykker feilen som en prosentandel av observert verdi og er dermed skalauavhengig, men er udefinert for nullverdier og asymmetrisk ved skjeve fordelinger. Et alternativ som unngår disse svakhetene er *Mean Absolute Scaled Error* (MASE), der feilen skaleres mot den gjennomsnittlige absolutte feilen til en naiv prognose (Hyndman & Athanasopoulos, 2021). MASE er skalauavhengig og veldefinert for alle verdier, men krever at man velger en referanseprognose å skalere mot.
 
 **Hold-out-validering.** Prinsippet bak hold-out-validering er å dele datasettet i et treningssett og et testsett. Modellen estimeres kun på treningsdataene, og prognoser evalueres mot testdataene som modellen ikke har sett. Dette gir et realistisk bilde av prognoseevnen utover den tilpasningen som oppnås in-sample. I kapittel 8.1 evalueres modellens prognoser mot et holdout-testsett.
 
@@ -306,12 +306,14 @@ $$
 E[y_{T+h}] = \exp\!\left(\hat{z}_{T+h} + \frac{\sigma_h^2}{2}\right),
 $$
 
-der $\sigma_h^2$ er prognosevariansen på log-skala. Denne biaskorreksjon gir gjennomsnittsprognosen i stedet for medianprognosen, og kan være relevant når beslutningskonteksten krever forventede verdier. Figur 3.4 illustrerer forskjellen mellom median og gjennomsnitt for en log-normalfordelt prognose. Forskjellen mellom median- og gjennomsnittsprognosen drøftes i kapittel 9.
+der $\sigma_h^2$ er prognosevariansen på log-skala. Denne biaskorreksjonen gir gjennomsnittsprognosen i stedet for medianprognosen, og kan være relevant når beslutningskonteksten krever forventede verdier. Figur 3.4 illustrerer forskjellen mellom median og gjennomsnitt for en log-normalfordelt prognose. Forskjellen mellom median- og gjennomsnittsprognosen drøftes i kapittel 9.
 
 <div align="center">
   <img src="../006%20analysis/aktiviteter/3_7_skrive_teorikapittel/figurer/fig_04_biaskorreksjon.png" alt="Figur 3.4 Biaskorreksjon ved tilbaketransformering fra log-skala" width="80%">
   <p align="center"><small><i>Figur 3.4 Forskjellen mellom median- og gjennomsnittsprognose ved tilbaketransformering fra log-skala.</i></small></p>
 </div>
+
+Samlet sett gir dette kapitlet det teoretiske rammeverket som de påfølgende kapitlene bygger på: dekomponering og stasjonaritet gir grunnlaget for datatransformasjonene i kapittel 7.1, SARIMA-rammeverket og identifikasjonsverktøyene styrer modellvalget i kapittel 6 og 7.2, og valideringsmetodikken med biaskorreksjon danner referansen for resultatvurderingene i kapittel 8 og diskusjonen i kapittel 9.
 
 ---
 
