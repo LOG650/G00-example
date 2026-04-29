@@ -58,9 +58,21 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
 
 ## Sammendrag
 
+For produksjonsbedrifter med sesongavhengig etterspørsel er pålitelige prognoser en forutsetning for effektiv kapasitets- og lagerplanlegging. Denne rapporten utvikler en univariat tidsseriemodell for å predikere månedlig traktorsalg hos PowerHorse for de neste tolv månedene (juli 1981 til juni 1982) og vurderer i hvilken grad modellen gir tilstrekkelig beslutningsgrunnlag for produksjons- og lagerstyring.
+
+Modellutvelgelsen følger Box-Jenkins-metodikken med ACF/PACF-analyse, AIC- og BIC-rangering av 36 kandidater og residualdiagnostikk på den log-transformerte salgsserien (januar 1964 til juni 1981). Log-transformasjonen er valgt for å stabilisere variansen i sesongutslagene som er proporsjonale med salgsnivået. Den valgte SARIMA$(0,1,1)(0,1,1)_{12}$-modellen oppnår lavest AIC og BIC blant kandidatene og er den enkleste spesifikasjonen i hele kandidatsettet med kun tre parametere. På testsettet (1978–1981) gir den en gjennomsnittlig absolutt prosentfeil (MAPE) på 5,4 %. Den 12-måneders prognosen reproduserer det historiske sesongmønsteret med topp i november–desember og bunn i august, gir et samlet salgsvolum på om lag 100 400 enheter og en sesongamplitude på 7:1 mellom topp- og bunnmåneden.
+
+Modellen identifiserer høysesongen oktober–desember som den kritiske kapasitetsperioden og lavsesongmånedene august, januar og februar som naturlige lageroppbyggingsperioder. Testsettvalideringen avdekker en systematisk positiv bias som tiltar over horisonten, og residualdiagnostikken viser brudd på modellforutsetningene ved sesonglag og gjennom heteroskedastisitet. Modellen gir derfor et nyttig, men ikke uttømmende, beslutningsgrunnlag — sesongstrukturen er det sterkeste signalet, mens de absolutte nivåene bør tolkes med forbehold og suppleres med markedsinnsikt og operative ordredata.
+
 ---
 
 ## Abstract
+
+Reliable forecasts are a prerequisite for effective capacity and inventory planning in companies with seasonal demand. This report develops a univariate time series model to forecast monthly tractor sales at PowerHorse for the next twelve months (July 1981 to June 1982) and assesses the extent to which such a model provides a sufficient decision basis for production and inventory planning.
+
+Model selection follows the Box-Jenkins methodology with ACF/PACF analysis, AIC and BIC ranking of 36 candidates, and residual diagnostics on the log-transformed sales series (January 1964 to June 1981). The log transformation is applied to stabilise the variance in seasonal swings that scale proportionally with the sales level. The selected SARIMA$(0,1,1)(0,1,1)_{12}$ model achieves the lowest AIC and BIC among the candidates and is the simplest specification in the candidate set with only three parameters. On the test set (1978–1981) it achieves a mean absolute percentage error (MAPE) of 5.4%. The 12-month forecast reproduces the historical seasonal pattern with peaks in November–December and a trough in August, yielding a total sales volume of approximately 100,400 units and a seasonal amplitude of 7:1 between peak and trough months.
+
+The model identifies the high season October–December as the critical capacity period and the low-season months August, January and February as natural inventory build-up periods. Test set validation reveals a systematic positive bias that grows over the forecast horizon, and residual diagnostics show violations of model assumptions at seasonal lags and through heteroscedasticity. The model therefore provides a useful, but not exhaustive, decision basis — the seasonal structure is the strongest signal, while absolute levels should be interpreted with caution and supplemented with market insight and operational order data.
 
 ---
 
@@ -72,6 +84,13 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
    3. [Avgrensinger](#13-avgrensinger)
    4. [Antagelser](#14-antagelser)
 2. [Litteratur](#2-litteratur)
+   1. [Tidsserieprognoser i produksjons- og lagerstyring](#21-tidsserieprognoser-i-produksjons--og-lagerstyring)
+   2. [SARIMA-rammeverket og Box-Jenkins-metodikken](#22-sarima-rammeverket-og-box-jenkins-metodikken)
+   3. [Stasjonaritet og statistiske enhetsrottester](#23-stasjonaritet-og-statistiske-enhetsrottester)
+   4. [Residualdiagnostikk og modellforutsetninger](#24-residualdiagnostikk-og-modellforutsetninger)
+   5. [Prognoseevaluering og hold-out-validering](#25-prognoseevaluering-og-hold-out-validering)
+   6. [SARIMA i tilsvarende anvendelser](#26-sarima-i-tilsvarende-anvendelser)
+   7. [Posisjonering av rapporten](#27-posisjonering-av-rapporten)
 3. [Teori](#3-teori)
    1. [Tidsserier og dekomponering](#31-tidsserier-og-dekomponering)
    2. [Stasjonaritet og transformasjoner](#32-stasjonaritet-og-transformasjoner)
@@ -79,12 +98,25 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
    4. [Modellidentifikasjon og modellvalg](#34-modellidentifikasjon-og-modellvalg)
    5. [Validering og prognoseevaluering](#35-validering-og-prognoseevaluering)
 4. [Casebeskrivelse](#4-casebeskrivelse)
+   1. [PowerHorse og beslutningssituasjonen](#41-powerhorse-og-beslutningssituasjonen)
+   2. [Historisk salgsutvikling](#42-historisk-salgsutvikling)
+   3. [Sesongmønster i salget](#43-sesongmønster-i-salget)
+   4. [Utfordringer dårlige prognoser medfører i bedriften](#44-utfordringer-dårlige-prognoser-medfører-i-bedriften)
 5. [Metode og data](#5-metode-og-data)
    1. [Metode](#51-metode)
    2. [Data](#52-data)
-6. [Modellering](#6-modellering)
+6. [Modell](#6-modell)
+   1. [Vurdering av modelltype](#61-vurdering-av-modelltype)
+   2. [Modellantagelser](#62-modellantagelser)
+   3. [Generell SARIMA-modell](#63-generell-sarima-modell)
 7. [Analyse](#7-analyse)
+   1. [Stasjonaritet og behov for differensiering](#71-stasjonaritet-og-behov-for-differensiering)
+   2. [ACF/PACF-analyse og ordensvalg](#72-acfpacf-analyse-og-ordensvalg)
+   3. [Modellestimering og parameterresultater](#73-modellestimering-og-parameterresultater)
+   4. [Validering](#74-validering)
 8. [Resultat](#8-resultat)
+   1. [Resultater fra testsettvalidering](#81-resultater-fra-testsettvalidering)
+   2. [Resultater fra prognosearbeidet](#82-resultater-fra-prognosearbeidet)
 9. [Diskusjon](#9-diskusjon)
    1. [Modellvalg og parsimoni](#91-modellvalg-og-parsimoni)
    2. [Residualdiagnostikk og modellforutsetninger](#92-residualdiagnostikk-og-modellforutsetninger)
@@ -95,6 +127,9 @@ Kan oppgaven publiseres når båndleggingsperioden er over? ja / nei
 10. [Konklusjon](#10-konklusjon)
 11. [Bibliografi](#11-bibliografi)
 12. [Vedlegg](#12-vedlegg)
+    1. [Vedlegg A — Fullstendig oversikt over evaluerte SARIMA-kandidater](#vedlegg-a--fullstendig-oversikt-over-evaluerte-sarima-kandidater)
+    2. [Vedlegg B — Månedlig testsettprognose](#vedlegg-b--månedlig-testsettprognose)
+    3. [Vedlegg C — Reproduserbarhet og analyseartefakter](#vedlegg-c--reproduserbarhet-og-analyseartefakter)
 
 ---
 
@@ -104,11 +139,9 @@ For produksjonsbedrifter med sesongavhengig etterspørsel er pålitelige prognos
 
 Denne rapporten bruker PowerHorse som casebedrift for å undersøke hvordan historiske salgsdata kan gi bedre beslutningsstøtte i produksjons- og lagerplanlegging. Bedriften opererer i et marked der etterspørselen varierer både over tid og mellom måneder, noe som gjør det krevende å planlegge kapasitet og lager presist. Med utgangspunkt i et månedlig salgsdatasett utvikles en SARIMA-basert tidsseriemodell som skal fange opp trend- og sesongmønstre og danne grunnlag for en 12-måneders prognose.
 
-Rapporten er bygd opp slik at casebeskrivelse og datagrunnlag presenteres først, deretter modellering og validering, og til slutt prognoseresultater med tilhørende diskusjon og konklusjon.
-
 ### 1.1 Problemstilling
 
-Hvordan kan en univariat tidsseriemodell brukes til å predikere månedlig traktorsalg for de neste tolv månedene, og i hvilken grad gir en slik modell et tilstrekkelig beslutningsgrunnlag for produksjonsplanlegging og lagerstyring hos PowerHorse?
+Hvordan kan en univariat tidsseriemodell brukes til å predikere månedlig traktorsalg for de neste tolv månedene (juli 1981 til juni 1982), og i hvilken grad gir en slik modell et tilstrekkelig beslutningsgrunnlag for produksjonsplanlegging og lagerstyring hos PowerHorse?
 
 Spørsmålet er motivert av at bedriften mangler et systematisk grunnlag for å planlegge produksjonsvolum fremover. Kapittel 4 beskriver casesituasjonen nærmere og dokumenterer de historiske salgsmønstrene som danner utgangspunktet for modelleringsarbeidet.
 
@@ -129,7 +162,7 @@ Analysen er avgrenset på følgende måter:
 1. **Univariat modellering.** Datasettet inneholder kun tid og salgsvolum, uten eksterne forklaringsvariabler som pris, markedsføring eller makroøkonomiske indikatorer. Modelleringen er derfor begrenset til mønstre i selve tidsserien.
 2. **Én produktkategori og månedlig oppløsning.** Datagrunnlaget gjelder samlet traktorsalg på månedsnivå. Finere inndeling etter produkttype, region eller uke er ikke mulig med tilgjengelige data.
 3. **Prognosefokus, ikke forsyningskjedeoptimalisering.** Rapporten utvikler en etterspørselsprognose, men gjennomfører ikke en helhetlig optimalisering av produksjon og lager. Slik optimalisering ville kreve kostnads- og kapasitetsdata som ikke inngår i datagrunnlaget.
-4. **Historisk analyseperiode 1964–1981.** Modellen er estimert på data fra denne perioden. Analysens gyldighet forutsetter at de identifiserte mønstrene er relevante for prognoseperioden som følger umiddelbart etter.
+4. **Historisk analyseperiode 1964–1981.** Datasettet dekker perioden januar 1964 til juni 1981, og analysen er begrenset til denne perioden. Forhold som ligger utenfor dataperioden er ikke modellert eksplisitt. Antagelsen om at de historiske mønstrene fortsatt er gyldige i prognoseperioden behandles separat under antagelse 2 i seksjon 1.4.
 
 ### 1.4 Antagelser
 
@@ -144,6 +177,54 @@ Disse antagelsene gjelder på prosjektnivå. For detaljerte statistiske modellan
 ---
 
 ## 2 Litteratur
+
+Dette kapitlet plasserer problemstillingen — univariat prognosering av månedlig traktorsalg som beslutningsgrunnlag for produksjons- og lagerplanlegging hos PowerHorse — i en større faglig sammenheng. Hensikten er ikke å gjenta teorigjennomgangen i kapittel 3, men å vise hvilken litteratur som motiverer og begrunner metodevalgene som gjøres senere i rapporten. Litteraturen er organisert tematisk: først prognosemetodikkens rolle i operativ planlegging, deretter SARIMA-rammeverket som etablert tilnærming til sesongtidsserier, og til slutt de statistiske verktøyene som er nødvendige for å vurdere modellens gyldighet og prognoseevne.
+
+### 2.1 Tidsserieprognoser i produksjons- og lagerstyring
+
+For produksjonsbedrifter med sesongavhengig etterspørsel er prognoser et grunnleggende bindeledd mellom etterspørselsdrevne salg og kapasitetsdrevet produksjon. Hyndman og Athanasopoulos (2021) understreker at valg av prognosemetode må tilpasses dataene man faktisk har tilgjengelig: når kun én tidsserie og ingen forklaringsvariabler foreligger, er univariate metoder det naturlige utgangspunktet. Dette korresponderer direkte med datasituasjonen i PowerHorse-caset, der kun månedlig salgsvolum og tidspunkt er tilgjengelig (jf. avgrensning 1 i kapittel 1.3).
+
+I et planleggingsperspektiv brukes etterspørselsprognoser som inngangsdata for produksjonsplanlegging og lagerstyring. Silver, Pyke og Thomas (2017) viser hvordan prognoser kobler seg direkte til operative beslutninger gjennom dimensjonering av sikkerhetslager, aggregert produksjonsplanlegging og oppbygging av lager foran høysesong. Dårlige prognoser fører enten til kapitalbinding gjennom overproduksjon eller til tapte salg ved underdekning, og effekten forsterkes når ledetiden er lang og produksjonen er sesongorientert (Silver et al., 2017; Hyndman & Athanasopoulos, 2021). Litteraturen peker også på at en pålitelig punktprognose alene ikke er tilstrekkelig: usikkerhetsmål i form av prediksjonsintervaller er vesentlige for risikobaserte planleggingsbeslutninger (Box et al., 2015), og prognosevariansen er nettopp den størrelsen som inngår i klassiske formler for sikkerhetslager (Silver et al., 2017). Denne erkjennelsen ligger til grunn for hvordan prognosen i kapittel 8 kobles videre til planleggingsdiskusjonen i kapittel 9.
+
+### 2.2 SARIMA-rammeverket og Box-Jenkins-metodikken
+
+Det metodiske utgangspunktet for rapporten er Box-Jenkins-metodikken slik den er formulert i Box et al. (2015) — en iterativ prosedyre med identifikasjon, estimering og diagnostikk som har vært det dominerende rammeverket for univariat tidsserieprognosering siden 1970-tallet. Metodikken er forankret i ARIMA-familien av modeller, og utvides med sesongmessige polynom for å håndtere periodiske mønstre i en multiplikativ SARIMA$(p,d,q)(P,D,Q)_s$-struktur. Box et al. (2015) og Shumway og Stoffer (2017) gir komplementære framstillinger: førstnevnte legger vekt på det praktiske rammeverket og inneholder den klassiske flypassasjeranalysen, mens sistnevnte gir en formell statistisk behandling av stasjonaritet, autokovarians og estimering med maksimum likelihood.
+
+Den klassiske flypassasjermodellen SARIMA$(0,1,1)(0,1,1)_{12}$ fungerer som referansespesifikasjon for månedlige sesongserier (Box et al., 2015). Dens utbredelse og dokumenterte robusthet gjør den til et naturlig sammenligningsgrunnlag i modellutvelgelsen i kapittel 7.2. At PowerHorse-dataene er månedlige med en tydelig årlig sesong (kapittel 4.3), gir umiddelbar metodisk forankring til denne litteraturen.
+
+Box-Jenkins-metodikken har også vist seg å være levedyktig over tid. De Gooijer og Hyndman (2006) gir en bred oversikt over 25 års utvikling i tidsserieprognosering og dokumenterer at ARIMA-familien har vært et stabilt referansepunkt parallelt med utviklingen av eksponentiell utjevning og statspace-modeller. Empirisk støttes dette av Makridakis, Spiliotis og Assimakopoulos (2020), som i M4-konkurransen testet 61 prognosemetoder mot 100 000 tidsserier og viste at statistiske metoder fra ARIMA- og ETS-familiene fortsatt presterer konkurransedyktig — også sammenlignet med moderne maskinlæringsmetoder. SARIMA er dermed ikke bare et teoretisk veletablert valg, men et empirisk konkurransedyktig valg for det univariate månedlige sesongprognoseproblemet i denne rapporten. Begrensninger ved valget — særlig at alternativer som ETS ikke er sammenlignet eksplisitt — drøftes i kapittel 9.5.
+
+### 2.3 Stasjonaritet og statistiske enhetsrottester
+
+Stasjonaritet er en bærende forutsetning i ARIMA-rammeverket, og litteraturen tilbyr to komplementære tester som i praksis brukes sammen. Dickey og Fuller (1979) utleder fordelingen til estimatoren under nullhypotesen om enhetsrot og legger grunnlaget for Augmented Dickey-Fuller-testen (ADF), som tester om en serie er ikke-stasjonær. Kwiatkowski et al. (1992) snur perspektivet med KPSS-testen, der nullhypotesen er stasjonaritet, og argumenterer eksplisitt for at de to testene brukes sammen: en sammenfallende konklusjon styrker tolkningen, mens uenighet avdekker tvetydige tilfeller som krever supplerende vurdering. Denne anbefalingen er fulgt i kapittel 7.1, der både ADF og KPSS brukes på den log-transformerte salgsserien før differensieringsbehovet avgjøres.
+
+### 2.4 Residualdiagnostikk og modellforutsetninger
+
+En estimert SARIMA-modell er bare gyldig dersom residualene tilfredsstiller forutsetningene om hvit støy: ingen autokorrelasjon, konstant varians og tilnærmet normalitet. Litteraturen tilbyr veletablerte tester for hver av disse egenskapene.
+
+Ljung og Box (1978) utviklet en endelighetskorrigert portmanteau-test (Ljung-Box-testen) som er bedre tilpasset moderate utvalg enn den tidligere Box-Pierce-statistikken. Testen er i dag standard for å vurdere gjenværende autokorrelasjon i residualene, og forfatterne anbefaler at den utføres på flere lag, særlig sesonglag for sesongmodeller. Engle (1982) introduserte ARCH-rammeverket og en tilhørende Lagrange-multiplikatortest (ARCH-LM) som avdekker tidsvarierende varians — heteroskedastisitet — i residualene. Jarque og Bera (1987) presenterte en enkel og mye brukt normalitetstest som kombinerer skjevhet og kurtose i én $\chi^2$-statistikk. Normalitet er relevant fordi maksimum likelihood-estimering av SARIMA-parametere og de tilhørende prediksjonsintervallene baserer seg på en antakelse om tilnærmet normalfordelte residualer; betydelige avvik svekker dermed presisjonen i konfidensintervaller og prognoseusikkerhetsmål. Sammen utgjør disse tre testene det diagnostiske rammeverket som brukes i kapittel 7.4 og diskuteres i kapittel 9.2.
+
+### 2.5 Prognoseevaluering og hold-out-validering
+
+For å vurdere prognoseevne anbefaler litteraturen at modellen evalueres på data den ikke er estimert på (Hyndman & Athanasopoulos, 2021). Hold-out-validering med en disjunkt trenings-/testsplitt gir et realistisk bilde av out-of-sample-ytelse og er standard praksis i moderne prognoselitteratur. Hyndman og Athanasopoulos (2021) gjennomgår de mest brukte feilmålene: MAE som intuitivt absolutt avvik, RMSE som vekter store feil tyngre, MAPE som skalauavhengig prosentvis avvik med kjente svakheter ved nullverdier og skjeve fordelinger, og MASE som et skalauavhengig alternativ basert på en naiv referanseprognose. Petropoulos et al. (2022) bekrefter i sin brede praksisrettede gjennomgang at evaluering ikke bør reduseres til ett tall: ulike feilmål belyser ulike egenskaper ved prognosefeilene, punktprognosenøyaktighet og prediksjonsintervall-dekning er adskilte ytelsesdimensjoner, og en helhetlig vurdering krever at flere mål rapporteres samtidig.
+
+Når en modell er estimert på log-transformerte data, må tilbaketransformeringen behandles eksplisitt. Hyndman og Athanasopoulos (2021) påpeker at $\exp(\hat{z}_{T+h})$ gir medianprognosen, ikke forventningsverdien, og at biaskorreksjonen $\exp(\hat{z}_{T+h} + \sigma_h^2/2)$ gir et bedre estimat av forventet etterspørsel. Dette skillet er praktisk viktig i en planleggingskontekst som krever forventet volum, og er drøftet videre i kapittel 9.3.
+
+### 2.6 SARIMA i tilsvarende anvendelser
+
+Litteraturen rommer flere case-studier som anvender SARIMA og Box-Jenkins-metodikken på problemstillinger som ligner PowerHorse-caset i både domene og formål. Tre arbeider er særlig relevante.
+
+Polina, Ganesan, Karunarathne og Somasiri (2024) modellerer historisk traktorsalg med SARIMAX og sammenligner med flere dyplæringsmodeller (LSTM, GRU, RNN, CNN-LSTM). I deres analyse oppnår SARIMAX bedre treffsikkerhet enn dyplæringsmodellene målt med RMSE. Studien gir direkte empirisk støtte for at SARIMA-familien er et fornuftig metodevalg på samme produktdomene og frekvensnivå som vår analyse, og dokumenterer en fullstendig Box-Jenkins-arbeidsflyt med Q-Q-plott, residualplott og ACF/PACF-grafer som diagnostikkverktøy.
+
+Makoni og Chikobvu (2023) modellerer månedlig nybilsalg i Sør-Afrika i perioden 1998–2017 og identifiserer SARIMA(0,1,1)(0,0,2)$_{12}$ som beste spesifikasjon. Modellutvelgelsen følger Box-Jenkins-metodikken med AIC og BIC som beslutningsverktøy, og prognoseevalueringen bruker RMSE og MAPE — tilsvarende metodikkpakke som i denne rapporten, og med en sluttmodell i samme klasse som vår SARIMA(0,1,1)(0,1,1)$_{12}$. Studien er et eksempel på at samme arbeidsflyt gir robust modellutvelgelse på en sammenlignbar månedlig sesongserie i et beslektet markedssegment.
+
+Guimarães, Marques og Tortato (2020) anvender Box-Jenkins-metodikken på etterspørselen etter høyomløps reservedeler hos en multinasjonal produsent av landbruks- og anleggsmaskiner. Studien sammenligner Box-Jenkins-tilnærmingen med eksponentiell utjevning i bedriftens ERP-system og finner at den statistiske metodikken reduserer gjennomsnittlig prognosefeil fra 26 % til 10 % og bringer andelen usolgte ordrer ned fra 9,6 % til 1,4 %. Forfatterne kvantifiserer deretter de logistiske konsekvensene som potensielle lagerreduksjoner i størrelsesorden 76 % på tvers av alle klasse-A-deler, uten reduksjon i servicegrad. Dette case-eksempelet illustrerer eksplisitt bindeleddet mellom prognoseforbedring og operative lagerbeslutninger som problemstillingens andre ledd handler om, og er metodisk og domenemessig nærmest knyttet til PowerHorse-caset av kildene gjennomgått her.
+
+Samlet styrker disse arbeidene den praktiske forankringen av metodevalget i denne rapporten. SARIMA er ikke bare teoretisk forsvarlig og empirisk konkurransedyktig på generelle benchmarkdata — den er også dokumentert anvendt med gode resultater på sammenlignbare problemer i tilstøtende markeder, med målbare effekter på operative lagerbeslutninger.
+
+### 2.7 Posisjonering av rapporten
+
+Den gjennomgåtte litteraturen utgjør en moden og veletablert verktøykasse for univariat sesongprognosering brukt i en logistikk-kontekst. Silver et al. (2017) gir den logistiske rammen som kobler prognoser til lager- og produksjonsplanlegging, mens Box et al. (2015), Shumway og Stoffer (2017) og Hyndman og Athanasopoulos (2021) gir det overordnede metodiske rammeverket for tidsseriemodellering og prognoseevaluering. De Gooijer og Hyndman (2006), Makridakis et al. (2020) og Petropoulos et al. (2022) gir den empiriske og praksisorienterte forankringen som dokumenterer at SARIMA-rammeverket holder seg godt og fortsatt brukes aktivt i moderne prognosearbeid. Polina et al. (2024), Makoni og Chikobvu (2023) og Guimarães et al. (2020) gir konkrete domenenære case-studier som viser at metodikken fungerer godt på sammenlignbare problemstillinger. Dickey og Fuller (1979) og Kwiatkowski et al. (1992) gir verktøyene for stasjonaritetsvurdering, og Ljung og Box (1978), Engle (1982) og Jarque og Bera (1987) gir det diagnostiske apparatet for å vurdere modellens gyldighet. Rapporten anvender disse bidragene som en samlet metodisk pakke på PowerHorse-caset, og bidrar dermed ikke med ny metodikk, men med en problemforankret bruk av etablert metodikk på et konkret beslutningsproblem i produksjons- og lagerplanlegging.
 
 ---
 
@@ -429,9 +510,13 @@ Tabell 5.1 oppsummerer de viktigste egenskapene ved datasettet.
 | Interkvartilbredde (IQR)   | 2680.75                                  |
 | Merknad                    | 1981 er delår og dekker kun januar-juni |
 
+<p align="center"><small><i>Tabell 5.1 Nøkkelegenskaper ved det månedlige salgsdatasettet (1964-01 til 1981-06).</i></small></p>
+
 ---
 
 ## 6 Modell
+
+Med metode og datagrunnlag på plass formaliseres nå modellrammeverket som ligger til grunn for analysen. Kapitlet begrunner først hvorfor SARIMA er en passende modellklasse for det aktuelle datasettet, klargjør deretter de statistiske antagelsene modellen hviler på, og presenterer til slutt den generelle SARIMA-spesifikasjonen som operasjonaliseres i kapittel 7.
 
 ### 6.1 Vurdering av modelltype
 
@@ -721,7 +806,7 @@ Tabell 8.2 oppsummerer punktprognosen og 95 % prediksjonsintervall for hver mån
 
 Prognosen viser et tydelig sesongmønster som samsvarer med den historiske salgsprofilen. Desember 1981 er forventet toppmåned med et punktestimat på 19 483, mens august 1981 er forventet bunnmåned med 2 694. Samlet prognosesalg for 12-månedersperioden er 100 413. Prediksjonsintervallene bredder gradvis utover horisonten, med en gjennomsnittlig bredde på om lag 3 800 enheter, noe som reflekterer at usikkerheten øker med antall steg fremover.
 
-Tilbaketransformeringen fra log-skala bruker standard $\exp(\hat{z})$, som gir medianprognosen på originalskala. En analytisk biaskorreksjon med $\exp(\hat{z} + \hat{\sigma}^2/2)$ ville gitt gjennomsnittsprognosen, men oppjusteringen er marginal (ca. 0,6 %) og ville forsterket den positive nivåbiasen som ble identifisert i testsettvalideringen. Denne metodiske nyansen drøftes nærmere i kapittel 9.
+Tilbaketransformeringen fra log-skala bruker standard $\exp(\hat{z})$, som gir medianprognosen på originalskala. En analytisk biaskorreksjon med $\exp(\hat{z} + \hat{\sigma}^2/2)$ ville gitt gjennomsnittsprognosen, men oppjusteringen er marginal — fra om lag 0,6 % ved horisont 1 til om lag 0,8 % ved horisont 12 — og ville forsterket den positive nivåbiasen som ble identifisert i testsettvalideringen. Denne metodiske nyansen drøftes nærmere i kapittel 9.3.
 
 Prognosestrukturen har tydelige implikasjoner for kapasitetsplanlegging hos PowerHorse, med høysesong (november–januar) som krever vesentlig høyere produksjonskapasitet enn lavsesong (juni–august). En detaljert drøfting av praktiske implikasjoner og modellbegrensninger følger i kapittel 9.
 
@@ -843,15 +928,29 @@ Modellen bør derfor brukes som ett element i et bredere beslutningsgrunnlag. Se
 
 ## 10 Konklusjon
 
+Rapporten har vist at en univariat SARIMA-modell kan brukes til å predikere månedlig traktorsalg hos PowerHorse for de neste tolv månedene, og at modellen gir et nyttig — men ikke uttømmende — beslutningsgrunnlag for produksjons- og lagerplanlegging.
+
+Den valgte SARIMA$(0,1,1)(0,1,1)_{12}$-modellen ble estimert på treningsperioden januar 1964 til desember 1977 og evaluert på testsettet januar 1978 til juni 1981, der den oppnådde en gjennomsnittlig absolutt prosentfeil på 5,4 %. Salgsserien har en tydelig oppadgående trend og en stabil tolv-måneders sesongprofil med topp i november–desember og bunn i august, og modellen fanger denne strukturen godt. Med bare tre parametere er den den enkleste blant alle 36 evaluerte kandidater, men oppnår likevel lavest AIC og BIC — et tydelig parsimonisignal.
+
+For PowerHorses planleggingsbehov gir den 12-måneders prognosen for juli 1981 til juni 1982 et kvantitativt utgangspunkt på om lag 100 400 enheter samlet, med en sesongamplitude på 7:1 mellom topp- og bunnmåneden. Dette gir en konkret operasjonell handlingsfølge: lageroppbygging bør starte i august–september, høysesongkapasiteten må dimensjoneres for et samlet behov på om lag 34 700 enheter i november–desember (med toppmåneden desember på 19 500 enheter), og lavsesongen januar–februar gir rom for å nedjustere produksjonsvolumet. Prediksjonsintervallene gjør usikkerheten kvantitativt synlig og gir grunnlag for å dimensjonere sikkerhetslager, og periodisk reestimering — for eksempel etter hvert kvartal — anbefales for å holde prognosen oppdatert og motvirke bias-akkumulering over tid.
+
+Modellen har samtidig klare begrensninger. Testsettvalideringen avdekket en systematisk positiv bias som tiltar over horisonten, og residualdiagnostikken viser brudd på modellforutsetningene ved sesonglag og gjennom heteroskedastisitet. Den univariate tilnærmingen utelukker eksterne drivere som pris, markedsføring og makroøkonomi. Sesongstrukturen treffer derfor bedre enn nivået, og modellen leverer mest verdi som beslutningsstøtte sammen med markedsinnsikt og operative ordredata, ikke alene.
+
+Det viktigste praktiske bidraget er dermed et reproduserbart, statistisk forankret rammeverk for sesongbasert kapasitetsplanlegging hos PowerHorse. Rammeverket gjør usikkerhet kvantitativt synlig og gir bedriften en transparent struktur for å forene tallbaserte prognoser med kvalitativ markedsinnsikt og operativ erfaring i den videre planleggingen.
+
 ---
 
 ## 11 Bibliografi
 
 Box, G. E. P., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). *Time series analysis: Forecasting and control* (5th ed.). Wiley.
 
+De Gooijer, J. G., & Hyndman, R. J. (2006). 25 years of time series forecasting. *International Journal of Forecasting*, *22*(3), 443–473. https://doi.org/10.1016/j.ijforecast.2006.01.001
+
 Dickey, D. A., & Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. *Journal of the American Statistical Association*, *74*(366), 427–431. https://doi.org/10.2307/2286348
 
 Engle, R. F. (1982). Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation. *Econometrica*, *50*(4), 987–1007. https://doi.org/10.2307/1912773
+
+Guimarães, C. B., Marques, J. M., & Tortato, U. (2020). Demand forecasting for high-turnover spare parts in agricultural and construction machines: A case study. *South African Journal of Industrial Engineering*, *31*(2), 116–128. https://doi.org/10.7166/31-2-2084
 
 Hyndman, R. J., & Athanasopoulos, G. (2021). *Forecasting: Principles and practice* (3rd ed.). OTexts. https://otexts.com/fpp3/
 
@@ -861,8 +960,132 @@ Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., & Shin, Y. (1992). Testing the
 
 Ljung, G. M., & Box, G. E. P. (1978). On a measure of lack of fit in time series models. *Biometrika*, *65*(2), 297–303. https://doi.org/10.1093/biomet/65.2.297
 
+Makoni, T., & Chikobvu, D. (2023). Assessing and forecasting the long-term impact of the global financial crisis on new car sales in South Africa. *Data*, *8*(5), 78. https://doi.org/10.3390/data8050078
+
+Makridakis, S., Spiliotis, E., & Assimakopoulos, V. (2020). The M4 Competition: 100,000 time series and 61 forecasting methods. *International Journal of Forecasting*, *36*(1), 54–74. https://doi.org/10.1016/j.ijforecast.2019.04.014
+
+Petropoulos, F., Apiletti, D., Assimakopoulos, V., Babai, M. Z., Barrow, D. K., Ben Taieb, S., Bergmeir, C., Bessa, R. J., Bijak, J., Boylan, J. E., Browell, J., Carnevale, C., Castle, J. L., Cirillo, P., Clements, M. P., Cordeiro, C., Cyrino Oliveira, F. L., De Baets, S., Dokumentov, A., ... Ziel, F. (2022). Forecasting: Theory and practice. *International Journal of Forecasting*, *38*(3), 705–871. https://doi.org/10.1016/j.ijforecast.2021.11.001
+
+Polina, P., Ganesan, S., Karunarathne, L., & Somasiri, N. (2024). Time series analysis for tractor sales using SARIMAX and deep learning models. *International Journal of Computer Communication and Informatics*, *6*(1), 27–57. https://doi.org/10.34256/ijcci2413
+
 Shumway, R. H., & Stoffer, D. S. (2017). *Time series analysis and its applications: With R examples* (4th ed.). Springer.
+
+Silver, E. A., Pyke, D. F., & Thomas, D. J. (2017). *Inventory and production management in supply chains* (4th ed.). CRC Press.
 
 ---
 
 ## 12 Vedlegg
+
+Vedleggene gir utfyllende dokumentasjon som supplerer hovedteksten. Vedlegg A viser den fullstendige modellutvelgelsen som ligger til grunn for valget i kapittel 7.2. Vedlegg B viser den månedlige testsettprognosen som oppsummeres i kapittel 8.1. Vedlegg C peker til de tilhørende analyseartefaktene for reproduserbarhet.
+
+### Vedlegg A — Fullstendig oversikt over evaluerte SARIMA-kandidater
+
+Tabell A.1 viser alle 36 SARIMA-spesifikasjoner som ble estimert og rangert i kapittel 7.2. Modellene er sortert stigende etter AIC, og den valgte modellen står øverst. Alle modeller konvergerte ved estimering.
+
+| Modell | $p$ | $q$ | $P$ | $Q$ | Parametere | Log-lik | AIC | BIC |
+|:--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| SARIMA(0,1,1)(0,1,1)$_{12}$ | 0 | 1 | 0 | 1 | 3 | 104,41 | -202,83 | -193,70 |
+| SARIMA(1,1,1)(0,1,1)$_{12}$ | 1 | 1 | 0 | 1 | 4 | 104,88 | -201,76 | -189,59 |
+| SARIMA(0,1,1)(1,1,1)$_{12}$ | 0 | 1 | 1 | 1 | 4 | 104,87 | -201,75 | -189,57 |
+| SARIMA(0,1,2)(0,1,1)$_{12}$ | 0 | 2 | 0 | 1 | 4 | 104,81 | -201,61 | -189,44 |
+| SARIMA(1,1,2)(0,1,1)$_{12}$ | 1 | 2 | 0 | 1 | 5 | 105,68 | -201,37 | -186,15 |
+| SARIMA(2,1,1)(0,1,1)$_{12}$ | 2 | 1 | 0 | 1 | 5 | 105,33 | -200,66 | -185,45 |
+| SARIMA(1,1,1)(1,1,1)$_{12}$ | 1 | 1 | 1 | 1 | 5 | 105,22 | -200,44 | -185,23 |
+| SARIMA(0,1,2)(1,1,1)$_{12}$ | 0 | 2 | 1 | 1 | 5 | 105,16 | -200,32 | -185,10 |
+| SARIMA(2,1,1)(1,1,1)$_{12}$ | 2 | 1 | 1 | 1 | 6 | 105,76 | -199,53 | -181,27 |
+| SARIMA(1,1,2)(1,1,1)$_{12}$ | 1 | 2 | 1 | 1 | 6 | 105,01 | -198,03 | -179,77 |
+| SARIMA(2,1,2)(0,1,1)$_{12}$ | 2 | 2 | 0 | 1 | 6 | 104,98 | -197,96 | -179,70 |
+| SARIMA(2,1,2)(1,1,1)$_{12}$ | 2 | 2 | 1 | 1 | 7 | 105,31 | -196,62 | -175,31 |
+| SARIMA(1,1,2)(1,1,0)$_{12}$ | 1 | 2 | 1 | 0 | 5 | 102,01 | -194,02 | -178,80 |
+| SARIMA(1,1,1)(1,1,0)$_{12}$ | 1 | 1 | 1 | 0 | 4 | 100,52 | -193,05 | -180,87 |
+| SARIMA(0,1,1)(1,1,0)$_{12}$ | 0 | 1 | 1 | 0 | 3 | 99,41 | -192,82 | -183,69 |
+| SARIMA(0,1,2)(1,1,0)$_{12}$ | 0 | 2 | 1 | 0 | 4 | 100,34 | -192,68 | -180,51 |
+| SARIMA(2,1,1)(1,1,0)$_{12}$ | 2 | 1 | 1 | 0 | 5 | 101,00 | -192,00 | -176,79 |
+| SARIMA(2,1,2)(1,1,0)$_{12}$ | 2 | 2 | 1 | 0 | 6 | 100,87 | -189,74 | -171,47 |
+| SARIMA(2,1,0)(0,1,1)$_{12}$ | 2 | 0 | 0 | 1 | 4 | 97,70 | -187,40 | -175,23 |
+| SARIMA(2,1,0)(1,1,1)$_{12}$ | 2 | 0 | 1 | 1 | 5 | 98,39 | -186,79 | -171,57 |
+| SARIMA(2,1,0)(1,1,0)$_{12}$ | 2 | 0 | 1 | 0 | 4 | 93,04 | -178,07 | -165,90 |
+| SARIMA(1,1,2)(0,1,0)$_{12}$ | 1 | 2 | 0 | 0 | 4 | 91,05 | -174,10 | -161,93 |
+| SARIMA(1,1,0)(0,1,1)$_{12}$ | 1 | 0 | 0 | 1 | 3 | 89,42 | -172,84 | -163,71 |
+| SARIMA(2,1,2)(0,1,0)$_{12}$ | 2 | 2 | 0 | 0 | 5 | 91,20 | -172,39 | -157,18 |
+| SARIMA(1,1,0)(1,1,1)$_{12}$ | 1 | 0 | 1 | 1 | 4 | 89,81 | -171,63 | -159,46 |
+| SARIMA(2,1,1)(0,1,0)$_{12}$ | 2 | 1 | 0 | 0 | 4 | 89,65 | -171,31 | -159,13 |
+| SARIMA(0,1,1)(0,1,0)$_{12}$ | 0 | 1 | 0 | 0 | 2 | 86,89 | -169,77 | -163,69 |
+| SARIMA(1,1,1)(0,1,0)$_{12}$ | 1 | 1 | 0 | 0 | 3 | 87,88 | -169,75 | -160,62 |
+| SARIMA(0,1,2)(0,1,0)$_{12}$ | 0 | 2 | 0 | 0 | 3 | 87,17 | -168,33 | -159,20 |
+| SARIMA(1,1,0)(1,1,0)$_{12}$ | 1 | 0 | 1 | 0 | 3 | 85,19 | -164,37 | -155,24 |
+| SARIMA(2,1,0)(0,1,0)$_{12}$ | 2 | 0 | 0 | 0 | 3 | 82,56 | -159,11 | -149,98 |
+| SARIMA(1,1,0)(0,1,0)$_{12}$ | 1 | 0 | 0 | 0 | 2 | 72,87 | -141,73 | -135,64 |
+| SARIMA(0,1,0)(0,1,1)$_{12}$ | 0 | 0 | 0 | 1 | 2 | 69,59 | -135,18 | -129,09 |
+| SARIMA(0,1,0)(1,1,1)$_{12}$ | 0 | 0 | 1 | 1 | 3 | 69,59 | -133,18 | -124,05 |
+| SARIMA(0,1,0)(1,1,0)$_{12}$ | 0 | 0 | 1 | 0 | 2 | 67,81 | -131,62 | -125,53 |
+| SARIMA(0,1,0)(0,1,0)$_{12}$ | 0 | 0 | 0 | 0 | 1 | 53,53 | -105,07 | -102,02 |
+
+<p align="center"><small><i>Tabell A.1 Fullstendig kandidatoversikt over 36 evaluerte SARIMA-spesifikasjoner sortert stigende etter AIC.</i></small></p>
+
+### Vedlegg B — Månedlig testsettprognose
+
+Tabell B.1 viser observert salg, prognosert salg, prognosefeil, absolutt feil og absolutt prosentfeil for hver av de 42 månedene i testsettet (januar 1978 til juni 1981). Aggregerte feilmål er rapportert i Tabell 8.1.
+
+| Måned | Observert | Prognose | Feil | Absolutt feil | Absolutt prosentfeil |
+|:--- | ---: | ---: | ---: | ---: | ---: |
+| 1978-01 | 5 649 | 5 586,58 | -62,42 | 62,42 | 1,10 % |
+| 1978-02 | 4 713 | 4 716,58 | 3,58 | 3,58 | 0,08 % |
+| 1978-03 | 5 816 | 5 901,35 | 85,35 | 85,35 | 1,47 % |
+| 1978-04 | 5 764 | 5 951,17 | 187,17 | 187,17 | 3,25 % |
+| 1978-05 | 6 275 | 6 510,38 | 235,38 | 235,38 | 3,75 % |
+| 1978-06 | 6 066 | 6 427,96 | 361,96 | 361,96 | 5,97 % |
+| 1978-07 | 5 408 | 5 761,69 | 353,69 | 353,69 | 6,54 % |
+| 1978-08 | 2 353 | 2 500,37 | 147,37 | 147,37 | 6,26 % |
+| 1978-09 | 6 964 | 7 482,16 | 518,16 | 518,16 | 7,44 % |
+| 1978-10 | 8 655 | 9 283,11 | 628,11 | 628,11 | 7,26 % |
+| 1978-11 | 13 337 | 14 193,90 | 856,90 | 856,90 | 6,42 % |
+| 1978-12 | 17 235 | 18 202,07 | 967,07 | 967,07 | 5,61 % |
+| 1979-01 | 5 627 | 5 859,24 | 232,24 | 232,24 | 4,13 % |
+| 1979-02 | 4 758 | 4 946,78 | 188,78 | 188,78 | 3,97 % |
+| 1979-03 | 5 973 | 6 189,38 | 216,38 | 216,38 | 3,62 % |
+| 1979-04 | 6 011 | 6 241,62 | 230,62 | 230,62 | 3,84 % |
+| 1979-05 | 6 623 | 6 828,13 | 205,13 | 205,13 | 3,10 % |
+| 1979-06 | 6 469 | 6 741,68 | 272,68 | 272,68 | 4,22 % |
+| 1979-07 | 5 786 | 6 042,90 | 256,90 | 256,90 | 4,44 % |
+| 1979-08 | 2 526 | 2 622,40 | 96,40 | 96,40 | 3,82 % |
+| 1979-09 | 7 420 | 7 847,33 | 427,33 | 427,33 | 5,76 % |
+| 1979-10 | 9 155 | 9 736,18 | 581,18 | 581,18 | 6,35 % |
+| 1979-11 | 13 964 | 14 886,65 | 922,65 | 922,65 | 6,61 % |
+| 1979-12 | 17 863 | 19 090,44 | 1 227,44 | 1 227,44 | 6,87 % |
+| 1980-01 | 5 778 | 6 145,21 | 367,21 | 367,21 | 6,36 % |
+| 1980-02 | 4 846 | 5 188,21 | 342,21 | 342,21 | 7,06 % |
+| 1980-03 | 6 061 | 6 491,46 | 430,46 | 430,46 | 7,10 % |
+| 1980-04 | 6 092 | 6 546,25 | 454,25 | 454,25 | 7,46 % |
+| 1980-05 | 6 738 | 7 161,38 | 423,38 | 423,38 | 6,28 % |
+| 1980-06 | 6 622 | 7 070,72 | 448,72 | 448,72 | 6,78 % |
+| 1980-07 | 5 979 | 6 337,83 | 358,83 | 358,83 | 6,00 % |
+| 1980-08 | 2 640 | 2 750,39 | 110,39 | 110,39 | 4,18 % |
+| 1980-09 | 7 831 | 8 230,33 | 399,33 | 399,33 | 5,10 % |
+| 1980-10 | 9 752 | 10 211,37 | 459,37 | 459,37 | 4,71 % |
+| 1980-11 | 14 954 | 15 613,21 | 659,21 | 659,21 | 4,41 % |
+| 1980-12 | 19 164 | 20 022,18 | 858,18 | 858,18 | 4,48 % |
+| 1981-01 | 6 195 | 6 445,13 | 250,13 | 250,13 | 4,04 % |
+| 1981-02 | 5 176 | 5 441,43 | 265,43 | 265,43 | 5,13 % |
+| 1981-03 | 6 392 | 6 808,28 | 416,28 | 416,28 | 6,51 % |
+| 1981-04 | 6 334 | 6 865,75 | 531,75 | 531,75 | 8,40 % |
+| 1981-05 | 6 887 | 7 510,90 | 623,90 | 623,90 | 9,06 % |
+| 1981-06 | 6 642 | 7 415,81 | 773,81 | 773,81 | 11,65 % |
+
+<p align="center"><small><i>Tabell B.1 Måned-for-måned testsettprognose for SARIMA$(0,1,1)(0,1,1)_{12}$ med observert salg, prognose, prognosefeil og prosentfeil for testperioden januar 1978 til juni 1981.</i></small></p>
+
+### Vedlegg C — Reproduserbarhet og analyseartefakter
+
+All analysekode, datafiler, figurer og resultatfiler ligger samlet i prosjektmappen `006 analysis/aktiviteter/`, organisert etter aktivitetene i prosjektplanen. Tabell C.1 oppsummerer hvor de viktigste artefaktene finnes.
+
+| Aktivitet | Mappe | Innhold |
+|:--- | :--- | :--- |
+| Datarensing og strukturering | `3_1_rense_og_strukturere_data/` | Datasplitt, månedsprofil, dataoversikt |
+| Modellutvelgelse og estimering | `3_2_velge_og_estimere_modell/` | Stasjonaritetstester, kandidatoversikt, parameterestimat, residualdiagnostikk |
+| Validering | `3_3_validere_modell/` | Supplerende residualtester, testsettprognose, feilmål |
+| 12-måneders prognose og kapasitetsplanlegging | `3_4_lage_prognose_og_anbefalinger/` | Refittede parametere, månedlig prognose, kapasitetstabell, helhetsfigur |
+| Teorikapittelets illustrasjoner | `3_7_skrive_teorikapittel/` | Syntetiske figurer for dekomponering, stasjonaritet, ACF/PACF og biaskorreksjon |
+
+<p align="center"><small><i>Tabell C.1 Oversikt over analyseartefakter knyttet til hver aktivitet i fase 3.</i></small></p>
+
+Hver aktivitetsmappe inneholder undermappene `scripts/`, `figurer/` og `resultat/` der det er relevant. Råtidsserien som ligger til grunn for analysen finnes i `004 data/` (`sales.csv` med tilhørende treningssett `sales_train.csv` og testsett `sales_test.csv`).

@@ -1,8 +1,8 @@
 # Status for PowerHorse-prosjektet
 
-Statusdato: 2026-04-13
+Statusdato: 2026-04-29
 
-Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `project-plan.md`, `schedule.json` og `wbs.json` som referanse for avvik.
+Denne statusen bygger på arbeidskopien per 2026-04-29, med planbaselinen i `project-plan.md`, `schedule.json` og `wbs.json` som referanse for avvik.
 
 ## Kort status
 
@@ -14,7 +14,10 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - Aktivitet `ACT-3.5 Skrive kapittel 1 Innledning` er fullført per 2026-03-25. Review gjennomført med to svakheter (V1–V2) fikset og fire forbedringsforslag (F1–F4) notert. F4 overført til ACT-3.10.
 - Aktivitet `ACT-3.8 Skrive kapittel 9 Diskusjon` er fullført per 2026-04-13. Review gjennomført med to svakheter (V1–V2) rettet og fire forbedringsforslag (F1–F4) implementert.
 - Aktivitet `ACT-3.7 Skrive kapittel 3 Teori` er fullført per 2026-04-13. Review gjennomført med to svakheter (V1–V2) rettet og fem forbedringsforslag (F1–F5) implementert. F5 overført til ACT-3.10.
-- Neste steg: ACT-3.9 (kap 10 Konklusjon). Parallelt: ACT-3.6 (kap 2) → ACT-3.10.
+- Aktivitet `ACT-3.6 Skrive kapittel 2 Litteratur` er fullført per 2026-04-29. Review gjennomført med tre svakheter (V1–V3) og fem forbedringsforslag (F1–F5), hvorav V1–V3 og F1–F3 er implementert. Kapitlet er i tillegg utvidet med tre anvendelses-/oversiktskilder (De Gooijer & Hyndman, 2006; Makridakis et al., 2020; Petropoulos et al., 2022) for empirisk forankring og en ny seksjon 2.6 «SARIMA i tilsvarende anvendelser» med tre domenenære case-studier (Polina et al., 2024; Makoni & Chikobvu, 2023; Guimarães et al., 2020). F4 og F5 overført til ACT-3.10.
+- Aktivitet `ACT-3.9 Skrive kapittel 10 Konklusjon` er fullført per 2026-04-29. Review gjennomført med to svakheter (V1–V2) og fire forbedringsforslag (F1–F4). V1, V2, F1 og F3 implementert. F2 og F4 overført til ACT-3.10.
+- Aktivitet `ACT-3.10 Sammenstille rapportutkast` er fullført per 2026-04-29. Review gjennomført med fire svakheter (V1–V4) og fem forbedringsforslag (F1–F5). V1–V4 og F1, F3, F4 implementert. F2 og F5 noteres for evt. håndtering i fase 4. Hovedutkastet er klart for peer review (MS-005).
+- Neste steg: ACT-4.1 Gjennomføre peer review og revisjon (MS-006).
 
 ## Faktisk fremdrift per arbeidskopi
 
@@ -28,11 +31,11 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | ACT-3.3 Validere modell | 2026-03-20 til 2026-03-25 | Ferdig 2026-03-23 | Review gjennomført og lukket 2026-03-23 |
 | ACT-3.4 Lage prognose og anbefalinger | 2026-03-25 til 2026-04-10 | Ferdig 2026-03-25 | Review gjennomført og lukket 2026-03-25. V1–V3 fikset, F1–F4 overført til ACT-3.8 |
 | ACT-3.5 Skrive kapittel 1 Innledning | 2026-04-10 til 2026-04-13 | Ferdig 2026-03-25 | Kapittel 1 med alle underseksjoner ferdigskrevet |
-| ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ikke startet | Parallell med 3.5 og 3.7 |
+| ACT-3.6 Skrive kapittel 2 Litteratur | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-29 | Review gjennomført og lukket 2026-04-29. V1–V3 og F1–F3 implementert. Kapitlet utvidet med tre anvendelses-/oversiktskilder og ny seksjon 2.6 med tre domenenære case-studier. F4 og F5 overført til ACT-3.10 |
 | ACT-3.7 Skrive kapittel 3 Teori | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-13 | Review gjennomført og lukket 2026-04-13. V1–V2 rettet, F1–F4 implementert, F5 overført til ACT-3.10 |
 | ACT-3.8 Skrive kapittel 9 Diskusjon | 2026-04-10 til 2026-04-15 | Ferdig 2026-04-13 | Review gjennomført og lukket 2026-04-13. V1–V2 rettet, F1–F4 implementert |
-| ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ikke startet | Kritisk sti, avhenger av ACT-3.8 |
-| ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ikke startet | Avhenger av 3.5, 3.6, 3.7 og 3.9. Knyttet til MS-005 |
+| ACT-3.9 Skrive kapittel 10 Konklusjon | 2026-04-19 til 2026-04-21 | Ferdig 2026-04-29 | Review gjennomført og lukket 2026-04-29. V1–V2 rettet, F1 og F3 implementert. F2 og F4 overført til ACT-3.10 |
+| ACT-3.10 Sammenstille rapportutkast | 2026-04-21 til 2026-04-27 | Ferdig 2026-04-29 | Review gjennomført og lukket 2026-04-29. V1–V4 og F1, F3, F4 implementert. Hovedutkastet er klart for peer review (MS-005) |
 
 ## Avhukingsliste for aktiviteter
 
@@ -122,13 +125,13 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 - [x] Kontrollere at alle referanser i kap. 3 finnes i kap. 11 og har oppsummeringsfil i `003 references/`
 - [x] Gjennomføre review og lukke aktiviteten
 
-### Neste aktiviteter
-
 #### ACT-3.6 Skrive kapittel 2 Litteratur
 
-- [ ] Identifisere relevante kilder
-- [ ] Knytte litteratur til problemstilling og metodevalg
-- [ ] Gjennomføre review og lukke aktiviteten
+- [x] Identifisere relevante kilder
+- [x] Knytte litteratur til problemstilling og metodevalg
+- [x] Gjennomføre review og lukke aktiviteten
+
+### Neste aktiviteter
 
 #### ACT-3.8 Skrive kapittel 9 Diskusjon
 
@@ -143,19 +146,38 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 
 #### ACT-3.9 Skrive kapittel 10 Konklusjon
 
-- [ ] Svare direkte på problemstillingen
-- [ ] Løfte fram viktigste funn og implikasjoner
-- [ ] Gjennomføre review og lukke aktiviteten
+- [x] Svare direkte på problemstillingen
+- [x] Løfte fram viktigste funn og implikasjoner
+- [x] Gjennomføre review og lukke aktiviteten
 
 #### ACT-3.10 Sammenstille rapportutkast
 
-- [ ] Skrive sammendrag (norsk)
-- [ ] Skrive abstract (engelsk)
-- [ ] Oppdatere innholdsfortegnelse (inkl. rette «Modellering» → «Modell» for kap. 6 og fjerne parentesbemerkning for kap. 5)
-- [ ] Ferdigstille kapittel 11 Bibliografi
-- [ ] Samle vedlegg i kapittel 12
-- [ ] Intern kvalitetssjekk av hele utkastet
-- [ ] Gjennomføre review og lukke aktiviteten
+Nytt innhold:
+
+- [x] Skrive sammendrag (norsk)
+- [x] Skrive abstract (engelsk)
+- [x] Samle vedlegg i kapittel 12
+
+Konsistenssjekk og rettelser:
+
+- [x] Oppdatere innholdsfortegnelse (inkl. rette «Modellering» → «Modell» for kap. 6 og fjerne parentesbemerkning for kap. 5)
+- [x] Ferdigstille kapittel 11 Bibliografi (verifisere alfabetisk rekkefølge og konsistens i 15 oppføringer)
+- [x] Konsistenssjekk av kapittel 1 Innledning mot fullført rapport (særlig avsnitt om rapportens oppbygging)
+
+Overførte forbedringsforslag fra tidligere reviews:
+
+- [x] (ACT-3.5 F1) Tydeliggjøre grensen mellom avgrensing 4 (analyseperiode) og antagelse 2 (relevans av historiske mønstre) i kapittel 1
+- [x] (ACT-3.5 F2) Forkorte eller fjerne avsnittet om rapportens oppbygging i kapittel 1
+- [x] (ACT-3.5 F3) Presisere prognoseperioden (juli 1981 – juni 1982) i problemstillingen i seksjon 1.1
+- [x] (ACT-3.6 F4) Kort forklaring i seksjon 2.4 av hvorfor normalitet er relevant i SARIMA-sammenheng
+- [x] (ACT-3.6 F5) Utvide `ref_hyndman_athanasopoulos_2021.md` med MASE og biaskorreksjon
+- [x] (ACT-3.9 F2) Mer selvstendig formulering av de 9.6-nære setningene i kapittel 10
+- [x] (ACT-3.9 F4) Mer konkret PowerHorse-anbefaling med terskelverdier i kapittel 10
+
+Avslutning:
+
+- [x] Intern kvalitetssjekk av hele utkastet
+- [x] Gjennomføre review og lukke aktiviteten
 
 #### ACT-4.1 Gjennomføre peer review og revisjon
 
@@ -188,17 +210,17 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | Kapittel | Status | Kommentar |
 | --- | --- | --- |
 | 1 Innledning | Ferdig | Alle underseksjoner (1.1–1.4) ferdigskrevet |
-| 2 Litteratur | Tom | Ikke skrevet |
+| 2 Litteratur | Ferdig | Syv seksjoner (2.1–2.7) med femten APA7-referanser. SCM-forankring i 2.1, empirisk/praksisorientert forankring i 2.2 og 2.5, dedikert seksjon 2.6 med tre domenenære case-studier (traktor, nybilsalg, landbruks-/anleggsmaskiner) og samlet posisjonering i 2.7. Review gjennomført og lukket |
 | 3 Teori | Ferdig | Fem seksjoner (3.1–3.5) med APA7-referanser. Review gjennomført og lukket |
 | 4 Casebeskrivelse | Ferdig | Fire figurer og én tabell |
-| 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert |
-| 6 Modellering | Ferdig | Modelltype, antagelser og SARIMA-rammeverk |
+| 5 Metode og data | Ferdig | Datasplitt og tabell 5.1 dokumentert (med kursivert tabelltekst) |
+| 6 Modell | Ferdig | Modelltype, antagelser og SARIMA-rammeverk. Innledningsavsnitt på plass |
 | 7 Analyse | Ferdig | 7.1–7.4 er skrevet med stasjonaritet, ACF/PACF, estimering og validering |
 | 8 Resultat | Ferdig | 8.1 testsettvalidering og 8.2 prognoseresultater er ferdig |
 | 9 Diskusjon | Ferdig | Seks seksjoner (9.1–9.6): modellvalg, residualdiagnostikk, bias, kapasitetsplanlegging, begrensninger og samlet vurdering. To tabeller og én figur. Venter på review |
-| 10 Konklusjon | Tom | Ikke skrevet |
-| 11 Bibliografi | Påbegynt | 8 referanser fra teorikapitlet lagt inn i APA7 |
-| 12 Vedlegg | Tom | Ikke skrevet |
+| 10 Konklusjon | Ferdig | Fem avsnitt (om lag én side) som svarer direkte på problemstillingen og løfter fram modellvalg, prognose, implikasjoner, begrensninger og praktisk hovedbidrag. Review gjennomført og lukket |
+| 11 Bibliografi | Ferdig | 15 referanser i APA7, alfabetisk verifisert. Alle siteringer i kroppen finnes i bibliografien |
+| 12 Vedlegg | Ferdig | Tre vedlegg: A (alle 36 SARIMA-kandidater), B (måned-for-måned testsettprognose, 42 måneder), C (analyseartefakter og rådatapeker) |
 
 ## Milepæler
 
@@ -208,7 +230,7 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 | MS-002 Godkjent proposal | 2026-01-21 | Oppnådd | Ingen avvik |
 | MS-003 Godkjent plan | 2026-02-13 | Oppnådd | Ingen avvik |
 | MS-004 Første analyseutkast | 2026-03-11 | Oppnådd 2026-03-16 | Fem dager forsinket mot baseline |
-| MS-005 Hovedutkast klart for review | 2026-04-27 | Planlagt | Ingen endring |
+| MS-005 Hovedutkast klart for review | 2026-04-27 | Oppnådd 2026-04-29 | To dager forsinket mot baseline |
 | MS-006 Peer review gjennomført | 2026-04-29 | Planlagt | Ingen endring |
 | MS-007 Endelig innlevering og presentasjon | 2026-05-15 | Planlagt | Ingen endring |
 
@@ -223,4 +245,4 @@ Denne statusen bygger på arbeidskopien per 2026-04-13, med planbaselinen i `pro
 
 ## Vurdering
 
-Prosjektet er operativt på plan per 2026-03-25. Aktivitetene ACT-3.1, ACT-3.2, ACT-3.3 og ACT-3.4 er fullført. Hovedarbeidet som gjenstår er sluttkapitlene i rapporten (innledning, litteratur, teori, diskusjon, konklusjon) og peer review.
+Prosjektet er operativt på plan per 2026-04-29. Alle aktivitetene i fase 3 (ACT-3.1 til ACT-3.10) er fullført. Hovedutkastet er klart for peer review (MS-005 oppnådd). Hovedarbeidet som gjenstår er ACT-4.1 (Peer review og revisjon) og ACT-4.2 (Ferdigstille rapport og presentasjon).

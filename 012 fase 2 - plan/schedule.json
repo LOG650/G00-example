@@ -18,8 +18,8 @@
         "audit": {
             "createdAt": "2026-02-13T12:15:00Z",
             "createdBy": "codex",
-            "updatedAt": "2026-03-25T12:00:00Z",
-            "updatedBy": "codex"
+            "updatedAt": "2026-04-29T22:00:00Z",
+            "updatedBy": "claude"
         },
         "calendars": [
             {
@@ -71,8 +71,8 @@
                 "milestoneId": "MS-005",
                 "name": "Hovedutkast klart for review",
                 "date": "2026-04-27",
-                "status": "not-reached",
-                "description": "Rapportutkast og tilhorende figurer er klare for faglig review."
+                "status": "reached",
+                "description": "Rapportutkast og tilhorende figurer er klare for faglig review. Oppnaadd 2026-04-29 (to dager forsinket mot baseline)."
             },
             {
                 "milestoneId": "MS-006",
@@ -557,8 +557,8 @@
                 "taskId": "3.6",
                 "wbsItemId": "WBS-1.3.5",
                 "name": "Skrive kapittel 2 Litteratur",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": false,
                 "predecessors": [
                     {
@@ -580,15 +580,15 @@
                     {
                         "criteriaId": "ACT-3.6-C01",
                         "description": "Kapittel 2 Litteratur er ferdigskrevet med relevante kilder koblet til problemstillingen",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Kapittel 2 ferdigskrevet 2026-04-29 med syv seksjoner (2.1-2.7) og femten APA7-referanser. Inkluderer SCM-/logistikkforankring (Silver et al., 2017), empirisk/praksisorientert forankring (De Gooijer & Hyndman, 2006; Makridakis et al., 2020; Petropoulos et al., 2022) og en dedikert seksjon 2.6 med tre domenenaere case-studier (Polina et al., 2024 - traktor; Makoni & Chikobvu, 2023 - nybilsalg; Guimaraes et al., 2020 - landbruks-/anleggsmaskiner).",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.6-C02",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Review gjennomfort 2026-04-29. V1-V3 og F1-F3 implementert. Kapitlet utvidet med tre anvendelses-/oversiktskilder og ny seksjon 2.6 med tre domenenaere case-studier. F4 og F5 overfort til ACT-3.10.",
                         "error": ""
                     }
                 ],
@@ -596,9 +596,9 @@
                     "runBy": "studentgruppe",
                     "permissionMode": "samarbeid",
                     "sessionId": null,
-                    "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": null
+                    "startedAt": "2026-04-29T00:00:00Z",
+                    "completedAt": "2026-04-29T16:00:00Z",
+                    "lastEvent": "Aktiviteten er fullfort og lukket 2026-04-29. Review gjennomfort med tre svakheter (V1-V3) rettet og forbedringsforslag F1-F3 implementert. Kapitlet i tillegg utvidet med tre anvendelses-/oversiktskilder for empirisk forankring og en dedikert seksjon 2.6 med tre domenenaere case-studier (Polina et al., 2024; Makoni & Chikobvu, 2023; Guimaraes et al., 2020). F4 og F5 overfort til ACT-3.10."
                 }
             },
             {
@@ -706,8 +706,8 @@
                 "taskId": "3.9",
                 "wbsItemId": "WBS-1.3.5",
                 "name": "Skrive kapittel 10 Konklusjon",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -729,15 +729,15 @@
                     {
                         "criteriaId": "ACT-3.9-C01",
                         "description": "Kapittel 10 Konklusjon svarer direkte pa problemstillingen",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Kapittel 10 ferdigskrevet 2026-04-29 i fem avsnitt (om lag en side) som svarer direkte pa begge ledd av problemstillingen og lofter fram modellvalg, prognose, implikasjoner, begrensninger og hovedbidrag.",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.9-C02",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Review gjennomfort 2026-04-29. V1-V2 rettet, F1 og F3 implementert. F2 og F4 overfort til ACT-3.10.",
                         "error": ""
                     }
                 ],
@@ -745,9 +745,9 @@
                     "runBy": "studentgruppe",
                     "permissionMode": "samarbeid",
                     "sessionId": null,
-                    "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": null
+                    "startedAt": "2026-04-29T16:00:00Z",
+                    "completedAt": "2026-04-29T18:00:00Z",
+                    "lastEvent": "Aktiviteten er fullfort og lukket 2026-04-29. Review gjennomfort med to svakheter (V1-V2) rettet og forbedringsforslag F1 og F3 implementert. F2 og F4 overfort til ACT-3.10."
                 }
             },
             {
@@ -755,8 +755,8 @@
                 "taskId": "3.10",
                 "wbsItemId": "WBS-1.3.5",
                 "name": "Sammenstille rapportutkast",
-                "status": "not-started",
-                "percentComplete": 0,
+                "status": "completed",
+                "percentComplete": 100,
                 "isCriticalPath": true,
                 "predecessors": [
                     {
@@ -787,9 +787,11 @@
                 "steps": [
                     "Skrive sammendrag (norsk)",
                     "Skrive abstract (engelsk)",
-                    "Oppdatere innholdsfortegnelse",
-                    "Ferdigstille kapittel 11 Bibliografi",
                     "Samle vedlegg i kapittel 12",
+                    "Oppdatere innholdsfortegnelse (Modellering->Modell, fjerne parentesbemerkning kap. 5)",
+                    "Ferdigstille kapittel 11 Bibliografi (verifisere alfabetisk rekkefolge og konsistens)",
+                    "Konsistenssjekk av kapittel 1 Innledning mot fullfort rapport",
+                    "Implementere overforte forbedringsforslag (ACT-3.5 F1-F3, ACT-3.6 F4-F5, ACT-3.9 F2 og F4)",
                     "Intern kvalitetssjekk av hele utkastet",
                     "Gjennomfore intern review og lukke aktiviteten"
                 ],
@@ -797,22 +799,22 @@
                     {
                         "criteriaId": "ACT-3.10-C01",
                         "description": "Fullstendig hovedutkast foreligger med alle kapitler, sammendrag, abstract, bibliografi og vedlegg",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Hovedutkastet er fullstendig 2026-04-29 med sammendrag (~227 ord) og abstract (~257 ord), 12 kapitler, oppdatert innholdsfortegnelse, 15 APA7-referanser i bibliografien og tre vedlegg (A: 36 SARIMA-kandidater; B: 42-maaneders testsettprognose; C: analyseartefakter).",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.10-C02",
                         "description": "Utkastet er klart for peer review",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Hovedutkastet er klart for peer review. Alle syv overforte forbedringsforslag fra ACT-3.5, 3.6 og 3.9 er implementert. Intern kvalitetssjekk viser konsistens i krysshenvisninger, bibliografi og figurer/tabeller.",
                         "error": ""
                     },
                     {
                         "criteriaId": "ACT-3.10-C03",
                         "description": "Review er gjennomfort og aktiviteten er lukket",
-                        "status": "not-passed",
-                        "result": "",
+                        "status": "passed",
+                        "result": "Review gjennomfort 2026-04-29. V1-V4 og F1, F3, F4 implementert. F2 og F5 noteres for evt. handtering i fase 4.",
                         "error": ""
                     }
                 ],
@@ -820,9 +822,9 @@
                     "runBy": "studentgruppe",
                     "permissionMode": "samarbeid",
                     "sessionId": null,
-                    "startedAt": null,
-                    "completedAt": null,
-                    "lastEvent": null
+                    "startedAt": "2026-04-29T18:00:00Z",
+                    "completedAt": "2026-04-29T22:00:00Z",
+                    "lastEvent": "Aktiviteten er fullfort og lukket 2026-04-29. Hovedutkastet er klart for peer review (MS-005 oppnaadd 2026-04-29, to dager forsinket mot baseline 2026-04-27)."
                 }
             },
             {

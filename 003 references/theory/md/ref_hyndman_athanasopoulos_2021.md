@@ -10,11 +10,12 @@ En moderne og tilgjengelig lærebok i prognosemetodikk som dekker hele arbeidsfl
 
 ## Relevante kapitler og konsepter
 
-- **Kapittel 3:** Tidsseriedekomponering — trend, sesong og restledd; additiv og multiplikativ dekomponering.
-- **Kapittel 5:** Prognoseevaluering — MAE, RMSE, MAPE, trenings-/testsplitt, hold-out-validering.
+- **Kapittel 3:** Tidsseriedekomponering — trend, sesong og restledd; additiv og multiplikativ dekomponering. Inkluderer biaskorreksjonen $\exp(\hat{z} + \sigma_h^2/2)$ ved tilbaketransformering fra log-skala for å gå fra median- til gjennomsnittsprognose.
+- **Kapittel 5:** Prognoseevaluering — MAE, RMSE, MAPE og MASE (skalauavhengig feilmål basert på en naiv referanseprognose), trenings-/testsplitt, hold-out-validering.
 - **Kapittel 9:** ARIMA-modeller — stasjonaritet, differensiering, ACF/PACF, modellvalg med AIC.
 
 ## Bruk i rapporten
 
+- Kapittel 2.5: Feilmål (MAE, RMSE, MAPE, MASE) og biaskorreksjon ved tilbaketransformering fra log-skala.
 - Kapittel 3.1: Dekomponering av tidsserier.
-- Kapittel 3.5: Feilmål (MAE, RMSE, MAPE) og hold-out-validering.
+- Kapittel 3.5: Feilmål (MAE, RMSE, MAPE, MASE) og hold-out-validering.
